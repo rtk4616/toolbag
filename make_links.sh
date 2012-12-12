@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HOMEPATH=$(eval echo ~${SUDO_USER})
-REPONAME="vi-config"
+REPONAME="toolbag"
 
 VIFILE="$HOMEPATH/.vimrc"
 VIFILEOLD="$HOMEPATH/.vimrc_OLD"
@@ -86,5 +86,3 @@ else
     ln -s $REPOPYRCFILE $PYRCFILE
     echo "Done."
 fi
-
-
