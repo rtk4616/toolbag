@@ -14,19 +14,19 @@ You only need to perform these steps once. After performing an installation, upd
 
 Clone the repo::
 
-  git clone git@github.com:wilkystyle/toolbag.git
+    git clone git@github.com:wilkystyle/toolbag.git
 
 ...or for read-only access::
 
-    git://github.com/wilkystyle/toolbag.git
+    git clone git://github.com/wilkystyle/toolbag.git
 
 Navigate into the repo directory::
 
-  cd toolbag
+    cd toolbag
 
 Run the installation bash script to create symlinks::
 
-  ./make_links.sh
+    ./make_links.sh
 
 
 Staying up to date
@@ -34,4 +34,4 @@ Staying up to date
 
 In order to make sure you have the latest version of the files, simply do::
 
-  git pull
+    git pull
