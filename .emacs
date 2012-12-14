@@ -21,6 +21,10 @@
 ;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
 
+;; Load the Autopair module.
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
 ;;
 ;; end Initial setup
 ;;
