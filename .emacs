@@ -8,11 +8,16 @@
 ;; If you want to load a theme that is included with Emacs by default.
 ;; (load-theme 'adwaita t)
 
+;; Loading a theme based whether or not emacs is in GUI mode.
+(if window-system 
+    (load-theme 'adwaita t)
+  (load-library "mikeokai-theme"))
+
 ;; This is how I load my github color theme.
 ;; (load-library "miketheme-theme")
 
 ;; Load the Mikeokai theme. (My version of the monokai theme)
-(load-library "mikeokai-theme")
+;; (load-library "mikeokai-theme")
 
 ;; Load the Solarized theme.
 ;; (add-to-list 'custom-theme-load-path "~/.elisp")
