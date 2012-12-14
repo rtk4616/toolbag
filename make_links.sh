@@ -11,6 +11,14 @@ VIDIR="$HOMEPATH/.vim"
 VIDIROLD="$HOMEPATH/.vim_OLD"
 REPOVIDIR="$HOMEPATH/$REPONAME/.vim"
 
+EMACSFILE="$HOMEPATH/.emacs"
+EMACSFILEOLD="$HOMEPATH/.emacs_OLD"
+REPOEMACSFILE="$HOMEPATH/$REPONAME/.emacs"
+
+EMACSDIR="$HOMEPATH/.elisp"
+EMACSDIROLD="$HOMEPATH/.elisp_OLD"
+REPOEMACSDIR="$HOMEPATH/$REPONAME/.elisp"
+
 TMUXFILE="$HOMEPATH/.tmux.conf"
 TMUXFILEOLD="$HOMEPATH/.tmux.conf_OLD"
 REPOTMUXFILE="$HOMEPATH/$REPONAME/.tmux.conf"
@@ -84,5 +92,39 @@ then
 else
     echo "$PYRCFILE does not exist. Creating symbolic link..."
     ln -s $REPOPYRCFILE $PYRCFILE
+    echo "Done."
+fi
+
+# Make the symbolic link for the .emacs file.
+if [ -L "$EMACSFILE" ]
+then
+    echo "$EMACSFILE is already symlinked! Delete the symlink and re-run this script if you wish to create new links! Skipping..."
+elif [ -f "$EMACSFILE" ]
+then
+    echo "$EMACSFILE does exist. Copying to $EMACSFILEOLD"
+    mv $EMACSFILE $EMACSFILEOLD
+    echo "Creating symbolic link..."
+    ln -s $REPOEMACSFILE $EMACSFILE
+    echo "Done."
+else
+    echo "$EMACSFILE does not exist. Creating symbolic link..."
+    ln -s $REPOEMACSFILE $EMACSFILE
+    echo "Done."
+fi
+
+# Make the symbolic link for the .elisp folder.
+if [ -L "$EMACSDIR" ]
+then
+    echo "$EMACSDIR is already symlinked! Delete the symlink and re-run this script if you wish to create new links! Skipping..."
+elif [ -d "$EMACSDIR" ]
+then
+    echo "$EMACSDIR does exist. Copying to $EMACSDIROLD"
+    mv $EMACSDIR $EMACSDIROLD
+    echo "Creating symbolic link..."
+    ln -s $REPOEMACSDIR $EMACSDIR
+    echo "Done."
+else
+    echo "$EMACSDIR does not exist. Creating symbolic link..."
+    ln -s $REPOEMACSDIR $EMACSDIR
     echo "Done."
 fi

@@ -8,16 +8,17 @@
 ;; If you want to load a theme that is included with Emacs by default.
 (load-theme 'adwaita t)
 
-;; this is how I load my github color theme.
+;; This is how I load my github color theme.
 ;; (load-library "miketheme-theme")
 
 ;; Load the Mikeokai theme. (My version of the monokai theme)
-;; (load-library "mikeokai-theme")a
+;; (load-library "mikeokai-theme")
 
 ;; Load the Solarized theme.
 ;; (add-to-list 'custom-theme-load-path "~/.elisp")
 ;; (load-library "solarized-light-theme")
 
+;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
 
 ;;

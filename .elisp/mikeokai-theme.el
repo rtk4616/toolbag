@@ -27,25 +27,18 @@
 
      `(default ((t (nil))))
      `(font-lock-comment-face ((t (:foreground "color-238"))))
-     ;; `(font-lock-comment-face ((t (:foreground "#75715E")))) ; dark aluminum
      `(font-lock-comment-delimiter-face ((t (:foreground "color-238"))))
-     ;; `(font-lock-comment-delimiter-face ((t (:foreground "#75715E")))) ; dark aluminum
      `(font-lock-doc-face ((t (:foreground "color-221"))))
      `(font-lock-doc-string-face ((t (:foreground "color-221"))))
-     ;; `(font-lock-string-face ((t (:foreground "#E6DB74")))) ; plum
      `(font-lock-string-face ((t (:foreground "color-221"))))
-     ;; `(font-lock-keyword-face ((t (:foreground "#F92672"))))
      `(font-lock-keyword-face ((t (:foreground "color-161"))))
-     ;; `(font-lock-builtin-face ((t (:foreground "#855c1b")))) ; med-dark chocolate
      `(font-lock-builtin-face ((t (:foreground "color-81"))))
      `(font-lock-function-name-face ((t (:foreground "color-118"))))
-     ;; `(font-lock-variable-name-face ((t (:foreground "#FD971F"))))
      `(font-lock-variable-name-face ((t (:foreground "#cccccc"))))
-     `(font-lock-preprocessor-face ((t (:foreground "#66D9EF")))) ; aluminum
-     ;; `(font-lock-constant-face ((t (:foreground "#4e9a06"))))
+     `(font-lock-preprocessor-face ((t (:foreground "#66D9EF"))))
      `(font-lock-constant-face ((t (:foreground "color-99"))))
-     `(font-lock-type-face ((t (:foreground "#66D9EF")))) ; light plum
-     `(font-lock-warning-face ((t (:bold t :foreground "#cc0000")))) ; scarlet red
+     `(font-lock-type-face ((t (:foreground "#66D9EF"))))
+     `(font-lock-warning-face ((t (:bold t :foreground "#cc0000"))))
 
      ;; Set the diff context face.
      `(diff-context ((t (:foreground "color-238"))))
