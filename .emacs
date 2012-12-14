@@ -6,13 +6,13 @@
 (add-to-list 'load-path "~/.elisp")
 
 ;; If you want to load a theme that is included with Emacs by default.
-(load-theme 'adwaita t)
+;; (load-theme 'adwaita t)
 
 ;; This is how I load my github color theme.
 ;; (load-library "miketheme-theme")
 
 ;; Load the Mikeokai theme. (My version of the monokai theme)
-;; (load-library "mikeokai-theme")
+(load-library "mikeokai-theme")
 
 ;; Load the Solarized theme.
 ;; (add-to-list 'custom-theme-load-path "~/.elisp")
