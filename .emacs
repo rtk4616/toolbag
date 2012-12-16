@@ -5,23 +5,13 @@
 ;; Set paths
 (add-to-list 'load-path "~/.elisp")
 
-;; If you want to load a theme that is included with Emacs by default.
-;; (load-theme 'adwaita t)
+;; Load PHP-mode.
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
 ;; Loading a theme based whether or not emacs is in GUI mode.
-(if window-system 
+(if window-system
     (load-theme 'adwaita t)
   (load-library "mikeokai-theme"))
-
-;; This is how I load my github color theme.
-;; (load-library "miketheme-theme")
-
-;; Load the Mikeokai theme. (My version of the monokai theme)
-;; (load-library "mikeokai-theme")
-
-;; Load the Solarized theme.
-;; (add-to-list 'custom-theme-load-path "~/.elisp")
-;; (load-library "solarized-light-theme")
 
 ;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
