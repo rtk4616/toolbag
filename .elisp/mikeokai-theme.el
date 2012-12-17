@@ -52,6 +52,7 @@
 
      ;; Emacs Interface
      `(fringe ((t (:background "#0f0f0f"))))
+     `(linum ((t (:foreground "color-238"))))
      `(border ((t (:background "#0f0f0f"))))
      `(mode-line ((t (:background "#1f1f1f" :foreground "#eeeeec"))))
      `(mode-line-buffer-id ((t (:background "#1f1f1f" :foreground "#eeeeec"))))
