@@ -82,15 +82,29 @@
 ;; ==============================================================
 
 ;; Turn on line numbers!
-;; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+;;
+;; (NOTE: Only do this in the GUI. Selecting by line in the terminal version with line
+;; numbers enabled results in the line numbers also being selected)
+;;
+(if window-system
+    (add-hook 'find-file-hook (lambda () (linum-mode 1))))
 
-;; Make emacs keep the current working directory when opening files.
+;; make emacs keep the current working directory when opening files.
 (add-hook 'find-file-hook
           (lambda ()
             (setq default-directory command-line-default-directory)))
 
+
 ;; Add a little padding around the line numbers.
-(setq linum-format " %d  ")
+;; Dynamically determine character width for the line numbers column, and add a
+;; space for padding as well.
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat "%" (number-to-string w) "d ")))
+    ad-do-it))
+;; (setq linum-format " %d  ")
+
 
 ;; Make F5 toggle line numbers on and off.
 (global-set-key (kbd "<f5>") 'linum-mode)
