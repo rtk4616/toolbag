@@ -68,7 +68,8 @@
          (magenta   "#d33682")
          (violet    "#6c71c4")
          (blue      "#268bd2")
-         (cyan      "#2aa198")
+         ;; (cyan      "#2aa198")
+         (cyan      "color-30")
          (green     "#859900")
 
          ;; Darker and lighter accented colors
@@ -193,7 +194,10 @@
        ((,class (:foreground ,solarized-fg
                              :background ,solarized-bg
                              :box (:line-width -1 :style released-button)))))
-     `(region ((,class (:foreground ,solarized-bg :background ,solarized-emph))))
+
+     ;; `(region ((,class (:foreground ,solarized-bg :background ,solarized-emph))))
+     `(region ((,class (:background ,"brightgreen"))))
+
      `(secondary-selection ((,class (:background ,solarized-bg))))
      `(trailing-whitespace ((,class (:background ,red))))
      `(vertical-border ((,class (:foreground ,solarized-fg))))
@@ -204,12 +208,21 @@
      `(font-lock-comment-face ((,class (:foreground ,solarized-comments))))
      `(font-lock-constant-face ((,class (:foreground ,blue :weight bold))))
      `(font-lock-doc-face ((,class (:foreground ,cyan :slant italic))))
-     `(font-lock-doc-string-face ((,class (:foreground ,blue))))
+
+     ;; `(font-lock-doc-string-face ((,class (:foreground ,blue))))
+     `(font-lock-doc-string-face ((,class (:foreground ,cyan))))
+
      `(font-lock-function-name-face ((,class (:foreground ,blue))))
-     `(font-lock-keyword-face ((,class (:foreground ,green :weight bold))))
+
+     ;; `(font-lock-keyword-face ((,class (:foreground ,green :weight bold))))
+     `(font-lock-keyword-face ((,class (:foreground ,"color-124" :weight bold))))
+
      `(font-lock-negation-char-face ((,class (:foreground ,solarized-fg))))
      `(font-lock-preprocessor-face ((,class (:foreground ,blue))))
+
+     ;; `(font-lock-string-face ((,class (:foreground ,cyan))))
      `(font-lock-string-face ((,class (:foreground ,cyan))))
+
      `(font-lock-type-face ((,class (:foreground ,yellow))))
      `(font-lock-variable-name-face ((,class (:foreground ,blue))))
      `(font-lock-warning-face ((,class (:foreground ,orange :weight bold :underline t))))

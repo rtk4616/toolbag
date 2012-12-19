@@ -11,7 +11,8 @@
 ;; Loading a theme based whether or not emacs is in GUI mode.
 (if window-system
     (load-theme 'adwaita t)
-  (load-library "mikeokai-theme"))
+  ;; (load-library "mikeokai-theme"))
+  (load-library "solarized-light-theme"))
 
 ;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
@@ -142,6 +143,7 @@
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cl$" . c++-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
 
 ;; Add highlighting of TODO, BUG, NOTE, and FIXME.
 (add-hook 'prog-mode-hook
