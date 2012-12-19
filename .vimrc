@@ -35,7 +35,7 @@ autocmd Syntax * syntax sync minlines=1000
 " ===============================
 " BEGIN Plugin settings
 " ===============================
-filetype plugin on
+" filetype plugin on
 
 
 " ===============================
