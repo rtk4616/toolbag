@@ -27,6 +27,11 @@ PYRCFILE="$HOMEPATH/.pythonrc"
 PYRCFILEOLD="$HOMEPATH/.pythonrc_OLD"
 REPOPYRCFILE="$HOMEPATH/$REPONAME/.pythonrc"
 
+GITCONFIGFILE="$HOMEPATH/.gitconfig"
+GITCONFIGFILEOLD="$HOMEPATH/.gitconfig_OLD"
+REPOGITCONFIGFILE="$HOMEPATH/$REPONAME/.gitconfig"
+
+
 # Make the symbolic link for the .vimrc file.
 if [ -L "$VIFILE" ]
 then
@@ -126,5 +131,22 @@ then
 else
     echo "$EMACSDIR does not exist. Creating symbolic link..."
     ln -s $REPOEMACSDIR $EMACSDIR
+    echo "Done."
+fi
+
+ # Make the symbolic link for the .gitconfig file.
+if [ -L "$GITCONFIGFILE" ]
+then
+    echo "$GITCONFIGFILE is already symlinked! Delete the symlink and re-run this script if you wish to create new links! Skipping..."
+elif [ -f "$GITCONFIGFILE" ]
+then
+    echo "$GITCONFIGFILE does exist. Copying to $GITCONFIGFILEOLD"
+    mv $GITCONFIGFILE $GITCONFIGFILEOLD
+    echo "Creating symbolic link..."
+    ln -s $REPOGITCONFIGFILE $GITCONFIGFILE
+    echo "Done."
+else
+    echo "$GITCONFIGFILE does not exist. Creating symbolic link..."
+    ln -s $REPOGITCONFIGFILE $GITCONFIGFILE
     echo "Done."
 fi
