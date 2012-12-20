@@ -11,10 +11,10 @@
 ;; Loading a theme based whether or not emacs is in GUI mode.
 (if window-system
     (load-theme 'adwaita t)
-  ;; (load-library "mikeokai-theme"))
-  (load-library "solarized-light-theme"))
+  (load-library "mikeokai-theme"))
+  ;; (load-library "solarized-light-theme"))
 
-;; Set SSH as the default method for Tramp.
+;; set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
 
 ;; Load the Autopair module.

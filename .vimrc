@@ -26,8 +26,8 @@ set showmode
 " BEGIN Style settings
 " ===============================
 syntax on
-set background=light
-colo solarized
+set background=dark
+colo monokai
 set guifont=DejaVu\ Sans\ Mono\ 9
 autocmd Syntax * syntax sync minlines=1000
 
