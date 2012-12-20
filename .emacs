@@ -30,6 +30,9 @@
 ;; START Keybindings
 ;; ==============================================================
 
+;; Make autocomplete feature use a better shortcut
+(global-set-key (kbd "M-SPC") 'dabbrev-expand)
+
 ;; Some aliases to make things easier!
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'ff 'find-name-dired)
