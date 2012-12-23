@@ -28,7 +28,7 @@ set showmode
 syntax on
 set background=light
 colo solarized
-set guifont=menlo\ 9
+set guifont=menlo:h12
 autocmd Syntax * syntax sync minlines=1000
 
 
