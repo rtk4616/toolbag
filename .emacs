@@ -13,11 +13,12 @@
 
 ;; Loading a theme based whether or not emacs is in GUI mode.
 (if window-system
+    ;; (load-library "solarized-light-theme")
     (load-library "~/.elisp/themes/github-theme.el")
     ;; (load-theme 'adwaita t)
   ;; (load-library "mikeokai-theme"))
-  (load-library "~/.elisp/themes/github-theme.el"))
-  ;; (load-library "solarized-light-theme"))
+  ;; (load-library "~/.elisp/themes/github-theme.el"))
+  (load-library "solarized-light-theme"))
 
 ;; set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
