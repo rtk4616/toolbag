@@ -8,10 +8,15 @@
 ;; Load PHP-mode.
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
+;; Load Flyspell
+;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+
 ;; Loading a theme based whether or not emacs is in GUI mode.
 (if window-system
-    (load-theme 'adwaita t)
-  (load-library "mikeokai-theme"))
+    (load-library "~/.elisp/themes/github-theme.el")
+    ;; (load-theme 'adwaita t)
+  ;; (load-library "mikeokai-theme"))
+  (load-library "~/.elisp/themes/github-theme.el"))
   ;; (load-library "solarized-light-theme"))
 
 ;; set SSH as the default method for Tramp.

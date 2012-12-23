@@ -6,24 +6,24 @@
 	helper = osxkeychain
 
 [merge]
-	tool = vimdiff
-    #tool = mikediff
+	# tool = vimdiff
+    tool = mikediff
 
-# [mergetool "mikediff"]
-#     cmd = emacs --eval \" \
-# (progn \
-#   (setq ediff-quit-hook 'kill-emacs) \
-#   (if (file-readable-p \\\"$BASE\\\") \
-#       (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \
-#                                        \\\"$BASE\\\" nil \\\"$MERGED\\\") \
-#       (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"'))
+[mergetool "mikediff"]
+    cmd = emacs --eval \" \
+(progn \
+  (setq ediff-quit-hook 'kill-emacs) \
+  (if (file-readable-p \\\"$BASE\\\") \
+      (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \
+                                       \\\"$BASE\\\" nil \\\"$MERGED\\\") \
+      (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"'))
 
 [diff]
-	tool = vimdiff
-	#tool = mikediff
+	# tool = vimdiff
+	tool = ediff
 
-# [difftool "ediff"]
-#     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
+[difftool "ediff"]
+    cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 
 [mergetool]
 	prompt = false
