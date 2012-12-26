@@ -65,7 +65,8 @@ hi ErrorMsg             guifg=#a61717 ctermfg=124 guibg=#e3d2d2 ctermbg=188 gui=
 hi VertSplit            guifg=#666666 ctermfg=59 guibg=#eaeaea ctermbg=188
 hi LineNr               guifg=#666666 ctermfg=59 guibg=#eaeaea ctermbg=188
 hi ModeMsg              gui=bold cterm=bold
-hi Normal               guifg=#000000 ctermfg=16 guibg=#f8f8ff ctermbg=15
+hi Normal               guifg=#000000 ctermfg=16 guibg=#f8f8ff
+" hi Normal               guifg=#000000 ctermfg=16 guibg=#f8f8ff ctermbg=15
 hi Pmenu                guibg=#babdb6 ctermbg=145 guifg=#555753 ctermfg=59
 hi StatusLine           guifg=#666666 ctermfg=59 guibg=#eaeaea ctermbg=188
 hi Visual               guifg=NONE ctermfg=15 guibg=#ffffcc ctermbg=8

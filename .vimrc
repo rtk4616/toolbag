@@ -26,21 +26,16 @@ set showmode
 " BEGIN Style settings
 " ===============================
 syntax on
-set background=light
-colo solarized
+set background=dark
+colo monokai
 set guifont=menlo:h12
 autocmd Syntax * syntax sync minlines=1000
 
 
 " ===============================
-" BEGIN Plugin settings
-" ===============================
-" filetype plugin on
-
-
-" ===============================
 " BEGIN Key bindings
 " ===============================
+
 " Easy switching of tabs.
 nnoremap <S-h> gT
 nnoremap <S-l> gt
@@ -76,6 +71,10 @@ let g:EasyMotion_leader_key = '<Leader>'
 " ===============================
 " BEGIN File-specific settings
 " ===============================
+filetype on
+filetype plugin on
+filetype indent on
+
 autocmd FileType make setlocal noexpandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2

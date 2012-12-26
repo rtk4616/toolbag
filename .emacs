@@ -36,6 +36,9 @@
 ;; START Keybindings
 ;; ==============================================================
 
+;; Bind F4 to see changes between the current buffer and the version on disk.
+(global-set-key (kbd "<C-return>") 'newline)
+
 ;; Make autocomplete feature use a better shortcut
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
 
