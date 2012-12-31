@@ -36,7 +36,8 @@
 ;; START Keybindings
 ;; ==============================================================
 
-;; Bind F4 to see changes between the current buffer and the version on disk.
+;; Make pressing enter while still holding down the control key insert a
+;; newline.
 (global-set-key (kbd "<C-return>") 'newline)
 
 ;; Make autocomplete feature use a better shortcut
