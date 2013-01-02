@@ -101,7 +101,9 @@
 ;; numbers enabled results in the line numbers also being selected)
 ;;
 (if window-system
-    (add-hook 'find-file-hook (lambda () (linum-mode 1))))
+    ;; If we are using the GUI version of Emacs...
+    (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+  )
 
 ;; make emacs keep the current working directory when opening files.
 (add-hook 'find-file-hook
