@@ -95,6 +95,9 @@
 ;; START misc stuff here...
 ;; ==============================================================
 
+;; Make rgrep searches be case insensitive.
+(setq case-fold-search t)
+
 ;; Turn on line numbers!
 ;;
 ;; (NOTE: Only do this in the GUI. Selecting by line in the terminal version with line
