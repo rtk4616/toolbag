@@ -6,8 +6,8 @@
 	helper = osxkeychain
 
 [merge]
-    tool = emerge
-	# tool = vimdiff
+    # tool = emerge
+	tool = vimdiff
     # tool = mikediff
 
 # [mergetool "mikediff"]
@@ -20,8 +20,8 @@
 #       (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"'))
 
 [diff]
-	# tool = vimdiff
-    tool = ediff
+	tool = vimdiff
+    # tool = ediff
 
 [difftool "ediff"]
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
