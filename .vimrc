@@ -26,8 +26,8 @@ set showmode
 " BEGIN Style settings
 " ===============================
 syntax on
-set background=dark
-colo monokai
+set background=light
+colo solarized
 set guifont=menlo:h12
 autocmd Syntax * syntax sync minlines=1000
 
