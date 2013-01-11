@@ -1,25 +1,25 @@
 " ===============================
 " BEGIN Misc settings
 " ===============================
-"set autochdir
-set noautochdir
-set expandtab
-set number
-set title
-set nosmartindent
-set nocindent
-set autoindent
-set wrap
-set hlsearch
-set ic
-set is
-set showtabline=4
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set bs=2
-set tabpagemax=50
-set showmode
+set noautochdir     " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
+set expandtab       " Use only spaces for tabs.
+set number          " Enable line numbers.
+set title           " Make the window title be the filename.
+set nosmartindent   " Don't do that sassy smart-indenting.
+set nocindent       " Don't do that sassy auto-indenting for C code.
+set autoindent      " Indentation same as previous line when inserting a new line.
+set wrap            " Wrap text at window boundary by default.
+set hlsearch        " Highlight matches while searching.
+set ic              " Ignore case while searching, by default.
+set is              " Enable incremental search by default.
+set showtabline=4   " Show the tab bar by default, even if we only have one tab open.
+set tabstop=4       " Default tab stop to 4 chars.
+set softtabstop=4   " Default soft tab stop to 4 chars.
+set shiftwidth=4    " Default shiftwidth to 4 chars.
+set bs=2            " Set backspacing mode 2. This allows backspacing with no restrictions.
+set tabpagemax=50   " 50 tabs at any given time max. The rest get opened as buffers.
+set showmode        " Show which mode we're currently in.
+set nofoldenable    " Disable code folding.
 
 
 " ===============================
