@@ -71,9 +71,9 @@ let g:EasyMotion_leader_key = '<Leader>'
 " ===============================
 " BEGIN File-specific settings
 " ===============================
-filetype on
-filetype plugin on
-filetype indent on
+" filetype on
+" filetype plugin on
+" filetype indent on
 
 autocmd FileType make setlocal noexpandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
