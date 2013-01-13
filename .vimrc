@@ -26,9 +26,16 @@ set nofoldenable    " Disable code folding.
 " BEGIN Style settings
 " ===============================
 syntax on
-set background=dark
-colo monokai
-set guifont=menlo:h12
+
+if has("gui_running")
+    set guifont=menlo:h12
+    set background=light
+    colo solarized
+else
+    set background=dark
+    colo monokai
+endif
+
 autocmd Syntax * syntax sync minlines=1000
 
 
