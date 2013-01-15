@@ -59,7 +59,7 @@
 
 ;; Use electric buffer list for buffer navigation
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
-(global-set-key "\C-xb" 'electric-buffer-list)
+;; (global-set-key "\C-xb" 'electric-buffer-list)
 
 ;; Make it so we don't have to release ctrl when switching buffers...
 (global-set-key "\C-x\C-o" 'other-window)
