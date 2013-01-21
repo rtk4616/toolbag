@@ -43,6 +43,9 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===============================
 
+" Easy quit all.
+nnoremap ZA :qa!<cr>
+
 " Easy switching of tabs.
 nnoremap <S-h> gT
 nnoremap <S-l> gt
