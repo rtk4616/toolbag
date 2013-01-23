@@ -24,8 +24,8 @@
 (setq tramp-default-method "ssh")
 
 ;; Load the Autopair module.
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers
+;; (require 'autopair)
+;; (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;
 ;; end Initial setup
