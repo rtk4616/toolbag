@@ -24,8 +24,11 @@
 (setq tramp-default-method "ssh")
 
 ;; Load the Autopair module.
-;; (require 'autopair)
-;; (autopair-global-mode) ;; enable autopair in all buffers
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
+;; Make F6 toggle autopair on and off for the purposes of pasting.
+(global-set-key (kbd "<f6>") 'autopair-mode)
 
 ;;
 ;; end Initial setup
