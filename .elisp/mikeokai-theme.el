@@ -40,6 +40,9 @@
      `(font-lock-type-face ((t (:foreground "#66D9EF"))))
      `(font-lock-warning-face ((t (:bold t :foreground "#cc0000"))))
 
+     ;; Set the highlight face.
+     `(highlight ((t (:foreground "#080808" :background "#edd400"))))
+
      ;; Set the diff context face.
      `(diff-context ((t (:foreground "color-238"))))
 
