@@ -2,9 +2,6 @@
 	name = Mike Wilkerson
 	email = mike.wilkerson@willowtreeapps.com
 
-[credential]
-	helper = osxkeychain
-
 [merge]
     # tool = emerge
 	tool = vimdiff
