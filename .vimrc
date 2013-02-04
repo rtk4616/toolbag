@@ -49,9 +49,6 @@ nnoremap ZA :qa!<cr>
 " Easy switching of tabs.
 nnoremap <S-h> gT
 nnoremap <S-l> gt
-vnoremap <S-h> gT
-vnoremap <S-l> gt
-nnoremap <S-l> gt
 
 " See a tree of all files and directories starting with the current one.
 nnoremap <F1> :tabnew <bar> :r!tree -f .<CR>dkggdd
