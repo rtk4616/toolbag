@@ -39,6 +39,10 @@
 ;; START Keybindings
 ;; ==============================================================
 
+;; Shortcuts for saving and recalling window layout.
+(global-set-key "\C-x\M-," 'window-configuration-to-register)
+(global-set-key "\C-x," 'jump-to-register)
+
 ;; Make pressing enter while still holding down the control key insert a
 ;; newline.
 (global-set-key (kbd "<C-return>") 'newline)
