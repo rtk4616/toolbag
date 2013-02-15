@@ -179,8 +179,13 @@
                                     '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
 
 
+
+;; *************************************************************************************************
 ;; Disable requiring the newline at EOF
-;; ensure we do this *after* default.el is loaded, otherwise, when Emacs
+;;
+;; NOTE: This doesn't work for some reason... need to look into why, when I have the time.
+;;
+;; Ensure we do this *after* default.el is loaded, otherwise, when Emacs
 ;; executes the default.el file after your .emacs file, this value will get
 ;; changed.
 ;;
@@ -189,6 +194,8 @@
 (add-hook 'after-init-hook
 	   '(lambda ()
 	      (setq require-final-newline nil)))
+;; *************************************************************************************************
+
 
 ;; Require the newline at EOF
 (setq require-final-newline nil)
