@@ -29,8 +29,8 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    set background=light
-    colo solarized
+    set background=dark
+    colo jellybeans
 else
     set background=dark
     colo monokai
@@ -87,10 +87,12 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType cpp setlocal ts=4 sts=4 sw=4
 
 " File extension-specific commands
 autocmd BufRead,BufNewFile *rc set filetype=sh
 autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
+autocmd BufRead,BufNewFile *.cl set filetype=cpp
 autocmd BufRead,BufNewFile *.sls set filetype=yaml
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile .vimrc set filetype=vim
