@@ -12,8 +12,7 @@
 ;; Load Flyspell
 ;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(load-theme 'adwaita t)
-;; (load-theme 'mikeokai t)
+(load-theme 'monokai t)
 
 ;; ;; Loading a theme based whether or not emacs is in GUI mode.
 ;; (if window-system
@@ -185,7 +184,7 @@
 
 
 
-;; *************************************************************************************************
+;; ************************************************************************************************
 ;; Disable requiring the newline at EOF
 ;;
 ;; NOTE: This doesn't work for some reason... need to look into why, when I have the time.
@@ -199,7 +198,7 @@
 (add-hook 'after-init-hook
 	   '(lambda ()
 	      (setq require-final-newline nil)))
-;; *************************************************************************************************
+;; ************************************************************************************************
 
 
 ;; Require the newline at EOF
