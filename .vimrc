@@ -30,7 +30,7 @@ syntax on
 if has("gui_running")
     set guifont=menlo:h12
     set background=dark
-    colo jellybeans
+    colo mikeokai
 else
     set background=dark
     colo monokai
