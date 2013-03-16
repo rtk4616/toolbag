@@ -13,15 +13,15 @@
 ;; ========================================
 
 
-(deftheme mikeokai 
+(deftheme mikeokai
   "Port of Monokai Theme for Emacs 24")
 
   (custom-theme-set-faces
    'mikeokai
 
-   `(default ((t (:background "#272822" :foreground "#F8F8F2"))))
+   ;; `(default ((t (:background "#272822" :foreground "#F8F8F2"))))
+   `(default ((t (:background "#ff0000" :foreground "#F8F8F2"))))
    `(cursor ((t  (:background "#73d216"))))
-   `(fringe ((t (:background "#303030"))))
 
    `(font-lock-comment-face ((t (:foreground "color-238"))))
    `(font-lock-comment-delimiter-face ((t (:foreground "color-238"))))
@@ -54,11 +54,12 @@
    `(fringe ((t (:background "#0f0f0f"))))
    `(linum ((t (:foreground "color-238"))))
    `(border ((t (:background "#0f0f0f"))))
-   `(mode-line ((t (:background "#1f1f1f" :foreground "#eeeeec"))))
-   `(mode-line-buffer-id ((t (:background "#1f1f1f" :foreground "#eeeeec"))))
-   `(mode-line-inactive ((t (:background "#1f1f1f" :foreground "#888a85"))))
+   `(mode-line ((t (:background "#ff0000" :foreground "#eeeeec"))))
+   `(mode-line-buffer-id ((t (:background "#ff0000" :foreground "#eeeeec"))))
+   `(mode-line-inactive ((t (:background "#ff0000" :foreground "#888a85"))))
    `(minibuffer-prompt ((t (:foreground "#729fcf")))) ; light sky blue
-   `(region ((t (:background "#49483E"))))
+   ;; `(region ((t (:background "#49483E"))))
+   `(region ((t (:background "#ff0000"))))
 
    ;; Parenthesis matching
    `(show-paren-match-face ((t (:foreground "#2e3436" :background "#3E3D32"))))

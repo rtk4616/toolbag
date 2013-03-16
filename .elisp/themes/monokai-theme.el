@@ -32,7 +32,7 @@
       (monokai-gray-light "#E6E6E6")
       (monokai-green "#A6E22A")
       (monokai-green-light "#A6E22E")
-      (monokai-grey-dark "#272822")
+      (monokai-grey-dark "#1c1c1c")
       (monokai-magenta "#F92672")
       (monokai-purple "#AE81FF")
       (monokai-purple-light "#FD5FF1")
