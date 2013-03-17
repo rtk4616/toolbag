@@ -3,7 +3,7 @@
 	email = mike.wilkerson@willowtreeapps.com
 
 [merge]
-    tool = emerge
+    # tool = emerge
 	# tool = vimdiff
     # tool = mikediff
 
@@ -18,7 +18,7 @@
 
 [diff]
 	# tool = vimdiff
-    tool = ediff
+    # tool = ediff
 
 [difftool "ediff"]
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
