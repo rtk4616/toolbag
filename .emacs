@@ -35,8 +35,10 @@
 ;; ==============================================================
 
 ;; Shortcuts for saving and recalling window layout.
-(global-set-key "\C-x\M-\\" 'window-configuration-to-register)
-(global-set-key "\C-x\\" 'jump-to-register)
+(global-set-key (kbd "<f5>") (lambda () (interactive) (jump-to-register "a")))
+(global-set-key (kbd "<f8>") (lambda () (interactive) (window-configuration-to-register "a")))
+;; (global-set-key "\C-x\M-\\" 'window-configuration-to-register)
+;; (global-set-key "\C-x\\" 'jump-to-register)
 
 ;; Make pressing enter while still holding down the control key insert a
 ;; newline.
@@ -130,7 +132,7 @@
 
 
 ;; Make F5 toggle line numbers on and off.
-(global-set-key (kbd "<f5>") 'linum-mode)
+;; (global-set-key (kbd "<f5>") 'linum-mode)
 
 ;; Ediff with vertically split windows.
 (setq ediff-split-window-function 'split-window-horizontally)
