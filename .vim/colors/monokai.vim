@@ -128,7 +128,7 @@ hi   Normal          guibg=#272822
 hi   Comment         ctermfg=239
 "hi  Comment         ctermfg=59
 
-hi   CursorLine      ctermbg=236   cterm=none
+hi   CursorLine      ctermbg=234   cterm=none
 hi   CursorColumn    ctermbg=236
 hi   LineNr          ctermfg=238   ctermbg=none
 hi   NonText         ctermfg=none  ctermbg=none
