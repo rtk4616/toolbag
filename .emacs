@@ -34,11 +34,10 @@
 ;; START Keybindings
 ;; ==============================================================
 
-;; Shortcuts for saving and recalling window layout.
-(global-set-key (kbd "<f5>") (lambda () (interactive) (jump-to-register "a")))
-(global-set-key (kbd "<f8>") (lambda () (interactive) (window-configuration-to-register "a")))
-;; (global-set-key "\C-x\M-\\" 'window-configuration-to-register)
-;; (global-set-key "\C-x\\" 'jump-to-register)
+;; Ctrl-\ saves the window layout.
+(global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
+;; Alt-\ loads the window layout.
+(global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
 
 ;; Make pressing enter while still holding down the control key insert a
 ;; newline.
