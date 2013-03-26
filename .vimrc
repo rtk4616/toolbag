@@ -76,13 +76,9 @@ set pastetoggle=<F6>
 let g:EasyMotion_leader_key = '<Leader>'
 
 
-" ===============================
-" BEGIN File-specific settings
-" ===============================
-" filetype on
-" filetype plugin on
-" filetype indent on
-
+" -------------------------------------------
+" Setting up indentation rules for filetypes.
+" -------------------------------------------
 autocmd FileType make setlocal noexpandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
@@ -90,14 +86,21 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
 autocmd FileType cpp setlocal ts=4 sts=4 sw=4
 
-" File extension-specific commands
+
+" -----------------------------------------------------------------
+" Setting up which filetypes are assigned to which file extensions.
+"
+" File-specific rules should go after the *rc file rule, or else
+" they will get superceeded.
+" -----------------------------------------------------------------
 autocmd BufRead,BufNewFile *rc set filetype=sh
+autocmd BufRead,BufNewFile .vimrc set filetype=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
 autocmd BufRead,BufNewFile *.cl set filetype=cpp
 autocmd BufRead,BufNewFile *.sls set filetype=yaml
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-autocmd BufRead,BufNewFile .vimrc set filetype=vim
 
+" Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Show syntax highlighting groups for word under cursor
