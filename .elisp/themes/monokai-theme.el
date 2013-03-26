@@ -60,7 +60,11 @@
    `(font-lock-string-face ((t (:foreground ,monokai-yellow))))
    `(font-lock-type-face ((t (:foreground ,monokai-blue-light))))
    `(font-lock-variable-name-face ((t (:foreground ,monokai-magenta))))
-   `(font-lock-warning-face ((t (:bold t :foreground ,monokai-purple-light))))
+
+   ;; Override the warning font face.
+   ;; `(font-lock-warning-face ((t (:bold t :foreground ,monokai-purple-light))))
+   `(font-lock-warning-face ((t (:bold t :foreground , "#ff0000"))))
+
    ;; CUA
    `(cua-rectangle ((t (:background ,monokai-gray-darkest))))
    ;; IDO

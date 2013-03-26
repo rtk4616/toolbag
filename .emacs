@@ -14,7 +14,6 @@
 
 (load-theme 'monokai t)
 
-
 ;; set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
 
