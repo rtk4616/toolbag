@@ -32,18 +32,24 @@
       (monokai-gray-light "#E6E6E6")
       (monokai-green "#A6E22A")
       (monokai-green-light "#A6E22E")
+
       (monokai-grey-dark "#1c1c1c")
+
       (monokai-magenta "#F92672")
       (monokai-purple "#AE81FF")
       (monokai-purple-light "#FD5FF1")
       (monokai-yellow "#E6DB74")
+
       ;; (monokai-yellow-dark "#75715E")
       (monokai-yellow-dark "#757166")
+
       (monokai-yellow-light "#F8F8F2"))
+
+
   (custom-theme-set-faces
    'monokai
    ;; Frame
-   `(default ((t (:foreground ,monokai-yellow-light :background ,monokai-grey-dark))))
+   `(default ((t (:foreground ,monokai-yellow-light :background ,"#191919"))))
    `(cursor ((t (:foreground ,monokai-magenta))))
    `(hl-line ((t (:background ,monokai-gray-darkest))))
    `(minibuffer-prompt ((t (:foreground ,monokai-yellow-dark))))
