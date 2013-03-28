@@ -30,6 +30,17 @@
 
 
 ;; ==============================================================
+;; Custom functions
+;; ==============================================================
+
+(setq debug-on-error t)
+
+(defun mikegrep (search_string file_extension)
+  (interactive "sSearch for: \nsIn files with the extension *. \n")
+  (rgrep search_string (format "*.%s" file_extension) (pwd)))
+
+
+;; ==============================================================
 ;; START Keybindings
 ;; ==============================================================
 
@@ -55,6 +66,7 @@
 
 ;; Bind F3 to rgrep.
 (global-set-key (kbd "<f3>") 'rgrep)
+;; (global-set-key (kbd "<f3>") 'mikegrep)
 
 ;; Bind F4 to see changes between the current buffer and the version on disk.
 (global-set-key (kbd "<f4>") 'sc)
