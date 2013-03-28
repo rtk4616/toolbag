@@ -72,8 +72,8 @@ nnoremap <F6> :set invpaste paste?<CR>
 " Bind toggling paste mode on/off to F6
 set pastetoggle=<F6>
 
-" Not currently used, but here for possible future
-let g:EasyMotion_leader_key = '<Leader>'
+" Not currently used, but here for possible future use.
+" let g:EasyMotion_leader_key = '<Leader>'
 
 
 " -------------------------------------------
