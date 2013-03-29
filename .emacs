@@ -77,6 +77,7 @@
 
 ;; Make it so we don't have to release ctrl when switching buffers...
 (global-set-key "\C-x\C-o" 'other-window)
+(global-set-key "\M-o" 'other-window)
 
 ;; ...or killing buffers.
 (global-set-key "\C-x\C-k" 'kill-buffer)
