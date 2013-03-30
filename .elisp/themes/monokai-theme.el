@@ -33,7 +33,8 @@
       (monokai-green "#A6E22A")
       (monokai-green-light "#A6E22E")
 
-      (monokai-grey-dark "#1c1c1c")
+      ;; Custom override. This is used for background color.
+      (monokai-grey-dark "#191919")
 
       (monokai-magenta "#F92672")
       (monokai-purple "#AE81FF")
