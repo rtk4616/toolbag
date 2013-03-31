@@ -50,7 +50,7 @@
   (custom-theme-set-faces
    'monokai
    ;; Frame
-   `(default ((t (:foreground ,monokai-yellow-light :background ,"#191919"))))
+   `(default ((t (:foreground ,monokai-yellow-light :background ,"#161616"))))
    `(cursor ((t (:foreground ,monokai-magenta))))
    `(hl-line ((t (:background ,monokai-gray-darkest))))
    `(minibuffer-prompt ((t (:foreground ,monokai-yellow-dark))))
