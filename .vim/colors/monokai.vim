@@ -108,8 +108,9 @@ hi   StorageClass    ctermfg=208
 hi   Structure       ctermfg=81
 hi   Tag             ctermfg=162
 hi   Title           ctermfg=166
-"hi  Todo            ctermfg=231   ctermbg=232  cterm=bold
-hi   Todo            ctermfg=232   ctermbg=196  cterm=bold
+" hi  Todo            ctermfg=231   ctermbg=232  cterm=bold
+" hi   Todo            ctermfg=232   ctermbg=196  cterm=bold
+hi   Todo            ctermbg=none ctermfg=196  cterm=bold
 
 hi   Typedef         ctermfg=81
 hi   Type            ctermfg=81    cterm=none
@@ -118,7 +119,7 @@ hi   Underlined      ctermfg=244   cterm=underline
 hi   VertSplit       ctermfg=244   ctermbg=232  cterm=bold
 hi   VisualNOS       ctermbg=241
 hi   Visual          ctermbg=241
-hi   WarningMsg      ctermfg=231   ctermbg=238  cterm=bold
+hi   WarningMsg      ctermfg=238   cterm=bold
 hi   WildMenu        ctermfg=81    ctermbg=16
 
 " Commented out so there's no color background
