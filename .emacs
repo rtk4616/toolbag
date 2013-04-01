@@ -33,8 +33,6 @@
 ;; Custom functions
 ;; ==============================================================
 
-(setq debug-on-error t)
-
 (defun mikegrep (search_string file_extension)
   (interactive "sSearch for: \nsIn files with the extension *. \n")
   (rgrep search_string (format "*.%s" file_extension) (pwd)))
