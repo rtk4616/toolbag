@@ -34,7 +34,7 @@ if has("gui_running")
     colo mikeokai
 else
     set background=dark
-    colo solarized
+    colo monokai
 endif
 
 autocmd Syntax * syntax sync minlines=1000
