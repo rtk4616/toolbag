@@ -2,9 +2,9 @@
 	name = Mike Wilkerson
 	email = mike.wilkerson@willowtreeapps.com
 
-[merge]
+# [merge]
     # tool = emerge
- 	tool = vimdiff
+ 	# tool = vimdiff
     # tool = mikediff
 
 # [mergetool "mikediff"]
@@ -17,14 +17,14 @@
 #       (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"'))
 
 [diff]
-	tool = vimdiff
-    # tool = ediff
+	# tool = vimdiff
+    tool = ediff
 
 [difftool "ediff"]
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 
 [mergetool]
-	prompt = false
+	prompt = true
 
 [difftool]
 	prompt = false

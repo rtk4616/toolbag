@@ -30,8 +30,11 @@
       (monokai-gray-darkest "#141411")
       (monokai-gray-lightest "#595959")
       (monokai-gray-light "#E6E6E6")
-      (monokai-green "#A6E22A")
-      (monokai-green-light "#A6E22E")
+
+      ;; (monokai-green "#A6E22A")
+      ;; (monokai-green-light "#A6E22E")
+      (monokai-green "#87ff00")
+      (monokai-green-light "#87ff00")
 
       ;; Custom override. This is used for background color.
       (monokai-grey-dark "#191919")
@@ -39,7 +42,9 @@
       (monokai-magenta "#F92672")
       (monokai-purple "#AE81FF")
       (monokai-purple-light "#FD5FF1")
-      (monokai-yellow "#E6DB74")
+
+      ;; (monokai-yellow "#E6DB74")
+      (monokai-yellow "#ffd75f")
 
       ;; (monokai-yellow-dark "#75715E")
       (monokai-yellow-dark "#757166")
