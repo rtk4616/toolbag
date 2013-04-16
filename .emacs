@@ -54,6 +54,9 @@
 ;; Make autocomplete feature use a better shortcut
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
 
+;; Make dabbrev-expand respect case...
+(setq dabbrev-case-fold-search nil)
+
 ;; Some aliases to make things easier!
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'ff 'find-name-dired)
