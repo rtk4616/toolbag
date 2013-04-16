@@ -117,8 +117,8 @@ hi   Type            ctermfg=81    cterm=none
 hi   Underlined      ctermfg=244   cterm=underline
 
 hi   VertSplit       ctermfg=244   ctermbg=232  cterm=bold
-hi   VisualNOS       ctermbg=241
-hi   Visual          ctermbg=241
+hi   VisualNOS       ctermfg=232   ctermbg=255
+hi   Visual          ctermfg=232   ctermbg=255
 hi   WarningMsg      ctermfg=238   cterm=bold
 hi   WildMenu        ctermfg=81    ctermbg=16
 
@@ -131,5 +131,9 @@ hi   Comment         ctermfg=239
 
 hi   CursorLine      ctermbg=234   cterm=none
 hi   CursorColumn    ctermbg=236
+" I can't seem to get the following line to work in the terminal... Just
+" leaving it here for reference.
+hi   CursorLineNR    ctermfg=232   ctermbg=118
+
 hi   LineNr          ctermfg=238   ctermbg=none
 hi   NonText         ctermfg=none  ctermbg=none
