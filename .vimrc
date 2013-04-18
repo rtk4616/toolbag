@@ -20,9 +20,6 @@ set bs=2               " Set backspacing mode 2. This allows backspacing with no
 set tabpagemax=50      " 50 tabs at any given time max. The rest get opened as buffers.
 set showmode           " Show which mode we're currently in.
 set cursorline         " Enable highlighting of the current line.
-set foldmethod=indent  " Fold based on indentation.
-set foldnestmax=2      " Deepest fold is 2 levels.
-set nofoldenable       " Disable code folding by default.
 
 
 " ===============================
@@ -85,7 +82,7 @@ autocmd FileType make setlocal noexpandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd FileType python setlocal ts=4 sts=4 sw=4 foldenable
+autocmd FileType python setlocal ts=4 sts=4 sw=4
 autocmd FileType cpp setlocal ts=4 sts=4 sw=4
 
 
