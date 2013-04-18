@@ -2,31 +2,21 @@
 	name = Mike Wilkerson
 	email = mike.wilkerson@willowtreeapps.com
 
-# [merge]
-    # tool = emerge
- 	tool = vimdiff
-    # tool = mikediff
-
-# [mergetool "mikediff"]
-#     cmd = emacs --eval \" \
-# (progn \
-#   (setq ediff-quit-hook 'kill-emacs) \
-#   (if (file-readable-p \\\"$BASE\\\") \
-#       (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \
-#                                        \\\"$BASE\\\" nil \\\"$MERGED\\\") \
-#       (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"'))
-
 [diff]
-	tool = vimdiff
-    # tool = ediff
+	# tool = vimdiff
+    tool = ediff
 
 [difftool "ediff"]
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 
 [mergetool]
+    # Setting "prompt" to true because I like to do merges manually. If I
+    # accidentally try to merge with a tool, seeing this prompt will alert me,
+    # and I'll be able to ^c out, and do it manually.
 	prompt = true
 
 [difftool]
+    # Difftool, on the other hand is a nice thing to have. Don't prompt.
 	prompt = false
 
 [color]
