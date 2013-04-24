@@ -73,6 +73,11 @@
    `(font-lock-type-face ((t (:foreground ,monokai-blue-light))))
    `(font-lock-variable-name-face ((t (:foreground ,monokai-magenta))))
 
+   `(rst-level-1-face ((t (:background ,monokai-gray-darker :foreground ,"#ffffff"))))
+   `(rst-level-2-face ((t (:background ,monokai-gray-darker :foreground ,"#ffffff"))))
+   `(rst-level-3-face ((t (:background ,monokai-gray-darker :foreground ,"#ffffff"))))
+   `(rst-level-4-face ((t (:background ,monokai-gray-darker :foreground ,"#ffffff"))))
+
    ;; Override the warning font face.
    ;; `(font-lock-warning-face ((t (:bold t :foreground ,monokai-purple-light))))
    `(font-lock-warning-face ((t (:bold t :foreground , "#ff0000"))))
