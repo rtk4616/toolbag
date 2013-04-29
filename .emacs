@@ -9,17 +9,15 @@
 ;; Load PHP-mode.
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
-;; Load Flyspell
-;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;; Use aspell as the spell-checker
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "list")
 
+;; Set up the Emacs theme.
 (load-theme 'monokai t)
 
-;; set SSH as the default method for Tramp.
+;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
-
-;; Load the Autopair module.
-;; (require 'autopair)
-;; (autopair-global-mode) ;; enable autopair in all buffers
 
 ;; Make F6 toggle autopair on and off for the purposes of pasting.
 (global-set-key (kbd "<f6>") 'autopair-mode)
@@ -32,6 +30,8 @@
 ;; ==============================================================
 ;; Custom functions
 ;; ==============================================================
+
+;; TODO: Still working on this. It's not actually in use yet.
 
 (defun mikegrep (search_string file_extension)
   (interactive "sSearch for: \nsIn files with the extension *. \n")

@@ -3,8 +3,8 @@
 	email = mike.wilkerson@willowtreeapps.com
 
 [diff]
-	tool = vimdiff
-    # tool = ediff
+	# tool = vimdiff
+    tool = ediff
 
 [difftool "ediff"]
     cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
