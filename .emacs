@@ -42,6 +42,10 @@
 ;; START Keybindings
 ;; ==============================================================
 
+;; Rebind Ctrl-s and Ctrl-r to use the regexp versions of isearch.
+(global-set-key "\C-s" 'isearch-forward-regexp)
+(global-set-key "\C-r" 'isearch-backward-regexp)
+
 ;; Ctrl-\ saves the window layout.
 (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
 ;; Alt-\ loads the window layout.
