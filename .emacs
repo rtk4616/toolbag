@@ -33,9 +33,13 @@
 
 ;; TODO: Still working on this. It's not actually in use yet.
 
-(defun mikegrep (search_string file_extension)
+(defun MikeGrepInFiles (search_string file_extension)
   (interactive "sSearch for: \nsIn files with the extension *. \n")
   (rgrep search_string (format "*.%s" file_extension) (pwd)))
+
+(defun MikeGrepForFiles (search_string)
+  (interactive "sSearch for file: ")
+  (find-name-dired "." (concat "*" search_string "*")))
 
 
 ;; ==============================================================
@@ -67,7 +71,8 @@
 (defalias 'sc 'diff-buffer-with-file)
 
 ;; Bind F2 the find a file recursive alias.
-(global-set-key (kbd "<f2>") 'ff)
+;; (global-set-key (kbd "<f2>") 'ff)
+(global-set-key (kbd "<f2>") 'MikeGrepForFiles)
 
 ;; Bind F3 to rgrep.
 (global-set-key (kbd "<f3>") 'rgrep)
