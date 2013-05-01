@@ -31,11 +31,14 @@
 ;; Custom functions
 ;; ==============================================================
 
-;; TODO: Still working on this. It's not actually in use yet.
+;; Need this or else MikeGrepInFiles will fail with "Wrong type argument: stringp, nil"
+(eval-after-load "grep"
+  '(grep-compute-defaults))
 
 (defun MikeGrepInFiles (search_string file_extension)
-  (interactive "sSearch for: \nsIn files with the extension *. \n")
-  (rgrep search_string (format "*.%s" file_extension) (pwd)))
+  (interactive "sSearch for: \nsIn files ending in: ")
+  (rgrep search_string (concat "*" file_extension) "./"))
+  ;; (rgrep search_string (format "*.%s" file_extension) (pwd)))
 
 (defun MikeGrepForFiles (search_string)
   (interactive "sSearch for file: ")
@@ -45,6 +48,12 @@
 ;; ==============================================================
 ;; START Keybindings
 ;; ==============================================================
+
+;; Use the default shortcut for regexp isearch to find files by partial name.
+(global-set-key "\C-\M-f" 'MikeGrepForFiles)
+
+;; Use the default shortcut for regexp isearch to activate custom rgrep.
+(global-set-key "\C-\M-s" 'MikeGrepInFiles)
 
 ;; Rebind Ctrl-s and Ctrl-r to use the regexp versions of isearch.
 (global-set-key "\C-s" 'isearch-forward-regexp)
@@ -75,8 +84,8 @@
 (global-set-key (kbd "<f2>") 'MikeGrepForFiles)
 
 ;; Bind F3 to rgrep.
-(global-set-key (kbd "<f3>") 'rgrep)
-;; (global-set-key (kbd "<f3>") 'mikegrep)
+;; (global-set-key (kbd "<f3>") 'rgrep)
+(global-set-key (kbd "<f3>") 'MikeGrepInFiles)
 
 ;; Bind F4 to see changes between the current buffer and the version on disk.
 (global-set-key (kbd "<f4>") 'sc)
