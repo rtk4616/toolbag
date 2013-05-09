@@ -117,7 +117,7 @@ fun! s:grey_level(n)
     elseif a:n == 7
       return 208
     elseif a:n == 8
-      return 231
+      return 232
     else
       return 255
     endif
@@ -289,17 +289,17 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
 endfun
 " }}}
 
-" Making my own customizations --Mike Wilkerson
-call s:X("Normal","e8e8d3","151515","","White","")
 " call s:X("Normal","e8e8d3","151515","","White","")
-
+call s:X("Normal","e8e8d3","000000","","White","")
 set background=dark
 
-if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
-    let s:termBlack = "Black"
-else
-    let s:termBlack = "Grey"
-endif
+let s:termBlack = "Black"
+
+" if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
+"     let s:termBlack = "Black"
+" else
+"     let s:termBlack = "Grey"
+" endif
 
 if version >= 700
   call s:X("CursorLine","","1c1c1c","","",s:termBlack)
@@ -477,7 +477,7 @@ if !s:low_color
   hi NonText ctermbg=233
   hi LineNr ctermbg=233
   hi DiffText ctermfg=81
-  hi Normal ctermbg=233
+  hi Normal ctermbg=232
   hi DbgBreakPt ctermbg=53
 endif
 
