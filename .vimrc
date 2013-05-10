@@ -59,17 +59,19 @@ nnoremap <F2> :tabnew <bar> :r!find . \| grep -i ''<left>
 " Easy binding to vimgrep in all files.
 nnoremap <F3> :tabnew <bar> :call MikeGrep()<CR>
 
-" See the difference between the saved version of the current file, and the unsaved changes.
-nnoremap <F4> :w !diff % -<CR>
+nnoremap <F4> :call MikeReplaceInFiles()<CR>
 
 " Allow toggling of number/nonumber mode with F5
 nnoremap <F5> :set nonumber!<CR>
 
 " Allow toggling of paste/nopaste mode with F6
-nnoremap <F6> :set invpaste paste?<CR>
+nnoremap <F6> :set paste! <bar> :set paste?<CR>
 
-" Bind toggling paste mode on/off to F6
-set pastetoggle=<F6>
+" Allow toggling of paste/nopaste mode with F6
+nnoremap <F7> :windo set scb!<CR>
+
+" See the difference between the saved version of the current file, and the unsaved changes.
+nnoremap <F8> :w !diff % -<CR>
 
 " Not currently used, but here for possible future use.
 " let g:EasyMotion_leader_key = '<Leader>'
@@ -120,4 +122,23 @@ function! MikeGrep()
     call inputrestore()
     exe "vimgrep /" . l:theQuery . "/j **/*." . l:theExtension
     exe "cope"
+endfunc
+
+function! MikeReplaceInFiles()
+    call inputsave()
+    let l:searchFor = input('Replace: ')
+    call inputrestore()
+
+    call inputsave()
+    let l:replaceWith = input('...with: ')
+    call inputrestore()
+
+    call inputsave()
+    let l:theExtension = input('... in files: .')
+    call inputrestore()
+
+    exe "args **/*" . l:theExtension
+    exe "tab ba"
+    exe "tabdo %s/" . searchFor . "/" . replaceWith . "/giec"
+    exe "tabdo close"
 endfunc
