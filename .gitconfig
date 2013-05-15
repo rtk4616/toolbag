@@ -24,3 +24,7 @@
     status = auto
     branch = auto
     interactive = auto
+
+[alias]
+    vd = difftool --tool=vimdiff
+    ed = difftool --tool=ediff
