@@ -27,10 +27,6 @@ set cursorline         " Enable highlighting of the current line.
 " ===============================
 syntax on
 
-
-" THIS IS A TESTING COMMENT...
-
-
 if has("gui_running")
     set guifont=menlo:h12
     set background=light
