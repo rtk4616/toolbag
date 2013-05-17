@@ -43,6 +43,12 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===============================
 
+" Open a new tab with the tree of the current working directory.
+nnoremap <Leader>g :tabnew <bar> :r!find . \| grep -i ''<left>
+
+" Easy binding to vimgrep in all files.
+nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
+
 " Easy quit all.
 nnoremap ZA :qa!<cr>
 
@@ -52,12 +58,6 @@ nnoremap <S-l> gt
 
 " See a tree of all files and directories starting with the current one.
 nnoremap <F1> :tabnew <bar> :r!tree -f .<CR>dkggdd
-
-" Open a new tab with the tree of the current working directory.
-nnoremap <F2> :tabnew <bar> :r!find . \| grep -i ''<left>
-
-" Easy binding to vimgrep in all files.
-nnoremap <F3> :tabnew <bar> :call MikeGrep()<CR>
 
 nnoremap <F4> :call MikeReplaceInFiles()<CR>
 
