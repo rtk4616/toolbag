@@ -28,3 +28,8 @@
 [alias]
     vd = difftool --tool=vimdiff
     ed = difftool --tool=ediff
+    st = status
+    lo = log --oneline
+    ls = log --stat
+    la = log -p
+    dt = difftool
