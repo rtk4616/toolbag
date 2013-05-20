@@ -50,10 +50,10 @@
 ;; ==============================================================
 
 ;; Use the default shortcut for regexp isearch to find files by partial name.
-(global-set-key "\C-\M-f" 'MikeGrepForFiles)
+(global-set-key "\C-xg" 'MikeGrepForFiles)
 
 ;; Use the default shortcut for regexp isearch to activate custom rgrep.
-(global-set-key "\C-\M-s" 'MikeGrepInFiles)
+(global-set-key "\C-xf" 'MikeGrepInFiles)
 
 ;; Rebind Ctrl-s and Ctrl-r to use the regexp versions of isearch.
 (global-set-key "\C-s" 'isearch-forward-regexp)
