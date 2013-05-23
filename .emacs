@@ -22,6 +22,10 @@
 ;; Make F6 toggle autopair on and off for the purposes of pasting.
 (global-set-key (kbd "<f6>") 'autopair-mode)
 
+;; Set up ido mode.
+(ido-mode t)
+(setq ido-enable-flex-matching t) ; fuzzy matching is a must have
+
 ;;
 ;; end Initial setup
 ;;
