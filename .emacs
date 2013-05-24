@@ -14,6 +14,7 @@
 (setq ispell-list-command "list")
 
 ;; Set up the Emacs theme.
+;; (load-theme 'tomorrow-night t)
 (load-theme 'monokai t)
 
 ;; Set SSH as the default method for Tramp.
@@ -24,7 +25,7 @@
 
 ;; Set up ido mode.
 (ido-mode t)
-(setq ido-enable-flex-matching t) ; fuzzy matching is a must have
+(setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
 
 ;;
 ;; end Initial setup
