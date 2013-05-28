@@ -27,6 +27,10 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
 
+;; Load the Autopair module.
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
 ;;
 ;; end Initial setup
 ;;
