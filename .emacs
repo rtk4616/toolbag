@@ -58,6 +58,9 @@
 ;; START Keybindings
 ;; ==============================================================
 
+;; iMenu binding.
+(global-set-key "\C-x\C-j" 'imenu)
+
 ;; Use the default shortcut for regexp isearch to find files by partial name.
 (global-set-key "\C-xg" 'MikeGrepForFiles)
 
