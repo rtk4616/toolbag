@@ -20,7 +20,7 @@ set bs=2                         " Set backspacing mode 2. This allows backspaci
 set tabpagemax=50                " 50 tabs at any given time max. The rest get opened as buffers.
 set showmode                     " Show which mode we're currently in.
 set cursorline                   " Enable highlighting of the current line.
-set complete=k**/*               " Make autocomplete pull candidate completeions recursively from all files in the working directory.
+set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
 set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
 
 
@@ -44,9 +44,8 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===============================
 
-" Open all files in all subdirectories by partial name.
-nnoremap <Leader>g :tabnew <bar> :r!find . \| grep -i ''<left>
-" nnoremap <Leader>g :call MikeOpenFilesByPartialName()<CR>
+" List all files in all subdirectories by partial name.
+nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
@@ -137,15 +136,12 @@ function! MikeGrepForWordUnderCursor()
     exe "on"
 endfunc
 
-function! MikeOpenFilesByPartialName()
+function! MikeListFilesByPartialName()
     call inputsave()
     let l:filePartial = input('Partial filename: ')
     call inputrestore()
-    call inputsave()
-    let l:theExtension = input('Extension (leave blank for all extensions): ')
-    call inputrestore()
-    exe "ar **/*" . l:filePartial . "*" . l:theExtension
-    exe "tab ba"
+    exe "tabnew"
+    exe 'normal i'.globpath('.', '**/*' . filePartial . '*')
 endfunc
 
 function! MikeReplaceInFiles()
