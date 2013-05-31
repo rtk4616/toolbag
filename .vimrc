@@ -43,11 +43,15 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===============================
 
-" Open a new tab with the tree of the current working directory.
+" Open all files in all subdirectories by partial name.
 nnoremap <Leader>g :tabnew <bar> :r!find . \| grep -i ''<left>
+" nnoremap <Leader>g :call MikeOpenFilesByPartialName()<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
+
+" Vimgrep for word under the cursor!
+nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
@@ -122,6 +126,23 @@ function! MikeGrep()
     call inputrestore()
     exe "vimgrep /" . l:theQuery . "/j **/*." . l:theExtension
     exe "cope"
+endfunc
+
+function! MikeGrepForWordUnderCursor()
+    exe "vimgrep /" . expand("<cword>") . "/j **"
+    exe "tabnew"
+    exe "cope"
+endfunc
+
+function! MikeOpenFilesByPartialName()
+    call inputsave()
+    let l:filePartial = input('Partial filename: ')
+    call inputrestore()
+    call inputsave()
+    let l:theExtension = input('Extension (leave blank for all extensions): ')
+    call inputrestore()
+    exe "ar **/*" . l:filePartial . "*" . l:theExtension
+    exe "tab ba"
 endfunc
 
 function! MikeReplaceInFiles()
