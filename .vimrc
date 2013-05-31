@@ -20,6 +20,7 @@ set bs=2               " Set backspacing mode 2. This allows backspacing with no
 set tabpagemax=50      " 50 tabs at any given time max. The rest get opened as buffers.
 set showmode           " Show which mode we're currently in.
 set cursorline         " Enable highlighting of the current line.
+set complete=k**/*     " Make autocomplete pull candidate completeions recursively from all files in the working directory.
 
 
 " ===============================
@@ -125,12 +126,14 @@ function! MikeGrep()
     call inputrestore()
     exe "vimgrep /" . l:theQuery . "/j **/*." . l:theExtension
     exe "cope"
+    exe "on"
 endfunc
 
 function! MikeGrepForWordUnderCursor()
     exe "vimgrep /" . expand("<cword>") . "/j **"
     exe "tabnew"
     exe "cope"
+    exe "on"
 endfunc
 
 function! MikeOpenFilesByPartialName()
