@@ -53,6 +53,12 @@ nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 " Vimgrep for word under the cursor!
 nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
+" Show all occurrences of a pattern in the current file.
+nnoremap <Leader>lv :il /^\W*\w\+ *=/<cr>
+nnoremap <Leader>lc :il /^\W*class /<cr>
+nnoremap <Leader>ld :il /^\W*def /<cr>
+nnoremap <Leader>lf :il /^\W*function[!]* /<cr>
+
 " Easy quit all.
 nnoremap ZA :qa!<cr>
 
