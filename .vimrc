@@ -21,7 +21,7 @@ set tabpagemax=50                " 50 tabs at any given time max. The rest get o
 set showmode                     " Show which mode we're currently in.
 set cursorline                   " Enable highlighting of the current line.
 set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
-set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
+set completeopt=longest          " Don't select first autocompletion, and show the menu even if there is only one result.
 
 
 " ===============================
@@ -31,10 +31,10 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo jellybeans
+    colo mikeokai
 else
     set background=dark
-    colo monokai
+    colo mikeokai
 endif
 
 autocmd Syntax * syntax sync minlines=1000
