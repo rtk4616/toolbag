@@ -31,7 +31,7 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo mikeokai
+    colo jellybeans
 else
     set background=dark
     colo monokai
@@ -54,10 +54,7 @@ nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
 " Show all occurrences of a pattern in the current file.
-nnoremap <Leader>lv :il /^\W*\w\+ *=/<cr>
-nnoremap <Leader>lc :il /^\W*class /<cr>
-nnoremap <Leader>ld :il /^\W*def /<cr>
-nnoremap <Leader>lf :il /^\W*function[!]* /<cr>
+nnoremap <Leader>l :il /.*.*/<left><left><left>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
