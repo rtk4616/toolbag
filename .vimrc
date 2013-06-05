@@ -54,7 +54,7 @@ nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
 " Show all occurrences of a pattern in the current file.
-nnoremap <Leader>l :g//p<left><left>
+nnoremap <Leader>l :call MikeFindAllOccurrencesInFile()<CR>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
@@ -165,3 +165,13 @@ function! MikeReplaceInFiles()
     exe "tabdo %s/" . searchFor . "/" . replaceWith . "/giec"
     exe "tabdo close"
 endfunc
+
+function! MikeFindAllOccurrencesInFile()
+    call inputsave()
+    let l:thePattern = input('Pattern to find: ')
+    call inputrestore()
+    echo "\n\n"
+    exe "g/".l:thePattern."/p"
+    echo "\n\n"
+endfunc
+
