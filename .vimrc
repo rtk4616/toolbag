@@ -54,7 +54,7 @@ nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
 " Show all occurrences of a pattern in the current file.
-nnoremap <Leader>l :il /.*.*/<left><left><left>
+nnoremap <Leader>l :g//p<left><left>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
