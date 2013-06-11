@@ -20,7 +20,7 @@ set bs=2                         " Set backspacing mode 2. This allows backspaci
 set tabpagemax=50                " 50 tabs at any given time max. The rest get opened as buffers.
 set showmode                     " Show which mode we're currently in.
 set cursorline                   " Enable highlighting of the current line.
-set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
+" set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
 set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
 
 
