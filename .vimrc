@@ -31,7 +31,8 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo github
+    colo solarized
+    set background=light
 else
     set background=dark
     colo monokai
@@ -174,4 +175,3 @@ function! MikeFindAllOccurrencesInFile()
     exe "g/".l:thePattern."/p"
     echo "\n\n"
 endfunc
-
