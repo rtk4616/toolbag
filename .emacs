@@ -27,6 +27,9 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
 
+;; Load yaml-mode
+(require 'yaml-mode)
+
 ;; Load the Autopair module.
 ;; (require 'autopair)
 ;; (autopair-global-mode) ;; enable autopair in all buffers
@@ -207,7 +210,7 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.htaccess$" . conf-javaprop-mode))
-(add-to-list 'auto-mode-alist '("\\.sls$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.sls$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.vert$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.frag$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
