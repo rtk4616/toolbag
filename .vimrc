@@ -31,7 +31,7 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo solarized
+    colo github
     set background=light
 else
     set background=dark
