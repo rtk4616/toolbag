@@ -20,21 +20,17 @@ You only need to perform these steps once. After performing an installation,
 updates to the symlinked files will be updates to the repo, which you can then
 commit and push.
 
-Clone the repo:
+1. Clone the repo:
 
-> `git clone git@github.com:wilkystyle/toolbag.git`
+    `git clone git@github.com:wilkystyle/toolbag.git`
 
-...or for read-only access:
+1. Navigate into the repo directory:
 
-> `git clone git://github.com/wilkystyle/toolbag.git`
+    `cd toolbag`
 
-Navigate into the repo directory:
+1. Run the installation Python script to create symlinks:
 
-> `cd toolbag`
-
-Run the installation Python script to create symlinks:
-
-> `./make_links.py`
+    `./make_links.py`
 
 
 ### Staying up to date
