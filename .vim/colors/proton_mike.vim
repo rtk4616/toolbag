@@ -20,8 +20,8 @@ hi Cursor guibg=#404040 guifg=#a0a0a0 ctermbg=59
 hi Cursor guibg=#404040 guifg=#a0a0a0 ctermfg=145
 hi CursorColumn guibg=#e0e0e0 guifg=#202020 ctermbg=188
 hi CursorColumn guibg=#e0e0e0 guifg=#202020 ctermfg=16
-hi CursorLine guibg=#e0e0e0 guifg=#202020 ctermbg=188
-hi CursorLine guibg=#e0e0e0 guifg=#202020 ctermfg=16
+hi CursorLine guibg=#e0e0e0 ctermbg=188 cterm=NONE ctermfg=NONE
+hi CursorLine guibg=#e0e0e0 ctermfg=16 cterm=NONE ctermfg=NONE
 hi NonText guibg=#d0d0d0 guifg=#606060 gui=none ctermbg=188
 hi NonText guibg=#d0d0d0 guifg=#606060 gui=none ctermfg=59
 hi NonText guibg=#d0d0d0 guifg=#606060 gui=none
