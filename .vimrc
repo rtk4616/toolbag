@@ -31,11 +31,11 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo github
+    colo proton_mike
     set background=light
 else
     set background=dark
-    colo monokai
+    colo proton_mike
 endif
 
 autocmd Syntax * syntax sync minlines=1000
