@@ -45,7 +45,11 @@ for the_file in managed_files:
         print "Moving from {0} to {1}".format(actual_file_path, move_path)
 
         # Move the file to the backup directory.
-        os.rename(actual_file_path, move_path)
+        try:
+            os.rename(actual_file_path, move_path)
+        except OSError:
+            # No existing file to move. Don't worry about it!
+            pass
 
         # Then create a symlink back where we just moved it from.
         print "Creating a symlink at {0} to {1}".format(
