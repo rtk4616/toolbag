@@ -78,17 +78,17 @@ hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermbg=188
 hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=59
 hi Statement guibg=#e0e0e0 guifg=#606060 gui=none
 
-hi Label guibg=#e0e0e0 guifg=#606060 gui=underline ctermbg=188
-hi Label guibg=#e0e0e0 guifg=#606060 gui=underline ctermfg=59
-hi Label guibg=#e0e0e0 guifg=#606060 gui=underline
+hi Label guibg=#e0e0e0 guifg=#606060 gui=none ctermbg=188
+hi Label guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=59
+hi Label guibg=#e0e0e0 guifg=#606060 gui=none
 
 hi Operator guifg=#a77039 guibg=#f0f0f0 gui=none ctermfg=131
 hi Operator guifg=#a77039 guibg=#f0f0f0 gui=none ctermbg=231
 hi Operator guifg=#a77039 guibg=#f0f0f0 gui=none
 
-hi Title guibg=#f0f0f0 guifg=#202020 gui=underline ctermbg=231
-hi Title guibg=#f0f0f0 guifg=#202020 gui=underline ctermfg=16
-hi Title guibg=#f0f0f0 guifg=#202020 gui=underline
+hi Title guibg=#f0f0f0 guifg=#202020 gui=none ctermbg=231
+hi Title guibg=#f0f0f0 guifg=#202020 gui=none ctermfg=16
+hi Title guibg=#f0f0f0 guifg=#202020 gui=none
 
 hi Define guifg=#906000 guibg=#f0e8c0 gui=bold ctermfg=94
 hi Define guifg=#906000 guibg=#f0e8c0 gui=bold ctermbg=223
@@ -102,9 +102,9 @@ hi Include guifg=#605080 guibg=#dcd8e0 gui=none ctermfg=60
 hi Include guifg=#605080 guibg=#dcd8e0 gui=none ctermbg=188
 hi Include guifg=#605080 guibg=#dcd8e0 gui=none
 
-hi Function guifg=#b08020 guibg=#f0e8c0 gui=underline ctermfg=136
-hi Function guifg=#b08020 guibg=#f0e8c0 gui=underline ctermbg=223
-hi Function guifg=#b08020 guibg=#f0e8c0 gui=underline
+hi Function guifg=#b08020 guibg=#f0e8c0 gui=none ctermfg=136
+hi Function guifg=#b08020 guibg=#f0e8c0 gui=none ctermbg=223
+hi Function guifg=#b08020 guibg=#f0e8c0 gui=none
 
 hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold ctermbg=189
 hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold ctermfg=67
@@ -118,9 +118,9 @@ hi Exception guibg=#f0f0f0 guifg=#a03020 gui=bold ctermbg=231
 hi Exception guibg=#f0f0f0 guifg=#a03020 gui=bold ctermfg=130
 hi Exception guibg=#f0f0f0 guifg=#a03020 gui=bold
 
-hi Type guifg=#607080 guibg=#f0f0f0 gui=underline ctermfg=60
-hi Type guifg=#607080 guibg=#f0f0f0 gui=underline ctermbg=231
-hi Type guifg=#607080 guibg=#f0f0f0 gui=underline
+hi Type guifg=#607080 guibg=#f0f0f0 gui=none ctermfg=60
+hi Type guifg=#607080 guibg=#f0f0f0 gui=none ctermbg=231
+hi Type guifg=#607080 guibg=#f0f0f0 gui=none
 
 hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic ctermfg=60
 hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic ctermbg=188
