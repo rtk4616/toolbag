@@ -80,6 +80,9 @@ nnoremap <F7> :windo set scb!<CR>
 " See the difference between the saved version of the current file, and the unsaved changes.
 nnoremap <F8> :w !diff % -<CR>
 
+" Show syntax highlighting groups for word under cursor
+map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " Not currently used, but here for possible future use.
 " let g:EasyMotion_leader_key = '<Leader>'
 
@@ -111,15 +114,6 @@ autocmd BufRead,BufNewFile .tm_properties set ft=sh
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
 
 function! MikeGrep()
     call inputsave()
