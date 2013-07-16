@@ -31,7 +31,7 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo mikeokai
+    colo proton_mike
 else
     set background=dark
     colo monokai
@@ -110,6 +110,7 @@ autocmd BufRead,BufNewFile *rc set filetype=sh
 autocmd BufRead,BufNewFile .vimrc set filetype=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
 autocmd BufRead,BufNewFile *.cl set filetype=cpp
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.sls set filetype=yaml
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile .tm_properties set ft=sh
