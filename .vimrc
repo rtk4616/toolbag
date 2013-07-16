@@ -45,7 +45,7 @@ autocmd Syntax * syntax sync minlines=1000
 " ===============================
 
 " List all files in all subdirectories by partial name.
-nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
+" nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
@@ -272,3 +272,15 @@ let g:neocomplcache_auto_completion_start_length=2
 " ===========================
 " END THE NEOCOMPLCACHE STUFF
 " ===========================
+
+" =====================
+" START THE CTRLP STUFF
+" =====================
+
+let g:ctrlp_map = '<Leader>g'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(pyc|git|hg|svn)$'
+
+" ===================
+" END THE CTRLP STUFF
+" ===================
