@@ -47,6 +47,9 @@ autocmd Syntax * syntax sync minlines=1000
 " List all files in all subdirectories by partial name.
 " nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
 
+" Invoke CtrlP fuzzy search within open buffers.
+nnoremap <Leader>b :CtrlPBuffer<CR>
+
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 
