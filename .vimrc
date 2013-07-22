@@ -115,9 +115,10 @@ autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
 autocmd BufRead,BufNewFile *.cl set filetype=cpp
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.sls set filetype=yaml
-autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-autocmd BufRead,BufNewFile .tm_properties set ft=sh
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+autocmd BufRead,BufNewFile .tm_properties set filetype=sh
 autocmd BufRead,BufNewFile *.go set filetype=go
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
