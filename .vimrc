@@ -117,6 +117,7 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.sls set filetype=yaml
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile .tm_properties set ft=sh
+autocmd BufRead,BufNewFile *.go set filetype=go
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
