@@ -292,6 +292,12 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+
+" let g:ctrlp_extensions = ['tag']
+"
+" nnoremap <Leader>r :CtrlPTag<cr>
+
+
 " ===================
 " END THE CTRLP STUFF
 " ===================
