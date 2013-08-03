@@ -1,6 +1,7 @@
-alias ll='ls -Gplh'
-alias la='ls -al -Gph'
-alias l='ls -Gph'
+alias ls='ls --color=auto'
+alias ll='ls -Gaplh'
+alias la='ls -al -Gaph'
+alias l='ls -Gaph'
 alias tree='tree -C'
 alias em='emacs'
 
