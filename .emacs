@@ -62,7 +62,11 @@
 ;; ==============================================================
 
 ;; List all lines matching a pattern in the current file.
+(global-set-key "\M-l" 'recenter-top-bottom)
+
+;; List all lines matching a pattern in the current file.
 (global-set-key "\C-xl" 'list-matching-lines)
+(global-set-key "\C-x\C-l" 'list-matching-lines)
 
 ;; iMenu binding.
 (global-set-key "\C-x\C-j" 'imenu)
