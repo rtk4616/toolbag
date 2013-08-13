@@ -53,6 +53,9 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 
+" Easy binding to vimgrep in all files.
+nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
+
 " Vimgrep for word under the cursor!
 nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
 
@@ -132,6 +135,18 @@ function! MikeGrep()
     let l:theExtension = input('... in files: .')
     call inputrestore()
     exe "vimgrep /" . l:theQuery . "/j **/*." . l:theExtension
+    exe "cope"
+    exe "on"
+endfunc
+
+function! GrepForSymbol()
+    call inputsave()
+    let l:theQuery = input('Search for symbol: ')
+    call inputrestore()
+    call inputsave()
+    let l:theExtension = input('... in files: .')
+    call inputrestore()
+    exe "vimgrep /\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*." . l:theExtension
     exe "cope"
     exe "on"
 endfunc
