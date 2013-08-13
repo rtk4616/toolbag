@@ -47,6 +47,10 @@
 (eval-after-load "grep"
   '(grep-compute-defaults))
 
+(defun MikeGrepForSymbol (search_string file_extension)
+  (interactive "sGrep for symbol: \nsIn files ending in: ")
+  (rgrep (concat "\\(class\\|def\\|func\\).*" search_string) (concat "*" file_extension) "./"))
+
 (defun MikeGrepInFiles (search_string file_extension)
   (interactive "sSearch for: \nsIn files ending in: ")
   (rgrep search_string (concat "*" file_extension) "./"))
@@ -60,6 +64,9 @@
 ;; ==============================================================
 ;; START Keybindings
 ;; ==============================================================
+
+;; Use the default shortcut for regexp isearch to activate custom rgrep.
+(global-set-key "\C-x\C-r" 'MikeGrepForSymbol)
 
 ;; List all lines matching a pattern in the current file.
 (global-set-key "\M-l" 'recenter-top-bottom)
