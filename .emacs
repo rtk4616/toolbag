@@ -6,6 +6,10 @@
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
+;; Make go-mode autoload for .go files.
+(add-to-list 'load-path "PATH CONTAINING go-mode-load.el" t)
+(require 'go-mode-load)
+
 ;; Load PHP-mode.
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
