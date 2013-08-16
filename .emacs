@@ -47,9 +47,9 @@
 (eval-after-load "grep"
   '(grep-compute-defaults))
 
-(defun MikeGrepForSymbol (search_string file_extension)
-  (interactive "sGrep for symbol: \nsIn files ending in: ")
-  (rgrep (concat "\\(class\\|def\\|func\\).*" search_string) (concat "*" file_extension) "./"))
+(defun MikeGrepForSymbol (search_string)
+  (interactive "sGrep for symbol: ")
+  (rgrep (concat "\\(class\\|def\\|func\\).*" search_string) "*" "./"))
 
 (defun MikeGrepInFiles (search_string file_extension)
   (interactive "sSearch for: \nsIn files ending in: ")
