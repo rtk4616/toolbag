@@ -34,7 +34,7 @@ if has("gui_running")
     colo proton_mike
 else
     set background=dark
-    colo monokai
+    colo proton_mike
 endif
 
 autocmd Syntax * syntax sync minlines=1000

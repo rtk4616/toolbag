@@ -42,8 +42,8 @@ hi SpecialKey guibg=#e8e8e8 guifg=#a0a0a0 gui=none ctermbg=188
 hi SpecialKey guibg=#e8e8e8 guifg=#a0a0a0 gui=none ctermfg=145
 hi SpecialKey guibg=#e8e8e8 guifg=#a0a0a0 gui=none
 
-hi Search guibg=#808080 guifg=#ffffff gui=bold ctermbg=102
-hi Search guibg=#808080 guifg=#ffffff gui=bold ctermfg=231
+hi Search guibg=#808080 guifg=#ffffff gui=bold ctermbg=220
+hi Search guibg=#808080 guifg=#ffffff gui=bold ctermfg=232
 hi Search guibg=#808080 guifg=#ffffff gui=bold
 
 hi ModeMsg guibg=#f0f0f0 guifg=#304050 gui=bold ctermbg=231
@@ -74,11 +74,12 @@ hi Underlined guifg=#202020 guibg=#f0f0f0 gui=underline ctermfg=16
 hi Underlined guifg=#202020 guibg=#f0f0f0 gui=underline ctermbg=231
 hi Underlined guifg=#202020 guibg=#f0f0f0 gui=underline
 
-hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermbg=188
-hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=59
+hi Statement guibg=#e0e0e0 guifg=#606060 gui=none
+" hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=205
+hi Statement guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=0
 hi Statement guibg=#e0e0e0 guifg=#606060 gui=none
 
-hi Label guibg=#e0e0e0 guifg=#606060 gui=none ctermbg=188
+hi Label guibg=#e0e0e0 guifg=#606060 gui=none
 hi Label guibg=#e0e0e0 guifg=#606060 gui=none ctermfg=59
 hi Label guibg=#e0e0e0 guifg=#606060 gui=none
 
@@ -99,15 +100,15 @@ hi Define guifg=#605080 guibg=#ece8f0 gui=italic,bold ctermbg=225
 hi Define guifg=#605080 guibg=#ece8f0 gui=italic,bold
 
 hi Include guifg=#605080 guibg=#dcd8e0 gui=none ctermfg=60
-hi Include guifg=#605080 guibg=#dcd8e0 gui=none ctermbg=188
+hi Include guifg=#605080 guibg=#dcd8e0 gui=none
 hi Include guifg=#605080 guibg=#dcd8e0 gui=none
 
 hi Function guifg=#b08020 guibg=#f0e8c0 gui=none ctermfg=136
 hi Function guifg=#b08020 guibg=#f0e8c0 gui=none ctermbg=223
 hi Function guifg=#b08020 guibg=#f0e8c0 gui=none
 
-hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold ctermbg=189
-hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold ctermfg=67
+hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold
+hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold ctermfg=63
 hi Conditional guibg=#e0e8f0 guifg=#5080b0 gui=bold
 
 hi Repeat guibg=#e0e8d8 guifg=#509030 gui=bold ctermbg=188
@@ -123,7 +124,7 @@ hi Type guifg=#607080 guibg=#f0f0f0 gui=none ctermbg=231
 hi Type guifg=#607080 guibg=#f0f0f0 gui=none
 
 hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic ctermfg=60
-hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic ctermbg=188
+hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic
 hi PreProc guifg=#605080 guibg=#dcd8e0 gui=italic
 
 hi Identifier guifg=#608050 guibg=#c0e0c0 gui=none ctermfg=65
@@ -135,7 +136,8 @@ hi Constant guifg=#508040 guibg=#f0f0f0 ctermbg=231
 hi Number guifg=#508040 guibg=#f0f0f0 ctermfg=65
 hi Number guifg=#508040 guibg=#f0f0f0 ctermbg=231
 hi String guifg=#a07060 guibg=#f0ece8 gui=italic ctermfg=131
-hi String guifg=#a07060 guibg=#f0ece8 gui=italic ctermbg=230
+" hi String guifg=#a07060 guibg=#f0ece8 gui=italic ctermbg=230
+hi String guifg=#a07060 guibg=#f0ece8 gui=italic
 hi String guifg=#a07060 guibg=#f0ece8 gui=italic
 
 hi Special guifg=#603020 guibg=#f0ece8 gui=italic ctermfg=58
