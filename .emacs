@@ -28,8 +28,8 @@
 ;; (global-set-key (kbd "<f6>") 'autopair-mode)
 
 ;; Set up ido mode.
-(ido-mode t)
-(setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
+;; (ido-mode t)
+;; (setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
 
 ;; Load yaml-mode
 (require 'yaml-mode)
