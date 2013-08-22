@@ -84,6 +84,7 @@
 (global-set-key "\C-xj" 'imenu)
 
 ;; Use the default shortcut for regexp isearch to find files by partial name.
+(global-set-key "\C-x\C-g" 'MikeGrepForFiles)
 (global-set-key "\C-xg" 'MikeGrepForFiles)
 
 ;; Use the default shortcut for regexp isearch to activate custom rgrep.
