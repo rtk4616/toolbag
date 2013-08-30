@@ -45,10 +45,10 @@ autocmd Syntax * syntax sync minlines=1000
 " ===============================
 
 " List all files in all subdirectories by partial name.
-" nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
+nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
 
 " Invoke CtrlP fuzzy search within open buffers.
-nnoremap <Leader>b :CtrlPBuffer<CR>
+" nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
@@ -57,10 +57,13 @@ nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
 
 " Vimgrep for word under the cursor!
-nnoremap <Leader>d :call MikeGrepForWordUnderCursor()<CR>
+nnoremap <Leader>d :call MikeGrepForSymbolUnderCursor()<CR>
 
 " Show all occurrences of a pattern in the current file.
 nnoremap <Leader>l :call MikeFindAllOccurrencesInFile()<CR>
+
+" Show all occurrences of a pattern in the current file.
+nnoremap <Leader>s :call MikeFindAllSymbolsInFile()<CR>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
@@ -148,8 +151,8 @@ function! GrepForSymbol()
     exe "on"
 endfunc
 
-function! MikeGrepForWordUnderCursor()
-    exe "vimgrep /" . expand("<cword>") . "/j **"
+function! MikeGrepForSymbolUnderCursor()
+    exe "vimgrep /^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
     exe "tabnew"
     exe "cope"
     exe "on"
@@ -188,6 +191,15 @@ function! MikeFindAllOccurrencesInFile()
     call inputrestore()
     echo "\n\n"
     exe "g/".l:thePattern."/p"
+    echo "\n\n"
+endfunc
+
+function! MikeFindAllSymbolsInFile()
+    call inputsave()
+    let l:thePattern = input('Pattern to find: ')
+    call inputrestore()
+    echo "\n\n"
+    exe "g/^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
     echo "\n\n"
 endfunc
 
@@ -296,13 +308,13 @@ let g:neocomplcache_auto_completion_start_length=2
 " START THE CTRLP STUFF
 " =====================
 
-let g:ctrlp_map = '<Leader>g'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(pyc|exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" let g:ctrlp_map = '<Leader>g'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"   \ 'file': '\v\.(pyc|exe|so|dll)$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
 
 
 " let g:ctrlp_extensions = ['tag']
