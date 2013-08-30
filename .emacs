@@ -15,6 +15,9 @@
 ;; Load PHP-mode.
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
+;; Load PHP-mode.
+(autoload 'textile-mode "textile-mode" "Major mode for editing textile files." t)
+
 ;; Use aspell as the spell-checker
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "list")
@@ -40,9 +43,25 @@
 ;; (require 'autopair)
 ;; (autopair-global-mode) ;; enable autopair in all buffers
 
+;; Set auto mode rules.
+;; This is where you define the major modes for different file extensions.
+(add-to-list 'auto-mode-alist '("\\.textile$" . textile-mode))
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.htaccess$" . conf-javaprop-mode))
+(add-to-list 'auto-mode-alist '("\\.sls$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.vert$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.frag$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cl$" . c++-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("rc$" . sh-mode))
+(add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
+
 ;;
 ;; end Initial setup
 ;;
+
 
 
 ;; ==============================================================
@@ -221,28 +240,11 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-
-;; Set autoload and add autoload rules.
-;; This is where you define the major modes for different file extensions.
-(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.htaccess$" . conf-javaprop-mode))
-(add-to-list 'auto-mode-alist '("\\.sls$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.vert$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.frag$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cl$" . c++-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("rc$" . sh-mode))
-(add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
-
 ;; Add highlighting of TODO, BUG, NOTE, and FIXME.
 (add-hook 'prog-mode-hook
           (lambda ()
             (font-lock-add-keywords nil
                                     '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
-
 
 
 ;; ************************************************************************************************
