@@ -116,6 +116,7 @@ autocmd FileType markdown setlocal ts=4 sts=4 sw=4
 " File-specific rules should go after the *rc file rule, or else
 " they will get superceeded.
 " -----------------------------------------------------------------
+autocmd BufRead,BufNewFile *textile set filetype=textile
 autocmd BufRead,BufNewFile *rc set filetype=sh
 autocmd BufRead,BufNewFile .vimrc set filetype=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
