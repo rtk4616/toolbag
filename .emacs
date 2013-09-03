@@ -18,6 +18,9 @@
 ;; Load PHP-mode.
 (autoload 'textile-mode "textile-mode" "Major mode for editing textile files." t)
 
+;; Load markdown-mode.
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+
 ;; Use aspell as the spell-checker
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "list")
@@ -45,6 +48,9 @@
 
 ;; Set auto mode rules.
 ;; This is where you define the major modes for different file extensions.
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.textile$" . textile-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
