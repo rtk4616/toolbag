@@ -13,11 +13,13 @@
 ;;; Code:
 
 (defconst color-theme-tomorrow-colors
-  '((night . ((background . "#1d1f21")
+  '((night . (;; (background . "#1d1f21")
+              (background . "#181818")
               (current-line . "#282a2e")
               (selection . "#373b41")
-              (foreground . "#c5c8c6")
-              (comment . "#969896")
+              (foreground . "#dddddd")
+              ;; (comment . "#969896")
+              (comment . "#555555")
               (red . "#cc6666")
               (orange . "#de935f")
               (yellow . "#f0c674")
