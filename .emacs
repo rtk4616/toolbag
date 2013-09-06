@@ -26,8 +26,8 @@
 (setq ispell-list-command "list")
 
 ;; Set up the Emacs theme.
-;; (load-theme 'base16-default t)
-(load-theme 'monokai t)
+(load-theme 'tomorrow-night t)
+;; (load-theme 'monokai t)
 
 ;; Set SSH as the default method for Tramp.
 (setq tramp-default-method "ssh")
