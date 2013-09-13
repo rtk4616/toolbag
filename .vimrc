@@ -136,9 +136,9 @@ function! MikeGrep()
     let l:theQuery = input('Search for: ')
     call inputrestore()
     call inputsave()
-    let l:theExtension = input('... in files: .')
+    let l:theExtension = input('... in files: ')
     call inputrestore()
-    exe "vimgrep /" . l:theQuery . "/j **/*." . l:theExtension
+    exe "vimgrep /" . r:theQuery . "/j **/*" . l:theExtension
     exe "cope"
     exe "on"
 endfunc
