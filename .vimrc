@@ -138,7 +138,7 @@ function! MikeGrep()
     call inputsave()
     let l:theExtension = input('... in files: ')
     call inputrestore()
-    exe "vimgrep /" . r:theQuery . "/j **/*" . l:theExtension
+    exe "vimgrep /" . l:theQuery . "/j **/*" . l:theExtension
     exe "cope"
     exe "on"
 endfunc
@@ -147,7 +147,7 @@ function! GrepForSymbol()
     call inputsave()
     let l:theQuery = input('Search for symbol: ')
     call inputrestore()
-    exe "vimgrep /^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
+    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
     exe "cope"
     exe "on"
 endfunc
