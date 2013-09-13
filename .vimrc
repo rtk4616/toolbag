@@ -153,7 +153,7 @@ function! GrepForSymbol()
 endfunc
 
 function! MikeGrepForSymbolUnderCursor()
-    exe "vimgrep /^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
+    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
     exe "tabnew"
     exe "cope"
     exe "on"
