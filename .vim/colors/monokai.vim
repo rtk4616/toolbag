@@ -130,8 +130,8 @@ hi   Comment         ctermfg=239
 "hi  Comment         ctermfg=59
 
 " hi   CursorLine      ctermbg=234   cterm=none
-hi   CursorLine      ctermbg=237   cterm=none
-hi   CursorColumn    ctermbg=236
+hi   CursorLine      ctermbg=235   cterm=none
+hi   CursorColumn    ctermbg=235
 " I can't seem to get the following line to work in the terminal... Just
 " leaving it here for reference.
 hi   CursorLineNR    ctermfg=232   ctermbg=118
