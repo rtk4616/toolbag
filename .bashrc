@@ -4,6 +4,7 @@ alias la='ls -Galph'
 alias l='ls -Gaph'
 alias tree='tree -C'
 alias em='emacs'
+alias octalperms='stat -c "%a %n"'
 
 export PATH=/usr/local/bin:/usr/local/share/python:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
