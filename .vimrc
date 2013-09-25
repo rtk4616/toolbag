@@ -116,17 +116,18 @@ autocmd FileType markdown setlocal ts=4 sts=4 sw=4
 " File-specific rules should go after the *rc file rule, or else
 " they will get superceeded.
 " -----------------------------------------------------------------
-autocmd BufRead,BufNewFile *textile set filetype=textile
-autocmd BufRead,BufNewFile *rc set filetype=sh
-autocmd BufRead,BufNewFile .vimrc set filetype=vim
-autocmd BufRead,BufNewFile *.vert,*.frag set filetype=cpp
-autocmd BufRead,BufNewFile *.cl set filetype=cpp
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.sls set filetype=yaml
-autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-autocmd BufRead,BufNewFile .tm_properties set filetype=sh
-autocmd BufRead,BufNewFile *.go set filetype=go
-autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufRead,BufNewFile *textile set ft=textile
+autocmd BufRead,BufNewFile *rc set ft=sh
+autocmd BufRead,BufNewFile .vimrc set ft=vim
+autocmd BufRead,BufNewFile *.vert,*.frag set ft=cpp
+autocmd BufRead,BufNewFile *.cl set ft=cpp
+autocmd BufRead,BufNewFile *.md set ft=markdown
+autocmd BufRead,BufNewFile *.sls set ft=yaml
+autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+autocmd BufRead,BufNewFile .tm_properties set ft=sh
+autocmd BufRead,BufNewFile *.go set ft=go
+autocmd BufRead,BufNewFile *.json set ft=javascript
+autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
