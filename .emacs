@@ -238,7 +238,7 @@
 (set-default-font "Menlo-12")
 
 ;; Set character wrapping.
-(setq-default fill-column 80)
+(setq-default fill-column 79)
 
 ;; Put autosave and backup files in the system temp folder.
 (setq backup-directory-alist
