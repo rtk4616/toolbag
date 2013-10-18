@@ -305,25 +305,3 @@ let g:neocomplcache_auto_completion_start_length=2
 " ===========================
 " END THE NEOCOMPLCACHE STUFF
 " ===========================
-
-" =====================
-" START THE CTRLP STUFF
-" =====================
-
-" let g:ctrlp_map = '<Leader>g'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"   \ 'file': '\v\.(pyc|exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
-
-
-" let g:ctrlp_extensions = ['tag']
-"
-" nnoremap <Leader>r :CtrlPTag<cr>
-
-
-" ===================
-" END THE CTRLP STUFF
-" ===================
