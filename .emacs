@@ -2,6 +2,13 @@
 ;; Initial setup
 ;; ==============================================================
 
+;; Hide certain files in dired mode.
+;; TODO: DOESN'T WORK...
+(require 'dired-x)
+(add-hook 'dired-load-hook '(lambda () (require 'dired-x)))
+(setq dired-omit-files-p t)
+(setq dired-omit-files "\\.pyc$")
+
 ;; Set paths
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
@@ -35,9 +42,21 @@
 ;; Make F6 toggle autopair on and off for the purposes of pasting.
 ;; (global-set-key (kbd "<f6>") 'autopair-mode)
 
+
+;; Require js2-mode.
+(require 'js2-mode)
+
 ;; Set up ido mode.
-;; (ido-mode t)
-;; (setq ido-enable-flex-matching t) ; fuzzy matching is a must have.
+(require 'flx-ido)
+(ido-mode t)
+(setq ido-everywhere t)
+(flx-ido-mode 1)
+(setq ido-use-faces nil)
+
+;; Ignore extensions in completion
+(setq completion-ignored-extensions
+      '(".o" ".lo" ".mh" ".elc" "~" ".bin" ".lbin" ".fasl" ".dvi" ".toc" ".aux"
+        ".lof" ".blg" ".bbl" ".glo" ".idx" ".lot" ".pyc"))
 
 ;; Load yaml-mode
 (require 'yaml-mode)
@@ -63,6 +82,7 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("rc$" . sh-mode))
 (add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;;
 ;; end Initial setup
@@ -75,8 +95,13 @@
 ;; ==============================================================
 
 ;; Need this or else MikeGrepInFiles will fail with "Wrong type argument: stringp, nil"
+(grep-compute-defaults)
+
+;; Set up ignored files and directories when using grep.
 (eval-after-load "grep"
-  '(grep-compute-defaults))
+  '(progn
+     (add-to-list 'grep-find-ignored-files "*.pyc")
+     (add-to-list 'grep-find-ignored-directories "migrations")))
 
 (defun MikeGrepForSymbol (search_string)
   (interactive "sGrep for symbol: ")
