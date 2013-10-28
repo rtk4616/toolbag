@@ -23,6 +23,8 @@ set cursorline                   " Enable highlighting of the current line.
 " set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
 set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
 
+" Set up ignored files.
+set wildignore+=*.o,*~,*.pyc
 
 " ===============================
 " BEGIN Style settings
