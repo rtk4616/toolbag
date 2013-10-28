@@ -24,7 +24,7 @@ set cursorline                   " Enable highlighting of the current line.
 set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
 
 " Set up ignored files.
-set wildignore+=*.o,*~,*.pyc
+set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**
 
 " ===============================
 " BEGIN Style settings
