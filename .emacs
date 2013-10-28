@@ -43,8 +43,9 @@
 ;; (global-set-key (kbd "<f6>") 'autopair-mode)
 
 
-;; Require js2-mode.
-(require 'js2-mode)
+;; Autoload js2-mode.
+(autoload 'js2-mode "js2-mode" "Major mode for editing Javascript stuffs." t)
+;; (require 'js2-mode)
 
 ;; Set up ido mode.
 (require 'flx-ido)
