@@ -48,10 +48,10 @@
 ;; (require 'js2-mode)
 
 ;; Set up ido mode.
-(require 'flx-ido)
+;; (require 'flx-ido)
 (ido-mode t)
 (setq ido-everywhere t)
-(flx-ido-mode 1)
+;; (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
 ;; Ignore extensions in completion
@@ -102,7 +102,9 @@
 (eval-after-load "grep"
   '(progn
      (add-to-list 'grep-find-ignored-files "*.pyc")
-     (add-to-list 'grep-find-ignored-directories "migrations")))
+     (add-to-list 'grep-find-ignored-directories "migrations")
+     (add-to-list 'grep-find-ignored-directories "ve")
+     ))
 
 (defun MikeGrepForSymbol (search_string)
   (interactive "sGrep for symbol: ")
