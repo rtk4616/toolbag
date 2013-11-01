@@ -23,8 +23,11 @@ set cursorline                   " Enable highlighting of the current line.
 " set complete=k**/*,i             " Make autocomplete pull candidate completeions recursively from all files in the working directory, as well as the current buffer.
 set completeopt=longest,menuone  " Don't select first autocompletion, and show the menu even if there is only one result.
 
-" Set up ignored files.
+" Set up ignored files when searching...
 set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**
+" And when in the netrw browser.
+let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
+" let g:netrw_list_hide= '.*\.pyc$'
 
 " ===============================
 " BEGIN Style settings
@@ -141,7 +144,7 @@ function! MikeGrep()
     call inputsave()
     let l:theExtension = input('... in files: ')
     call inputrestore()
-    exe "vimgrep /" . l:theQuery . "/j **/*" . l:theExtension
+    exe "vimgrep /\v" . l:theQuery . "/j **/*" . l:theExtension
     exe "cope"
     exe "on"
 endfunc
@@ -150,13 +153,13 @@ function! GrepForSymbol()
     call inputsave()
     let l:theQuery = input('Search for symbol: ')
     call inputrestore()
-    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
+    exe "noautocmd vimgrep /\v^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
     exe "cope"
     exe "on"
 endfunc
 
 function! MikeGrepForSymbolUnderCursor()
-    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
+    exe "noautocmd vimgrep /\v^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
     exe "tabnew"
     exe "cope"
     exe "on"
@@ -185,7 +188,7 @@ function! MikeReplaceInFiles()
 
     exe "args **/*" . l:theExtension
     exe "tab ba"
-    exe "tabdo %s/" . searchFor . "/" . replaceWith . "/giec"
+    exe "tabdo %s/\v" . searchFor . "/" . replaceWith . "/giec"
     exe "tabdo close"
 endfunc
 
@@ -203,7 +206,7 @@ function! MikeFindAllSymbolsInFile()
     let l:thePattern = input('Pattern to find: ')
     call inputrestore()
     echo "\n\n"
-    exe "g/^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
+    exe "g/\v^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
     echo "\n\n"
 endfunc
 
