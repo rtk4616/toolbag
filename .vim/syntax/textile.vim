@@ -1,167 +1,87 @@
-" Vim syntax file
-" Language: Textile
-" Maintainer:   Kornelius Kalnbach <korny@cYcnus.de>
-" URL:
-" Last Change:  2006 Mar 31
+"
+"   You will have to restart vim for this to take effect.  In any case
+"   it is a good idea to read ":he new-filetype" so that you know what
+"   is going on, and why the above lines work.
+"
+"   Written originally by Dominic Mitchell, Jan 2006.
+"   happygiraffe.net
+"
+"   Modified by Aaron Bieber, May 2007.
+"   blog.aaronbieber.com
+"
+"   Modified by Tim Harper, July 2008 - current
+"   tim.theenchanter.com
+" @(#) $Id$
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-syntax clear
-
-if !exists("main_syntax")
-  if version < 600
+if version < 600
     syntax clear
-  elseif exists("b:current_syntax")
+elseif exists("b:current_syntax")
     finish
-  endif
-  let main_syntax = 'textile'
 endif
 
+" Textile commands like "h1" are case sensitive, AFAIK.
 syn case match
-syn sync minlines=50
 
-syn match textileGlyph /\(\s\@<=\([-x]\)\s\@=\|\.\.\.\|(\(TM\|R\|C\))\)/
+" Textile syntax: <http://textism.com/tools/textile/>
 
-syn region textileAcronym matchgroup=textileAcronymTag start=/\<\u\{3,}(/ end=/)/
+" Inline elements.
+syn match txtEmphasis    /_[^_]\+_/
+syn match txtBold        /\*[^*]\+\*/
+syn match txtCite        /??.\+??/
+syn match txtDeleted     /-[^-]\+-/
+syn match txtInserted    /+[^+]\++/
+syn match txtSuper       /\^[^^]\+\^/
+syn match txtSub         /\~[^~]\+\~/
+syn match txtSpan        /%[^%]\+%/
+syn match txtFootnoteRef /\[[0-9]\+]/
+syn match txtCode        /@[^@]\+@/
 
-syn cluster TextileFormatTags contains=textileLink,textileImage,textileAncronym,textileEm,textileStrong,textileItalic,textileBold,textileCode,textileSubtext,textileSupertext,textileCitation,textileDeleted,textileInserted,textileSpan,textileNoTextile,textileGlyph,textileAcronym,textileHtml
+" Block elements.
+syn match txtHeader      /^h1\. .\+/
+syn match txtHeader2     /^h2\. .\+/
+syn match txtHeader3     /^h[3-6]\..\+/
+syn match txtBlockquote  /^bq\./
+syn match txtFootnoteDef /^fn[0-9]\+\./
+syn match txtListBullet  /\v^\*+ /
+syn match txtListBullet2  /\v^(\*\*)+ /
+syn match txtListNumber  /\v^#+ /
+syn match txtListNumber2  /\v^(##)+ /
 
-syn region textileSpan oneline matchgroup=textileFormatTagSpan contains=textileSpanKeyword start=/\w\@<!%\s\@!/ end=/\s\@<!%\w\@!/
-
-syn region textileEm oneline matchgroup=textileFormatTag start=/\w\@<!_\s\@!/ end=/\s\@<!_\w\@!/ contains=@TextileFormatTags
-syn region textileStrong oneline matchgroup=textileFormatTag start=/\w\@<!\*\s\@!/ end=/\s\@<!\*\w\@!/ contains=@TextileFormatTags
-syn region textileItalic oneline matchgroup=textileFormatTag start=/\w\@<!__\s\@!/ end=/\s\@<!__\w\@!/ contains=@TextileFormatTags
-syn region textileBold oneline matchgroup=textileFormatTag start=/\w\@<!\*\*\s\@!/ end=/\s\@<!\*\*\w\@!/ contains=@TextileFormatTags
-
-syn region textileCode oneline matchgroup=textileFormatTag start=/\w\@<!@\s\@!/ end=/\s\@<!@\w\@!/
-syn region textileSubtext oneline matchgroup=textileFormatTag start=/\w\@<!\~\s\@!/ end=/\s\@<!\~\w\@!/
-syn region textileSupertext oneline matchgroup=textileFormatTag start=/\w\@<!\^\s\@!/ end=/\s\@<!\^\w\@!/
-syn region textileCitation oneline matchgroup=textileFormatTag start=/\w\@<!??\s\@!/ end=/\s\@<!??\w\@!/
-syn region textileDeleted oneline matchgroup=textileFormatTag start=/\w\@<!-\s\@!/ end=/\s\@<!-\w\@!/
-syn region textileInserted oneline matchgroup=textileFormatTag start=/\w\@<!+\s\@!/ end=/\s\@<!+\w\@!/
-
-syn match textileHtml /<\/\=\w[^>]*>/
-syn match textileHtml /&\w\+;/
-
-syn region textileCode matchgroup=textileTag start="<pre[^>]*>" end="</pre>"
-syn region textileCode matchgroup=textileTag start="<code[^>]*>" end="</code>"
-
-syn region textileNoTextile matchgroup=textileTag start=/\w\@<!==\s\@!/ end=/\s\@<!==\w\@!/
-syn region textileNoTextile matchgroup=textileTag start="<notextile>" end="</notextile>"
-
-syn match textileHR /^-\{3,}/
-
-" textile
-syn region textileH start=/^\(h[1-6]\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]\)*\.\( \|$\)\)\@=/ skip=/\n\n\@!/ end=/\n/ keepend fold contains=@TextileFormatTags,textileKeyword
-syn region textileP start=/^\(p\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]\)*\.\( \|$\)\)\@=/ skip=/\n\n\@!/ end=/\n/ keepend fold contains=@TextileFormatTags,textileKeyword
-syn region textileBQ start=/^\(bq\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]\)*\.\( \|$\)\)\@=/ skip=/\n\n\@!/ end=/\n/ keepend fold contains=@TextileFormatTags,textileKeyword
-syn region textileListItem matchgroup=textileListDot start=/^\*\+\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]\)*\( \|$\)/ skip=/\n\(\*\|\n\)\@!/ end=/\n/ keepend fold contains=@TextileFormatTags
-syn region textileListItem matchgroup=textileListDot start=/^#\+\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]\)*\( \|$\)/ skip=/\n\(#\|\n\)\@!/ end=/\n/ keepend fold contains=@TextileFormatTags
-syn region textileTable start=/^\(table\(\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[<>=]\)*\.\( \|$\)\)\@=/ skip=/\n\n\@!/ end=/\n/ keepend fold contains=@TextileFormatTags,textileKeyword
-
-syn region textileKeyword contained start=/^\(bq\>\|p\>\|h[1-6]\>\|#\+\|\*\+\|table\>\)/ skip=/\[[^\]]*\]\|{[^}]*}\|([^)]*)\|[()]\+\|[<>=]/ end=/\.\=/ contains=textileArg,textileLang,textileClass,textileIndent,textileArgError
-syn region textileSpanKeyword contained start=/\(\w\@<!%\s\@!\)\@<=/ skip=/\[[^\]]*\]\|{[^}]*}\|([^)]*)\|(\+\|)\+\|[<>=]/ end=/./ contains=textileArg,textileLang,textileClass,textileIndent,textileArgError
-syn region textileArg contained matchgroup=textileBrace start=/{}\@!/ end=/}/
-syn match textileIndent contained /[()]\+\|[<>=]/
-syn region textileClass contained matchgroup=textileBrace start=/()\@!\([^)]\+)\)\@=/ end=/)/
-syn region textileLang contained matchgroup=textileBrace start=/\[\]\@!/ end=/\]/
-syn match textileArgError contained /{}\|\[\]\|()/
-syn match textileRestOfBlock contained /\_.*/ transparent
-
-syn match textileLink /"[^"]*":\S*[[:alnum:]_\/]/ keepend contains=textileLinkName
-syn region textileLinkName matchgroup=textileBrace contained start=/"/ end=/"/ contains=@TextileFormatTags nextgroup=textileLinkColon
-syn match textileLinkColon contained /:/ nextgroup=textileLinkURL
-syn match textileLinkURL contained /.*/
-
-syn match textileImage /![^!(]*\(([^)]*)\)\=!/ contains=textileImageURL
-syn region textileImageURL matchgroup=textileFormatTag contained contains=textileImageTitle start=/!/ skip=/([^(])/ end=/!/ nextgroup=textileLinkColon
-syn region textileImageTitle matchgroup=textileFormatTag contained start="(" end=")"
+syn cluster txtBlockElement contains=txtHeader,txtBlockElement,txtFootnoteDef,txtListBullet,txtListNumber
 
 
-" The default highlighting.
-if version >= 508 || !exists("did_textile_syn_inits")
-" don't use standard HiLink, it will not work with included syntax files
+" Everything after the first colon is from RFC 2396, with extra
+" backslashes to keep vim happy...  Original:
+" ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
+"
+" Revised the pattern to exclude spaces from the URL portion of the
+" pattern. Aaron Bieber, 2007.
+syn match txtLink /"[^"]\+":\(\([^:\/?# ]\+\):\)\?\(\/\/\([^\/?# ]*\)\)\?\([^?# ]*\)\(?\([^# ]*\)\)\?\(#\([^ ]*\)\)\?/
+
+syn cluster txtInlineElement contains=txtEmphasis,txtBold,txtCite,txtDeleted,txtInserted,txtSuper,txtSub,txtSpan
+
+if version >= 508 || !exists("did_txt_syn_inits")
     if version < 508
-        command! -nargs=+ TextileHiLink hi link <args>
+        let did_txt_syn_inits = 1
+        command -nargs=+ HiLink hi link <args>
     else
-        command! -nargs=+ TextileHiLink hi def link <args>
+        command -nargs=+ HiLink hi def link <args>
     endif
 
-  if version < 508
-    let did_textile_syn_inits = 1
-  endif
+    HiLink txtHeader Title
+    HiLink txtHeader2 Question
+    HiLink txtHeader3 Statement
+    HiLink txtBlockquote Comment
+    HiLink txtListBullet Operator
+    HiLink txtListBullet2 Constant
+    HiLink txtListNumber Operator
+    HiLink txtListNumber2 Constant
+    HiLink txtLink String
+    HiLink txtCode Identifier
+    hi def txtEmphasis term=underline cterm=underline gui=italic
+    hi def txtBold term=bold cterm=bold gui=bold
 
-  TextileHiLink textileTag Statement
-  "TextileHiLink textileFormatTag Normal
-  "TextileHiLink textileNoTextile Normal
-
-  TextileHiLink textileEm textileItalic
-  TextileHiLink textileStrong textileBold
-  TextileHiLink textileItalic textileMakeItalic
-  TextileHiLink textileBold textileMakeBold
-  TextileHiLink textileCode Identifier
-
-  TextileHiLink textileSubtext String
-  TextileHiLink textileSupertext String
-  TextileHiLink textileCitation String
-  TextileHiLink textileDeleted String
-  TextileHiLink textileInserted textileUnderline
-
-  "TextileHiLink textileSpan Normal
-  TextileHiLink textileFormatTagSpan textileTag
-
-  TextileHiLink textileH Title
-  TextileHiLink textileHTag textileTag
-  TextileHiLink textileP Normal
-  TextileHiLink textilePTag textileTag
-  TextileHiLink textileBQ Normal
-  TextileHiLink textileBQTag textileTag
-  TextileHiLink textileListDot Special
-  "TextileHiLink textileTable Normal
-  TextileHiLink textileTableTag textileTag
-
-  TextileHiLink textileKeyword Special
-  TextileHiLink textileArg Type
-  TextileHiLink textileClass Statement
-  TextileHiLink textileLang String
-  TextileHiLink textileIndent String
-  TextileHiLink textileArgError Error
-  TextileHiLink textileBrace Special
-  TextileHiLink textileRestOfBlock Number
-
-  "TextileHiLink textileLink Normal
-  TextileHiLink textileLinkName String
-  TextileHiLink textileLinkColon textileBrace
-  TextileHiLink textileLinkURL Underlined
-
-  TextileHiLink textileImage Statement
-  TextileHiLink textileImageURL textileLink
-  TextileHiLink textileImageTitle String
-
-    TextileHiLink textileGlyph Special
-    TextileHiLink textileHR Title
-    TextileHiLink textileAcronym String
-    TextileHiLink textileAcronymTag Special
-
-    TextileHiLink textileHtml Special
-
-  if !exists("html_no_rendering")
-    if !exists("textile_my_rendering")
-      hi def textileMakeBold            term=bold cterm=bold gui=bold
-      hi def textileBoldUnderline       term=bold,underline cterm=bold,underline gui=bold,underline
-      hi def textileBoldItalic          term=bold,italic cterm=bold,italic gui=bold,italic
-      hi def textileBoldUnderlineItalic term=bold,italic,underline cterm=bold,italic,underline gui=bold,italic,underline
-      hi def textileUnderline           term=underline cterm=underline gui=underline
-      hi def textileUnderlineItalic     term=italic,underline cterm=italic,underline gui=italic,underline
-      hi def textileMakeItalic          term=italic cterm=italic gui=italic
-      hi def textileLink                term=underline cterm=underline gui=underline
-    endif
-  endif
-
+    delcommand HiLink
 endif
 
-let b:current_syntax = "textile"
-
-if main_syntax == 'textile'
-  unlet main_syntax
-endif
+" vim: set ai et sw=4 :
