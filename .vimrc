@@ -49,9 +49,6 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===============================
 
-" Make regex be more like Perl when using the / key to search.
-noremap / /\v
-
 " List all files in all subdirectories by partial name.
 nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
 
@@ -144,7 +141,7 @@ function! MikeGrep()
     call inputsave()
     let l:theExtension = input('... in files: ')
     call inputrestore()
-    exe "vimgrep /\v" . l:theQuery . "/j **/*" . l:theExtension
+    exe "vimgrep /" . l:theQuery . "/j **/*" . l:theExtension
     exe "cope"
     exe "on"
 endfunc
@@ -153,13 +150,13 @@ function! GrepForSymbol()
     call inputsave()
     let l:theQuery = input('Search for symbol: ')
     call inputrestore()
-    exe "noautocmd vimgrep /\v^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
+    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . l:theQuery . "/j **/*"
     exe "cope"
     exe "on"
 endfunc
 
 function! MikeGrepForSymbolUnderCursor()
-    exe "noautocmd vimgrep /\v^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
+    exe "noautocmd vimgrep /^\ *\\(class\\|def\\|func\\).*" . expand("<cword>") . "/j **"
     exe "tabnew"
     exe "cope"
     exe "on"
@@ -188,7 +185,7 @@ function! MikeReplaceInFiles()
 
     exe "args **/*" . l:theExtension
     exe "tab ba"
-    exe "tabdo %s/\v" . searchFor . "/" . replaceWith . "/giec"
+    exe "tabdo %s/" . searchFor . "/" . replaceWith . "/giec"
     exe "tabdo close"
 endfunc
 
@@ -206,6 +203,6 @@ function! MikeFindAllSymbolsInFile()
     let l:thePattern = input('Pattern to find: ')
     call inputrestore()
     echo "\n\n"
-    exe "g/\v^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
+    exe "g/^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
     echo "\n\n"
 endfunc
