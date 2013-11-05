@@ -81,13 +81,24 @@ inoremap <silent> <TAB>   <C-R>=SmartComplete()<CR>
 
 
 
+" ==========================================
+" Plugin stuff in an external Python script.
+" ==========================================
 
+" The directory the user was in when they initially opened Vim.
+let s:ProjectWorkingDirectory = getcwd()
 
-
-
+" Need to do this at the script level, and not inside a function, or it gives weird results.
+let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/plugin_test.py"
 
 function! PluginTest()
-    pyfile plugin_test.py
+    python sys.argv = ["foo", "bar"]
+    execute "pyfile " . s:PythonScriptToImport
+    echom "Vim was initially opened at " . s:ProjectWorkingDirectory
+    if filereadable(s:ProjectWorkingDirectory . "/" . ".MikeTest")
+        echom ".MikeTest exists in this directory!"
+    else
+        echom "No .MikeTest file in this directory!"
+    endif
 endfunc
-
 command! MikePlugin call PluginTest()
