@@ -50,7 +50,7 @@ try:
                         file_name,
                         ""
                     ),
-                    file_path,
+                    file_path.replace(" ", "\\ "),
                 ))
 
     to_return = []
