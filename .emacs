@@ -2,16 +2,20 @@
 ;; Initial setup
 ;; ==============================================================
 
-;; Hide certain files in dired mode.
-;; TODO: DOESN'T WORK...
-(require 'dired-x)
-(add-hook 'dired-load-hook '(lambda () (require 'dired-x)))
-(setq dired-omit-files-p t)
-(setq dired-omit-files "\\.pyc$")
+;; Set up Marmalade.
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;; Set paths
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
+
+;; Set up auto-complete.
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 ;; Make go-mode autoload for .go files.
 (require 'go-mode-load)
