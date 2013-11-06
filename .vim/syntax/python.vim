@@ -11,5 +11,5 @@ endif
 hi link pythonVariable Identifier
 syn match pythonVariable /[a-zA-Z0-9\._-]* *=/he=e-1
 
-setlocal iskeyword+=:
+" setlocal iskeyword+=:
 syn case ignore
