@@ -50,7 +50,7 @@ autocmd Syntax * syntax sync minlines=1000
 " ===============================
 
 " List all files in all subdirectories by partial name.
-nnoremap <Leader>g :call MikeListFilesByPartialName()<CR>
+nnoremap <Leader>g :call PluginTest()<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
