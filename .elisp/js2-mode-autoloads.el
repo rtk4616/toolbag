@@ -5,7 +5,7 @@
 
 ;;;### (autoloads (js2-imenu-extras-mode js2-imenu-extras-setup)
 ;;;;;;  "js2-imenu-extras" ".emacs.d/elpa/js2-mode-20130619/js2-imenu-extras.el"
-;;;;;;  (21097 24055 0 0))
+;;;;;;  (21114 50210 0 0))
 ;;; Generated autoloads from .emacs.d/elpa/js2-mode-20130619/js2-imenu-extras.el
 
 (autoload 'js2-imenu-extras-setup "js2-imenu-extras" "\
@@ -21,7 +21,7 @@ Toggle Imenu support for frameworks and structural patterns.
 ;;;***
 
 ;;;### (autoloads (js2-mode js2-minor-mode) "js2-mode" ".emacs.d/elpa/js2-mode-20130619/js2-mode.el"
-;;;;;;  (21097 24055 0 0))
+;;;;;;  (21114 50210 0 0))
 ;;; Generated autoloads from .emacs.d/elpa/js2-mode-20130619/js2-mode.el
 
 (autoload 'js2-minor-mode "js2-mode" "\
@@ -40,7 +40,7 @@ Major mode for editing JavaScript code.
 ;;;***
 
 ;;;### (autoloads nil nil (".emacs.d/elpa/js2-mode-20130619/js2-mode-pkg.el")
-;;;;;;  (21097 24055 899563 0))
+;;;;;;  (21114 50210 490304 0))
 
 ;;;***
 

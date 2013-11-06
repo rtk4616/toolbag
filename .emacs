@@ -17,6 +17,20 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; Autoload js2-mode.
+(autoload 'js2-mode "js2-mode" "Major mode for editing Javascript stuffs." t)
+;; (require 'js2-mode)
+
+;; Multi-web-mode...
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags
+  '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+    (js2-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+    (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
+
 ;; Make go-mode autoload for .go files.
 (require 'go-mode-load)
 ;; TODO: I don't think we need this because go-mode-load.el is in .elisp, which
@@ -44,12 +58,7 @@
 (setq tramp-default-method "ssh")
 
 ;; Make F6 toggle autopair on and off for the purposes of pasting.
-;; (global-set-key (kbd "<f6>") 'autopair-mode)
-
-
-;; Autoload js2-mode.
-(autoload 'js2-mode "js2-mode" "Major mode for editing Javascript stuffs." t)
-;; (require 'js2-mode)
+(global-set-key (kbd "<f6>") 'autopair-mode)
 
 ;; Set up ido mode.
 ;; (require 'flx-ido)
@@ -67,8 +76,13 @@
 (require 'yaml-mode)
 
 ;; Load the Autopair module.
-;; (require 'autopair)
-;; (autopair-global-mode) ;; enable autopair in all buffers
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
 
 ;; Set auto mode rules.
 ;; This is where you define the major modes for different file extensions.
