@@ -16,6 +16,8 @@ try:
     ]
     ignored_extensions = (
         ".swp",
+        ".png",
+        ".jpg",
         ".pyc",
     )
 
