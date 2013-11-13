@@ -57,7 +57,9 @@
            (file-readable-p f)
            (string-match match f))
           ;; Add f to the files list.
-          (setq files-list (cons f files-list)))
+          (setq files-list (cons f files-list))
+          )
+
 
          ((and
            ;; If f is a directory...
@@ -72,22 +74,30 @@
           ;; Then recursively call this function, and append the result to the files-list...
           (setq
            files-list
-           (append files-list (directory-files-recursive f match (- maxdepth -1) ignore-files-regex-string ignore-dirs-regex-string)))
-          ;; ...and add f to the files list.
-          ;; TODO: I don't know if we should do this though...
-          ;; Should it only return files?
-          (setq files-list (cons f files-list)))
+           (append files-list (directory-files-recursive f match (- maxdepth -1) ignore-files-regex-string ignore-dirs-regex-string))
+           )
 
-         ;; Return true?
-         (t)))
-      ;; End of "let"
+          ;; TODO: I am preventing the file from being added to the list to be
+          ;; returned... I think this is a good call, as we're not interested
+          ;; in directories in general. In the future, I may have to revisit
+          ;; this if I want to add the ability to fuzzy-match directories too,
+          ;; instead of only files.
+          ;;
+          ;; ...and add the directory f to the files list to return.
+          ;; (setq files-list (cons f files-list))
+          )
+
+         (t) ;; Return true for the "cond" statement.
+         ) ;; End of "cond".
+        ) ;; End of "let".
 
       ;; Remove f from the working list of files in the current directory.
       (setq current-directory-list (cdr current-directory-list)))
     ;; End of "while"
 
     ;; All done... return files-list!
-    files-list))
+    files-list)
+  ) ;; End of defun.
 
 
 ;; ===================================================================================
@@ -121,4 +131,4 @@
 
 ;; An example of how to call this function...
 ;; You could also use "." as the directory.
-(directory-files-recursive "~/development/Latinum-VM" "\\.py$" 10 ignore-files-string ignore-dirs-string)
+(directory-files-recursive "~/development/Latinum-VM" "\\.html$" 10 ignore-files-string ignore-dirs-string)
