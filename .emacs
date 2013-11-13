@@ -11,6 +11,11 @@
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
+;; Set up expand region.
+(require 'expand-region)
+(global-set-key "\C-x\C-a" 'er/expand-region)
+;; (global-set-key (kbd "") 'er/expand-region)
+
 ;; Set up auto-complete.
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
