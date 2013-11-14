@@ -1,3 +1,21 @@
+(defun convert-anything-to-string (input-symbol)
+  "Converts the supplied symbol to a string."
+  (cond
+
+   ((stringp input-symbol)
+    input-symbol)
+
+   ((numberp input-symbol)
+    (number-to-string input-symbol))
+
+   (t
+    ;; We handle only symbols and lists.
+    ;; TODO: Better error handling here...
+    (error "Error in convert-anything-to-string!"))
+   )
+  )
+
+
 (defun get-dired-string-from-file-location (file-location-string)
   "Returns a string that can be parsed as a valid file by dired-mode."
   (let (
@@ -7,11 +25,11 @@
         (progn
           ;; Return the string to insert.
           (mapconcat 'eval '(
-                             (funcall 'nth 8 attribute-list)
-                             (funcall 'number-to-string (nth 1 attribute-list))
-                             (funcall 'nth 2 attribute-list)
-                             (funcall 'nth 3 attribute-list)
-                             (funcall 'number-to-string (nth 7 attribute-list))
+                             (funcall 'convert-anything-to-string(nth 8 attribute-list))
+                             (funcall 'convert-anything-to-string(nth 1 attribute-list))
+                             (funcall 'convert-anything-to-string(nth 2 attribute-list))
+                             (funcall 'convert-anything-to-string(nth 3 attribute-list))
+                             (funcall 'convert-anything-to-string(nth 7 attribute-list))
                              (funcall 'format-time-string "%b %d %H:%M" (nth 5 attribute-list))
                              file-location-string
                              ) " ")
