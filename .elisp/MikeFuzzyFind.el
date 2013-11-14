@@ -1,28 +1,42 @@
-;; ======================================
-;; Working on fuzzy find files feature...
-;; ======================================
+(defun get-dired-string-from-file-location (file-location-string)
+  "Returns a string that can be parsed as a valid file by dired-mode."
+  (let (
+        (attribute-list (file-attributes file-location-string 'string))
+        )
+    (if attribute-list
+        (progn
+          ;; Return the string to insert.
+          (mapconcat 'eval '(
+                             (funcall 'nth 8 attribute-list)
+                             (funcall 'number-to-string (nth 1 attribute-list))
+                             (funcall 'nth 2 attribute-list)
+                             (funcall 'nth 3 attribute-list)
+                             (funcall 'number-to-string (nth 7 attribute-list))
+                             (funcall 'format-time-string "%b %d %H:%M" (nth 5 attribute-list))
+                             file-location-string
+                             ) " ")
+          )
+      ;; Otherwise return nil.
+      nil
+      )))
+
 
 (defun get-regex-alternation-from-list (list-of-strings &optional prepend-string)
   (if prepend-string
       (setq list-of-strings (mapcar (function (lambda (x) (concat prepend-string x))) mike-ignore-directories)))
 
   ;; Escape periods in preparation for regex.
-  (message (mapconcat 'identity list-of-strings ""))
   (setq list-of-strings (mapcar (function (lambda (x) (replace-regexp-in-string "\\." "\\\\." x))) list-of-strings))
 
   ;; Join the ignore directories into a regex string.
   (setq the-regex-search-string (format "\\(%s\\)" (mapconcat 'identity list-of-strings "\\|"))))
 
 
-(defun directory-files-recursive (directory match maxdepth ignore-files-regex-string ignore-dirs-regex-string)
+(defun insert-directory-files-recursive (directory match maxdepth)
   "Need some documentation about this function here..."
   (let* ((files-list '())
          (current-directory-list (directory-files directory t))
          )
-
-    ;; TODO: Debugging only... remove these!
-    ;; (message (concat "ignore-files-regex-string is " ignore-files-regex-string))
-    ;; (message (concat "ignore-dirs-regex-string is " ignore-dirs-regex-string))
 
     ;; While current-directory-list is not empty...
     (while current-directory-list
@@ -37,7 +51,9 @@
            ;; ...and f is one of the ignored files...
            (string-match ignore-files-regex-string f))
           ;; ...then skip this file.
-          (message (concat "ignoring file " f " based on \"" (match-string 1 f) "\""))
+
+          ;; TODO: This is a debug line below...
+          ;; (message (concat "ignoring file " f " based on \"" (match-string 1 f) "\""))
           nil)
 
          ((and
@@ -48,7 +64,9 @@
            ;; ...which is one of the ignored directories...
            (string-match ignore-dirs-regex-string f))
           ;; ...then skip this directory
-          (message (concat "ignoring directory " f " based on \"" (match-string 1 f) "\""))
+
+          ;; TODO: This is a debug line below...
+          ;; (message (concat "ignoring directory " f " based on \"" (match-string 1 f) "\""))
           nil)
 
          ((and
@@ -56,10 +74,8 @@
            (file-regular-p f)
            (file-readable-p f)
            (string-match match f))
-          ;; Add f to the files list.
-          (setq files-list (cons f files-list))
-          )
-
+          ;; Insert the file into the current buffer
+          (insert (concat (get-dired-string-from-file-location f) "\n")))
 
          ((and
            ;; If f is a directory...
@@ -71,38 +87,42 @@
            (not (string-equal "." (substring f -1)))
            ;; ...and we have not reached the max depth...
            (> maxdepth 0))
-          ;; Then recursively call this function, and append the result to the files-list...
-          (setq
-           files-list
-           (append files-list (directory-files-recursive f match (- maxdepth -1) ignore-files-regex-string ignore-dirs-regex-string))
-           )
-
-          ;; TODO: I am preventing the file from being added to the list to be
-          ;; returned... I think this is a good call, as we're not interested
-          ;; in directories in general. In the future, I may have to revisit
-          ;; this if I want to add the ability to fuzzy-match directories too,
-          ;; instead of only files.
-          ;;
-          ;; ...and add the directory f to the files list to return.
-          ;; (setq files-list (cons f files-list))
+          ;; Then recursively call this function
+          (insert-directory-files-recursive f match (- maxdepth -1))
           )
+        (t)))
+    ;; Remove f from the working list of files in the current directory.
+    (setq current-directory-list (cdr current-directory-list)))
 
-         (t) ;; Return true for the "cond" statement.
-         ) ;; End of "cond".
-        ) ;; End of "let".
-
-      ;; Remove f from the working list of files in the current directory.
-      (setq current-directory-list (cdr current-directory-list)))
-    ;; End of "while"
-
-    ;; All done... return files-list!
-    files-list)
-  ) ;; End of defun.
+  ;; All done... return files-list!
+  files-list)
+) ;; End of defun.
 
 
-;; ===================================================================================
-;; Testing stuff
-;; ===================================================================================
+(defun MikeFuzzyFileFinder (match-string)
+  "Searches recursively for all files that match the file wildcard in the current directory"
+  (interactive "sSearch for files matching: \n")
+
+  (switch-to-buffer "*MikeFuzzyFind Results*")
+  (fundamental-mode)
+  (setq buffer-read-only nil)
+  (erase-buffer)
+
+  (insert-directory-files-recursive default-directory match-string 10)
+
+  (indent-region (point-min) (point-max) 2)
+
+  (dired-mode)
+  (if (fboundp 'dired-simple-subdir-alist)
+      ;; will work even with nested dired format (dired-nstd.el,v 1.15
+      ;; and later)
+      (dired-simple-subdir-alist)
+    ;; else we have an ancient tree dired (or classic dired, where
+    ;; this does no harm)
+    (set (make-local-variable 'dired-subdir-alist)
+         (list (cons default-directory (point-min-marker)))))
+  (goto-line 2))
+
 
 ;; A list of ignored file names.
 (setq
@@ -124,11 +144,9 @@
  )
 
 ;; Get the alternation for a list of files.
-(setq ignore-files-string (get-regex-alternation-from-list mike-ignore-files))
+(setq ignore-files-regex-string (get-regex-alternation-from-list mike-ignore-files))
 
 ;; Get the alternation for a list of directories by prepending a slash to the directory names.
-(setq ignore-dirs-string (get-regex-alternation-from-list mike-ignore-directories "/"))
+(setq ignore-dirs-regex-string (get-regex-alternation-from-list mike-ignore-directories "/"))
 
-;; An example of how to call this function...
-;; You could also use "." as the directory.
-(directory-files-recursive "~/development/Latinum-VM" "\\.html$" 10 ignore-files-string ignore-dirs-string)
+(provide 'MikeFuzzyFind)

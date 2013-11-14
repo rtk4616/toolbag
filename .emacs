@@ -11,6 +11,9 @@
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
+;; Set up my MikeFuzzyFind stuff
+(require 'MikeFuzzyFind)
+
 ;; Set up expand region.
 (require 'expand-region)
 (global-set-key "\C-x\C-a" 'er/expand-region)
@@ -162,8 +165,10 @@
 (global-set-key "\C-xj" 'imenu)
 
 ;; Use the default shortcut for regexp isearch to find files by partial name.
-(global-set-key "\C-x\C-g" 'MikeGrepForFiles)
-(global-set-key "\C-xg" 'MikeGrepForFiles)
+;; (global-set-key "\C-x\C-g" 'MikeGrepForFiles)
+;; (global-set-key "\C-xg" 'MikeGrepForFiles)
+(global-set-key "\C-x\C-g" 'MikeFuzzyFileFinder)
+(global-set-key "\C-xg" 'MikeFuzzyFileFinder)
 
 ;; Use the default shortcut for regexp isearch to activate custom rgrep.
 (global-set-key "\C-xf" 'MikeGrepInFiles)
@@ -191,14 +196,6 @@
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'ff 'find-name-dired)
 (defalias 'sc 'diff-buffer-with-file)
-
-;; Bind F2 the find a file recursive alias.
-;; (global-set-key (kbd "<f2>") 'ff)
-(global-set-key (kbd "<f2>") 'MikeGrepForFiles)
-
-;; Bind F3 to rgrep.
-;; (global-set-key (kbd "<f3>") 'rgrep)
-(global-set-key (kbd "<f3>") 'MikeGrepInFiles)
 
 ;; Bind F4 to see changes between the current buffer and the version on disk.
 (global-set-key (kbd "<f4>") 'sc)
