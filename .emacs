@@ -16,7 +16,7 @@
 
 ;; Set up expand region.
 (require 'expand-region)
-(global-set-key "\C-x\C-a" 'er/expand-region)
+(global-set-key (kbd "C-x SPC") 'er/expand-region)
 ;; (global-set-key (kbd "") 'er/expand-region)
 
 ;; Set up auto-complete.
