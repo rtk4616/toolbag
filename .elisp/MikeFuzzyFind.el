@@ -1,4 +1,4 @@
-(defun convert-anything-to-string (input-symbol)
+(defun convert-something-to-string (input-symbol)
   "Converts the supplied symbol to a string."
   (cond
 
@@ -11,7 +11,7 @@
    (t
     ;; We handle only symbols and lists.
     ;; TODO: Better error handling here...
-    (error "Error in convert-anything-to-string!"))
+    (error "Error in convert-something-to-string!"))
    )
   )
 
@@ -25,11 +25,11 @@
         (progn
           ;; Return the string to insert.
           (mapconcat 'eval '(
-                             (funcall 'convert-anything-to-string(nth 8 attribute-list))
-                             (funcall 'convert-anything-to-string(nth 1 attribute-list))
-                             (funcall 'convert-anything-to-string(nth 2 attribute-list))
-                             (funcall 'convert-anything-to-string(nth 3 attribute-list))
-                             (funcall 'convert-anything-to-string(nth 7 attribute-list))
+                             (funcall 'convert-something-to-string(nth 8 attribute-list))
+                             (funcall 'convert-something-to-string(nth 1 attribute-list))
+                             (funcall 'convert-something-to-string(nth 2 attribute-list))
+                             (funcall 'convert-something-to-string(nth 3 attribute-list))
+                             (funcall 'convert-something-to-string(nth 7 attribute-list))
                              (funcall 'format-time-string "%b %d %H:%M" (nth 5 attribute-list))
                              file-location-string
                              ) " ")
