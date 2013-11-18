@@ -16,7 +16,7 @@
 
 ;; Set up expand region.
 (require 'expand-region)
-(global-set-key (kbd "C-M-h") 'er/expand-region)
+(global-set-key (kbd "M-h") 'er/expand-region)
 ;; (global-set-key (kbd "") 'er/expand-region)
 
 ;; Set up auto-complete.
