@@ -26,6 +26,7 @@
 (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
 (require 'auto-complete-config)
 (ac-config-default)
+(setq ac-delay 0.2)
 
 ;; Autoload actionscript-mode.
 (autoload 'actionscript-mode "actionscript-mode" "Major mode for editing ActionScript." t)
