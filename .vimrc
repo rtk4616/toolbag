@@ -36,10 +36,12 @@ syntax on
 
 if has("gui_running")
     set guifont=menlo:h12
-    colo mikeokai
+    " colo mikeokai
+    colo tomorrow-night
 else
     set background=dark
-    colo monokai
+    " colo monokai
+    colo tomorrow-night
 endif
 
 autocmd Syntax * syntax sync minlines=1000
