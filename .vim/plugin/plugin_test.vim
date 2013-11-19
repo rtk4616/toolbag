@@ -1,7 +1,6 @@
-if !has('python')
-    echomsg "Python not supported in this instance of Vim... Disabling plugin!"
-    finish
-endif
+" ===================================
+" Plugin stuff for smart completions.
+" ===================================
 
 " Table of completion specifications (a list of lists)...
 let s:completions = []
@@ -25,8 +24,6 @@ call AddCompletion(  '"',   s:NONE,  '"',                      1    )
 call AddCompletion(  '"',   '"',     "\\n",                    1    )
 call AddCompletion(  "'",   s:NONE,  "'",                      1    )
 call AddCompletion(  "'",   "'",     s:NONE,                   0    )
-
-
 
 " Implement smart completion magic...
 function! SmartComplete ()
@@ -74,6 +71,38 @@ endfunction
 inoremap <silent> <TAB>   <C-R>=SmartComplete()<CR>
 
 
+" ==============================================================
+" Plugin stuff for using a local project completions dictionary.
+" ==============================================================
+
+" The directory the user was in when they initially opened Vim.
+let s:ProjectWorkingDirectory = getcwd() . "/"
+" The name of the completions dict file we'll use.
+let s:ProjectCompletionsFileName = ".project_completions"
+" The full path to the completions dict file.
+let s:ProjectCompletionsFile = s:ProjectWorkingDirectory . s:ProjectCompletionsFileName
+
+" If there is a .project_completions file in the current working directory...
+if filereadable(s:ProjectWorkingDirectory . s:ProjectCompletionsFileName)
+    " ...use dictionaries in completions...
+    execute "set complete -=k complete+=k"
+    " .. and use the .project_completions file as a completion dictionary.
+    execute "set dictionary=" . s:ProjectCompletionsFile
+else
+    " No .project_completions file in the current working directory.
+    echom "Could not find " . s:ProjectCompletionsFile
+endif
+
+
+" ==========================================
+" Plugin stuff in an external Python script.
+" ==========================================
+
+" Be kind. If the user's version of Vim doesn't support Python, disable the plugin.
+if !has('python')
+    echom "Python not supported in this instance of Vim... Disabling plugin!"
+    finish
+endif
 
 
 function! FindFileOpen()
@@ -91,18 +120,6 @@ endfunction
 function! FindFileClose()
     bdelete "Find file (*"
 endfunction
-
-
-
-
-
-
-" ==========================================
-" Plugin stuff in an external Python script.
-" ==========================================
-
-" The directory the user was in when they initially opened Vim.
-let s:ProjectWorkingDirectory = getcwd()
 
 " Need to do this at the script level, and not inside a function, or it gives weird results.
 let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/plugin_test.py"
