@@ -9,6 +9,8 @@
 
 ;; Set paths
 (add-to-list 'load-path "~/.elisp")
+(let ((default-directory "~/.elisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
 ;; Set up my MikeFuzzyFind stuff
@@ -24,6 +26,9 @@
 (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; Autoload actionscript-mode.
+(autoload 'actionscript-mode "actionscript-mode" "Major mode for editing ActionScript." t)
 
 ;; Autoload js2-mode.
 (autoload 'js2-mode "js2-mode" "Major mode for editing Javascript stuffs." t)
@@ -110,6 +115,7 @@
 (add-to-list 'auto-mode-alist '("rc$" . sh-mode))
 (add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
 
 ;;
 ;; end Initial setup
