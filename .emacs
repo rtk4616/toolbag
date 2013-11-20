@@ -21,6 +21,12 @@
 (global-set-key (kbd "M-h") 'er/expand-region)
 ;; (global-set-key (kbd "") 'er/expand-region)
 
+;; Hippie-expand stuff.
+;; TODO: Work on this more.
+;; (defun MikeExpand (arg)
+;;   (message arg))
+;; (add-to-list 'hippie-expand-try-functions-list 'MikeExpand)
+
 ;; Set up auto-complete.
 ;; (require 'auto-complete)
 ;; (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
