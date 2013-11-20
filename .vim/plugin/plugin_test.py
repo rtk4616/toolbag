@@ -25,7 +25,7 @@ try:
 
     vim.command('call inputsave()')
     try:
-        vim.command("let user_input = input('Fuzzy filesearch: ')")
+        vim.command("let user_input = input('Find files matching string: ')")
         vim.command('call inputrestore()')
         search_string = vim.eval('user_input')
     except KeyboardInterrupt:
@@ -79,7 +79,7 @@ try:
             reverse=True
         )]
 
-        vim.command("let l:toReturn = {}".format(to_return))
+        vim.command("let l:toReturn = {0}".format(to_return))
     else:
         # User didn't enter any input.
         pass

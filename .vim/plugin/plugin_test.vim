@@ -90,7 +90,8 @@ if filereadable(s:ProjectWorkingDirectory . s:ProjectCompletionsFileName)
     execute "set dictionary=" . s:ProjectCompletionsFile
 else
     " No .project_completions file in the current working directory.
-    echom "Could not find " . s:ProjectCompletionsFile
+    " TODO: Do we need to do anything to handle this?
+    " echom "Could not find " . s:ProjectCompletionsFile
 endif
 
 
