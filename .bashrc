@@ -1,18 +1,15 @@
-alias ls='ls --color=auto'
 alias ll='ls -Gplh'
-alias la='ls -Galph'
-alias l='ls -Gaph'
+alias la='ls -al -Gph'
+alias l='ls -Gph'
 alias tree='tree -C'
 alias em='emacs'
-alias octalperms='stat -c "%a %n"'
 
-export PATH=/usr/local/bin:/usr/local/share/python:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
-
-# --- settings ---
-export EDITOR="vi"
+export GOPATH=$HOME/go
+export EDITOR="emacs"
 
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -62,3 +59,6 @@ PS1="|\[\033[1;34m\]\$(git_branch) \[\033[1;34m\]\u\[\033[0m\] @ \[\033[1;35m\]\
 
 stty werase undef
 bind '"\C-w": backward-kill-word'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
