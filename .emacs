@@ -22,11 +22,13 @@
 ;; (global-set-key (kbd "") 'er/expand-region)
 
 ;; Set up auto-complete.
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-delay 0.2)
+;; (require 'auto-complete)
+;; (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (setq ac-delay 0.2)
+;; (add-to-list 'ac-user-dictionary-files (concat default-directory ".project_completions"))
+;; (ac-clear-dictionary-cache)
 
 ;; Autoload actionscript-mode.
 (autoload 'actionscript-mode "actionscript-mode" "Major mode for editing ActionScript." t)
@@ -194,7 +196,8 @@
 (global-set-key (kbd "<C-return>") 'newline)
 
 ;; Make autocomplete feature use a better shortcut
-(global-set-key (kbd "M-SPC") 'dabbrev-expand)
+;; (global-set-key (kbd "M-SPC") 'dabbrev-expand)
+(global-set-key (kbd "M-SPC") 'hippie-expand)
 
 ;; Make dabbrev-expand respect case...
 (setq dabbrev-case-fold-search nil)
