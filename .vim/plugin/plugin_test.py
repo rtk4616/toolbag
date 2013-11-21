@@ -33,8 +33,9 @@ try:
         pass
 
     if search_string:
-        regex_string = ".*?".join([re.escape(char) for char in search_string])
-        the_regex = re.compile(regex_string)
+        # regex_string = ".*?".join([re.escape(char) for char in search_string])
+        # regex_string = re.escape(search_string)
+        the_regex = re.compile(search_string)
 
         for root, dirnames, filenames in os.walk('.', topdown=True):
             for ignored_dir in ignored_directories:
