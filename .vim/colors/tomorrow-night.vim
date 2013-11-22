@@ -468,5 +468,6 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 endif
 
 hi Todo ctermbg=none ctermfg=196 cterm=bold
+hi Visual ctermbg=197 ctermfg=255 cterm=None
 
 set background=dark
