@@ -12,7 +12,7 @@
 [mergetool]
     # Setting "prompt" to true because I like to do merges manually. If I
     # accidentally try to merge with a tool, seeing this prompt will alert me,
-    # and I'll be able to ^c out, and do it manually.
+    # and I'll be able to ^C out, and do it manually.
 	prompt = true
 
 [difftool]
