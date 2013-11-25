@@ -18,8 +18,8 @@ with open(fullpath) as f:
     for linenum, line in enumerate(lines):
         # if re.compile(r"^(class|def|func|\(defun)").search(line):
         if re.compile(r"^(class |def |func\|\(defun )").search(line):
-            print "{} is on line {} of {}".format(
-                line.split(" ")[1],
+            print "{}\n    ...on line {} of {}".format(
+                line.split(" ", 1)[1].replace(":", ""),
                 linenum+1,
                 filename,
             )
