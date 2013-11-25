@@ -1,6 +1,6 @@
 " If the user's version of Vim doesn't support Python, disable the plugin.
 if !has('python')
-    echom "Python not supported in this instance of Vim... Disabling plugin!"
+    echom "Python not supported in this instance of Vim... Disabling MikeFuzzyFind plugin!"
     finish
 endif
 
@@ -33,8 +33,8 @@ function! FindFileClose()
 endfunction
 
 
-function! PluginTest()
-    " Run the Python file
+function! MikeFileFinder()
+    " Run the Python file.
     execute "pyfile " . s:PythonScriptToImport
 
     " Set up a new split window, 30 lines tall, at the bottom of the screen.
@@ -59,13 +59,4 @@ function! PluginTest()
     noremap <silent> <buffer> o        :call FindFileOpen()<CR>
     map     <silent> <buffer> <CR>     :call FindFileOpenClose()<CR>
     map     <silent> <buffer> <C-c>    :call FindFileClose()<CR>
-
-    " echom "Vim was initially opened at " . s:ProjectWorkingDirectory
-
-    " Here's how you would see if there is a file in the current working directory.
-    " if filereadable(s:ProjectWorkingDirectory . "/" . ".MikeTest")
-    "     echom ".MikeTest exists in this directory!"
-    " else
-    "     echom "No .MikeTest file in this directory!"
-    " endif
 endfunc

@@ -1,0 +1,37 @@
+" If the user's version of Vim doesn't support Python, disable the plugin.
+if !has('python')
+    echom "Python not supported in this instance of Vim... Disabling MikeSaveSymbolsToDict plugin!"
+    finish
+endif
+
+" The directory the user was in when they initially opened Vim.
+let g:MikeProjectWorkingDirectory = getcwd() . "/"
+" The name of the completions dict file we'll use.
+let s:ProjectCompletionsFileName = ".project_completions"
+" The full path to the completions dict file.
+let s:ProjectCompletionsFile = s:ProjectWorkingDirectory . s:ProjectCompletionsFileName
+
+" If there is a .project_completions file in the current working directory...
+if filereadable(s:ProjectWorkingDirectory . s:ProjectCompletionsFileName)
+    " ...use dictionaries in completions...
+    execute "set complete -=k complete+=k"
+    " .. and use the .project_completions file as a completion dictionary.
+    execute "set dictionary=" . g:MikeProjectWorkingDirectory
+else
+    " No .project_completions file in the current working directory.
+    " TODO: Do we need to do anything to handle this?
+    " echom "Could not find " . s:ProjectCompletionsFile
+endif
+
+" Determine the location of the Python file we need to call for this plugin. We
+" need to do this at the script level, and not inside a function, or it gives
+" weird results.
+let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/MikeSaveSymbolsToDict.py"
+
+echom "Vim was initially opened at " . g:MikeProjectWorkingDirectory
+
+function! SaveSymbolsToDict()
+    " Run the Python file.
+    echom "about to execute " . s:PythonScriptToImport
+    execute "pyfile " . s:PythonScriptToImport
+endfunc
