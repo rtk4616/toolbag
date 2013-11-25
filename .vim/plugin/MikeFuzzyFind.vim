@@ -22,7 +22,7 @@ function! FindFileClose()
 endfunction
 
 " Need to do this at the script level, and not inside a function, or it gives weird results.
-let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/plugin_test.py"
+let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/MikeFuzzyFind.py"
 
 function! PluginTest()
 
