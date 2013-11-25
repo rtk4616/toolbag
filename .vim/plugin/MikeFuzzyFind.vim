@@ -5,6 +5,13 @@ if !has('python')
 endif
 
 
+" Determine the location of the Python file we need to call for this plugin. We
+" need to do this at the script level, and not inside a function, or it gives
+" weird results.
+let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/MikeFuzzyFind.py"
+
+
+" Utility function for opening a file from the results list.
 function! FindFileOpen()
     let l:file_path = getline(line('.'))
     wincmd k
@@ -12,23 +19,25 @@ function! FindFileOpen()
     wincmd j
 endfunction
 
+
+" Utility function for opening a file and closing the results list.
 function! FindFileOpenClose()
     call FindFileOpen()
     call FindFileClose()
 endfunction
 
+
+" Utility function to close the results list.
 function! FindFileClose()
     bdelete "Find file (*"
 endfunction
 
-" Need to do this at the script level, and not inside a function, or it gives weird results.
-let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/MikeFuzzyFind.py"
 
 function! PluginTest()
-
-    " python sys.argv = []
+    " Run the Python file
     execute "pyfile " . s:PythonScriptToImport
 
+    " Set up a new split window, 30 lines tall, at the bottom of the screen.
     setl splitbelow
     exec 'silent! 30 new "Search Results"'
     setl noshowcmd
@@ -59,8 +68,4 @@ function! PluginTest()
     " else
     "     echom "No .MikeTest file in this directory!"
     " endif
-
 endfunc
-
-" TODO: I don't think we need this... Delete when confirmed.
-" command! MikePlugin call PluginTest()
