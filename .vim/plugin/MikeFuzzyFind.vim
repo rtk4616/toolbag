@@ -1,6 +1,6 @@
 " If the user's version of Vim doesn't support Python, disable the plugin.
 if !has('python')
-    echom "Python not supported in this instance of Vim... Disabling MikeFuzzyFind plugin!"
+    echom "Python not supported in this instance of Vim... Disabling " . expand('<sfile>:.')
     finish
 endif
 
