@@ -24,6 +24,8 @@ call AddCompletion(  '<ol',      s:NONE,     "></ol>\<LEFT>\<LEFT>\<LEFT>\<LEFT>
 call AddCompletion(  '<ol>',     '</ol>',    "\<CR>\<ESC>O\<TAB>",                                                 0    )
 call AddCompletion(  '<ul',      s:NONE,     "></ul>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                          0    )
 call AddCompletion(  '<ul>',     '</ul>',    "\<CR>\<ESC>O\<TAB>",                                                 0    )
+call AddCompletion(  '<pre',     s:NONE,     "></pre>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                  0    )
+call AddCompletion(  '<pre>',    '</pre>',   "\<CR>\<ESC>O\<TAB>",                                                 0    )
 call AddCompletion(  '<html',    s:NONE,     "></html>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )
 call AddCompletion(  '<html>',   '</html>',  "\<CR>\<ESC>O\<TAB>",                                                 0    )
 call AddCompletion(  '<head',    s:NONE,     "></head>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )

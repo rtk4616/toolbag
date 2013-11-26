@@ -7,16 +7,16 @@ endif
 " The directory the user was in when they initially opened Vim.
 let g:MikeProjectWorkingDirectory = getcwd() . "/"
 " The name of the completions dict file we'll use.
-let s:ProjectCompletionsFileName = ".project_completions"
+let g:MikeProjectCompletionsFileName = ".project_completions"
 " The full path to the completions dict file.
-let s:ProjectCompletionsFile = s:ProjectWorkingDirectory . s:ProjectCompletionsFileName
+let s:ProjectCompletionsFile = g:MikeProjectWorkingDirectory . g:MikeProjectCompletionsFileName
 
 " If there is a .project_completions file in the current working directory...
-if filereadable(s:ProjectWorkingDirectory . s:ProjectCompletionsFileName)
+if filereadable(g:MikeProjectWorkingDirectory . g:MikeProjectCompletionsFileName)
     " ...use dictionaries in completions...
     execute "set complete -=k complete+=k"
     " .. and use the .project_completions file as a completion dictionary.
-    execute "set dictionary=" . g:MikeProjectWorkingDirectory
+    execute "set dictionary=" . s:ProjectCompletionsFile
 else
     " No .project_completions file in the current working directory.
     " TODO: Do we need to do anything to handle this?
@@ -28,7 +28,6 @@ endif
 " weird results.
 let s:PythonScriptToImport = fnamemodify(resolve(expand('<sfile>:p')), ':h') . "/MikeSaveSymbolsToDict.py"
 
-echom "Vim was initially opened at " . g:MikeProjectWorkingDirectory
 
 function! SaveSymbolsToDict()
     " Run the Python file.
