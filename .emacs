@@ -369,9 +369,10 @@
 ;; ================================================================
 
 ;; Indent only with spaces (default 4), never tabs.
-(setq-default standard-indent 4)
-(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default standard-indent 4)
+(setq indent-line-function 'insert-tab)
 
 ;; Use BSD style for formatting.
 (setq c-default-style "bsd"
