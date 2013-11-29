@@ -158,6 +158,7 @@
    ".idea"
    ".git"
    "migrations"
+   "static"
    )
  )
 
