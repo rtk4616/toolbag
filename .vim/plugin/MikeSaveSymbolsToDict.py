@@ -1,9 +1,11 @@
 import os
-import re
 import vim
+
+import mike_util
 
 filename = "mike_test.py"
 cwd = os.path.realpath(".")
+# Looking for filename in the home directory.
 fullpath = os.path.realpath(
     os.path.join(
         cwd,
@@ -15,10 +17,10 @@ fullpath = os.path.realpath(
 )
 
 for linenum, line in enumerate(vim.current.buffer):
-    if re.compile(r"^(class |def |func|\(defun )").search(line):
-        function_name = line.split(" ", 1)[1].split("(", 1)[0]
+    to_return = extract_symbol(line)
+    if to_return:
         print "{}, {}, {}".format(
-            function_name,
+            to_return,
             filename,
             linenum+1,
         )
