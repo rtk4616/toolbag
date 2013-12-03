@@ -165,6 +165,7 @@ autocmd FileType markdown setlocal ts=4 sts=4 sw=4
 " they will get superceeded.
 " ===================================================================================================
 autocmd BufRead,BufNewFile *rc set ft=sh
+autocmd BufRead,BufNewFile Dockerfile set ft=sh
 autocmd BufRead,BufNewFile .vimrc set ft=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set ft=cpp
 autocmd BufRead,BufNewFile *.cl set ft=cpp
