@@ -164,7 +164,6 @@ autocmd FileType markdown setlocal ts=4 sts=4 sw=4
 " File-specific rules should go after the *rc file rule, or else
 " they will get superceeded.
 " ===================================================================================================
-autocmd BufRead,BufNewFile *textile set ft=textile
 autocmd BufRead,BufNewFile *rc set ft=sh
 autocmd BufRead,BufNewFile .vimrc set ft=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set ft=cpp
@@ -176,6 +175,7 @@ autocmd BufRead,BufNewFile .tm_properties set ft=sh
 autocmd BufRead,BufNewFile *.go set ft=go
 autocmd BufRead,BufNewFile *.json set ft=javascript
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
+autocmd BufRead,BufNewFile *textile set ft=textile
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
