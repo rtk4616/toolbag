@@ -71,6 +71,7 @@ let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
 
 " Set folding options.
 set foldmethod=indent
+set foldlevel=99
 set nofoldenable
 
 
