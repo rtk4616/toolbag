@@ -6,39 +6,44 @@ function! AddCompletion (left, right, completion, restore)
 endfunction
 let s:NONE = ""
 " Table of completions...
-"                    Left        Right       Complete with...                                                     Restore
-"                    ==========  ==========  ===================================================================  =======
-call AddCompletion(  '{',        s:NONE,     "}",                                                                  1    )
-call AddCompletion(  '{',        '}',        "\<CR>\<C-D>\<ESC>O",                                                 0    )
-call AddCompletion(  '\[',       s:NONE,     "]",                                                                  1    )
-call AddCompletion(  '\[',       '\]',       "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '(',        s:NONE,     ")",                                                                  1    )
-call AddCompletion(  '(',        ')',        "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<',        s:NONE,     ">",                                                                  1    )
-call AddCompletion(  '<a',       s:NONE,     " href=\"\"></a>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )
-call AddCompletion(  '<p',       s:NONE,     "></p>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                                  0    )
-call AddCompletion(  '<p>',      '</p>',     "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<li',      s:NONE,     "></li>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                          0    )
-call AddCompletion(  '<li>',     '</li>',    "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<ol',      s:NONE,     "></ol>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                          0    )
-call AddCompletion(  '<ol>',     '</ol>',    "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<ul',      s:NONE,     "></ul>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                          0    )
-call AddCompletion(  '<ul>',     '</ul>',    "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<pre',     s:NONE,     "></pre>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",                  0    )
-call AddCompletion(  '<pre>',    '</pre>',   "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<html',    s:NONE,     "></html>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )
-call AddCompletion(  '<html>',   '</html>',  "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<head',    s:NONE,     "></head>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )
-call AddCompletion(  '<head>',   '</head>',  "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<title',   s:NONE,     "></title>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",  0    )
-call AddCompletion(  '<title>',  '</title>', "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<body',    s:NONE,     "></body>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>\<LEFT>",          0    )
-call AddCompletion(  '<body>',   '</body>',  "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '<',        '>',        "\<CR>\<ESC>O\<TAB>",                                                 0    )
-call AddCompletion(  '"',        s:NONE,     '"',                                                                  1    )
-call AddCompletion(  '"',        '"',        "\\n",                                                                1    )
-call AddCompletion(  "'",        s:NONE,     "'",                                                                  1    )
-call AddCompletion(  "'",        "'",        s:NONE,                                                               0    )
+"                    Left            Right            Complete with...       Move left this many spaces when done
+"                    ==============  ===============  =====================  ====================================
+call AddCompletion(  '{',            s:NONE,          "}",                    1    )
+call AddCompletion(  '{',            '}',             "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '\[',           s:NONE,          "]",                    1    )
+call AddCompletion(  '\[',           '\]',            "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '(',            s:NONE,          ")",                    1    )
+call AddCompletion(  '(',            ')',             "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<',            s:NONE,          ">",                    1    )
+call AddCompletion(  '<a',           s:NONE,          " href=\"\"></a>",      6    )
+call AddCompletion(  '<p',           s:NONE,          "></p>",                4    )
+call AddCompletion(  '<p>',          '</p>',          "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<li',          s:NONE,          "></li>",               5    )
+call AddCompletion(  '<li>',         '</li>',         "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<ol',          s:NONE,          "></ol>",               5    )
+call AddCompletion(  '<ol>',         '</ol>',         "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<ul',          s:NONE,          "></ul>",               5    )
+call AddCompletion(  '<ul>',         '</ul>',         "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<pre',         s:NONE,          "></pre>",              6    )
+call AddCompletion(  '<pre>',        '</pre>',        "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<html',        s:NONE,          "></html>",             7    )
+call AddCompletion(  '<html>',       '</html>',       "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<head',        s:NONE,          "></head>",             7    )
+call AddCompletion(  '<head>',       '</head>',       "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<blockquote',  s:NONE,          "></blockquote>",       13   )
+call AddCompletion(  '<blockquote>', '</blockquote>', "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<title',       s:NONE,          "></title>",            8    )
+call AddCompletion(  '<title>',      '</title>',      "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<body',        s:NONE,          "></body>",             7    )
+call AddCompletion(  '<body>',       '</body>',       "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '<',            '>',             "\<CR>\<ESC>O\<TAB>",   0    )
+call AddCompletion(  '"',            s:NONE,          '"',                    1    )
+call AddCompletion(  "'",            s:NONE,          "'",                    1    )
+call AddCompletion(  "'",            "'",             s:NONE,                 0    )
+
+" TODO: I dont' think I need this one...
+" call AddCompletion(  '"',            '"',             "\\n",                  2    )
+
 
 " Implement smart completion magic...
 function! SmartComplete ()
@@ -55,20 +60,14 @@ function! SmartComplete ()
         return "\<TAB>"
     endif
 
-    " How to restore the cursor position...
-    let cursor_back = "\<C-O>:call setpos('.'," . string(cursorpos) . ")\<CR>"
-
     " If a matching smart completion has been specified, use that...
     for [left, right, completion, restore] in s:completions
         let pattern = left . curr_pos_pat . right
         if curr_line =~ pattern
-            " Code around bug in setpos() when used at EOL...
-            if cursorcol == strlen(curr_line)+1 && strlen(completion)==1
-                let cursor_back = "\<LEFT>"
+            if restore
+                return completion . repeat("\<LEFT>", restore)
             endif
-
-            " Return the completion...
-            return completion . (restore ? cursor_back : "")
+            return completion
         endif
     endfor
 
