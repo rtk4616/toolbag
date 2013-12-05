@@ -69,6 +69,10 @@ set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
 " let g:netrw_list_hide= '.*\.pyc$'
 
+" Set folding options.
+set foldmethod=indent
+set nofoldenable
+
 
 " ===================================================================================================
 " BEGIN Style settings
