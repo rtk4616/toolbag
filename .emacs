@@ -89,12 +89,12 @@
 ;; (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
-;; Ignore extensions in completion
+;; Ignore extensions in completion.
 (setq completion-ignored-extensions
       '(".o" ".lo" ".mh" ".elc" "~" ".bin" ".lbin" ".fasl" ".dvi" ".toc" ".aux"
         ".lof" ".blg" ".bbl" ".glo" ".idx" ".lot" ".pyc"))
 
-;; Load yaml-mode
+;; Load yaml-mode.
 (require 'yaml-mode)
 
 ;; Load the Autopair module.
