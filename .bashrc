@@ -1,14 +1,21 @@
+# Aliases.
 alias ll='ls -Gplh'
 alias la='ls -al -Gph'
 alias l='ls -Gph'
 alias tree='tree -C'
 alias em='emacs'
 
+# Paths.
 export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
-export GOPATH=$HOME/go
+export GOPATH=$HOME/go_appengine
+
+# Misc.
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 export EDITOR="emacs"
 
 source /usr/local/bin/virtualenvwrapper.sh
