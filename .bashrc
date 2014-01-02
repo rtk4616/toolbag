@@ -1,3 +1,9 @@
+# iTerm2 stuff.
+echo -e -n "\033];MacBook Pro\007"
+echo -e -n "\033]6;1;bg;red;brightness;255\a"
+echo -e -n "\033]6;1;bg;green;brightness;0\a"
+echo -e -n "\033]6;1;bg;blue;brightness;255\a"
+
 # Aliases.
 alias ll='ls -Gplh'
 alias la='ls -al -Gph'
