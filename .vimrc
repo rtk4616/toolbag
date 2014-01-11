@@ -36,7 +36,7 @@ set ic
 set is
 
 " Show the tab bar by default, even if we only have one tab open.
-set showtabline=4
+set showtabline=2
 
 " Default tab stop to 4 chars.
 set tabstop=4
