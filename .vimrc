@@ -2,6 +2,9 @@
 " BEGIN Misc settings
 " ===================================================================================================
 
+" Better word wrapping.
+set linebreak
+
 " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
 set noautochdir
 
