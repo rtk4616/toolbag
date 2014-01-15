@@ -1,81 +1,32 @@
 " ===================================================================================================
 " BEGIN Misc settings
 " ===================================================================================================
-
-" Better word wrapping.
-set linebreak
-
-" Keep the working directory Vim was opened from, and don't base it on the currently opened file.
-set noautochdir
-
-" Use only spaces for tabs.
-set expandtab
-
-" Enable line numbers.
-set number
-
-" Make the window title be the filename.
-set title
-
-" Don't do that sassy smart-indenting.
-set nosmartindent
-
-" Don't do that sassy auto-indenting for C code.
-set nocindent
-
-" Indentation same as previous line when inserting a new line.
-set autoindent
-
-" Wrap text at window boundary by default.
-set wrap
-
-" Highlight matches while searching.
-set hlsearch
-
-" Ignore case while searching, by default.
-set ic
-
-" Enable incremental search by default.
-set is
-
-" Show the tab bar by default, even if we only have one tab open.
-set showtabline=2
-
-" Default tab stop to 4 chars.
-set tabstop=4
-
-" Default soft tab stop to 4 chars.
-set softtabstop=4
-
-" Default shiftwidth to 4 chars.
-set shiftwidth=4
-
-" Set backspacing mode 2. This allows backspacing with no restrictions.
-set bs=2
-
-" 50 tabs at any given time max. The rest get opened as buffers.
-set tabpagemax=50
-
-" Show which mode we're currently in.
-set showmode
-
-" Enable highlighting of the current line.
-set cursorline
-
-" Don't select first autocompletion, and show the menu even if there is only one result.
-set completeopt=longest,menuone
-
-" Set up ignored files when searching...
-set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**
-
-" And when in the netrw browser.
-let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
-" let g:netrw_list_hide= '.*\.pyc$'
-
-" Set folding options.
-set foldmethod=indent
-set foldlevel=99
-set nofoldenable
+set linebreak                                             " Better word wrapping.
+set noautochdir                                           " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
+set expandtab                                             " Use only spaces for tabs.
+set number                                                " Enable line numbers.
+set title                                                 " Make the window title be the filename.
+set nosmartindent                                         " Don't do that sassy smart-indenting.
+set nocindent                                             " Don't do that sassy auto-indenting for C code.
+set autoindent                                            " Indentation same as previous line when inserting a new line.
+set wrap                                                  " Wrap text at window boundary by default.
+set hlsearch                                              " Highlight matches while searching.
+set ic                                                    " Ignore case while searching, by default.
+set is                                                    " Enable incremental search by default.
+set showtabline=2                                         " Show the tab bar by default, even if we only have one tab open.
+set tabstop=4                                             " Default tab stop to 4 chars.
+set softtabstop=4                                         " Default soft tab stop to 4 chars.
+set shiftwidth=4                                          " Default shiftwidth to 4 chars.
+set bs=2                                                  " Set backspacing mode 2. This allows backspacing with no restrictions.
+set tabpagemax=50                                         " 50 tabs at any given time max. The rest get opened as buffers.
+set showmode                                              " Show which mode we're currently in.
+set cursorline                                            " Enable highlighting of the current line.
+set completeopt=longest,menuone                           " Don't select first autocompletion, and show the menu even if there is only one result.
+set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**    " Set up ignored files when searching...
+let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
+set foldmethod=indent                                     " Set folding options.
+set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
+set nofoldenable                                          " Disable automatic folding.
 
 
 " ===================================================================================================
