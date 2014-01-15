@@ -2,6 +2,9 @@
 ;; Initial setup
 ;; ==============================================================
 
+;; Set the default directory to be the user's home directory if we opened the GUI version of Emacs.
+(if window-system (setq default-directory "~"))
+
 ;; Highlight text selection.
 (transient-mark-mode 1)
 
