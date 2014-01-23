@@ -11,6 +11,9 @@
 ;; Delete selected text when you start typing.
 (delete-selection-mode 1)
 
+;; Enable line numbers by default.
+(global-linum-mode t)
+
 ;; Better word-wrapping.
 ;; (global-visual-line-mode t) ; Wraps at words, rebinds keys to operated on visual lines.
 (setq-default word-wrap t)     ; Wraps at words, but preserves original key behavior.
