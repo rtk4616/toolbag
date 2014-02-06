@@ -66,7 +66,7 @@
   '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
     (js2-mode  "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
     (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5" "hbs"))
 (multi-web-global-mode 1)
 
 ;; Make go-mode autoload for .go files.
