@@ -1,5 +1,6 @@
 try:
     import fnmatch
+    import mmap
     import os
     import re
     import sys
@@ -46,23 +47,30 @@ try:
                 if file_name.endswith(ignored_extensions):
                     continue
 
-                if the_regex.search(file_name.lower()):
+                with open(file_name) as f:
+                    current_line = 0
+                    for line in f:
+                        current_line += 1
+                        if the_regex.search(line):
+
                     file_path = os.path.realpath(os.path.join(
                         os.getcwd(),
                         root,
                         file_name,
                     ))
-                    matches.append((
-                        file_name,
-                        file_path.replace(
-                            os.path.abspath("."),
-                            ""
-                        ).replace(
+                    matches.append(
+                        (
                             file_name,
-                            ""
-                        ),
-                        file_path.replace(" ", "\\ "),
-                    ))
+                            file_path.replace(
+                                os.path.abspath("."),
+                                ""
+                            ).replace(
+                                file_name,
+                                ""
+                            ),
+                            file_path.replace(" ", "\\ "),
+                        )
+                    )
 
         to_return = []
         for match_tuple in matches:
