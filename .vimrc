@@ -51,6 +51,9 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===================================================================================================
 
+" Set space to open and close folds in normal mode.
+nnoremap <space> za
+
 " List all files in all subdirectories by partial name.
 nnoremap <Leader>g :call MikeFileFinder()<CR>
 
