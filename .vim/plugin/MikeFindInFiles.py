@@ -26,7 +26,7 @@ try:
 
     vim.command('call inputsave()')
     try:
-        vim.command("let user_input = input('Find files matching string: ')")
+        vim.command("let user_input = input('Search for string in files: ')")
         vim.command('call inputrestore()')
         search_string = vim.eval('user_input')
     except KeyboardInterrupt:
@@ -53,24 +53,27 @@ try:
                         current_line += 1
                         if the_regex.search(line):
 
-                    file_path = os.path.realpath(os.path.join(
-                        os.getcwd(),
-                        root,
-                        file_name,
-                    ))
-                    matches.append(
-                        (
-                            file_name,
-                            file_path.replace(
-                                os.path.abspath("."),
-                                ""
-                            ).replace(
-                                file_name,
-                                ""
-                            ),
-                            file_path.replace(" ", "\\ "),
-                        )
-                    )
+                            file_path = os.path.realpath(
+                                os.path.join(
+                                    os.getcwd(),
+                                    root,
+                                    file_name,
+                                )
+                            )
+
+                            matches.append(
+                                (
+                                    line,
+                                    file_path.replace(
+                                        os.path.abspath("."),
+                                        ""
+                                    ).replace(
+                                        file_name,
+                                        ""
+                                    ),
+                                    file_path.replace(" ", "\\ "),
+                                )
+                            )
 
         to_return = []
         for match_tuple in matches:
@@ -83,10 +86,13 @@ try:
                 match_tuple,
             ))
 
-        to_return = [i[1][2] for i in sorted(to_return,
-            key=lambda x: x[0],
-            reverse=True
-        )]
+        to_return = [
+            i[1][2] for i in sorted(
+                to_return,
+                key=lambda x: x[0],
+                reverse=True
+            )
+        ]
 
         vim.command("let l:toReturn = {0}".format(to_return))
     else:

@@ -55,13 +55,16 @@ autocmd Syntax * syntax sync minlines=1000
 nnoremap <space> za
 
 " List all files in all subdirectories by partial name.
+nnoremap <Leader>f :call MikeFindInFiles()<CR>
+
+" List all files in all subdirectories by partial name.
 nnoremap <Leader>g :call MikeFileFinder()<CR>
 
 " TODO: Delete this!
 nnoremap <Leader>x :call SaveSymbolsToDict()<CR>
 
 " Easy binding to vimgrep in all files.
-nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
+" nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 
 " Easy binding to vimgrep in all files.
 nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
