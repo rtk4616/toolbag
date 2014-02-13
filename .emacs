@@ -38,6 +38,17 @@
 ;; (global-set-key (kbd "") 'er/expand-region)
 
 ;; Hippie-expand stuff.
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         ;; try-expand-all-abbrevs
+                                         ;; try-expand-list
+                                         ;; try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
+
 ;; TODO: Work on this more.
 ;; (defun MikeExpand (arg)
 ;;   (message arg))
@@ -136,6 +147,7 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("rc$" . sh-mode))
 (add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
 
