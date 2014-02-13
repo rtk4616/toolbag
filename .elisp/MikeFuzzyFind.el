@@ -143,24 +143,14 @@
 
 
 ;; A list of ignored file names.
-(setq
- mike-ignore-files
- '(
-   ".pyc$"
-   )
- )
+(setq mike-ignore-files '(".pyc$"))
 
 ;; A list of ignored directory names.
-(setq
- mike-ignore-directories
- '(
-   "ve"
-   ".idea"
-   ".git"
-   "migrations"
-   "static"
-   )
- )
+(setq mike-ignore-directories '("ve"
+                                ".idea"
+                                ".git"
+                                "migrations"
+                                "static"))
 
 ;; Get the alternation for a list of files.
 (setq ignore-files-regex-string (get-regex-alternation-from-list mike-ignore-files))
