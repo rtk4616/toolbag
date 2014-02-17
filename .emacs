@@ -318,10 +318,23 @@
 (setq-default fill-column 79)
 
 ;; Put autosave and backup files in the system temp folder.
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;;
+;; NOTE: Commenting this out, since I disable saving backups entirely in the
+;; lines below. Just leaving it in here for reference/if I ever want to go back
+;; to using backup files.
+;;
+;; (setq backup-directory-alist
+;;       `((".*" . ,temporary-file-directory)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,temporary-file-directory t)))
+
+;; Disable saving backup files. Have never made use of this functionality.
+;; personally.
+(setq make-backup-files nil)
+
+;; Disable auto-save. Have never made use of this functionality.
+(setq auto-save-default nil)
+
 
 ;; Add highlighting of TODO, BUG, NOTE, and FIXME.
 (add-hook 'prog-mode-hook

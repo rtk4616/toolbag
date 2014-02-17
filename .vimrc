@@ -27,7 +27,9 @@ let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netr
 set foldmethod=indent                                     " Set folding options.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set nofoldenable                                          " Disable automatic folding.
-
+set viminfo=                                              " No viminfo file.
+set nobackup                                              " No backup file.
+set noswapfile                                            " No swap file.
 
 " ===================================================================================================
 " BEGIN Style settings
@@ -50,6 +52,10 @@ autocmd Syntax * syntax sync minlines=1000
 " ===================================================================================================
 " BEGIN Key bindings
 " ===================================================================================================
+
+" Better shortcut for wrapping lines.
+nnoremap Q gww
+vnoremap Q gw
 
 " Set space to open and close folds in normal mode.
 nnoremap <space> za
