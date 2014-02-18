@@ -145,6 +145,7 @@ autocmd BufRead,BufNewFile *.sls set ft=yaml
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile .tm_properties set ft=sh
 autocmd BufRead,BufNewFile *.go set ft=go
+autocmd BufRead,BufNewFile *.hbs set ft=html
 autocmd BufRead,BufNewFile *.json set ft=javascript
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 autocmd BufRead,BufNewFile *textile set ft=textile
