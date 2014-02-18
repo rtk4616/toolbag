@@ -20,6 +20,13 @@ function! FindFileOpen()
     wincmd j
 endfunction
 
+" Utility function for opening a file from the results list.
+function! FindFileOpenNewTab()
+    let l:file_path = getline(line('.'))
+    exec "tabe ". l:file_path
+    exec "normal gT"
+endfunction
+
 
 " Utility function for opening a file and closing the results list.
 function! FindFileOpenClose()
@@ -57,7 +64,7 @@ function! MikeFileFinder()
     setl nomodifiable
     setl noinsertmode
 
-    noremap <silent> <buffer> o        :call FindFileOpen()<CR>
+    noremap <silent> <buffer> o        :call FindFileOpenNewTab()<CR>
     map     <silent> <buffer> <CR>     :call FindFileOpenClose()<CR>
     map     <silent> <buffer> <C-c>    :call FindFileClose()<CR>
 endfunc
@@ -86,7 +93,7 @@ function! MikeFindInFiles()
     setl nomodifiable
     setl noinsertmode
 
-    noremap <silent> <buffer> o        :call FindFileOpen()<CR>
+    noremap <silent> <buffer> o        :call FindFileOpenNewTab()<CR>
     map     <silent> <buffer> <CR>     :call FindFileOpenClose()<CR>
     map     <silent> <buffer> <C-c>    :call FindFileClose()<CR>
 endfunc

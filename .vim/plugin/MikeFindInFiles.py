@@ -24,6 +24,7 @@ try:
 
     search_string = None
 
+    # Get some input from the user.
     vim.command('call inputsave()')
     try:
         vim.command("let user_input = input('Search for string in files: ')")
@@ -40,10 +41,12 @@ try:
 
         for root, dirnames, filenames in os.walk('.', topdown=True):
             for ignored_dir in ignored_directories:
+                # Remove dirnames that we don't want to recurse on.
                 if ignored_dir in dirnames:
                     dirnames.remove(ignored_dir)
 
             for file_name in filenames:
+                # If the file has an extension that we are to ignore, skip it.
                 if file_name.endswith(ignored_extensions):
                     continue
 
@@ -52,7 +55,7 @@ try:
                     for line in f:
                         current_line += 1
                         if the_regex.search(line):
-
+                            # Get the full path of the file.
                             file_path = os.path.realpath(
                                 os.path.join(
                                     os.getcwd(),
@@ -61,9 +64,14 @@ try:
                                 )
                             )
 
+                            # Append a tuple containing the following info to
+                            # the list of matches:
                             matches.append(
                                 (
+                                    # The full line in which the match was found.
                                     line,
+
+                                    # The file path, relative to the current working directory.
                                     file_path.replace(
                                         os.path.abspath("."),
                                         ""
@@ -71,33 +79,59 @@ try:
                                         file_name,
                                         ""
                                     ),
+
+                                    # The full filepath, with spaces escaped.
                                     file_path.replace(" ", "\\ "),
                                 )
                             )
 
         to_return = []
         for match_tuple in matches:
-            to_return.append((
-                SequenceMatcher(
-                    lambda x: x == " ",
-                    search_string,
-                    match_tuple[0],
-                ).ratio(),
-                match_tuple,
-            ))
+            # Append a tuple with the following info to the list:
+            to_return.append(
+                (
+                    # The SequenceMatcher ratio, rankin this line against the
+                    # original search string.
+                    SequenceMatcher(
+                        # A one-argument function that takes a sequence element
+                        # and returns true iff the element is junk.
+                        lambda x: x == " ",
+                        # The original string we searched for.
+                        search_string,
+                        # The full line on which the match was found.
+                        match_tuple[0],
+                    ).ratio(),
 
+                    # The match tuple itself, containing:
+                    #     [0] The full line.
+                    #     [1] The relative file path.
+                    #     [2] The full file path, with strings escaped.
+                    match_tuple,
+                )
+            )
+
+        # Create and return a new list, based off a sorted and doctored version
+        # of the original.
         to_return = [
+            # i[1][2] is the full file path, with strings escaped.
             i[1][2] for i in sorted(
+                # The original list.
                 to_return,
+                # A function returning the value to sort on. In this case, the
+                # first index of the tuple in the list, which is the
+                # SequenceMatcher ratio.
                 key=lambda x: x[0],
+                # Reverse ordering.
                 reverse=True
             )
         ]
 
+        # Pass the list back to the vimscript file.
         vim.command("let l:toReturn = {0}".format(to_return))
     else:
         # User didn't enter any input.
         pass
 
 except ImportError, e:
+    # There was an error with the imports for this script.
     print "Error while importing from Python within plugin: {}".format(e)
