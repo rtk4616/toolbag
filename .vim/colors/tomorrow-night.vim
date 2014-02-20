@@ -470,4 +470,17 @@ endif
 hi Todo ctermbg=none ctermfg=196 cterm=bold
 hi Visual ctermbg=197 ctermfg=255 cterm=None
 
+" Mike Wilkerson additions for Markdown.
+hi MarkdownHeadingDelimiter gui=bold guifg=#F92672 ctermfg=161
+hi markdownBold gui=bold guifg=#6699bb ctermfg=27
+hi markdownItalic guifg=gray25 gui=underline ctermfg=134 gui=underline
+hi markdownUrl guifg=#2fb3a6 ctermfg=175
+hi markdownAutomaticLink guifg=#2fb3a6 ctermfg=175
+hi markdownLinkText guifg=#F92672 ctermfg=161
+hi markdownUrlTitle guifg=#F92672 ctermfg=161
+hi markdownBlockquote guifg=#F92672 gui=bold ctermfg=161 gui=bold
+hi markdownId guifg=#2fb3a6 ctermfg=138
+hi markdownIdDeclaration guifg=#F92672 gui=bold ctermfg=161 gui=bold
+hi markdownListMarker guifg=#F92672 ctermfg=161
+
 set background=dark
