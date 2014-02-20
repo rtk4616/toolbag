@@ -43,10 +43,6 @@ call AddCompletion(  '"',            s:NONE,          '"',                      
 call AddCompletion(  "'",            s:NONE,          "'",                           1    )
 call AddCompletion(  "'",            "'",             s:NONE,                        0    )
 
-" TODO: I dont' think I need this one...
-" call AddCompletion(  '"',            '"',             "\\n",                  2    )
-
-
 " Implement smart completion magic...
 function! SmartComplete ()
     " Remember where we parked...
