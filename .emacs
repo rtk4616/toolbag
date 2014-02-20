@@ -92,7 +92,14 @@
 ;; Load markdown-mode.
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 
-;; Use aspell as the spell-checker
+;; -----------------------------------
+;; Set up aspell as the spell-checker.
+;; -----------------------------------
+;; Path to aspell on Windows.
+;; (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+;; Path to aspell on OSX.
+(add-to-list 'exec-path "/usr/local/bin/")
+;; Set aspell as the ispell program to run.
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "list")
 
