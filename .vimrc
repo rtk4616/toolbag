@@ -148,7 +148,8 @@ autocmd BufRead,BufNewFile *.go set ft=go
 autocmd BufRead,BufNewFile *.hbs set ft=html
 autocmd BufRead,BufNewFile *.json set ft=javascript
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
-autocmd BufRead,BufNewFile *textile set ft=textile
+autocmd BufRead,BufNewFile *.textile set ft=textile
+autocmd BufRead,BufNewFile *.applescript set ft=applescript
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
