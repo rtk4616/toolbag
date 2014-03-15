@@ -50,47 +50,58 @@ try:
                 if file_name.endswith(ignored_extensions):
                     continue
 
-                with open(file_name) as f:
-                    current_line = 0
-                    for line in f:
-                        current_line += 1
-                        if the_regex.search(line):
-                            # Get the full path of the file.
-                            file_path = os.path.realpath(
-                                os.path.join(
-                                    os.getcwd(),
-                                    root,
-                                    file_name,
+                try:
+                    file_path = os.path.realpath(
+                        os.path.join(
+                            os.getcwd(),
+                            root,
+                            file_name,
+                        )
+                    )
+                    with open(file_path) as f:
+                        current_line = 0
+                        for line in f:
+                            current_line += 1
+                            if the_regex.search(line):
+                                # Get the full path of the file.
+
+                                # Append a tuple containing the following info
+                                # to the list of matches:
+                                matches.append(
+                                    (
+                                        # The full line in which the match was
+                                        # found.
+                                        line,
+
+                                        # relative to the current working
+                                        # directory.
+                                        file_path.replace(
+                                            os.path.abspath("."),
+                                            ""
+                                        ).replace(
+                                            file_name,
+                                            ""
+                                        ),
+
+                                        # The full filepath, with spaces
+                                        # escaped.
+                                        file_path.replace(" ", "\\ "),
+
+                                        # The line number on which the match
+                                        # occurred.
+                                        current_line,
+                                    )
                                 )
-                            )
-
-                            # Append a tuple containing the following info to
-                            # the list of matches:
-                            matches.append(
-                                (
-                                    # The full line in which the match was found.
-                                    line,
-
-                                    # The file path, relative to the current working directory.
-                                    file_path.replace(
-                                        os.path.abspath("."),
-                                        ""
-                                    ).replace(
-                                        file_name,
-                                        ""
-                                    ),
-
-                                    # The full filepath, with spaces escaped.
-                                    file_path.replace(" ", "\\ "),
-                                )
-                            )
+                except IOError:
+                    print "IOError on {}".format(file_name)
+                    continue
 
         to_return = []
         for match_tuple in matches:
             # Append a tuple with the following info to the list:
             to_return.append(
                 (
-                    # The SequenceMatcher ratio, rankin this line against the
+                    # [0], the SequenceMatcher ratio, rankin this line against the
                     # original search string.
                     SequenceMatcher(
                         # A one-argument function that takes a sequence element
@@ -102,10 +113,11 @@ try:
                         match_tuple[0],
                     ).ratio(),
 
-                    # The match tuple itself, containing:
-                    #     [0] The full line.
-                    #     [1] The relative file path.
-                    #     [2] The full file path, with strings escaped.
+                    # [1], the match tuple itself, containing:
+                    #     [1][0] The full line.
+                    #     [1][1] The relative file path.
+                    #     [1][2] The full file path, with strings escaped.
+                    #     [1][3] The line number on which the match occurred.
                     match_tuple,
                 )
             )
@@ -113,8 +125,11 @@ try:
         # Create and return a new list, based off a sorted and doctored version
         # of the original.
         to_return = [
-            # i[1][2] is the full file path, with strings escaped.
-            i[1][2] for i in sorted(
+            "{}:{} | {}".format(
+                i[1][2],  # The full file path.
+                i[1][3],  # The line number on which the match occurred.
+                i[1][0].replace(',', ''),  # The full line of text in the file which matched.
+            ).strip() for i in sorted(
                 # The original list.
                 to_return,
                 # A function returning the value to sort on. In this case, the

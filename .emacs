@@ -192,10 +192,29 @@
   (interactive "sSearch for file: ")
   (find-name-dired "." (concat "*" search_string "*")))
 
+(defun MikeGetIndentation ()
+  (interactive)
+  (let (
+        (the-indentation-level (number-to-string (current-indentation)))
+        )
+    )
+
+  5)
+
 
 ;; ==============================================================
 ;; START Keybindings
 ;; ==============================================================
+
+;; Shortcut key for title-casing a word/region.
+(global-set-key "\M-u" 'downcase-word)
+(global-set-key "\M-U" 'upcase-word)
+
+;; Shortcut key for selecting everything at the current indentation.
+(global-set-key "\M-j" 'MikeGetIndentation)
+
+;; Shortcut for selecting an entire paragraph.
+(global-set-key "\M-k" 'mark-paragraph)
 
 ;; Use the default shortcut for regexp isearch to activate custom rgrep.
 (global-set-key "\C-x\C-r" 'MikeGrepForSymbol)

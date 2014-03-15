@@ -52,7 +52,8 @@
 
 (defun insert-directory-files-recursive (directory match maxdepth)
   "Need some documentation about this function here..."
-  (let* ((files-list '())
+  (let* (
+         (files-list '())
          (current-directory-list (directory-files directory t))
          )
 
