@@ -16,7 +16,7 @@ export GOPATH=$HOME/go_appengine
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="vi"
+export EDITOR="emacs"
 
 if ! [ -z "$PS1" ]; then
     # iTerm2 stuff.
