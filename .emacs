@@ -219,9 +219,9 @@
                   (setq to-continue t))
               (setq to-continue nil))))
         ;; Now use the computed start and end values and highlight the region.
-        (goto-char start-pos)
-        (push-mark nil t t)
         (goto-char end-pos)
+        (push-mark nil t t)
+        (goto-char start-pos)
         )
     (message "Nothing indented here to select!")))
 
