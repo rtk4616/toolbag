@@ -194,12 +194,36 @@
 
 (defun MikeGetIndentation ()
   (interactive)
-  (let (
-        (the-indentation-level (number-to-string (current-indentation)))
+  (if (/= 0 (current-indentation))
+      (let ((starting-indentation (current-indentation))
+            (start-pos (line-beginning-position))
+            (end-pos (line-end-position))
+            (to-continue t))
+        ;; Go up as many lines as are at the current indentation level.
+        (save-excursion
+          (while to-continue
+            (previous-line)
+            (if (>= (current-indentation) starting-indentation)
+                (progn
+                  (setq start-pos (line-beginning-position))
+                  (setq to-continue t))
+              (setq to-continue nil))))
+        ;; Go down as many lines as are at the current indentation level.
+        (setq to-continue t)
+        (save-excursion
+          (while to-continue
+            (next-line)
+            (if (>= (current-indentation) starting-indentation)
+                (progn
+                  (setq end-pos (line-end-position))
+                  (setq to-continue t))
+              (setq to-continue nil))))
+        ;; Now use the computed start and end values and highlight the region.
+        (goto-char start-pos)
+        (push-mark nil t t)
+        (goto-char end-pos)
         )
-    )
-
-  5)
+    (message "Nothing indented here to select!")))
 
 
 ;; ==============================================================
