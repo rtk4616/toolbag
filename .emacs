@@ -215,8 +215,6 @@ Specifying REVERSE as t will result in traversing the file backward."
           (this-here-line nil)
           (to-return nil))
 
-      (message "starting indentation is %d" starting-indentation)
-
       ;; Set initial return value based on the REVERSE flag.
       (if REVERSE
           ;; Beginning of the starting line.
@@ -224,39 +222,48 @@ Specifying REVERSE as t will result in traversing the file backward."
         ;; End of the starting line.
         (setq to-return (line-end-position)))
 
-      ;; Save current cursor position, etc, so we can restore when done.
-      (save-excursion
-        ;; Loop until we break indentation.
-        (while to-continue
-          ;; Go forward or backward depending on the given direction.
-          (if REVERSE
-              (previous-line)
-            (next-line))
+      (unwind-protect
+          ;; Save current cursor position, etc, so we can restore when done.
+          (save-excursion
+            ;; Loop until we break indentation.
+            (while to-continue
+              ;; Get the current line as a string.
+              (setq
+               this-here-line
+               (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
 
-          ;; Get the current line as a string.
-          (setq
-           this-here-line
-           (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+              ;; Determine if we should continue looping, and whether or not to
+              ;; update the return value.
+              (cond
+               ;; If the current line is greater or equal to the starting
+               ;; indentation...
+               ((>= (current-indentation) starting-indentation)
+                (progn
+                  (setq to-continue t)
+                  ;; Update the return value.
+                  (if REVERSE
+                      (setq to-return (line-beginning-position))
+                    (setq to-return (line-end-position)))))
 
-          ;; Determine if we should continue looping, and whether or not to
-          ;; update the return value.
-          (cond
-           ;; If the current line is greater or equal to the starting
-           ;; indentation...
-           ((>= (current-indentation) starting-indentation)
-            (progn
-              (setq to-continue t)
-              ;; Update the return value.
-              (if REVERSE
-                  (setq to-return (line-beginning-position))
-                (setq to-return (line-end-position)))))
+               ;; If the current line is just whitespace...
+               ((string-match "^$" this-here-line)
+                (setq to-continue t))
 
-           ;; If the current line is just whitespace...
-           ((string-match "^$" this-here-line)
-            (setq to-continue t))
+               ;; Otherwise, don't continue.
+               (t (setq to-continue nil)))
 
-           ;; Otherwise, don't continue.
-           (t (setq to-continue nil)))))
+              ;; Go forward or backward depending on the given direction.
+              (condition-case ex
+                  (if REVERSE
+                      (previous-line)
+                    (next-line))
+                ('error
+                 ;; Catch error moving, like trying to move past the beginning or end
+                 ;; of the buffer.
+                 (message (format "Caught exception: [%s]" ex))
+                 (setq to-continue nil)))))
+
+        (message "At the end of unwind-protect!"))
 
       ;; Return the point.
       to-return))))
@@ -273,239 +280,239 @@ Specifying REVERSE as t will result in traversing the file backward."
       (goto-char start-pos))))
 
 
-  ;; ==============================================================
-  ;; START Keybindings
-  ;; ==============================================================
+;; ==============================================================
+;; START Keybindings
+;; ==============================================================
 
-  ;; Shortcut key for title-casing a word/region.
-  (global-set-key "\M-u" 'downcase-word)
-  (global-set-key "\M-U" 'upcase-word)
+;; Shortcut key for title-casing a word/region.
+(global-set-key "\M-u" 'downcase-word)
+(global-set-key "\M-U" 'upcase-word)
 
-  ;; Shortcut key for selecting everything at the current indentation.
-  (global-set-key "\M-j" 'MikeGetIndentation)
+;; Shortcut key for selecting everything at the current indentation.
+(global-set-key "\M-j" 'MikeGetIndentation)
 
-  ;; Shortcut for selecting an entire paragraph.
-  (global-set-key "\M-k" 'mark-paragraph)
+;; Shortcut for selecting an entire paragraph.
+(global-set-key "\M-k" 'mark-paragraph)
 
-  ;; Use the default shortcut for regexp isearch to activate custom rgrep.
-  (global-set-key "\C-x\C-r" 'MikeGrepForSymbol)
+;; Use the default shortcut for regexp isearch to activate custom rgrep.
+(global-set-key "\C-x\C-r" 'MikeGrepForSymbol)
 
-  ;; List all lines matching a pattern in the current file.
-  (global-set-key "\M-l" 'recenter-top-bottom)
+;; List all lines matching a pattern in the current file.
+(global-set-key "\M-l" 'recenter-top-bottom)
 
-  ;; List all lines matching a pattern in the current file.
-  (global-set-key "\C-xl" 'list-matching-lines)
-  (global-set-key "\C-x\C-l" 'list-matching-lines)
+;; List all lines matching a pattern in the current file.
+(global-set-key "\C-xl" 'list-matching-lines)
+(global-set-key "\C-x\C-l" 'list-matching-lines)
 
-  ;; iMenu binding.
-  (global-set-key "\C-x\C-j" 'imenu)
-  (global-set-key "\C-xj" 'imenu)
+;; iMenu binding.
+(global-set-key "\C-x\C-j" 'imenu)
+(global-set-key "\C-xj" 'imenu)
 
-  ;; Use the default shortcut for regexp isearch to find files by partial name.
-  ;; (global-set-key "\C-x\C-g" 'MikeGrepForFiles)
-  ;; (global-set-key "\C-xg" 'MikeGrepForFiles)
-  (global-set-key "\C-x\C-g" 'MikeFuzzyFileFinder)
-  (global-set-key "\C-xg" 'MikeFuzzyFileFinder)
+;; Use the default shortcut for regexp isearch to find files by partial name.
+;; (global-set-key "\C-x\C-g" 'MikeGrepForFiles)
+;; (global-set-key "\C-xg" 'MikeGrepForFiles)
+(global-set-key "\C-x\C-g" 'MikeFuzzyFileFinder)
+(global-set-key "\C-xg" 'MikeFuzzyFileFinder)
 
-  ;; Use the default shortcut for regexp isearch to activate custom rgrep.
-  (global-set-key "\C-xf" 'MikeGrepInFiles)
+;; Use the default shortcut for regexp isearch to activate custom rgrep.
+(global-set-key "\C-xf" 'MikeGrepInFiles)
 
-  ;; Rebind Ctrl-s and Ctrl-r to use the regexp versions of isearch.
-  (global-set-key "\C-s" 'isearch-forward-regexp)
-  (global-set-key "\C-r" 'isearch-backward-regexp)
+;; Rebind Ctrl-s and Ctrl-r to use the regexp versions of isearch.
+(global-set-key "\C-s" 'isearch-forward-regexp)
+(global-set-key "\C-r" 'isearch-backward-regexp)
 
-  ;; Ctrl-\ saves the window layout.
-  (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
-  ;; Alt-\ loads the window layout.
-  (global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
+;; Ctrl-\ saves the window layout.
+(global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
+;; Alt-\ loads the window layout.
+(global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
 
-  ;; Make pressing enter while still holding down the control key insert a
-  ;; newline.
-  (global-set-key (kbd "<C-return>") 'newline)
+;; Make pressing enter while still holding down the control key insert a
+;; newline.
+(global-set-key (kbd "<C-return>") 'newline)
 
-  ;; Make autocomplete feature use a better shortcut
-  ;; (global-set-key (kbd "M-SPC") 'dabbrev-expand)
-  (global-set-key (kbd "M-SPC") 'hippie-expand)
+;; Make autocomplete feature use a better shortcut
+;; (global-set-key (kbd "M-SPC") 'dabbrev-expand)
+(global-set-key (kbd "M-SPC") 'hippie-expand)
 
-  ;; Make dabbrev-expand respect case...
-  (setq dabbrev-case-fold-search nil)
+;; Make dabbrev-expand respect case...
+(setq dabbrev-case-fold-search nil)
 
-  ;; Some aliases to make things easier!
-  (defalias 'qrr 'query-replace-regexp)
-  (defalias 'ff 'find-name-dired)
-  (defalias 'sc 'diff-buffer-with-file)
+;; Some aliases to make things easier!
+(defalias 'qrr 'query-replace-regexp)
+(defalias 'ff 'find-name-dired)
+(defalias 'sc 'diff-buffer-with-file)
 
-  ;; Bind F4 to see changes between the current buffer and the version on disk.
-  (global-set-key (kbd "<f4>") 'sc)
+;; Bind F4 to see changes between the current buffer and the version on disk.
+(global-set-key (kbd "<f4>") 'sc)
 
-  ;; Use electric buffer list for buffer navigation
-  (global-set-key "\C-x\C-b" 'electric-buffer-list)
-  ;; (global-set-key "\C-xb" 'electric-buffer-list)
+;; Use electric buffer list for buffer navigation
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+;; (global-set-key "\C-xb" 'electric-buffer-list)
 
-  ;; Make it so we don't have to release ctrl when switching buffers...
-  (global-set-key "\C-x\C-o" 'other-window)
-  (global-set-key "\M-o" 'other-window)
+;; Make it so we don't have to release ctrl when switching buffers...
+(global-set-key "\C-x\C-o" 'other-window)
+(global-set-key "\M-o" 'other-window)
 
-  ;; ...or killing buffers.
-  (global-set-key "\C-x\C-k" 'kill-buffer)
+;; ...or killing buffers.
+(global-set-key "\C-x\C-k" 'kill-buffer)
 
-  ;; Custom other-window binding.
-  (global-set-key (kbd "C-]") 'other-window)
+;; Custom other-window binding.
+(global-set-key (kbd "C-]") 'other-window)
 
-  ;; Make emacs use the system keyboard
-  (global-set-key "\C-w" 'clipboard-kill-region)
-  (global-set-key "\M-w" 'clipboard-kill-ring-save)
-  (global-set-key "\C-y" 'clipboard-yank)
+;; Make emacs use the system keyboard
+(global-set-key "\C-w" 'clipboard-kill-region)
+(global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key "\C-y" 'clipboard-yank)
 
-  ;; Make Alt-P and Alt-N act like Vim's Ctrl-y and Ctrl-e
-  (global-set-key "\M-p" (lambda () (interactive) (previous-line 6)))
-  (global-set-key "\M-n" (lambda () (interactive) (next-line 6)))
+;; Make Alt-P and Alt-N act like Vim's Ctrl-y and Ctrl-e
+(global-set-key "\M-p" (lambda () (interactive) (previous-line 6)))
+(global-set-key "\M-n" (lambda () (interactive) (next-line 6)))
 
-  ;; Bindings for changing buffers.
-  ;; (global-set-key (kbd "M-<left>") 'previous-buffer)
-  ;; (global-set-key (kbd "M-<right>") 'next-buffer)
-  (global-set-key "\C-x\C-p" 'previous-buffer)
-  (global-set-key "\C-x\C-n" 'next-buffer)
-  (global-set-key "\C-xp" 'previous-buffer)
-  (global-set-key "\C-xn" 'next-buffer)
-  ;;
-  ;; END Keybindings
-  ;;
-
-
-  ;; ==============================================================
-  ;; START misc stuff here...
-  ;; ==============================================================
-
-  ;; Make rgrep searches be case insensitive.
-  (setq case-fold-search t)
-
-  ;; make emacs keep the current working directory when opening files.
-  (add-hook 'find-file-hook
-            (lambda ()
-              (setq default-directory command-line-default-directory)))
+;; Bindings for changing buffers.
+;; (global-set-key (kbd "M-<left>") 'previous-buffer)
+;; (global-set-key (kbd "M-<right>") 'next-buffer)
+(global-set-key "\C-x\C-p" 'previous-buffer)
+(global-set-key "\C-x\C-n" 'next-buffer)
+(global-set-key "\C-xp" 'previous-buffer)
+(global-set-key "\C-xn" 'next-buffer)
+;;
+;; END Keybindings
+;;
 
 
-  ;; Add a little padding around the line numbers.
-  ;; Dynamically determine character width for the line numbers column, and add a
-  ;; space for padding as well.
-  (defadvice linum-update-window (around linum-dynamic activate)
-    (let* ((w (length (number-to-string
-                       (count-lines (point-min) (point-max)))))
-           (linum-format (concat "%" (number-to-string w) "d ")))
-      ad-do-it))
-  ;; (setq linum-format " %d  ")
+;; ==============================================================
+;; START misc stuff here...
+;; ==============================================================
+
+;; Make rgrep searches be case insensitive.
+(setq case-fold-search t)
+
+;; make emacs keep the current working directory when opening files.
+(add-hook 'find-file-hook
+          (lambda ()
+            (setq default-directory command-line-default-directory)))
 
 
-  ;; Make F5 toggle line numbers on and off.
-  (global-set-key (kbd "<f5>") 'linum-mode)
-
-  ;; Ediff with vertically split windows.
-  (setq ediff-split-window-function 'split-window-horizontally)
-
-  ;; Allow smooth scrolling.
-  (setq scroll-step            1
-        scroll-conservatively  10000)
-
-  ;; Set default font.
-  ;; (set-default-font "DejaVu Sans Mono-9")
-  (set-default-font "Menlo-12")
-
-  ;; Set character wrapping.
-  (setq-default fill-column 79)
-
-  ;; Put autosave and backup files in the system temp folder.
-  ;;
-  ;; NOTE: Commenting this out, since I disable saving backups entirely in the
-  ;; lines below. Just leaving it in here for reference/if I ever want to go back
-  ;; to using backup files.
-  ;;
-  ;; (setq backup-directory-alist
-  ;;       `((".*" . ,temporary-file-directory)))
-  ;; (setq auto-save-file-name-transforms
-  ;;       `((".*" ,temporary-file-directory t)))
-
-  ;; Disable saving backup files. Have never made use of this functionality.
-  ;; personally.
-  (setq make-backup-files nil)
-
-  ;; Disable auto-save. Have never made use of this functionality.
-  (setq auto-save-default nil)
+;; Add a little padding around the line numbers.
+;; Dynamically determine character width for the line numbers column, and add a
+;; space for padding as well.
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat "%" (number-to-string w) "d ")))
+    ad-do-it))
+;; (setq linum-format " %d  ")
 
 
-  ;; Add highlighting of TODO, BUG, NOTE, and FIXME.
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (font-lock-add-keywords nil
-                                      '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
+;; Make F5 toggle line numbers on and off.
+(global-set-key (kbd "<f5>") 'linum-mode)
+
+;; Ediff with vertically split windows.
+(setq ediff-split-window-function 'split-window-horizontally)
+
+;; Allow smooth scrolling.
+(setq scroll-step            1
+      scroll-conservatively  10000)
+
+;; Set default font.
+;; (set-default-font "DejaVu Sans Mono-9")
+(set-default-font "Menlo-12")
+
+;; Set character wrapping.
+(setq-default fill-column 79)
+
+;; Put autosave and backup files in the system temp folder.
+;;
+;; NOTE: Commenting this out, since I disable saving backups entirely in the
+;; lines below. Just leaving it in here for reference/if I ever want to go back
+;; to using backup files.
+;;
+;; (setq backup-directory-alist
+;;       `((".*" . ,temporary-file-directory)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,temporary-file-directory t)))
+
+;; Disable saving backup files. Have never made use of this functionality.
+;; personally.
+(setq make-backup-files nil)
+
+;; Disable auto-save. Have never made use of this functionality.
+(setq auto-save-default nil)
 
 
-  ;; ************************************************************************************************
-  ;; Disable requiring the newline at EOF
-  ;;
-  ;; NOTE: This doesn't work for some reason... need to look into why, when I have the time.
-  ;;
-  ;; Ensure we do this *after* default.el is loaded, otherwise, when Emacs
-  ;; executes the default.el file after your .emacs file, this value will get
-  ;; changed.
-  ;;
-  ;; Reference: http://rura.org/blog/2004/10/26/emacs-require-final-newline-on-fedora-how-to-kill-it/
-  ;;
-  (add-hook 'after-init-hook
-            '(lambda ()
-               (setq require-final-newline nil)))
-  ;; ************************************************************************************************
+;; Add highlighting of TODO, BUG, NOTE, and FIXME.
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+                                    '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
 
 
-  ;; Require the newline at EOF
-  (setq require-final-newline nil)
-
-  ;; Disable useless decorations.
-  (setq inhibit-startup-message t)
-  (setq initial-scratch-message nil)
-
-  ;; Accept y or n when presented with yes or no.
-  (fset 'yes-or-no-p 'y-or-n-p)
-
-  ;; Disable beeps.
-  (setq ring-bell-function 'ignore)
-
-  ;; Always use syntax highlighting.
-  (global-font-lock-mode 1)
-
-  ;; Show the column number in addition to the line number.
-  (setq-default column-number-mode 1)
-
-  ;; Make the frame title show the file name.
-  (setq frame-title-format "%b")
-
-  (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-  ;; Remove trailing whitespace before saving files.
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; ************************************************************************************************
+;; Disable requiring the newline at EOF
+;;
+;; NOTE: This doesn't work for some reason... need to look into why, when I have the time.
+;;
+;; Ensure we do this *after* default.el is loaded, otherwise, when Emacs
+;; executes the default.el file after your .emacs file, this value will get
+;; changed.
+;;
+;; Reference: http://rura.org/blog/2004/10/26/emacs-require-final-newline-on-fedora-how-to-kill-it/
+;;
+(add-hook 'after-init-hook
+          '(lambda ()
+             (setq require-final-newline nil)))
+;; ************************************************************************************************
 
 
-  ;; ================================================================
-  ;;                      Indentation settings
-  ;; ================================================================
+;; Require the newline at EOF
+(setq require-final-newline nil)
 
-  ;; Indent only with spaces (default 4), never tabs.
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
-  (setq-default standard-indent 4)
-  (setq indent-line-function 'insert-tab)
+;; Disable useless decorations.
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
 
-  ;; Use BSD style for formatting.
-  (setq c-default-style "bsd"
-        c-basic-offset 4)
+;; Accept y or n when presented with yes or no.
+(fset 'yes-or-no-p 'y-or-n-p)
 
-  ;; Indentation settings for Ruby.
-  (setq ruby-indent-level 2)
+;; Disable beeps.
+(setq ring-bell-function 'ignore)
 
-  ;; Indentation for CSS
-  (setq css-indent-offset 4)
+;; Always use syntax highlighting.
+(global-font-lock-mode 1)
 
-  ;; Indentation for Python
-  (setq python-indent 4)
+;; Show the column number in addition to the line number.
+(setq-default column-number-mode 1)
+
+;; Make the frame title show the file name.
+(setq frame-title-format "%b")
+
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; Remove trailing whitespace before saving files.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
+;; ================================================================
+;;                      Indentation settings
+;; ================================================================
+
+;; Indent only with spaces (default 4), never tabs.
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default standard-indent 4)
+(setq indent-line-function 'insert-tab)
+
+;; Use BSD style for formatting.
+(setq c-default-style "bsd"
+      c-basic-offset 4)
+
+;; Indentation settings for Ruby.
+(setq ruby-indent-level 2)
+
+;; Indentation for CSS
+(setq css-indent-offset 4)
+
+;; Indentation for Python
+(setq python-indent 4)
