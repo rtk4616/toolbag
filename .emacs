@@ -212,6 +212,7 @@ Specifying REVERSE as t will result in traversing the file backward."
    (t
     (let ((starting-indentation (current-indentation))
           (to-continue t)
+          (this-here-line nil)
           (to-return nil))
 
       (message "starting indentation is %d" starting-indentation)
@@ -231,6 +232,12 @@ Specifying REVERSE as t will result in traversing the file backward."
           (if REVERSE
               (previous-line)
             (next-line))
+
+          ;; Get the current line as a string.
+          (setq
+           this-here-line
+           (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+
           ;; Determine if we should continue looping, and whether or not to
           ;; update the return value.
           (cond
@@ -244,9 +251,9 @@ Specifying REVERSE as t will result in traversing the file backward."
                   (setq to-return (line-beginning-position))
                 (setq to-return (line-end-position)))))
 
-           ;; If the current line has indentation zero...
-           ;; ((= (current-indentation) 0)
-           ;;  (setq to-continue t))
+           ;; If the current line is just whitespace...
+           ((string-match "^$" this-here-line)
+            (setq to-continue t))
 
            ;; Otherwise, don't continue.
            (t (setq to-continue nil)))))
