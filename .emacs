@@ -49,19 +49,6 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
-;; TODO: Work on this more.
-;; (defun MikeExpand (arg)
-;;   (message arg))
-;; (add-to-list 'hippie-expand-try-functions-list 'MikeExpand)
-
-;; Set up auto-complete.
-;; (require 'auto-complete)
-;; (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-;; (setq ac-delay 0.2)
-;; (add-to-list 'ac-user-dictionary-files (concat default-directory ".project_completions"))
-;; (ac-clear-dictionary-cache)
 
 ;; Autoload actionscript-mode.
 (autoload 'actionscript-mode "actionscript-mode" "Major mode for editing ActionScript." t)
@@ -280,9 +267,58 @@ Specifying REVERSE as t will result in traversing the file backward."
       (goto-char start-pos))))
 
 
+(defun MikeDeIndent (beg end)
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list (line-beginning-position) (line-end-position))))
+  (save-excursion
+    (if (and (= beg (line-beginning-position))
+             (= end (line-end-position)))
+        (indent-rigidly beg end -4)
+      (progn
+        (indent-rigidly beg end -4)
+        (goto-char end-pos)
+        (push-mark nil t t)
+        (goto-char start-pos)))))
+
+
+(defun MikeIndent (beg end)
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list (line-beginning-position) (line-end-position))))
+  (save-excursion
+    (if (and (= beg (line-beginning-position))
+             (= end (line-end-position)))
+        (indent-rigidly beg end 4)
+      (progn
+        (indent-rigidly beg end 4)
+        (goto-char end-pos)
+        (push-mark nil t t)
+        (goto-char start-pos)))))
+
+
+;; TODO: Work on this more.
+;; (defun MikeExpand (arg)
+;;   (message arg))
+;; (add-to-list 'hippie-expand-try-functions-list 'MikeExpand)
+
+;; Set up auto-complete.
+;; (require 'auto-complete)
+;; (add-to-list 'ac-dictionary-directories "~/.elisp/ac-dict")
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (setq ac-delay 0.2)
+;; (add-to-list 'ac-user-dictionary-files (concat default-directory ".project_completions"))
+;; (ac-clear-dictionary-cache)
+
+
 ;; ==============================================================
 ;; START Keybindings
 ;; ==============================================================
+
+;; Shortcut key for indenting/de-indenting a region.
+(global-set-key "\M-," 'MikeDeIndent)
+(global-set-key "\M-." 'MikeIndent)
 
 ;; Shortcut key for title-casing a word/region.
 (global-set-key "\M-u" 'downcase-word)
