@@ -316,6 +316,9 @@ Specifying REVERSE as t will result in traversing the file backward."
 ;; START Keybindings
 ;; ==============================================================
 
+;; Shortcut key for discarding all changes and quitting Emacs without prompting.
+(global-set-key "\C-x\C-\\" 'kill-emacs)
+
 ;; Shortcut key for indenting/de-indenting a region.
 (global-set-key "\M-," 'MikeDeIndent)
 (global-set-key "\M-." 'MikeIndent)
