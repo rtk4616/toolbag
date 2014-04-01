@@ -53,9 +53,8 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===================================================================================================
 
-" Better shortcut for wrapping lines.
-nnoremap Q gww
-vnoremap Q gw
+" Macro shortcut.
+nnoremap <C-q> @q
 
 " Set space to open and close folds in normal mode.
 nnoremap <space> za
