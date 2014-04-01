@@ -93,7 +93,7 @@ function! MikeFindInFiles()
     setl nomodifiable
     setl noinsertmode
 
-    noremap <silent> <buffer> o        :call FindFileOpenNewTab()<CR>
-    map     <silent> <buffer> <CR>     :call FindFileOpenClose()<CR>
-    map     <silent> <buffer> <C-c>    :call FindFileClose()<CR>
+    " noremap <silent> <buffer> o        :call FindFileOpenNewTab()<CR>
+    " map     <silent> <buffer> <CR>     :call FindFileOpenClose()<CR>
+    " map     <silent> <buffer> <C-c>    :call FindFileClose()<CR>
 endfunc

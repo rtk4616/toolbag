@@ -142,7 +142,11 @@ try:
         ]
 
         # Pass the list back to the vimscript file.
-        vim.command("let l:toReturn = {0}".format(to_return))
+        vim.command("let l:toReturn = []")
+        for i in to_return:
+            i = i.replace('"', r'\"')
+            the_command = "call add(l:toReturn, \"{}\")".format(i)
+            vim.command(the_command)
     else:
         # User didn't enter any input.
         pass
