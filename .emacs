@@ -29,8 +29,19 @@
   (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
+;; Autopair stuff.
+(require 'autopair)
+(autopair-global-mode)
+
 ;; Set up my MikeFuzzyFind stuff
 (require 'MikeFuzzyFind)
+
+;; Better Scala mode.
+(require 'scala-mode2)
+
+;; ENSIME stuff
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; Set up expand region.
 (require 'expand-region)
