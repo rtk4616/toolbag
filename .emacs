@@ -42,6 +42,8 @@
 ;; ENSIME stuff
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(define-key ensime-mode-map (kbd "M-p") 'MikeUpSomeLines)
+(define-key ensime-mode-map (kbd "M-n") 'MikeDownSomeLines)
 
 ;; Set up expand region.
 (require 'expand-region)
@@ -308,6 +310,18 @@ Specifying REVERSE as t will result in traversing the file backward."
         (goto-char start-pos)))))
 
 
+(defun MikeUpSomeLines ()
+  (interactive)
+  (previous-line 6)
+  )
+
+
+(defun MikeDownSomeLines ()
+  (interactive)
+  (next-line 6)
+  )
+
+
 ;; TODO: Work on this more.
 ;; (defun MikeExpand (arg)
 ;;   (message arg))
@@ -415,8 +429,8 @@ Specifying REVERSE as t will result in traversing the file backward."
 (global-set-key "\C-y" 'clipboard-yank)
 
 ;; Make Alt-P and Alt-N act like Vim's Ctrl-y and Ctrl-e
-(global-set-key "\M-p" (lambda () (interactive) (previous-line 6)))
-(global-set-key "\M-n" (lambda () (interactive) (next-line 6)))
+(global-set-key "\M-p" 'MikeUpSomeLines)
+(global-set-key "\M-n" 'MikeDownSomeLines)
 
 ;; Bindings for changing buffers.
 ;; (global-set-key (kbd "M-<left>") 'previous-buffer)

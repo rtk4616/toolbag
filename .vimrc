@@ -54,7 +54,7 @@ autocmd Syntax * syntax sync minlines=1000
 " ===================================================================================================
 
 " Macro shortcut.
-nnoremap <C-q> @q
+nnoremap <C-.> @q
 
 " Set space to open and close folds in normal mode.
 nnoremap <space> za

@@ -151,6 +151,7 @@
                                 ".idea"
                                 ".git"
                                 "migrations"
+                                "scala-2.10"
                                 "static"))
 
 ;; Get the alternation for a list of files.
