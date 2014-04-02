@@ -263,7 +263,8 @@ Specifying REVERSE as t will result in traversing the file backward."
                  (message (format "Caught exception: [%s]" ex))
                  (setq to-continue nil)))))
 
-        (message "At the end of unwind-protect!"))
+        ;; (message "At the end of unwind-protect!"))
+        (message "Done."))
 
       ;; Return the point.
       to-return))))
