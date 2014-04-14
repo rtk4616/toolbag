@@ -44,6 +44,9 @@
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (define-key ensime-mode-map (kbd "M-p") 'MikeUpSomeLines)
 (define-key ensime-mode-map (kbd "M-n") 'MikeDownSomeLines)
+(define-key ensime-mode-map (kbd "C-M-p") 'ensime-backward-note)
+(define-key ensime-mode-map (kbd "C-M-n") 'ensime-forward-note)
+
 
 ;; Set up expand region.
 (require 'expand-region)
