@@ -120,6 +120,7 @@ map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tra
 autocmd FileType make setlocal noexpandtab
 autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype scala setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd FileType python setlocal ts=4 sts=4 sw=4
