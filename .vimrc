@@ -152,6 +152,8 @@ autocmd BufRead,BufNewFile *.sbt set ft=scala
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 autocmd BufRead,BufNewFile *.textile set ft=textile
 autocmd BufRead,BufNewFile *.applescript set ft=applescript
+autocmd BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
+autocmd BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
 
 " Delete trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
