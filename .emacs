@@ -85,6 +85,7 @@
 
 ;; Make go-mode autoload for .go files.
 (require 'go-mode-load)
+(add-hook 'before-save-hook #'gofmt-before-save)
 
 ;; Load PHP-mode.
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
