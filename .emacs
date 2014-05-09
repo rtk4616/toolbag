@@ -143,9 +143,8 @@
 
 ;; Set auto mode rules.
 ;; This is where you define the major modes for different file extensions.
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.textile$" . textile-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
@@ -161,6 +160,7 @@
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
+(add-to-list 'auto-mode-alist '("\\.vcl$" . conf-javaprop-mode))
 
 ;;
 ;; end Initial setup
