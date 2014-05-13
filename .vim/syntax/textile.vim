@@ -74,7 +74,7 @@ if version >= 508 || !exists("did_txt_syn_inits")
     HiLink txtHeader Title
     HiLink txtBlockquote Comment
     HiLink txtBlockCode  Identifier
-    HiLink txtListBullet PreProc
+    HiLink txtListBullet htmlTagName
     HiLink txtListNumber PreProc
     HiLink txtLink String
     HiLink txtCode Identifier

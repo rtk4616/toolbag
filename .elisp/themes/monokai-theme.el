@@ -24,7 +24,9 @@
 (deftheme monokai
   "Monokai color theme")
 
-(let ((monokai-blue-light "#89BDFF")
+(let (
+      (monokai-blue-light "#4ed3ef")
+      ;; (monokai-blue-light "#89BDFF")
       (monokai-gray "#595959")
       (monokai-gray-darker "#383830")
       (monokai-gray-darkest "#141411")
@@ -33,29 +35,33 @@
 
       ;; (monokai-green "#A6E22A")
       ;; (monokai-green-light "#A6E22E")
-      (monokai-green "#87ff00")
-      (monokai-green-light "#87ff00")
+      (monokai-green "#A6E22E")
+      (monokai-green-light "#A6E22E")
 
-      ;; Custom override. This is used for background color.
-      (monokai-grey-dark "#191919")
+      ;; Custom override.
+      (monokai-grey-dark "#202020")
 
-      (monokai-magenta "#F92672")
+      (monokai-magenta "#FF0A62")
+      ;; (monokai-magenta "#F92672")
       (monokai-purple "#AE81FF")
       (monokai-purple-light "#FD5FF1")
 
       ;; (monokai-yellow "#E6DB74")
       (monokai-yellow "#ffd75f")
 
+      (monokai-yellow-dark "#635F4B")
       ;; (monokai-yellow-dark "#75715E")
-      (monokai-yellow-dark "#757166")
+      ;; (monokai-yellow-dark "#757166")
 
-      (monokai-yellow-light "#F8F8F2"))
+      (monokai-yellow-light "#f6f6f0")
+      ;; (monokai-yellow-light "#F8F8F2")
+      )
 
 
   (custom-theme-set-faces
    'monokai
    ;; Frame
-   `(default ((t (:foreground ,monokai-yellow-light :background ,"#161616"))))
+   `(default ((t (:foreground ,monokai-yellow-light :background ,"#1d1d1d"))))
    `(cursor ((t (:foreground ,monokai-magenta))))
    `(hl-line ((t (:background ,monokai-gray-darkest))))
    `(minibuffer-prompt ((t (:foreground ,monokai-yellow-dark))))
@@ -67,7 +73,8 @@
    `(font-lock-comment-face ((t (:foreground ,monokai-yellow-dark))))
    `(font-lock-constant-face ((t (:foreground ,monokai-purple))))
    `(font-lock-doc-string-face ((t (:foreground ,monokai-yellow))))
-   `(font-lock-function-name-face ((t (:foreground ,monokai-green))))
+   `(font-lock-function-name-face ((t (:foreground ,monokai-blue-light))))
+   ;; `(font-lock-function-name-face ((t (:foreground ,monokai-green))))
    `(font-lock-keyword-face ((t (:foreground ,monokai-magenta))))
    `(font-lock-string-face ((t (:foreground ,monokai-yellow))))
    `(font-lock-type-face ((t (:foreground ,monokai-blue-light))))
