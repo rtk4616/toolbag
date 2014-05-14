@@ -120,6 +120,10 @@
 ;; Set up ido mode.
 ;; (require 'flx-ido)
 (ido-mode t)
+(setq ido-enable-last-directory-history nil)
+(setq ido-record-commands nil)
+(setq ido-max-work-directory-list 0)
+(setq ido-max-work-file-list 0)
 (setq ido-everywhere t)
 ;; (flx-ido-mode 1)
 (setq ido-use-faces nil)
