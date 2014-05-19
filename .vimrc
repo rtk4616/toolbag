@@ -127,6 +127,7 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4
 autocmd FileType cpp setlocal ts=4 sts=4 sw=4
 autocmd FileType rst setlocal ts=2 sts=2 sw=2
 autocmd FileType markdown setlocal ts=4 sts=4 sw=4
+autocmd FileType nginx setlocal ts=2 sts=2 sw=2
 
 
 " ===================================================================================================

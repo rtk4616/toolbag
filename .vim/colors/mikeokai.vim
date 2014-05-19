@@ -14,7 +14,8 @@ hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NON
 hi Visual ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#49483e gui=NONE
 
 " Change the default cursorline color
-hi CursorLine ctermfg=NONE ctermbg=234 cterm=NONE guifg=NONE guibg=#222222 gui=NONE
+"hi CursorLine ctermfg=NONE ctermbg=234 cterm=NONE guifg=NONE guibg=#222222 gui=NONE
+hi CursorLine ctermfg=NONE ctermbg=234 cterm=NONE guifg=NONE guibg=#303030 gui=NONE
 hi CursorLineNR ctermfg=NONE ctermbg=148 cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=233 cterm=NONE guifg=NONE guibg=#222222 gui=NONE
 
@@ -119,14 +120,14 @@ hi cssCommonAttr ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui
 hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Mike Wilkerson additions for Markdown.
-hi MarkdownHeadingDelimiter gui=bold guifg=#F92672
+hi MarkdownHeadingDelimiter gui=NONE guifg=#F92672
 hi markdownBold gui=bold guifg=#6699bb
 hi markdownItalic guifg=gray25 gui=underline
 hi markdownUrl guifg=#2fb3a6
 hi markdownAutomaticLink guifg=#2fb3a6
 hi markdownLinkText guifg=#F92672
 hi markdownUrlTitle guifg=#F92672
-hi markdownBlockquote guifg=#F92672 gui=bold
+hi markdownBlockquote guifg=#F92672 gui=NONE
 hi markdownId guifg=#2fb3a6
-hi markdownIdDeclaration guifg=#F92672 gui=bold
+hi markdownIdDeclaration guifg=#F92672 gui=NONE
 hi markdownListMarker guifg=#F92672
