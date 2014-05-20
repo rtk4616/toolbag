@@ -122,12 +122,14 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " Mike Wilkerson additions for Markdown.
 hi MarkdownHeadingDelimiter gui=NONE guifg=#F92672
 hi markdownBold gui=bold guifg=#6699bb
-hi markdownItalic guifg=gray25 gui=underline
+hi markdownItalic guifg=#e6db74 gui=italic
 hi markdownUrl guifg=#2fb3a6
-hi markdownAutomaticLink guifg=#2fb3a6
+" hi markdownAutomaticLink guifg=#2fb3a6
+hi markdownAutomaticLink guifg=#00ff00
 hi markdownLinkText guifg=#F92672
 hi markdownUrlTitle guifg=#F92672
 hi markdownBlockquote guifg=#F92672 gui=NONE
-hi markdownId guifg=#2fb3a6
+" hi markdownId guifg=#2fb3a6
+hi markdownId guifg=#ff0000
 hi markdownIdDeclaration guifg=#F92672 gui=NONE
 hi markdownListMarker guifg=#F92672
