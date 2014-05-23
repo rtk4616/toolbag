@@ -467,8 +467,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	delf <SID>grey_number
 endif
 
-hi Todo ctermbg=none ctermfg=196 cterm=bold
-hi Visual ctermbg=197 ctermfg=255 cterm=None
+hi Todo ctermbg=none ctermfg=196 cterm=bold guifg=#ff0000
+hi Visual ctermbg=197 ctermfg=255 cterm=None guifg=white guibg=#F7287B
 
 " Mike Wilkerson additions for Markdown.
 hi MarkdownHeadingDelimiter gui=bold guifg=#F92672 ctermfg=161
@@ -482,5 +482,8 @@ hi markdownBlockquote guifg=#F92672 gui=bold ctermfg=161 gui=bold
 hi markdownId guifg=#2fb3a6 ctermfg=138
 hi markdownIdDeclaration guifg=#F92672 gui=bold ctermfg=161 gui=bold
 hi markdownListMarker guifg=#F92672 ctermfg=161
+
+" Setting the cursor to pure white so it's easier to see.
+hi Cursor guifg=black guibg=white
 
 set background=dark
