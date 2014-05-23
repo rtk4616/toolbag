@@ -231,3 +231,9 @@ function! MikeFindAllSymbolsInFile()
     exe "g/^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
     echo "\n\n"
 endfunc
+
+function! MDTOC(theHeader)
+    let l:partOne = substitute(a:theHeader, ":$", "", "g")
+    let l:partTwo = tolower(substitute(substitute(a:theHeader, "[[:punct:]]", "", "g"), " ", "-", "g"))
+    return "[" . l:partOne . "](#" . l:partTwo . ")"
+endfunc
