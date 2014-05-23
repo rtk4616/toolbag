@@ -237,3 +237,10 @@ function! MDTOC(theHeader)
     let l:partTwo = tolower(substitute(substitute(a:theHeader, "[[:punct:]]", "", "g"), " ", "-", "g"))
     return "[" . l:partOne . "](#" . l:partTwo . ")"
 endfunc
+
+function! PrefixLines() range
+    call inputsave()
+    let t = input('Prefix: ')
+    call inputrestore()
+    exe a:firstline.','.a:lastline 's/^/\=t'
+endfunction
