@@ -51,7 +51,8 @@
 ;; Set up expand region.
 (require 'expand-region)
 (global-set-key (kbd "M-h") 'er/expand-region)
-;; (global-set-key (kbd "") 'er/expand-region)
+(eval-after-load "multi-web-mode"   '(require 'html-mode-expansions))
+(eval-after-load "multi-web-global-mode"   '(require 'html-mode-expansions))
 
 ;; Hippie-expand stuff.
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev
