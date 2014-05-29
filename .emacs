@@ -166,6 +166,7 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
 (add-to-list 'auto-mode-alist '("\\.vcl$" . conf-javaprop-mode))
+(add-to-list 'auto-mode-alist '("\\.tmpl$" . multi-web-mode))
 
 ;;
 ;; end Initial setup
