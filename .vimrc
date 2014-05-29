@@ -139,6 +139,7 @@ autocmd FileType nginx setlocal ts=2 sts=2 sw=2
 autocmd BufRead,BufNewFile *rc set ft=sh
 autocmd BufRead,BufNewFile Dockerfile set ft=sh
 autocmd BufRead,BufNewFile .vimrc set ft=vim
+autocmd BufRead,BufNewFile .ideavimrc set ft=vim
 autocmd BufRead,BufNewFile *.vert,*.frag set ft=cpp
 autocmd BufRead,BufNewFile *.cl set ft=cpp
 autocmd BufRead,BufNewFile *.md set ft=markdown
