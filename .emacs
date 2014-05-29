@@ -50,7 +50,9 @@
 
 ;; Set up expand region.
 (require 'expand-region)
+(setq expand-region-fast-keys-enabled nil)
 (global-set-key (kbd "M-h") 'er/expand-region)
+(global-set-key (kbd "C-M-h") 'er/contract-region)
 (eval-after-load "multi-web-mode"   '(require 'html-mode-expansions))
 (eval-after-load "multi-web-global-mode"   '(require 'html-mode-expansions))
 
