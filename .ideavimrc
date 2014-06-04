@@ -28,6 +28,12 @@ set foldmethod=indent                                     " Set folding options.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set nofoldenable                                          " Disable automatic folding.
 
+" Move up and down by 6 lines
+nnoremap <C-k> 6k
+nnoremap <C-j> 6j
+vnoremap <C-k> 6k
+vnoremap <C-j> 6j
+
 " Easy switching of tabs.
 nnoremap <S-h> gT
 nnoremap <S-l> gt

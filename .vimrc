@@ -53,6 +53,12 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===================================================================================================
 
+" Move up and down by 6 lines
+nnoremap <C-k> 6k
+nnoremap <C-j> 6j
+vnoremap <C-k> 6k
+vnoremap <C-j> 6j
+
 " Macro shortcut.
 nnoremap <C-.> @q
 
