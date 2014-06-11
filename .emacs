@@ -72,8 +72,10 @@
 ;; Autoload actionscript-mode.
 (autoload 'actionscript-mode "actionscript-mode" "Major mode for editing ActionScript." t)
 
-;; Autoload js2-mode.
+;; js2-mode stuff.
 (autoload 'js2-mode "js2-mode" "Major mode for editing Javascript stuffs." t)
+(add-hook 'js2-mode-hook
+          (lambda () (local-set-key (kbd "C-M-e") 'js2-display-error-list)))
 ;; (require 'js2-mode)
 
 ;; Multi-web-mode...
