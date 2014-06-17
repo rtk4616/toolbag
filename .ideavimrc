@@ -28,10 +28,6 @@ set foldmethod=indent                                     " Set folding options.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set nofoldenable                                          " Disable automatic folding.
 
-" Go to tag under cursor.
-nnoremap <C-l> :exe "tag ". expand("<cword>")<CR>
-nnoremap <C-h> :pop<CR>
-
 " Move up and down by 6 lines
 nnoremap <C-k> 6k
 nnoremap <C-j> 6j
