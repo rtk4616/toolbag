@@ -38,7 +38,10 @@
 
 ;; Company-mode setup.
 (require 'company)
-(require 'company-go)
+;; This is if we wanted to use the company-go backend for every mode.
+;; (require 'company-go)
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))))
 (add-hook 'after-init-hook 'global-company-mode)
 (add-to-list 'company-backends 'company-dabbrev t)
 (add-to-list 'company-backends 'company-ispell t)
