@@ -10,14 +10,17 @@ export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
-export GOPATH=$HOME/go_appengine
+# Golang bin path.
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Misc.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="vi"
+export EDITOR="emacs"
 
+# Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
     # iTerm2 stuff.
     echo -e -n "\033];Digital Ocean: wilkyhost\007"
@@ -71,6 +74,7 @@ if ! [ -z "$PS1" ]; then
     # --- set the prompt ---
     PS1="|\[\033[1;34m\]\$(git_branch) \[\033[1;34m\]\u\[\033[0m\] @ \[\033[1;35m\]\h\n\[\033[1;36m\]\$PWD\[\033[0m\] $ "
 
+    # Better backwards kill word with ctrl-w.
     stty werase undef
     bind '"\C-w": backward-kill-word'
 
