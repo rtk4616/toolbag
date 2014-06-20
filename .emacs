@@ -208,7 +208,7 @@
 
 (defun MikeGrepForSymbol (search_string)
   (interactive "sGrep for symbol: ")
-  (rgrep (concat "^\\ *\\(class\\|def\\|defun\\|func\\|function!*\\)\\ .*" search_string) "*" "./"))
+  (rgrep (concat "^\\ *\\(class\\|def\\|defun\\|func\\|type\\|function!*\\)\\ .*" search_string) "*" "./"))
 
 
 (defun MikeGrepInFiles (search_string file_extension)
