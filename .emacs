@@ -176,6 +176,7 @@
 (add-to-list 'auto-mode-alist '("\\.cu$" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cl$" . c++-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("crontab$" . conf-mode))
 (add-to-list 'auto-mode-alist '("rc$" . sh-mode))
 (add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . conf-mode))
