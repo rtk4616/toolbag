@@ -32,7 +32,7 @@
 ;; Multiple cursors.
 (require 'multiple-cursors)
 (global-set-key (kbd "C-M-d") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-M-g") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-M-a") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-M-l") 'mc/edit-lines)
 
 ;; Autopair stuff.
