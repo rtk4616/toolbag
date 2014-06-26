@@ -29,6 +29,12 @@
   (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'custom-theme-load-path "~/.elisp/themes")
 
+;; Multiple cursors.
+(require 'multiple-cursors)
+(global-set-key (kbd "C-M-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-M-g") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-M-l") 'mc/edit-lines)
+
 ;; Autopair stuff.
 (require 'autopair)
 (autopair-global-mode)
@@ -350,7 +356,8 @@ Specifying REVERSE as t will result in traversing the file backward."
   )
 
 
-;; TODO: Work on this more.
+;; TODO: Work on this more. This is a custom hippie-expand function.
+;;
 ;; (defun MikeExpand (arg)
 ;;   (message arg))
 ;; (add-to-list 'hippie-expand-try-functions-list 'MikeExpand)
