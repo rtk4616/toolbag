@@ -53,6 +53,14 @@ autocmd Syntax * syntax sync minlines=1000
 " BEGIN Key bindings
 " ===================================================================================================
 
+" Use the enter key to select a completion candidate.
+inoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<C-g>u\<CR>"
+
+" Prevent auto increment/decrement with ctrl-a/x
+" TODO: Need to look up the idiomatic Vim way to simply unbind a key.
+nnoremap <C-a> :echo "ctrl-a"<CR>
+nnoremap <C-x> :echo "ctrl-x"<CR>
+
 " Go to tag under cursor.
 nnoremap <C-l> :exe "tag ". expand("<cword>")<CR>
 nnoremap <C-h> :pop<CR>
@@ -62,6 +70,10 @@ nnoremap <C-k> 6k
 nnoremap <C-j> 6j
 vnoremap <C-k> 6k
 vnoremap <C-j> 6j
+
+" Testing setting ctrl-space and alt-space.
+nnoremap <C-space> :echo "You just pressed ctrl-space"<CR>
+nnoremap <M-space> :echo "You just pressed alt-space"<CR>
 
 " Set space to open and close folds in normal mode.
 nnoremap <space> za
