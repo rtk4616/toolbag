@@ -34,6 +34,7 @@
 (global-set-key (kbd "C-M-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-a") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-M-l") 'mc/edit-lines)
+(setq mc/list-file "~/.elisp/.mc-lists.el")
 
 ;; Autopair stuff.
 (require 'autopair)
