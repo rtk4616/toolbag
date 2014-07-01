@@ -54,7 +54,7 @@ autocmd Syntax * syntax sync minlines=1000
 " ===================================================================================================
 
 " Use the enter key to select a completion candidate.
-inoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
 
 " Prevent auto increment/decrement with ctrl-a/x
 " TODO: Need to look up the idiomatic Vim way to simply unbind a key.

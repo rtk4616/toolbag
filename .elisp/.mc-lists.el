@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        sh-assignment
         autopair-insert-opening
         ))
 
