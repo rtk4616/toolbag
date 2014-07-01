@@ -56,14 +56,9 @@ autocmd Syntax * syntax sync minlines=1000
 " Use the enter key to select a completion candidate.
 inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
 
-" Prevent auto increment/decrement with ctrl-a/x
-" TODO: Need to look up the idiomatic Vim way to simply unbind a key.
-nnoremap <C-a> :echo "ctrl-a"<CR>
-nnoremap <C-x> :echo "ctrl-x"<CR>
-
 " Go to tag under cursor.
-nnoremap <C-l> :exe "tag ". expand("<cword>")<CR>
-nnoremap <C-h> :pop<CR>
+nnoremap <C-x> :exe "tag ". expand("<cword>")<CR>
+nnoremap <C-a> :pop<CR>
 
 " Move up and down by 6 lines
 nnoremap <C-k> 6k
