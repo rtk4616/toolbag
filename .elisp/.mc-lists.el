@@ -3,10 +3,13 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        MikeIndent
+        clipboard-kill-region
         sh-assignment
         autopair-insert-opening
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        company-complete
         ))
