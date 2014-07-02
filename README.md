@@ -15,10 +15,10 @@ In order to use any tags functionality, you will want to install exuberant-ctags
 
 #### OSX
 
-```shell
+```bash
 $ OLD_CTAGS=`which ctags`
 $ brew install ctags
-$ NEW_CTAGS=`which ctags`  #
+$ NEW_CTAGS=`which ctags`  # This will be the ctags that was installed by brew.
 $ sudo rm $OLD_CTAGS
 $ sudo ln -s $NEW_CTAGS $OLD_CTAGS
 ```
@@ -26,7 +26,7 @@ $ sudo ln -s $NEW_CTAGS $OLD_CTAGS
 
 #### Ubuntu
 
-```shell
+```bash
 $ sudo apt-get install exuberant-ctags
 $ OLD_CTAGS=`which ctags`
 $ sudo rm $OLD_CTAGS
