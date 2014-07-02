@@ -47,19 +47,27 @@ commit and push.
 
 1. Clone the repo:
 
-    `git clone git@github.com:wilkystyle/toolbag.git`
+```bash
+git clone git@github.com:wilkystyle/toolbag.git
+```
 
 1. Navigate into the repo directory:
 
-    `cd toolbag`
+```bash
+cd toolbag
+```
 
 1. Run the installation Python script to create symlinks:
 
-    `./make_links.py`
+```bash
+./make_links.py
+```
 
 
 ### Staying up to date
 
 In order to make sure you have the latest version of the files, simply do:
 
-> `git pull`
+```bash
+git pull
+```
