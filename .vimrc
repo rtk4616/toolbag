@@ -59,6 +59,14 @@ autocmd Syntax * syntax sync minlines=1000
 " Key bindings
 " ===================================================================================================
 
+" Some Syntastic shortcuts.
+nnoremap <leader>e :Errors<cr>
+nnoremap <leader>c :SyntasticReset<cr>
+
+" Some CtrlP shortcuts.
+nnoremap <leader>r :CtrlPTag<cr>
+nnoremap <leader>g :CtrlP<cr>
+
 " Use the enter key to select a completion candidate.
 inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
 
@@ -83,7 +91,7 @@ nnoremap <space> za
 nnoremap <Leader>f :call MikeFindInFiles()<CR>
 
 " List all files in all subdirectories by partial name.
-nnoremap <Leader>g :call MikeFileFinder()<CR>
+" nnoremap <Leader>g :call MikeFileFinder()<CR>
 
 " TODO: Delete this!
 nnoremap <Leader>x :call SaveSymbolsToDict()<CR>
@@ -92,7 +100,7 @@ nnoremap <Leader>x :call SaveSymbolsToDict()<CR>
 " nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
 
 " Easy binding to vimgrep in all files.
-nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
+" nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
 
 " Vimgrep for word under the cursor!
 nnoremap <Leader>d :call MikeGrepForSymbolUnderCursor()<CR>
