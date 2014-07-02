@@ -1,5 +1,5 @@
 " ===================================================================================================
-" BEGIN Misc settings
+" Misc settings
 " ===================================================================================================
 set linebreak                                             " Better word wrapping.
 set noautochdir                                           " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
@@ -23,7 +23,6 @@ set showmode                                              " Show which mode we'r
 set cursorline                                            " Enable highlighting of the current line.
 set completeopt=longest,menuone                           " Don't select first autocompletion, and show the menu even if there is only one result.
 set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**    " Set up ignored files when searching...
-let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
 set foldmethod=indent                                     " Set folding options.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set nofoldenable                                          " Disable automatic folding.
@@ -32,7 +31,14 @@ set nobackup                                              " No backup file.
 set noswapfile                                            " No swap file.
 
 " ===================================================================================================
-" BEGIN Style settings
+" Some more settings
+" ===================================================================================================
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|migrations|ve)$'
+let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
+
+" ===================================================================================================
+" Style settings
 " ===================================================================================================
 syntax on
 
@@ -50,7 +56,7 @@ autocmd Syntax * syntax sync minlines=1000
 
 
 " ===================================================================================================
-" BEGIN Key bindings
+" Key bindings
 " ===================================================================================================
 
 " Use the enter key to select a completion candidate.
