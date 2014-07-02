@@ -9,6 +9,26 @@ replaced with symlinks that point into this repo. This provides an easy way to
 have a consistent and syncronized working environment on any machine you're
 using.
 
+### Ctags
+
+In order to use any tags functionality, you will want to install exuberant-ctags.
+
+#### OSX
+
+    $ OLD_CTAGS=`which ctags`
+    $ brew install ctags
+    $ NEW_CTAGS=`which ctags`
+    $ sudo rm $OLD_CTAGS
+    $ sudo ln -s $NEW_CTAGS $OLD_CTAGS
+
+
+#### Ubuntu
+
+    $ sudo apt-get install exuberant-ctags
+    $ OLD_CTAGS=`which ctags`
+    $ sudo rm $OLD_CTAGS
+    $ sudo ln -s `which ctags-exuberant` $OLD_CTAGS
+
 ### Updates
 
 I switched from a bash script to a Python script for managing and symlinking the
