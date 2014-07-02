@@ -64,8 +64,7 @@ nnoremap <leader>e :Errors<cr>
 nnoremap <leader>c :SyntasticReset<cr>
 
 " Some CtrlP shortcuts.
-nnoremap <leader>r :CtrlPTag<cr>
-nnoremap <leader>g :CtrlP<cr>
+nnoremap <C-O> :CtrlPTag<cr>
 
 " Use the enter key to select a completion candidate.
 inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
