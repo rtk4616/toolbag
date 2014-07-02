@@ -8,6 +8,7 @@
         clipboard-kill-region
         sh-assignment
         autopair-insert-opening
+        clipboard-yank
         ))
 
 (setq mc/cmds-to-run-once
