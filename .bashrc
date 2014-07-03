@@ -18,7 +18,7 @@ export PATH=$PATH:$GOPATH/bin
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export EDITOR="emacs"
+export EDITOR="vi"
 
 # Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
