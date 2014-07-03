@@ -32,6 +32,7 @@ managed_files = [
     ".elisp",
     ".tmux.conf",
     ".pythonrc",
+    ".pylintrc",
     ".gitconfig",
 ]
 
