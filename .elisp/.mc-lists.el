@@ -8,6 +8,7 @@
         clipboard-kill-region
         sh-assignment
         autopair-insert-opening
+        clipboard-kill-ring-save
         clipboard-yank
         ))
 
