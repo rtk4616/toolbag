@@ -10,6 +10,7 @@
         autopair-insert-opening
         clipboard-kill-ring-save
         clipboard-yank
+        mark-paragraph
         ))
 
 (setq mc/cmds-to-run-once
