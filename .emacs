@@ -43,18 +43,18 @@
 ;; Set up my MikeFuzzyFind stuff
 (require 'MikeFuzzyFind)
 
-;; Company-mode setup.
-(require 'company)
-(require 'company-etags)
-;; This is if we wanted to use the company-go backend for every mode.
-;; (require 'company-go)
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))))
-(add-hook 'after-init-hook 'global-company-mode)
-(add-to-list 'company-backends 'company-dabbrev t)
-(add-to-list 'company-backends 'company-ispell t)
-(add-to-list 'company-backends 'company-files t)
-(setq company-idle-delay nil)
+;; ;; Company-mode setup.
+;; (require 'company)
+;; (require 'company-etags)
+;; ;; This is if we wanted to use the company-go backend for every mode.
+;; ;; (require 'company-go)
+;; (add-hook 'go-mode-hook (lambda ()
+;;                           (set (make-local-variable 'company-backends) '(company-go))))
+;; (add-hook 'after-init-hook 'global-company-mode)
+;; (add-to-list 'company-backends 'company-dabbrev t)
+;; (add-to-list 'company-backends 'company-ispell t)
+;; (add-to-list 'company-backends 'company-files t)
+;; (setq company-idle-delay nil)
 
 ;; Better Scala mode.
 (require 'scala-mode2)
@@ -76,17 +76,17 @@
 (eval-after-load "multi-web-mode"   '(require 'html-mode-expansions))
 (eval-after-load "multi-web-global-mode"   '(require 'html-mode-expansions))
 
-;; ;; Hippie-expand stuff.
-;; (setq hippie-expand-try-functions-list '(try-expand-dabbrev
-;;                                          try-expand-dabbrev-all-buffers
-;;                                          try-expand-dabbrev-from-kill
-;;                                          try-complete-file-name-partially
-;;                                          try-complete-file-name
-;;                                          ;; try-expand-all-abbrevs
-;;                                          ;; try-expand-list
-;;                                          ;; try-expand-line
-;;                                          try-complete-lisp-symbol-partially
-;;                                          try-complete-lisp-symbol))
+;; Hippie-expand stuff.
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         ;; try-expand-all-abbrevs
+                                         ;; try-expand-list
+                                         ;; try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
 
 ;; ;; TODO: This feels kinda messy... Need to clean up tags stuff.
 ;; (if (ignore-errors (visit-tags-table default-directory))
@@ -484,8 +484,8 @@ Specifying REVERSE as t will result in traversing the file backward."
 
 ;; Make autocomplete feature use a better shortcut
 ;; (global-set-key (kbd "M-SPC") 'dabbrev-expand)
-;; (global-set-key (kbd "M-SPC") 'hippie-expand)
-(global-set-key (kbd "M-SPC") 'company-complete)
+(global-set-key (kbd "M-SPC") 'hippie-expand)
+;; (global-set-key (kbd "M-SPC") 'company-complete)
 
 
 ;; Make dabbrev-expand respect case...
