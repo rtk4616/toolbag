@@ -5,6 +5,12 @@
 ;; Set the default directory to be the user's home directory if we opened the GUI version of Emacs.
 (if window-system (setq default-directory "~"))
 
+;; Make emacs keep the current working directory when opening files.
+(setq emacs-startup-directory default-directory)
+(add-hook 'find-file-hook
+          (lambda ()
+            (setq default-directory emacs-startup-directory)))
+
 ;; Highlight text selection.
 (transient-mark-mode 1)
 
@@ -540,12 +546,6 @@ Specifying REVERSE as t will result in traversing the file backward."
 
 ;; Make rgrep searches be case insensitive.
 (setq case-fold-search t)
-
-;; make emacs keep the current working directory when opening files.
-(add-hook 'find-file-hook
-          (lambda ()
-            (setq default-directory command-line-default-directory)))
-
 
 ;; Add a little padding around the line numbers.
 ;; Dynamically determine character width for the line numbers column, and add a
