@@ -11,6 +11,7 @@
         clipboard-kill-ring-save
         clipboard-yank
         mark-paragraph
+        query-replace
         ))
 
 (setq mc/cmds-to-run-once
