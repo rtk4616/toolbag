@@ -5,6 +5,12 @@
 ;; Doing a yucky thing for now...
 (setq vc-handled-backends nil)
 
+;; Collapse fringes
+(fringe-mode -1)
+
+;; Always highlight the current line.
+(global-hl-line-mode 1)
+
 ;; Set the default directory to be the user's home directory if we opened the GUI version of Emacs.
 (if window-system (setq default-directory "~"))
 
@@ -193,7 +199,8 @@
 (setq ispell-list-command "list")
 
 ;; Set up the Emacs theme.
-(load-theme 'tomorrow-night t)
+(load-theme 'spolsky t)
+;; (load-theme 'tomorrow-night t)
 ;; (load-theme 'monokai t)
 
 ;; Set SSH as the default method for Tramp.
@@ -558,8 +565,6 @@ Specifying REVERSE as t will result in traversing the file backward."
                      (count-lines (point-min) (point-max)))))
          (linum-format (concat "%" (number-to-string w) "d ")))
     ad-do-it))
-;; (setq linum-format " %d  ")
-
 
 ;; Make F5 toggle line numbers on and off.
 (global-set-key (kbd "<f5>") 'linum-mode)
