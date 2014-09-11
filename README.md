@@ -23,7 +23,6 @@ $ sudo rm $OLD_CTAGS
 $ sudo ln -s $NEW_CTAGS $OLD_CTAGS
 ```
 
-
 #### Ubuntu
 
 ```bash
@@ -34,7 +33,7 @@ $ sudo ln -s `which ctags-exuberant` $OLD_CTAGS
 ```
 ### Syntax checking
 
-In ordrer for Syntastic to be able to check for syntax errors on write, you
+In order for Syntastic to be able to check for syntax errors on write, you
 will need to have certain external analysis tools installed. For example,
 syntax checking for Python requires that you install Pylint:
 
