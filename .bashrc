@@ -1,7 +1,7 @@
 # Aliases.
-alias ll='ls -Gplh'
-alias la='ls -al -Gph'
-alias l='ls -Gph'
+alias ll='ls -plh'
+alias la='ls -al -ph'
+alias l='ls -ph'
 alias tree='tree -C'
 alias em='emacs'
 
