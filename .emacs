@@ -6,7 +6,7 @@
 (setq vc-handled-backends nil)
 
 ;; Collapse fringes
-(fringe-mode -1)
+(fringe-mode 0)
 
 ;; Always highlight the current line.
 (global-hl-line-mode 1)
