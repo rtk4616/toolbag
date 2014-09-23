@@ -4,6 +4,7 @@ alias la='ls -al -ph'
 alias l='ls -ph'
 alias tree='tree -C'
 alias em='emacs'
+alias usage='sudo du -h --max-depth=1 | sort -h'
 
 # Paths.
 export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
