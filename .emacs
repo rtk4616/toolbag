@@ -2,6 +2,14 @@
 ;; Initial setup
 ;; ==============================================================
 
+;; Flycheck mode stuff.
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key "\C-x\C-p" 'flycheck-previous-error)
+(global-set-key "\C-x\C-n" 'flycheck-next-error)
+(global-set-key "\C-xp" 'flycheck-previous-error)
+(global-set-key "\C-xn" 'flycheck-next-error)
+(global-set-key "\C-x\C-o" 'flycheck-list-errors)
+
 ;; Scrolling stuff
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
