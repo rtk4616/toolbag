@@ -535,8 +535,7 @@ Specifying REVERSE as t will result in traversing the file backward."
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
 ;; (global-set-key "\C-xb" 'electric-buffer-list)
 
-;; Make it so we don't have to release ctrl when switching buffers...
-(global-set-key "\C-x\C-o" 'other-window)
+;; Easy switch to other window.
 (global-set-key "\M-o" 'other-window)
 
 ;; ...or killing buffers.
@@ -554,13 +553,6 @@ Specifying REVERSE as t will result in traversing the file backward."
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-n" 'MikeDownSomeLines)
 
-;; Bindings for changing buffers.
-;; (global-set-key (kbd "M-<left>") 'previous-buffer)
-;; (global-set-key (kbd "M-<right>") 'next-buffer)
-(global-set-key "\C-x\C-p" 'previous-buffer)
-(global-set-key "\C-x\C-n" 'next-buffer)
-(global-set-key "\C-xp" 'previous-buffer)
-(global-set-key "\C-xn" 'next-buffer)
 ;;
 ;; END Keybindings
 ;;
