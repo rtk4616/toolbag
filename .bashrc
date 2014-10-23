@@ -82,3 +82,27 @@ if ! [ -z "$PS1" ]; then
     ### Added by the Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
 fi
+
+function pull_commit_from_repo {
+    USAGE_MESSAGE="\nAbout:\n
+    Execute this command from within the Git repo you wish to pull the patch into.\n
+    \n
+    Usage:\n
+    pull_commit_from_repo [COMMIT HASH] [FULL PATH TO .git FOLDER]\n"
+
+    if [ -z "$1" ]
+    then
+        echo -e $USAGE_MESSAGE
+        return
+    fi
+
+    if [ -z "$2" ]
+    then
+        echo -e $USAGE_MESSAGE
+        return
+    fi
+
+    echo "About to pull $1 from the Git repo at $2"
+    read -p "Press ENTER to confirm, or CTRL-C to abort..."
+    git --git-dir="$2" format-patch -k -1 --stdout "$1" | git am -3 -k
+}
