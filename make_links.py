@@ -29,6 +29,7 @@ managed_files = [
     ".ideavimrc",
     ".vim",
     ".emacs",
+    ".emacs.d",
     ".elisp",
     ".tmux.conf",
     ".pythonrc",
