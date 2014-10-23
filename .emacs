@@ -2,6 +2,10 @@
 ;; Initial setup
 ;; ==============================================================
 
+;; Scrolling stuff
+(global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
+(global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
+
 ;; Doing a yucky thing for now...
 (setq vc-handled-backends nil)
 
@@ -422,6 +426,18 @@ Specifying REVERSE as t will result in traversing the file backward."
 (defun MikeDownSomeLines ()
   (interactive)
   (next-line 6)
+  )
+
+(defun MikeScrollUpOneLine ()
+  (interactive)
+  ;; Emacs "down" means something different than I mean ;)
+  (scroll-down 1)
+  )
+
+(defun MikeScrollDownOneLine ()
+  (interactive)
+  ;; Emacs "up" means something different than I mean ;)
+  (scroll-up 1)
   )
 
 
