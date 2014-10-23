@@ -2,6 +2,14 @@
 ;; Initial setup
 ;; ==============================================================
 
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  )
+
+
 ;; Flycheck mode stuff.
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (global-set-key "\C-x\C-p" 'flycheck-previous-error)
