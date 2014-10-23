@@ -27,7 +27,9 @@
 
 [alias]
     vd = difftool --tool=vimdiff
+    vc = !EDITOR='vim' git commit
     ed = difftool --tool=ediff
+    ec = !EDITOR='emacs' git commit
     st = status
     lo = log --oneline
     ls = log --stat
