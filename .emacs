@@ -17,6 +17,8 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)  ; not helm
+(global-set-key "\C-xl" 'helm-occur)
+(global-set-key "\C-x\C-l" 'helm-occur)
 (setq helm-quick-update                     t ; do not display invisible candidates.
       helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window.
       helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil.
@@ -40,9 +42,6 @@
 
 ;; Doing a yucky thing for now...
 (setq vc-handled-backends nil)
-
-;; Collapse fringes
-(fringe-mode 0)
 
 ;; Always highlight the current line.
 (global-hl-line-mode 1)
@@ -515,10 +514,6 @@ Specifying REVERSE as t will result in traversing the file backward."
 
 ;; List all lines matching a pattern in the current file.
 (global-set-key "\M-l" 'recenter-top-bottom)
-
-;; List all lines matching a pattern in the current file.
-(global-set-key "\C-xl" 'list-matching-lines)
-(global-set-key "\C-x\C-l" 'list-matching-lines)
 
 ;; iMenu binding.
 (global-set-key "\C-x\C-j" 'imenu)
