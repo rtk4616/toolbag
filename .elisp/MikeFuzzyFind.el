@@ -152,6 +152,7 @@
                                 ".git"
                                 "migrations"
                                 "scala-2.10"
+                                "_book"
                                 "static"))
 
 ;; Get the alternation for a list of files.
