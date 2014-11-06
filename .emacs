@@ -496,8 +496,8 @@ Specifying REVERSE as t will result in traversing the file backward."
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 
 ;; Shortcut key for indenting/de-indenting a region.
-(global-set-key "\M-," 'MikeDeIndent)
-(global-set-key "\M-." 'MikeIndent)
+(global-set-key "\M-a" 'MikeDeIndent)
+(global-set-key "\M-e" 'MikeIndent)
 
 ;; Shortcut key for title-casing a word/region.
 (global-set-key "\M-u" 'downcase-word)
