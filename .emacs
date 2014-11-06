@@ -40,6 +40,9 @@
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 
+;; Tags stuff.
+(global-set-key (kbd "M-,") 'pop-tag-mark)
+
 ;; Doing a yucky thing for now...
 (setq vc-handled-backends nil)
 
