@@ -56,7 +56,7 @@ commit and push.
 1. Clone the repo:
 
 ```bash
-git clone git@github.com:wilkystyle/toolbag.git
+git clone https://github.com/wilkystyle/toolbag.git
 ```
 
 1. Navigate into the repo directory:
