@@ -42,6 +42,14 @@
 
 ;; Tags stuff.
 (global-set-key (kbd "M-,") 'pop-tag-mark)
+(global-set-key (kbd "M-*") 'mike-next-tag)
+(defun mike-next-tag ()
+  (interactive)
+  (let ((current-prefix-arg t)) ;; emulate C-u
+    (call-interactively 'find-tag)
+    )
+  )
+
 
 ;; Doing a yucky thing for now...
 (setq vc-handled-backends nil)
