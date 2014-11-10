@@ -5,13 +5,17 @@
       '(
         MikeDeIndent
         MikeIndent
-        clipboard-kill-region
-        sh-assignment
         autopair-insert-opening
+        autopair-insert-or-skip-quote
+        autopair-newline
+        clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
+        indent-for-tab-command
         mark-paragraph
+        python-indent-electric-colon
         query-replace
+        sh-assignment
         ))
 
 (setq mc/cmds-to-run-once
