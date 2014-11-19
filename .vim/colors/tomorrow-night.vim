@@ -353,7 +353,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Diff Highlighting
 	" call <SID>X("diffAdded", s:green, "", "")
 	" call <SID>X("diffRemoved", s:red, "", "")
-    hi   DiffAdd         ctermbg=24
+    hi   DiffAdd         ctermfg=255   ctermbg=28
     hi   DiffChange      ctermfg=255   ctermbg=239
     hi   DiffDelete      ctermfg=161   ctermbg=53
     hi   DiffText        ctermfg=255   ctermbg=102   cterm=bold
