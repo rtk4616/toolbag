@@ -354,9 +354,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" call <SID>X("diffAdded", s:green, "", "")
 	" call <SID>X("diffRemoved", s:red, "", "")
     hi   DiffAdd         ctermbg=24
-    hi   DiffChange      ctermfg=181   ctermbg=239
+    hi   DiffChange      ctermfg=255   ctermbg=239
     hi   DiffDelete      ctermfg=161   ctermbg=53
-    hi   DiffText        ctermbg=102   cterm=bold
+    hi   DiffText        ctermfg=255   ctermbg=102   cterm=bold
 
 	" ShowMarks Highlighting
 	call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
