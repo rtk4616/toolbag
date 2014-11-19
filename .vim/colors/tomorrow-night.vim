@@ -353,10 +353,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Diff Highlighting
 	" call <SID>X("diffAdded", s:green, "", "")
 	" call <SID>X("diffRemoved", s:red, "", "")
-    hi   DiffAdd         ctermbg=24
-    hi   DiffChange      ctermfg=181   ctermbg=239
+    hi   DiffAdd         ctermfg=255   ctermbg=28
+    hi   DiffChange      ctermfg=255   ctermbg=239
     hi   DiffDelete      ctermfg=161   ctermbg=53
-    hi   DiffText        ctermbg=102   cterm=bold
+    hi   DiffText        ctermfg=255   ctermbg=102   cterm=bold
 
 	" ShowMarks Highlighting
 	call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
@@ -478,7 +478,7 @@ hi markdownUrl guifg=#2fb3a6 ctermfg=175
 hi markdownAutomaticLink guifg=#2fb3a6 ctermfg=175
 hi markdownLinkText guifg=#F92672 ctermfg=161
 hi markdownUrlTitle guifg=#F92672 ctermfg=161
-hi markdownBlockquote guifg=#F92672 gui=bold ctermfg=161 gui=bold
+hi markdownBlockquote guifg=#77bbdd ctermfg=75 gui=bold
 hi markdownId guifg=#2fb3a6 ctermfg=138
 hi markdownIdDeclaration guifg=#F92672 gui=bold ctermfg=161 gui=bold
 hi markdownListMarker guifg=#F92672 ctermfg=161
