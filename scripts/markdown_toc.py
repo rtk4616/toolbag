@@ -1,7 +1,7 @@
 import re
 import sys
 
-to_remove = re.compile("[!:,/\"'()]")
+to_remove = re.compile("[!:,/\"'()-.%&]")
 USEAGE = (
     "usage: {} [MARKDOWN FILE]"
 ).format(
