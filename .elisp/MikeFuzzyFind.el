@@ -153,6 +153,7 @@
                                 "migrations"
                                 "scala-2.10"
                                 "_book"
+                                "node_modules"
                                 "static"))
 
 ;; Get the alternation for a list of files.
