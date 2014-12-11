@@ -37,6 +37,7 @@ OUTPUT = ""
 
 if len(sys.argv) != 2:
     print USEAGE
+    sys.exit()
 
 indentations = {}
 lines = []
