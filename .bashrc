@@ -21,6 +21,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export EDITOR="vi"
 
+VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
+
 # Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
     # iTerm2 stuff.
@@ -29,7 +31,10 @@ if ! [ -z "$PS1" ]; then
     echo -e -n "\033]6;1;bg;green;brightness;180\a"
     echo -e -n "\033]6;1;bg;blue;brightness;220\a"
 
-    source /usr/local/bin/virtualenvwrapper.sh
+    if [ -e "$VIRTUALENV_SCRIPT" ]
+    then
+        source $VIRTUALENV_SCRIPT
+    fi
 
     # --- colors ---
     BLACK='\e[0;30m'
