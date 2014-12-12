@@ -1941,7 +1941,12 @@ This helps improve font locking for block constructs such as pre blocks."
 (defvar markdown-mode-syntax-table
   (let ((tab (make-syntax-table text-mode-syntax-table)))
     (modify-syntax-entry ?\" "." tab)
+
+    ;; Mike Wilkerson additions. Fixes autopair issues in markdown-mode.
     (modify-syntax-entry ?\` "\"`" tab)
+    (modify-syntax-entry ?\" "\"\"" tab)
+    (modify-syntax-entry ?\' "\"'" tab)
+
     tab)
   "Syntax table for `markdown-mode'.")
 
