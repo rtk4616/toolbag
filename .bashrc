@@ -19,6 +19,14 @@ export PATH=$PATH:$GOPATH/bin
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+# Set the editor.
+# NOTE: The .tmux.conf file assumes that you will be using one of:
+#
+# [emacs | vi]
+#
+# If this is not the case, you should edit the .tmux.conf file and
+# explicitly specify the value.
 export EDITOR="vi"
 
 VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
