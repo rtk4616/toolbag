@@ -5,6 +5,8 @@ alias l='ls -ph'
 alias tree='tree -C'
 alias em='emacs'
 alias usage='sudo du -h --max-depth=1 | sort -h'
+alias emux='tmux set -gw mode-keys emacs && set -gw status-keys emacs'
+alias vmux='tmux set -gw mode-keys vi && set -gw status-keys vi'
 
 # Paths.
 export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
@@ -19,14 +21,6 @@ export PATH=$PATH:$GOPATH/bin
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-
-# Set the editor.
-# NOTE: The .tmux.conf file assumes that you will be using one of:
-#
-# [emacs | vi]
-#
-# If this is not the case, you should edit the .tmux.conf file and
-# explicitly specify the value.
 export EDITOR="vi"
 
 VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
