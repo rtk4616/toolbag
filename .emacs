@@ -15,7 +15,7 @@
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "M-x") 'helm-M-x)
 ;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)  ; not helm
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-x\C-l" 'helm-occur)
