@@ -5,8 +5,8 @@ alias l='ls -ph'
 alias tree='tree -C'
 alias em='emacs'
 alias usage='sudo du -h --max-depth=1 | sort -h'
-alias emux='tmux set -gw mode-keys emacs && set -gw status-keys emacs'
-alias vmux='tmux set -gw mode-keys vi && set -gw status-keys vi'
+alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
+alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
 # Paths.
 export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
