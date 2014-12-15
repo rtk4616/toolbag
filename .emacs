@@ -503,6 +503,9 @@ Specifying REVERSE as t will result in traversing the file backward."
 ;; START Keybindings
 ;; ==============================================================
 
+;; Better shortcut for going to a line.
+(global-set-key "\M-g" 'goto-line)
+
 ;; Shortcut key for discarding all changes and quitting Emacs without prompting.
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 
