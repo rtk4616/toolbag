@@ -274,6 +274,9 @@
 ;; Load yaml-mode.
 (require 'yaml-mode)
 
+;; Load git-commit-mode
+(require 'git-commit-mode)
+
 ;; Load the Autopair module.
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
@@ -300,7 +303,7 @@
 (add-to-list 'auto-mode-alist '("crontab$" . conf-mode))
 (add-to-list 'auto-mode-alist '("rc$" . sh-mode))
 (add-to-list 'auto-mode-alist '(".gitconfig$" . conf-mode))
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . conf-mode))
+(add-to-list 'auto-mode-alist '("^COMMIT_EDITMSG$" . git-commit-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
 (add-to-list 'auto-mode-alist '("\\.vcl$" . conf-javaprop-mode))
