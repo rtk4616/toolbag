@@ -1945,7 +1945,7 @@ This helps improve font locking for block constructs such as pre blocks."
     ;; Mike Wilkerson additions. Fixes autopair issues in markdown-mode.
     (modify-syntax-entry ?\` "\"`" tab)
     (modify-syntax-entry ?\" "\"\"" tab)
-    (modify-syntax-entry ?\' "\"'" tab)
+    ;; (modify-syntax-entry ?\' "\"'" tab)
 
     tab)
   "Syntax table for `markdown-mode'.")
