@@ -60,6 +60,9 @@ autocmd Syntax * syntax sync minlines=1000
 " Key bindings
 " ===================================================================================================
 
+" Mapping to pipe contents of register 0 to pbcopy.
+nnoremap <leader>w :call Pbcopy()<CR>
+
 " Some Syntastic shortcuts.
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>c :SyntasticReset<cr>
@@ -272,4 +275,19 @@ function! PrefixLines() range
     let t = input('Prefix: ')
     call inputrestore()
     exe a:firstline.','.a:lastline 's/^/\=t'
+endfunction
+
+function! Pbcopy()
+    let pbcopy = 'pbcopy'
+    let exists = strlen(system('which ' . pbcopy))
+    if !exists
+        echom pbcopy . " not found on this machine!"
+        return
+    endif
+    if !strlen(@0)
+        echom "Nothing in register 0!"
+        return
+    endif
+    echom "Sent to pbcopy: " . @0
+    call system("pbcopy", @0)
 endfunction
