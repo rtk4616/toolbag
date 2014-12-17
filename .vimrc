@@ -288,6 +288,6 @@ function! Pbcopy()
         echom "Nothing in register 0!"
         return
     endif
-    echom "Sent to pbcopy: " . @0
+    echom "Sent register 0 to " . pbcopy
     call system("pbcopy", @0)
 endfunction
