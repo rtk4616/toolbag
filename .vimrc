@@ -83,36 +83,14 @@ nnoremap <C-j> 6j
 vnoremap <C-k> 6k
 vnoremap <C-j> 6j
 
-" Testing setting ctrl-space and alt-space.
-nnoremap <C-space> :echo "You just pressed ctrl-space"<CR>
-nnoremap <M-space> :echo "You just pressed alt-space"<CR>
-
 " Set space to open and close folds in normal mode.
 nnoremap <space> za
-
-" List all files in all subdirectories by partial name.
-nnoremap <Leader>f :call MikeFindInFiles()<CR>
-
-" List all files in all subdirectories by partial name.
-" nnoremap <Leader>g :call MikeFileFinder()<CR>
-
-" TODO: Delete this!
-nnoremap <Leader>x :call SaveSymbolsToDict()<CR>
-
-" Easy binding to vimgrep in all files.
-" nnoremap <Leader>f :tabnew <bar> :call MikeGrep()<CR>
-
-" Easy binding to vimgrep in all files.
-" nnoremap <Leader>r :tabnew <bar> :call GrepForSymbol()<CR>
 
 " Vimgrep for word under the cursor!
 nnoremap <Leader>d :call MikeGrepForSymbolUnderCursor()<CR>
 
 " Show all occurrences of a pattern in the current file.
 nnoremap <Leader>l :call MikeFindAllOccurrencesInFile()<CR>
-
-" Show all occurrences of a pattern in the current file.
-nnoremap <Leader>s :call MikeFindAllSymbolsInFile()<CR>
 
 " Easy quit all.
 nnoremap ZA :qa!<cr>
@@ -253,21 +231,6 @@ function! MikeFindAllOccurrencesInFile()
     echo "\n\n"
     exe "g/".l:thePattern."/p"
     echo "\n\n"
-endfunc
-
-function! MikeFindAllSymbolsInFile()
-    call inputsave()
-    let l:thePattern = input('Pattern to find: ')
-    call inputrestore()
-    echo "\n\n"
-    exe "g/^ *\\(class\\|def\\|func!*\\| function!*\\) ".l:thePattern."/p"
-    echo "\n\n"
-endfunc
-
-function! MDTOC(theHeader)
-    let l:partOne = substitute(a:theHeader, ":$", "", "g")
-    let l:partTwo = tolower(substitute(substitute(a:theHeader, "[[:punct:]]", "", "g"), " ", "-", "g"))
-    return "[" . l:partOne . "](#" . l:partTwo . ")"
 endfunc
 
 function! PrefixLines() range
