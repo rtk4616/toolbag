@@ -11,6 +11,7 @@
 (load "~/.emacs.d/mike-stuff/mike-functions.el")
 
 ;;;; Keybindings
+(global-set-key "\C-\M-h" 'er/contract-region)
 (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
@@ -21,6 +22,7 @@
 (global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
 (global-set-key "\M-g" 'goto-line)
+(global-set-key "\M-h" 'er/expand-region)
 (global-set-key "\M-k" 'mark-paragraph)
 (global-set-key "\M-l" 'recenter-top-bottom)
 (global-set-key "\M-n" 'MikeDownSomeLines)
@@ -30,6 +32,7 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 
 (global-set-key (kbd "<C-return>") 'newline)
+(global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
@@ -37,15 +40,18 @@
 
 
 ;;;; Emacs options
-(fset 'yes-or-no-p 'y-or-n-p)
-(global-font-lock-mode 1)
 (load-theme 'monokai t)
-(set-default-font "Menlo-12")
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
+(autopair-global-mode)
+(delete-selection-mode 1)
+(global-hl-line-mode 1)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(set-default-font "Menlo-12")
 (setq auto-save-default nil)
 (setq c-default-style "bsd" c-basic-offset 4)
 (setq case-fold-search t)
@@ -62,7 +68,6 @@
 (setq ruby-indent-level 2)
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
-
 (setq-default column-number-mode 1)
 (setq-default fill-column 79)
 (setq-default indent-tabs-mode nil)
