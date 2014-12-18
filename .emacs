@@ -31,9 +31,10 @@
 
 
 ;;;; Emacs options
-(set-default-font "Menlo-12")
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-font-lock-mode 1)
+(load-theme 'monokai t)
+(set-default-font "Menlo-12")
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
