@@ -7,8 +7,10 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+
 ;;;; My helper functions
 (load "~/.emacs.d/mike-stuff/mike-functions.el")
+
 
 ;;;; Keybindings
 (global-set-key "\C-\M-h" 'er/contract-region)
@@ -18,6 +20,11 @@
 (global-set-key "\C-w" 'clipboard-kill-region)
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 (global-set-key "\C-x\C-k" 'kill-buffer)
+(global-set-key "\C-x\C-n" 'flycheck-next-error)
+(global-set-key "\C-x\C-o" 'flycheck-list-errors)
+(global-set-key "\C-x\C-p" 'flycheck-previous-error)
+(global-set-key "\C-xn" 'flycheck-next-error)
+(global-set-key "\C-xp" 'flycheck-previous-error)
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
@@ -76,6 +83,10 @@
 
 
 ;;;; Hooks
+
+;; General init hooks
+(add-hook 'after-init-hook (lambda ()
+                             (global-flycheck-mode)))
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
