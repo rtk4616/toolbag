@@ -67,6 +67,7 @@
 (setq css-indent-offset 4)
 (setq dabbrev-case-fold-search nil)
 (setq ediff-split-window-function 'split-window-horizontally)
+(setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
@@ -87,9 +88,14 @@
 
 ;;;; Hooks
 
-;; General init hooks
+;; Emacs init hooks
 (add-hook 'after-init-hook (lambda ()
                              (global-flycheck-mode)))
+
+;; Find file hooks
+(add-hook 'find-file-hook
+          (lambda ()
+            (setq default-directory emacs-startup-directory)))
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
@@ -103,6 +109,7 @@
 
 ;; Add highlighting of TODOs
 (add-hook 'prog-mode-hook
-	  (lambda ()
-	    (font-lock-add-keywords nil
-				    '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
