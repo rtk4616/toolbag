@@ -67,7 +67,6 @@
 
 (autopair-global-mode)
 (delete-selection-mode 1)
-(global-hl-line-mode 1)
 (helm-mode 1)
 (ido-mode t)
 
