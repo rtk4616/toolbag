@@ -1,4 +1,4 @@
-;; MELPA
+;;;; MELPA
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
@@ -7,6 +7,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;;;; My helper functions
+(load "~/.emacs.d/mike-stuff/mike-functions.el")
 
 ;;;; Keybindings
 (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
@@ -16,16 +18,20 @@
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-y" 'clipboard-yank)
+(global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-k" 'mark-paragraph)
 (global-set-key "\M-l" 'recenter-top-bottom)
+(global-set-key "\M-n" 'MikeDownSomeLines)
 (global-set-key "\M-o" 'other-window)
+(global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
-(global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 
 (global-set-key (kbd "<C-return>") 'newline)
+(global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
+(global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
 
