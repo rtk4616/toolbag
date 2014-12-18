@@ -1,6 +1,6 @@
-## Toolbag
+# Toolbag
 
-### About
+## About
 
 This repo contains all of the common config files used across my UNIX-based
 systems. The idea is that you pull down the repo on a new machine, run the
@@ -9,7 +9,17 @@ replaced with symlinks that point into this repo. This provides an easy way to
 have a consistent and syncronized working environment on any machine you're
 using.
 
-### Ctags
+## Table of Contents
+
+* [Ctags](#ctags)
+    * [OSX](#osx)
+    * [Ubuntu](#ubuntu)
+* [Syntax checking](#syntax-checking)
+* [Updates](#updates)
+* [Installation](#installation)
+* [Staying up to date](#staying-up-to-date)
+
+## Ctags
 
 In order to use any tags functionality, you will want to install exuberant-ctags.
 
@@ -31,7 +41,7 @@ $ OLD_CTAGS=`which ctags`
 $ sudo rm $OLD_CTAGS
 $ sudo ln -s `which ctags-exuberant` $OLD_CTAGS
 ```
-### Syntax checking
+## Syntax checking
 
 In order for Syntastic to be able to check for syntax errors on write, you
 will need to have certain external analysis tools installed. For example,
@@ -41,13 +51,13 @@ syntax checking for Python requires that you install Pylint:
 $ pip install pylint
 ```
 
-### Updates
+## Updates
 
 I switched from a bash script to a Python script for managing and symlinking the
 files. This was much cleaner, and allows for the list of files to manage to be
 updated easily.
 
-### Installation
+## Installation
 
 You only need to perform these steps once. After performing an installation,
 updates to the symlinked files will be updates to the repo, which you can then
@@ -72,7 +82,7 @@ cd toolbag
 ```
 
 
-### Staying up to date
+## Staying up to date
 
 In order to make sure you have the latest version of the files, simply do:
 
