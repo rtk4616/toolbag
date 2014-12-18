@@ -34,6 +34,8 @@
 (global-set-key "\M-l" 'recenter-top-bottom)
 (global-set-key "\M-n" 'MikeDownSomeLines)
 (global-set-key "\M-o" 'other-window)
+(global-set-key "\C-x\C-l" 'helm-occur)
+(global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
@@ -41,10 +43,16 @@
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
+(global-set-key (kbd "C-x C-b") 'electric-buffer-list)
+(global-set-key (kbd "C-x C-h") 'helm-command-prefix)
 (global-set-key (kbd "M-*") 'mike-next-tag)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
+
+(global-unset-key (kbd "C-c C-c"))
+(global-unset-key (kbd "C-x c"))
 
 
 ;;;; Emacs options
@@ -57,7 +65,9 @@
 (autopair-global-mode)
 (delete-selection-mode 1)
 (global-hl-line-mode 1)
+(helm-mode 1)
 (ido-mode t)
+
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (set-default-font "Menlo-12")
@@ -69,6 +79,13 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
+(setq helm-buffers-fuzzy-matching t)
+(setq helm-ff-file-name-history-use-recentf t)
+(setq helm-ff-search-library-in-sexp t)
+(setq helm-move-to-line-cycle-in-source t)
+(setq helm-quick-update t)
+(setq helm-scroll-amount 8)
+(setq helm-split-window-in-side-p t)
 (setq ido-enable-last-directory-history nil)
 (setq ido-everywhere t)
 (setq ido-max-work-directory-list 0)
