@@ -63,15 +63,15 @@ commit and push.
 
 1. Clone the repo:
 
-    $ git clone https://github.com/wilkystyle/toolbag.git
+        $ git clone https://github.com/wilkystyle/toolbag.git
 
 1. Navigate into the repo directory:
 
-    $ cd toolbag
+        $ cd toolbag
 
 1. Run the installation Python script to create symlinks:
 
-    $ ./make_links.py
+        $ ./make_links.py
 
 
 ## Staying up to date
