@@ -47,9 +47,7 @@ In order for Syntastic to be able to check for syntax errors on write, you
 will need to have certain external analysis tools installed. For example,
 syntax checking for Python requires that you install Pylint:
 
-```bash
-$ pip install pylint
-```
+    $ pip install pylint
 
 ## Updates
 
@@ -65,27 +63,19 @@ commit and push.
 
 1. Clone the repo:
 
-```bash
-git clone https://github.com/wilkystyle/toolbag.git
-```
+    $ git clone https://github.com/wilkystyle/toolbag.git
 
 1. Navigate into the repo directory:
 
-```bash
-cd toolbag
-```
+    $ cd toolbag
 
 1. Run the installation Python script to create symlinks:
 
-```bash
-./make_links.py
-```
+    $ ./make_links.py
 
 
 ## Staying up to date
 
 In order to make sure you have the latest version of the files, simply do:
 
-```bash
-git pull
-```
+    $ git pull
