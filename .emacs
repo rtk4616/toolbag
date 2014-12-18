@@ -75,6 +75,7 @@
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
+                          (setq company-idle-delay 0)
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
