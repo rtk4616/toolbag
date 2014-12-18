@@ -42,6 +42,8 @@
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
+(global-set-key (kbd "M-*") 'mike-next-tag)
+(global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
 

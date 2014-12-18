@@ -19,3 +19,10 @@
   ;; Emacs "up" means something different than I mean ;)
   (scroll-up 1)
   )
+
+(defun mike-next-tag ()
+  (interactive)
+  (let ((current-prefix-arg t)) ;; emulate C-u
+    (call-interactively 'find-tag)
+    )
+  )
