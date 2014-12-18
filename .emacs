@@ -75,6 +75,7 @@
 (setq ruby-indent-level 2)
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
+(setq vc-handled-backends nil)
 (setq-default column-number-mode 1)
 (setq-default fill-column 79)
 (setq-default indent-tabs-mode nil)
