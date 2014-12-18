@@ -57,6 +57,7 @@
 (autopair-global-mode)
 (delete-selection-mode 1)
 (global-hl-line-mode 1)
+(ido-mode t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (set-default-font "Menlo-12")
@@ -68,6 +69,12 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
+(setq ido-enable-last-directory-history nil)
+(setq ido-everywhere t)
+(setq ido-max-work-directory-list 0)
+(setq ido-max-work-file-list 0)
+(setq ido-record-commands nil)
+(setq ido-use-faces nil)
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
@@ -90,7 +97,6 @@
 ;; Emacs init hooks
 (add-hook 'after-init-hook (lambda ()
                              (global-flycheck-mode)))
-
 ;; Find file hooks
 (add-hook 'find-file-hook
           (lambda ()
