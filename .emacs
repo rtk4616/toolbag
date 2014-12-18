@@ -66,6 +66,12 @@
 
 ;;;; Hooks
 
+;; go-mode hooks
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)
+                          (add-hook 'before-save-hook 'gofmt-before-save)))
+
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
