@@ -310,3 +310,13 @@ Specifying REVERSE as t will result in traversing the file backward."
       (goto-char end-pos)
       (push-mark nil t t)
       (goto-char start-pos))))
+
+
+(defun MikeGrepInFiles (search_string file_extension)
+  (interactive "sSearch for: \nsIn files ending in: ")
+  (rgrep search_string (concat "*" file_extension) "./"))
+
+
+(defun MikeGrepForFiles (search_string)
+  (interactive "sSearch for file: ")
+  (find-name-dired "." (concat "*" search_string "*")))
