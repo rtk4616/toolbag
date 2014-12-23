@@ -149,7 +149,7 @@
 
     ;; All done... return files-list!
     files-list)
-  ) ;; End of defun.
+  )
 
 
 (defun MikeFuzzyFileFinder (match-string)
@@ -319,10 +319,10 @@ Specifying REVERSE as t will result in traversing the file backward."
 ;;
 (grep-compute-defaults)
 (defun MikeGrepInFiles (search_string file_extension)
-  (interactive "sSearch for: \nsIn files ending in: ")
+  (interactive "sFind string: \nsLook in files ending with: ")
   (rgrep search_string (concat "*" file_extension) "./"))
 
 
 (defun MikeGrepForFiles (search_string)
-  (interactive "sSearch for file: ")
+  (interactive "sFind files by glob: ")
   (find-name-dired "." (concat "*" search_string "*")))
