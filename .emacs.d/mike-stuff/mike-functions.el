@@ -312,6 +312,12 @@ Specifying REVERSE as t will result in traversing the file backward."
       (goto-char start-pos))))
 
 
+;; Need to compute grep defaults, or MikeGrepInFiles will fail with the
+;; following error:
+;;
+;; "Wrong type argument: stringp, nil"
+;;
+(grep-compute-defaults)
 (defun MikeGrepInFiles (search_string file_extension)
   (interactive "sSearch for: \nsIn files ending in: ")
   (rgrep search_string (concat "*" file_extension) "./"))
