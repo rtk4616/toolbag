@@ -149,7 +149,7 @@
 
     ;; All done... return files-list!
     files-list)
-  ) ;; End of defun.
+  )
 
 
 (defun MikeFuzzyFileFinder (match-string)
