@@ -38,8 +38,8 @@
 
 
 ;;;; Keybindings
-(global-set-key "\C-\M-h" 'er/contract-region)
 (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
+(global-set-key "\C-\M-h" 'er/contract-region)
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
 (global-set-key "\C-w" 'clipboard-kill-region)
@@ -58,7 +58,6 @@
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-(" 'MikeDeIndent)
 (global-set-key "\M-)" 'MikeIndent)
-(global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-\\" (lambda () (interactive) (jump-to-register 'a)))
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-h" 'er/expand-region)
@@ -69,8 +68,11 @@
 (global-set-key "\M-o" 'other-window)
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
+(global-set-key "\M-U" 'upcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 
+(global-set-key (kbd "<C-backspace>") 'delete-backward-char)
+(global-set-key (kbd "<C-return>") 'newline)
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
@@ -79,8 +81,6 @@
 (global-set-key (kbd "M-*") 'mike-next-tag)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
-(global-set-key (kbd "<C-backspace>") 'delete-backward-char)
-(global-set-key (kbd "<C-return>") 'newline)
 (global-set-key (kbd "M-x") 'helm-M-x)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
 
