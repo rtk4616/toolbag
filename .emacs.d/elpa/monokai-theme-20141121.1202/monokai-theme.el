@@ -130,7 +130,8 @@ Also affects 'linum-mode' background."
        (monokai-fg               "#F8F8F2")
        (monokai-bg               "#272822")
        (monokai-hl-line          "#3E3D31")
-       (monokai-hl               "#49483E")
+       (monokai-hl               "#A41F99")
+       ;; (monokai-hl               "#49483E")
        (monokai-emph             "#F8F8F0")
        (monokai-comments         "#75715E")
        ;; Adaptive higher/lower contrast accented colors
@@ -209,7 +210,8 @@ Also affects 'linum-mode' background."
        (terminal-monokai-fg               "#F5F5F5")
        (terminal-monokai-bg               "#1B1E1C")
        (terminal-monokai-hl-line          "#212121")
-       (terminal-monokai-hl               "#303030")
+       (terminal-monokai-hl               "#A41F99")
+       ;; (terminal-monokai-hl               "#303030")
        (terminal-monokai-emph             "#FFFAFA")
        (terminal-monokai-comments         "#8B8878")
        ;; Adaptive higher/lower contrast accented colors
@@ -301,8 +303,10 @@ Also affects 'linum-mode' background."
                                     :background ,terminal-s-fringe-bg))))
 
    `(highlight
-     ((,class (:background ,monokai-hl))
-      (,terminal-class (:background ,terminal-monokai-hl))))
+     ((,class (:foreground ,monokai-fg
+                           :background ,monokai-hl))
+      (,terminal-class (:foreground ,terminal-monokai-fg
+                                    :background ,terminal-monokai-hl))))
 
    `(link
      ((,class (:foreground ,blue
