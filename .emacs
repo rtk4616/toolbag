@@ -1,3 +1,23 @@
+;;;; Determine platform, and set variables appropriately.
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (progn
+    ;; Set the necessary variables for Windows
+    (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+    ))
+ ((string-equal system-type "darwin")   ; Mac OS X
+  (progn
+    ;; Set the necessary variables for OSX
+    (add-to-list 'exec-path "/usr/local/bin/")
+    ))
+ ;; ((string-equal system-type "gnu/linux") ; linux
+ ;;  (progn
+ ;;    ;; Set the necessary variables for Linux
+ ;;    ;; TODO: what are they?
+ ;;    ))
+ )
+
+
 ;;;; MELPA
 (require 'package)
 (add-to-list 'package-archives
@@ -6,6 +26,11 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
+
+
+;;;; Spell-checking
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "list")
 
 
 ;;;; My helper functions
