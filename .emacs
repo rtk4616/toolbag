@@ -141,6 +141,9 @@
 (setq-default tab-width 4)
 
 
+;;;; nginx-mode stuff
+(add-to-list 'auto-mode-alist '("/etc/nginx/.*\.conf" . nginx-mode))
+
 ;;;; Hooks
 
 ;; Emacs init hooks
