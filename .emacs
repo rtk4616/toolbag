@@ -1,5 +1,16 @@
+;;;; Mike Wilkerson's Emacs configuration file.
+;;
+;; Sections:
+;; - Setting variables by platform
+;; - Mode-specific stuff
+;; - My helper functions
+;; - Keybindings
+;; - Emacs options
+;; - Hooks
+
+
 ;;;; ---------------------------------------------------------------------------
-;;;; Determine platform, and set variables appropriately.
+;;;; Setting variables by platform
 ;;;; ---------------------------------------------------------------------------
 
 (cond
