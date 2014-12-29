@@ -185,6 +185,14 @@
             (define-key dired-mode-map (kbd "M-o") 'other-window)
             ))
 
+
+;; Overriding markdown-mode binding
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
+            (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
+            ))
+
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
