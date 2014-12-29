@@ -179,6 +179,12 @@
           (lambda ()
             (setq default-directory emacs-startup-directory)))
 
+;; Overriding dired-mode binding
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "M-o") 'other-window)
+            ))
+
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
