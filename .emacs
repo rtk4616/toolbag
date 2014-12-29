@@ -1,4 +1,7 @@
+;;;; ---------------------------------------------------------------------------
 ;;;; Determine platform, and set variables appropriately.
+;;;; ---------------------------------------------------------------------------
+
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn
@@ -18,7 +21,11 @@
  )
 
 
-;;;; MELPA
+;;;; ---------------------------------------------------------------------------
+;;;; Mode-specific stuff
+;;;; ---------------------------------------------------------------------------
+
+;; MELPA
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
@@ -27,17 +34,21 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-
-;;;; Spell-checking
-(setq ispell-program-name "aspell")
-(setq ispell-list-command "list")
+;; nginx-mode stuff
+(add-to-list 'auto-mode-alist '("/etc/nginx/.*\.conf" . nginx-mode))
 
 
+;;;; ---------------------------------------------------------------------------
 ;;;; My helper functions
+;;;; ---------------------------------------------------------------------------
+
 (load "~/.emacs.d/mike-stuff/mike-functions.el")
 
 
+;;;; ---------------------------------------------------------------------------
 ;;;; Keybindings
+;;;; ---------------------------------------------------------------------------
+
 (global-set-key "\C-\\" (lambda () (interactive) (window-configuration-to-register 'a)))
 (global-set-key "\C-\M-h" 'er/contract-region)
 (global-set-key "\C-r" 'isearch-backward-regexp)
@@ -88,7 +99,10 @@
 (global-unset-key (kbd "C-x c"))
 
 
+;;;; ---------------------------------------------------------------------------
 ;;;; Emacs options
+;;;; ---------------------------------------------------------------------------
+
 (load-theme 'monokai t)
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -99,7 +113,6 @@
 (delete-selection-mode 1)
 (helm-mode 1)
 (ido-mode t)
-
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (set-default-font "Menlo-12")
@@ -127,6 +140,8 @@
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
+(setq ispell-list-command "list")
+(setq ispell-program-name "aspell")
 (setq make-backup-files nil)
 (setq python-indent 4)
 (setq ring-bell-function 'ignore)
@@ -141,10 +156,9 @@
 (setq-default tab-width 4)
 
 
-;;;; nginx-mode stuff
-(add-to-list 'auto-mode-alist '("/etc/nginx/.*\.conf" . nginx-mode))
-
+;;;; ---------------------------------------------------------------------------
 ;;;; Hooks
+;;;; ---------------------------------------------------------------------------
 
 ;; Emacs init hooks
 (add-hook 'after-init-hook (lambda ()
