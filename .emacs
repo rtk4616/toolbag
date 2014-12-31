@@ -174,6 +174,7 @@
 ;; Emacs init hooks
 (add-hook 'after-init-hook (lambda ()
                              (global-flycheck-mode)))
+
 ;; Find file hooks
 (add-hook 'find-file-hook
           (lambda ()
@@ -185,13 +186,13 @@
             (define-key dired-mode-map (kbd "M-o") 'other-window)
             ))
 
-
 ;; Overriding markdown-mode binding
 (add-hook 'markdown-mode-hook
           (lambda ()
             (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
             (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
-            ))
+            )
+          )
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
@@ -199,6 +200,13 @@
                           (setq company-idle-delay 0)
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
+
+;; python-mode hooks
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
