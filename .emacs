@@ -165,6 +165,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default standard-indent 4)
 (setq-default tab-width 4)
+(setq-default word-wrap t)
 
 
 ;;;; ---------------------------------------------------------------------------
