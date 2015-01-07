@@ -176,10 +176,8 @@
 (add-hook 'after-init-hook (lambda ()
                              (global-flycheck-mode)))
 
-;; Find file hooks
-(add-hook 'find-file-hook
-          (lambda ()
-            (setq default-directory emacs-startup-directory)))
+;; Delete trailing whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Overriding dired-mode binding
 (add-hook 'dired-mode-hook
@@ -187,13 +185,10 @@
             (define-key dired-mode-map (kbd "M-o") 'other-window)
             ))
 
-;; Overriding markdown-mode binding
-(add-hook 'markdown-mode-hook
+;; Find file hooks
+(add-hook 'find-file-hook
           (lambda ()
-            (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
-            (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
-            )
-          )
+            (setq default-directory emacs-startup-directory)))
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
@@ -202,15 +197,13 @@
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
-;; python-mode hooks
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
-
-;; Delete trailing whitespace on save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; markdown-mode hooks
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
+            (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
+            )
+          )
 
 ;; Add highlighting of TODOs
 (add-hook 'prog-mode-hook
@@ -218,3 +211,10 @@
             (font-lock-add-keywords
              nil
              '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
+
+;; python-mode hooks
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
