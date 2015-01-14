@@ -74,6 +74,9 @@ autocmd Syntax * syntax sync minlines=1000
 " Key bindings
 " ===================================================================================================
 
+" Easy shortcut for grepping.
+nnoremap <leader>f :call MikeGrep()<CR>
+
 " Mapping to pipe contents of register 0 to pbcopy.
 nnoremap <leader>w :call Pbcopy()<CR>
 
@@ -187,12 +190,9 @@ function! MikeGrep()
     call inputsave()
     let l:theQuery = input('Search for: ')
     call inputrestore()
-    call inputsave()
-    let l:theExtension = input('... in files: ')
-    call inputrestore()
-    exe "vimgrep /" . l:theQuery . "/j **/*" . l:theExtension
+    exe "silent grep! '" . l:theQuery . "'"
     exe "cope"
-    exe "on"
+    exe "redraw!"
 endfunc
 
 function! GrepForSymbol()
