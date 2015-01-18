@@ -188,6 +188,7 @@
                                 "scala-2.10"
                                 "_book"
                                 "node_modules"
+                                "elpa"
                                 "static"))
 
 ;; Get the alternation for a list of files.
@@ -321,8 +322,3 @@ Specifying REVERSE as t will result in traversing the file backward."
 (defun MikeGrepInFiles (search_string file_extension)
   (interactive "sFind string: \nsLook in files ending with: ")
   (rgrep search_string (concat "*" file_extension) "./"))
-
-
-(defun MikeGrepForFiles (search_string)
-  (interactive "sFind files by glob: ")
-  (find-name-dired "." (concat "*" search_string "*")))
