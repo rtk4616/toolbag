@@ -6,8 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes.
 Plug 'kien/ctrlp.vim'
 Plug 'godlygeek/csapprox'
-Plug 'benjaminwhite/Benokai'
-Plug 'tomasr/molokai'
+Plug 'w0ng/vim-hybrid'
 Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
 
@@ -42,16 +41,15 @@ endif
 " Style settings
 " ------------------------------------------------------------------------------
 set background=dark
-" colo Benokai
-
 syntax on
+let g:hybrid_use_iTerm_colors = 1
 
 if has("gui_running")
     set guifont=menlo:h12
 endif
 
 autocmd Syntax * syntax sync minlines=1000
-autocmd BufEnter * colo molokai
+autocmd BufEnter * colo hybrid
 
 
 " ------------------------------------------------------------------------------
