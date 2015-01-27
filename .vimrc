@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes.
 Plug 'kien/ctrlp.vim'
 Plug 'godlygeek/csapprox'
+Plug 'evanmiller/nginx-vim-syntax'
 Plug 'w0ng/vim-hybrid'
 Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
