@@ -21,6 +21,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
 let g:ctrlp_working_path_mode = 0
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
+let g:CSApprox_verbose_level = 0
 
 
 " ------------------------------------------------------------------------------
