@@ -44,13 +44,13 @@ endif
 " ------------------------------------------------------------------------------
 syntax on
 set background=dark
+colo hybrid
 
 if has("gui_running")
     set guifont=menlo:h12
 endif
 
 autocmd Syntax * syntax sync minlines=1000
-autocmd BufEnter * colo hybrid
 
 
 " ------------------------------------------------------------------------------
