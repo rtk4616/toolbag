@@ -51,7 +51,7 @@ if has("gui_running")
 endif
 
 autocmd Syntax * syntax sync minlines=1000
-autocmd BufEnter * colo Benokai
+autocmd BufEnter * colo molokai
 
 
 " ------------------------------------------------------------------------------
