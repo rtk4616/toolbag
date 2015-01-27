@@ -5,10 +5,8 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes.
 Plug 'kien/ctrlp.vim'
-Plug 'sickill/vim-monokai'
+Plug 'godlygeek/csapprox'
 Plug 'tomasr/molokai'
-Plug 'vim-scripts/BusyBee'
-Plug 'adlawson/vim-sorcerer'
 Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
 
@@ -42,7 +40,8 @@ endif
 " ------------------------------------------------------------------------------
 " Style settings
 " ------------------------------------------------------------------------------
-colo sorcerer
+set background=dark
+colo molokai
 
 syntax on
 
