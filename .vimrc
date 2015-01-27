@@ -42,9 +42,8 @@ endif
 " ------------------------------------------------------------------------------
 " Style settings
 " ------------------------------------------------------------------------------
-set background=dark
 syntax on
-let g:hybrid_use_iTerm_colors = 1
+set background=dark
 
 if has("gui_running")
     set guifont=menlo:h12
@@ -58,7 +57,6 @@ autocmd BufEnter * colo hybrid
 " Configure Vim
 " ------------------------------------------------------------------------------
 set autoindent                                            " Indentation same as previous line when inserting a new line.
-set background=dark                                       " Prefer dark background.
 set bs=2                                                  " Set backspacing mode 2. This allows backspacing with no restrictions.
 set completeopt=longest,menuone                           " Don't select first autocompletion, and show the menu even if there is only one result.
 set cursorline                                            " Enable highlighting of the current line.
