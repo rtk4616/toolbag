@@ -3,3 +3,4 @@ last-session.vim
 .idea/
 .project_completions
 .emacs.d/auto-save-list/
+plugged/
