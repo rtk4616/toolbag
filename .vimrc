@@ -92,6 +92,7 @@ set wrap                                                  " Wrap text at window 
 " ------------------------------------------------------------------------------
 map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+nnoremap <C-o> :CtrlPTag<cr>
 nnoremap <C-a> :pop<CR>
 nnoremap <C-j> 6j
 nnoremap <C-k> 6k
