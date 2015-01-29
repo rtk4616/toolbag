@@ -82,7 +82,7 @@ nnoremap <leader>w :call Pbcopy()<CR>
 
 " Some Syntastic shortcuts.
 nnoremap <leader>e :Errors<cr>
-nnoremap <leader>c :SyntasticReset<cr>
+nnoremap <leader>r :SyntasticReset<cr>
 
 " Some CtrlP shortcuts.
 nnoremap <C-O> :CtrlPTag<cr>
