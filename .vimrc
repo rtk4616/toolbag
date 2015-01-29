@@ -10,6 +10,7 @@ Plug 'evanmiller/nginx-vim-syntax'
 Plug 'w0ng/vim-hybrid'
 Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
