@@ -103,8 +103,8 @@ nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
-nnoremap <leader>c :SyntasticReset<cr>
-nnoremap <leader>r :Errors<cr>
+nnoremap <leader>r :SyntasticReset<cr>
+nnoremap <leader>e :Errors<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
 
