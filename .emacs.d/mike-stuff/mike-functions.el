@@ -189,6 +189,7 @@
                                 "_book"
                                 "node_modules"
                                 "elpa"
+                                "build"
                                 "static"))
 
 ;; Get the alternation for a list of files.
