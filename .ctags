@@ -10,6 +10,7 @@
 --exclude=*.mkd
 --exclude=target
 --exclude=vendor
+--exclude=build
 
 --langdef=Clojure
 --langmap=Clojure:.clj
