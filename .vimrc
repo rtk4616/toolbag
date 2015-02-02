@@ -105,6 +105,7 @@ nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
+nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
@@ -167,4 +168,13 @@ function! MikeGrep()
     exe "silent grep! '" . l:theQuery . "'"
     exe "cope"
     exe "redraw!"
+endfunc
+
+function! MikeFindAllOccurrencesInFile()
+    call inputsave()
+    let l:thePattern = input('Pattern to find: ')
+    call inputrestore()
+    echo "\n\n"
+    exe "g/".l:thePattern."/p"
+    echo "\n\n"
 endfunc
