@@ -11,7 +11,9 @@ Plug 'w0ng/vim-hybrid'
 Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/syntastic'
-Plug 'jiangmiao/auto-pairs'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
