@@ -103,8 +103,9 @@ nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
-nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <leader>e :Errors<cr>
+nnoremap <leader>f :call MikeGrep()<CR>
+nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
 
@@ -153,3 +154,17 @@ autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 autocmd BufWritePre * :%s/\s\+$//e                             " Delete all trailing whitespace on write.
 autocmd FileType * setlocal formatoptions-=cro
+
+
+" ===================================================================================================
+" Custom helper functions
+" ===================================================================================================
+
+function! MikeGrep()
+    call inputsave()
+    let l:theQuery = input('Search for: ')
+    call inputrestore()
+    exe "silent grep! '" . l:theQuery . "'"
+    exe "cope"
+    exe "redraw!"
+endfunc
