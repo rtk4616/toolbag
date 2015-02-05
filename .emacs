@@ -183,6 +183,7 @@
                                           ".git"
                                           "build"
                                           "ve"
+                                          "*.egg-info"
                                           "target"
                                           "migrations"
                                           ".svn"))
