@@ -204,6 +204,7 @@
                                 ".git"
                                 "migrations"
                                 "scala-2.10"
+                                "*.egg-info"
                                 "_book"
                                 "node_modules"
                                 "elpa"
