@@ -65,9 +65,8 @@
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
 (global-set-key "\C-w" 'clipboard-kill-region)
-(global-set-key "\C-x4g" 'fiplr-find-file-other-window)
 (global-set-key "\C-x\C-\\" 'kill-emacs)
-(global-set-key "\C-x\C-g" 'fiplr-find-file)
+(global-set-key "\C-x\C-g" 'MikeFuzzyFileFinder)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-x\C-l" 'helm-occur)
 (global-set-key "\C-x\C-n" 'next-buffer)
@@ -172,26 +171,6 @@
 (setq-default standard-indent 4)
 (setq-default tab-width 4)
 (setq-default word-wrap t)
-
-
-;;;; ---------------------------------------------------------------------------
-;;;; Fiplr setup
-;;;; ---------------------------------------------------------------------------
-
-(setq fiplr-root-markers '("."))
-(setq fiplr-ignored-globs '((directories (
-                                          ".git"
-                                          "build"
-                                          "ve"
-                                          "*.egg-info"
-                                          "target"
-                                          "migrations"
-                                          ".svn"))
-                            (files (
-                                    "*.jpg"
-                                    "*.png"
-                                    "*.zip"
-                                    "*~"))))
 
 
 ;;;; ---------------------------------------------------------------------------
