@@ -65,14 +65,15 @@
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
 (global-set-key "\C-w" 'clipboard-kill-region)
+(global-set-key "\C-x4g" 'fiplr-find-file-other-window)
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 (global-set-key "\C-x\C-g" 'fiplr-find-file)
-(global-set-key "\C-x\C-r" 'helm-resume)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-x\C-l" 'helm-occur)
 (global-set-key "\C-x\C-n" 'next-buffer)
 (global-set-key "\C-x\C-o" 'flycheck-list-errors)
 (global-set-key "\C-x\C-p" 'previous-buffer)
+(global-set-key "\C-x\C-r" 'helm-resume)
 (global-set-key "\C-xf" 'helm-do-ag)
 (global-set-key "\C-xg" 'MikeFuzzyFileFinder)
 (global-set-key "\C-xl" 'helm-occur)
@@ -97,6 +98,8 @@
 (global-set-key (kbd "<C-backspace>") 'delete-backward-char)
 (global-set-key (kbd "<C-return>") 'newline)
 (global-set-key (kbd "<f6>") 'autopair-mode)
+(global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-M-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
@@ -180,6 +183,7 @@
                                           ".git"
                                           "build"
                                           "ve"
+                                          "*.egg-info"
                                           "target"
                                           "migrations"
                                           ".svn"))
