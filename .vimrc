@@ -12,20 +12,22 @@ Plug 'gabrielelana/vim-markdown'
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
-Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
 
 call plug#end()
+filetype plugin on
 
 
 " ------------------------------------------------------------------------------
 " Set up any custom vars.
 " ------------------------------------------------------------------------------
-let g:ctrlp_show_hidden = 1
+
+let b:delimitMate_expand_cr = 1
+let g:CSApprox_verbose_level = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
-let g:CSApprox_verbose_level = 0
 
 
 " ------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype scala setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType python setlocal ts=4 sts=4 sw=4 indentexpr=
 autocmd FileType cpp setlocal ts=4 sts=4 sw=4
 autocmd FileType rst setlocal ts=2 sts=2 sw=2
 autocmd FileType markdown setlocal ts=4 sts=4 sw=4
