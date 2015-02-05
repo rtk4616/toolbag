@@ -1,17 +1,18 @@
 --recurse=yes
 --tag-relative=yes
---exclude=.git/
---exclude=ve/
---exclude=.idea/
---exclude=migrations/
+--exclude=.git/*
+--exclude=ve/*
+--exclude=.idea/*
+--exclude=migrations/*
 --exclude=*.pyc
 --exclude=*.pyo
 --exclude=.DS_Store
 --exclude=*.md
 --exclude=*.mkd
---exclude=target/
---exclude=vendor/
---exclude=build/
+--exclude=static/*
+--exclude=target/*
+--exclude=vendor/*
+--exclude=build/*
 
 --langdef=Clojure
 --langmap=Clojure:.clj
