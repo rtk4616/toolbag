@@ -66,7 +66,7 @@
 (global-set-key "\C-s" 'isearch-forward-regexp)
 (global-set-key "\C-w" 'clipboard-kill-region)
 (global-set-key "\C-x\C-\\" 'kill-emacs)
-(global-set-key "\C-x\C-g" 'MikeFuzzyFileFinder)
+(global-set-key "\C-x\C-g" 'fiplr-find-file)
 (global-set-key "\C-x\C-r" 'helm-resume)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-x\C-l" 'helm-occur)
