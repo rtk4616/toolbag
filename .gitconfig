@@ -37,5 +37,3 @@
     ls = log --stat
     la = log -p
     dt = difftool
-[push]
-	default = simple
