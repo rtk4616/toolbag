@@ -131,6 +131,7 @@
 (setq auto-save-default nil)
 (setq c-default-style "bsd" c-basic-offset 4)
 (setq case-fold-search t)
+(setq case-replace nil)
 (setq css-indent-offset 4)
 (setq dabbrev-case-fold-search nil)
 (setq ediff-split-window-function 'split-window-horizontally)
