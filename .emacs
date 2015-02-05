@@ -97,6 +97,8 @@
 (global-set-key (kbd "<C-backspace>") 'delete-backward-char)
 (global-set-key (kbd "<C-return>") 'newline)
 (global-set-key (kbd "<f6>") 'autopair-mode)
+(global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-M-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-n") 'MikeScrollDownOneLine)
 (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
