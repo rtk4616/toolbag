@@ -13,6 +13,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
+Plug 'docunext/closetag.vim'
 
 call plug#end()
 filetype plugin on
