@@ -118,6 +118,7 @@ nnoremap ZA :qa!<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
+vnoremap <leader>c :call SendToPbcopy()<cr>
 
 
 " ------------------------------------------------------------------------------
@@ -166,6 +167,10 @@ autocmd FileType * setlocal formatoptions-=cro
 " ===================================================================================================
 " Custom helper functions
 " ===================================================================================================
+
+function! SendToPbcopy()
+    exe "silent '<,'>w !pbcopy"
+endfunc
 
 function! MikeGrep()
     call inputsave()
