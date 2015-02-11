@@ -96,6 +96,7 @@
 
 (global-set-key (kbd "<C-backspace>") 'delete-backward-char)
 (global-set-key (kbd "<C-return>") 'newline)
+(global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-M-k") 'kill-whole-line)
@@ -105,8 +106,8 @@
 (global-set-key (kbd "C-x C-h") 'helm-command-prefix)
 (global-set-key (kbd "M-*") 'mike-next-tag)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
-(global-set-key (kbd "M-SPC") 'hippie-expand)
 (global-set-key (kbd "M-RET") 'sgml-close-tag)
+(global-set-key (kbd "M-SPC") 'hippie-expand)
 (global-set-key (kbd "M-x") 'helm-M-x)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
 
@@ -126,6 +127,7 @@
 
 (autopair-global-mode)
 (delete-selection-mode 1)
+(global-linum-mode t)
 (helm-mode 1)
 (ido-mode t)
 
@@ -172,6 +174,20 @@
 (setq-default standard-indent 4)
 (setq-default tab-width 4)
 (setq-default word-wrap t)
+
+
+;;;; ---------------------------------------------------------------------------
+;;;; Defadvice goes here
+;;;; ---------------------------------------------------------------------------
+
+;; Add a little padding around the line numbers. Dynamically determine
+;; character width for the line numbers column, and add a space for padding as
+;; well.
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (linum-format (concat "%" (number-to-string w) "d │")))
+    ad-do-it))
 
 
 ;;;; ---------------------------------------------------------------------------
