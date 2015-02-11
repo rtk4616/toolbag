@@ -117,6 +117,7 @@ nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
+nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
@@ -170,8 +171,12 @@ autocmd FileType * setlocal formatoptions-=cro
 " Custom helper functions
 " ===================================================================================================
 
-function! SendToPbcopy()
-    exe "silent '<,'>w !pbcopy"
+function! CreateMarkdownTOC()
+    normal ggyG
+    tabnew
+    normal p
+    silent exe "%!markdown_toc.py"
+    exe "1d"
 endfunc
 
 function! MikeGrep()
