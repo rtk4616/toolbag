@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 markdown_toc.py
 ---------------
@@ -35,21 +36,16 @@ USEAGE = (
 
 OUTPUT = ""
 
-if len(sys.argv) != 2:
-    print USEAGE
-    sys.exit()
-
 indentations = {}
 lines = []
 
-with open(sys.argv[1], 'r') as f:
-    in_code_block = False
-    for line in f.readlines():
-        if line.startswith('```'):
-            in_code_block = not in_code_block
-        elif line.startswith("#") and not in_code_block:
-            lines.append(line)
-            indentations[line.count('#')] = None
+in_code_block = False
+for line in sys.stdin:
+    if line.startswith('```'):
+        in_code_block = not in_code_block
+    elif line.startswith("#") and not in_code_block:
+        lines.append(line)
+        indentations[line.count('#')] = None
 
 for index, key in enumerate(sorted(indentations, key=indentations.get)):
     indentations[key] = index
