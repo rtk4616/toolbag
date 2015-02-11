@@ -88,7 +88,7 @@ set showtabline=2                                         " Show the tab bar by 
 set softtabstop=4                                         " Default soft tab stop to 4 chars.
 set tabpagemax=50                                         " 50 tabs at any given time max. The rest get opened as buffers.
 set tabstop=4                                             " Default tab stop to 4 chars.
-set tags=./tags                                           " Explicitly set the tags file so we don't get the same tags file twice.
+set tags=tags                                             " Explicitly set the tags file so we don't get the same tags file twice.
 set title                                                 " Make the window title be the filename.
 set viminfo=                                              " No viminfo file.
 set wildignore+=*.o,*~,*.pyc,**/migrations/**,**/ve/**    " Set up ignored files when searching...
