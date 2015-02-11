@@ -14,7 +14,7 @@ alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 alias subl='PATH=/usr/local/Cellar/git/1.8.3.1/libexec/git-core/:$PATH subl'
 
 # Paths.
-export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
+export PATH=~/toolbag/scripts:/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
