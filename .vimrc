@@ -72,7 +72,8 @@ set foldlevel=99                                          " Set the level we aut
 set foldmethod=indent                                     " Set folding options.
 set formatoptions=ql
 set hlsearch                                              " Highlight matches while searching.
-set ic                                                    " Ignore case while searching, by default.
+set ignorecase                                            " Ignore case while searching, by default...
+set smartcase                                             " ...unless the search string contains any capital letters.
 set is                                                    " Enable incremental search by default.
 set linebreak                                             " Better word wrapping.
 set noautochdir                                           " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
