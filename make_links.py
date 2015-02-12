@@ -26,6 +26,7 @@ if not os.path.exists(backup_files_dir):
 managed_files = [
     ".vimrc",
     ".ctags",
+    ".agignore",
     ".ideavimrc",
     ".vim",
     ".emacs",
