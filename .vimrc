@@ -123,6 +123,8 @@ vnoremap <C-j> 6j
 vnoremap <C-k> 6k
 vnoremap <leader>c :call SendToPbcopy()<cr>
 
+inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
+
 
 " ------------------------------------------------------------------------------
 " " Setting up indentation rules for filetypes.
