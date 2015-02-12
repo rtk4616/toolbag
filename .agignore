@@ -1,3 +1,6 @@
 .git/
 *.pyc
 *.elc
+*.png
+*.jpg
+*.gif
