@@ -1,6 +1,7 @@
-.netrwhist
-last-session.vim
-.idea/
-.project_completions
 .emacs.d/auto-save-list/
+.emacs.d/tramp
+.idea/
+.netrwhist
+.project_completions
+last-session.vim
 plugged/
