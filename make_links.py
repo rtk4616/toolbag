@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 
 home_dir = os.path.expanduser("~")
 repo_root = os.path.realpath(os.path.dirname(__file__))
