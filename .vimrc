@@ -25,6 +25,7 @@ filetype plugin on
 
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
+let g:SuperTabLongestEnhanced = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
