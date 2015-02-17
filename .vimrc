@@ -74,19 +74,20 @@ set foldmethod=indent                                     " Set folding options.
 set formatoptions=ql
 set hlsearch                                              " Highlight matches while searching.
 set ignorecase                                            " Ignore case while searching, by default...
-set smartcase                                             " ...unless the search string contains any capital letters.
 set is                                                    " Enable incremental search by default.
 set linebreak                                             " Better word wrapping.
 set noautochdir                                           " Keep the working directory Vim was opened from, and don't base it on the currently opened file.
 set nobackup                                              " No backup file.
 set nocindent                                             " Don't do that sassy auto-indenting for C code.
 set nofoldenable                                          " Disable automatic folding.
+set nojs                                                  " Don't add spaces when joining lines.
 set nosmartindent                                         " Don't do that sassy smart-indenting.
 set noswapfile                                            " No swap file.
 set number                                                " Enable line numbers.
 set shiftwidth=4                                          " Default shiftwidth to 4 chars.
 set showmode                                              " Show which mode we're currently in.
 set showtabline=2                                         " Show the tab bar by default, even if we only have one tab open.
+set smartcase                                             " Don't ignore case if the search string contains any capital letters.
 set softtabstop=4                                         " Default soft tab stop to 4 chars.
 set tabpagemax=50                                         " 50 tabs at any given time max. The rest get opened as buffers.
 set tabstop=4                                             " Default tab stop to 4 chars.
