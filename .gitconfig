@@ -1,7 +1,3 @@
-[user]
-	name = Mike Wilkerson
-	email = mike.wilkerson@willowtreeapps.com
-
 [diff]
 	tool = vimdiff
     # tool = ediff
