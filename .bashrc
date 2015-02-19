@@ -1,7 +1,14 @@
+# OS-specific variables
+if [[ `uname` == 'Linux' ]]; then
+   COLOR_OPTION_STRING='--color=auto'
+elif [[ $platform == 'Darwin' ]]; then
+   COLOR_OPTION_STRING='-G'
+fi
+
 # Aliases.
-alias ll='ls -plh'
-alias la='ls -al -ph'
-alias l='ls -ph'
+alias ll="ls -plh $COLOR_OPTION_STRING"
+alias la="ls -al -ph $COLOR_OPTION_STRING"
+alias l="ls -ph $COLOR_OPTION_STRING"
 alias tree='tree -C'
 alias em='emacs'
 alias usage='sudo du -h --max-depth=1 | sort -h'
