@@ -1,7 +1,7 @@
 # OS-specific variables
 if [[ `uname` == 'Linux' ]]; then
    COLOR_OPTION_STRING='--color=auto'
-elif [[ $platform == 'Darwin' ]]; then
+elif [[ `uname` == 'Darwin' ]]; then
    COLOR_OPTION_STRING='-G'
 fi
 
