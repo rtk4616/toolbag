@@ -15,6 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'Shougo/neocomplcache.vim'
 
 call plug#end()
 filetype plugin on
@@ -30,6 +31,12 @@ let g:SuperTabLongestEnhanced = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
+let g:neocomplcache_auto_completion_start_length = 1
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 2
+let g:neocomplcache_max_list = 10
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
 
 
@@ -124,8 +131,6 @@ nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
-
-inoremap <expr> <CR> pumvisible() ? "\<space>\<bs>" : "\<C-g>u\<CR>"
 
 
 " ------------------------------------------------------------------------------
