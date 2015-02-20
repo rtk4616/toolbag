@@ -14,6 +14,7 @@ Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 filetype plugin on
