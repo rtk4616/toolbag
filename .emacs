@@ -55,6 +55,13 @@
                          company-files
                          company-dabbrev))
 
+;; Flycheck mode
+(setq flycheck-check-syntax-automatically '(save
+                                            ;; idle-change
+                                            ;; new-line
+                                            ;; mode-enabled
+                                            ))
+
 ;; MELPA
 (require 'package)
 (add-to-list 'package-archives
