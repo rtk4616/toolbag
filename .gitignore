@@ -1,9 +1,11 @@
 .emacs.d/auto-save-list/
+.emacs.d/elpa/archives/gnu/archive-contents
+.emacs.d/elpa/archives/melpa/archive-contents
 .emacs.d/tramp
 .idea/
 .netrwhist
 .project_completions
+TAGS
 last-session.vim
 plugged/
 tags
-TAGS
