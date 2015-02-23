@@ -36,6 +36,25 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; company-mode
+(setq company-backends '(company-bbdb
+                         company-nxml
+                         company-css
+                         company-eclim
+                         company-semantic
+                         company-clang
+                         company-xcode
+                         company-ropemacs
+                         company-cmake
+                         ;; company-capf
+                         (company-dabbrev-code
+                          company-gtags
+                          company-etags
+                          company-keywords)
+                         company-oddmuse
+                         company-files
+                         company-dabbrev))
+
 ;; MELPA
 (require 'package)
 (add-to-list 'package-archives
@@ -149,6 +168,7 @@
 (setq c-default-style "bsd" c-basic-offset 4)
 (setq case-fold-search t)
 (setq case-replace nil)
+(setq company-idle-delay 0)
 (setq css-indent-offset 4)
 (setq dabbrev-case-fold-search nil)
 (setq ediff-split-window-function 'split-window-horizontally)
@@ -225,7 +245,9 @@
 
 ;; Emacs init hooks
 (add-hook 'after-init-hook (lambda ()
-                             (global-flycheck-mode)))
+                             (global-flycheck-mode)
+                             (global-company-mode)
+                             ))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
