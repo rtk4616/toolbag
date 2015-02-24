@@ -37,11 +37,6 @@
 ;;;; ---------------------------------------------------------------------------
 
 ;; company-mode
-(with-eval-after-load 'company
-  (define-key company-active-map (kbd "M-n") nil)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
 (setq company-backends '(company-bbdb
                          company-nxml
                          company-css
@@ -276,6 +271,15 @@
 (add-hook 'dired-mode-hook
           (lambda ()
             (define-key dired-mode-map (kbd "M-o") 'other-window)
+            ))
+
+;; Overriding company-mode binding
+(add-hook 'company-mode-hook
+          (lambda ()
+            (define-key company-active-map (kbd "M-n") nil)
+            (define-key company-active-map (kbd "M-p") nil)
+            (define-key company-active-map (kbd "C-n") #'company-select-next)
+            (define-key company-active-map (kbd "C-p") #'company-select-previous)
             ))
 
 ;; Find file hooks
