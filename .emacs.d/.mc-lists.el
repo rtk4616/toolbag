@@ -6,6 +6,7 @@
         MikeDeIndent
         MikeIndent
         backward-sexp
+        clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
         duplicate-current-line-or-region
