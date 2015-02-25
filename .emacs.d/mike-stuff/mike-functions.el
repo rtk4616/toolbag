@@ -179,7 +179,9 @@
   (setq buffer-read-only nil)
   (erase-buffer)
 
-  (insert-directory-files-recursive default-directory match-string 10)
+  (insert-directory-files-recursive default-directory
+                                    (replace-regexp-in-string " " ".*" match-string)
+                                    10)
 
   (indent-region (point-min) (point-max) 2)
 
