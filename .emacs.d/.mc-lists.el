@@ -3,11 +3,15 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        MikeDeIndent
+        MikeIndent
         backward-sexp
         clipboard-kill-ring-save
         clipboard-yank
+        duplicate-current-line-or-region
         forward-sexp
         helm-confirm-and-exit-minibuffer
+        indent-for-tab-command
         ))
 
 (setq mc/cmds-to-run-once
