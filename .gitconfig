@@ -27,6 +27,8 @@
     vc = !EDITOR='vim' git commit
     eds = difftool --tool=ediff --staged
     ed = difftool --tool=ediff
+    d = diff
+    ds = diff --staged
     ec = !EDITOR='emacs' git commit
     st = status
     lo = log --oneline
