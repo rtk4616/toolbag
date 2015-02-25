@@ -215,7 +215,7 @@
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
 (setq tramp-default-method "ssh")
-(setq vc-handled-backends nil)
+;; (setq vc-handled-backends nil)
 (setq-default column-number-mode 1)
 (setq-default fill-column 79)
 (setq-default indent-tabs-mode nil)
