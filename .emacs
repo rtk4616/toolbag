@@ -152,6 +152,7 @@
 ;; (global-set-key (kbd "C-M-p") 'MikeScrollUpOneLine)
 ;; (global-set-key (kbd "M-SPC") 'company-complete)
 
+(global-unset-key (kbd "C-M-l"))
 (global-unset-key (kbd "C-c C-c"))
 (global-unset-key (kbd "C-x c"))
 
