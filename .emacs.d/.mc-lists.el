@@ -5,6 +5,7 @@
       '(
         MikeDeIndent
         MikeIndent
+        autopair-insert-or-skip-quote
         backward-sexp
         clipboard-kill-region
         clipboard-kill-ring-save
@@ -13,6 +14,7 @@
         forward-sexp
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
+        markdown-exdent-or-delete
         ))
 
 (setq mc/cmds-to-run-once
