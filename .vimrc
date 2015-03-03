@@ -16,6 +16,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Shougo/neocomplcache.vim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 filetype plugin on
@@ -131,6 +132,7 @@ nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
+nnoremap <leader>gb :Gblame<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
