@@ -1,3 +1,12 @@
+# String values that, when echoed, set the iTerm 2 tab color.
+ITERM_RED="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;000\a \033]6;1;bg;blue;brightness;000\a"
+ITERM_ORANGE="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;000\a"
+ITERM_BLUE="\033]6;1;bg;red;brightness;155\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;255\a"
+
+# Change these variables in order to control how your iTerm 2 tab looks.
+SESSION_NAME="Default tab title"
+SESSION_TAB_COLOR="$ITERM_BLUE"
+
 # OS-specific variables
 if [[ `uname` == 'Linux' ]]; then
    COLOR_OPTION_STRING='--color=auto'
@@ -39,11 +48,10 @@ VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
 
 # Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
-    # iTerm2 stuff.
-    echo -e -n "\033];Digital Ocean: wilkyhost\007"
-    echo -e -n "\033]6;1;bg;red;brightness;120\a"
-    echo -e -n "\033]6;1;bg;green;brightness;180\a"
-    echo -e -n "\033]6;1;bg;blue;brightness;220\a"
+    # Don't change this! Edit the values of the following two variables, listed
+    # near the top of this file!
+    echo -e -n "\033];$SESSION_NAME\007"
+    echo -e -n "$SESSION_TAB_COLOR"
 
     if [ -e "$VIRTUALENV_SCRIPT" ]
     then
