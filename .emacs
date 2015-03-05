@@ -8,7 +8,6 @@
 ;; - Emacs options
 ;; - Hooks
 
-(setenv "TMPDIR" "/tmp")
 
 ;;;; ---------------------------------------------------------------------------
 ;;;; Setting variables by platform
@@ -181,6 +180,7 @@
 (global-linum-mode t)
 (helm-mode 1)
 (ido-mode t)
+(setenv "TMPDIR" "/tmp")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (set-default-font "Menlo-12")
