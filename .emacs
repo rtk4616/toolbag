@@ -116,6 +116,8 @@
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-xn" 'flycheck-next-error)
 (global-set-key "\C-xp" 'flycheck-previous-error)
+(global-set-key "\C-xvb" 'magit-blame-mode)
+(global-set-key "\C-xvs" 'magit-status)
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-(" 'MikeDeIndent)
 (global-set-key "\M-)" 'MikeIndent)
