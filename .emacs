@@ -8,6 +8,7 @@
 ;; - Emacs options
 ;; - Hooks
 
+(setenv "TMPDIR" "/tmp")
 
 ;;;; ---------------------------------------------------------------------------
 ;;;; Setting variables by platform
