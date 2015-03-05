@@ -1,3 +1,13 @@
+(defun MikeTrampFindFile (user-a host user-b)
+  "Tramp wrapper for easy ssh and su to another user."
+  (interactive "sSSH user: \nsHost: \nsUser to su to (leave blank for none): ")
+  (if (= (length user-b) 0)
+      (find-file (concat "/ssh:" user-a "@" host ":"))
+    (find-file (concat "/ssh:" user-a "@" host "|sudo:|sudo:" user-b "@" host ":"))
+    )
+  )
+
+
 (defun duplicate-current-line-or-region (arg)
   (interactive "p")
   (let (beg end (origin (point)))
