@@ -140,6 +140,7 @@
 (global-set-key (kbd "<C-return>") 'newline)
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'autopair-mode)
+(global-set-key (kbd "C-M-.") 'helm-etags-select)
 (global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-M-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-n") 'mc/mark-next-like-this)
