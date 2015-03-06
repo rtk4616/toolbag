@@ -278,6 +278,16 @@
 (add-hook 'after-init-hook (lambda ()
                              (global-flycheck-mode)
                              (global-company-mode)
+                             ;; Not sure if I need this, but I'll leave it here
+                             ;; for now.
+                             ;;
+                             ;; (let (
+                             ;;       (the-tags-file (concat default-directory "TAGS"))
+                             ;;       )
+                             ;;   (if (file-exists-p the-tags-file)
+                             ;;       (visit-tags-table the-tags-file)
+                             ;;     )
+                             ;;   )
                              ))
 
 ;; Delete trailing whitespace on save
