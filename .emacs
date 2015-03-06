@@ -120,6 +120,7 @@
 (global-set-key "\C-xp" 'flycheck-previous-error)
 (global-set-key "\C-xt" 'MikeTrampFindFile)
 (global-set-key "\C-xvb" 'magit-blame-mode)
+(global-set-key "\C-xvl" 'magit-log)
 (global-set-key "\C-xvs" 'magit-status)
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-(" 'MikeDeIndent)
