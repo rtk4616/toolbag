@@ -281,7 +281,7 @@
                              (global-flycheck-mode)
                              (global-company-mode)
                              (let (
-                                   (the-tags-file (concat default-directory "TAGS"))
+                                   (the-tags-file (concat emacs-startup-directory "TAGS"))
                                    )
                                (if (file-exists-p the-tags-file)
                                    (visit-tags-table the-tags-file)
@@ -307,10 +307,10 @@
             (define-key company-active-map (kbd "C-p") #'company-select-previous)
             ))
 
-;; Find file hooks
-(add-hook 'find-file-hook
-          (lambda ()
-            (setq default-directory emacs-startup-directory)))
+;; ;; Find file hooks
+;; (add-hook 'find-file-hook
+;;           (lambda ()
+;;             (setq default-directory emacs-startup-directory)))
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()

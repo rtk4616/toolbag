@@ -189,7 +189,7 @@
   (setq buffer-read-only nil)
   (erase-buffer)
 
-  (insert-directory-files-recursive default-directory
+  (insert-directory-files-recursive emacs-startup-directory
                                     (replace-regexp-in-string " " ".*" match-string)
                                     10)
 
@@ -203,7 +203,7 @@
     ;; else we have an ancient tree dired (or classic dired, where
     ;; this does no harm)
     (set (make-local-variable 'dired-subdir-alist)
-         (list (cons default-directory (point-min-marker)))))
+         (list (cons emacs-startup-directory (point-min-marker)))))
   (goto-line 2))
 
 
