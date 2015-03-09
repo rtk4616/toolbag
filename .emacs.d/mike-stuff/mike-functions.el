@@ -1,3 +1,8 @@
+(defun MikeUpdateDirectory ()
+  (interactive)
+  (setq emacs-startup-directory default-directory)
+  )
+
 (defun MikeTrampFindFile (user-a host user-b)
   "Tramp wrapper for easy ssh and su to another user."
   (interactive "sSSH user: \nsHost: \nsUser to su to (leave blank for none): ")
