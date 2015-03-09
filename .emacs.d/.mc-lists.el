@@ -19,4 +19,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+        MikeDownSomeLines
+        MikeUpSomeLines
         ))
