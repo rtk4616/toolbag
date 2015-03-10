@@ -47,7 +47,7 @@ let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netr
 " ------------------------------------------------------------------------------
 if executable('ag')
     " Use ag over grep
-    set grepprg=ag\ -i\ --hidden\ --nogroup\ --nocolor
+    set grepprg=ag\ -i\ --hidden\ --nogroup\ --nocolor\ -U
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command = 'ag %s --hidden -l -U --nocolor -g ""'
