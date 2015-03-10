@@ -357,6 +357,18 @@
 
 (require 'cl-lib)
 
+(defun get-whitespace-prefix-at-point ()
+  (interactive)
+  (progn
+    (save-excursion
+      (setq p2 (point))
+      (skip-chars-backward "[:graph:]")
+      (setq p1 (point))
+      )
+    (buffer-substring-no-properties p1 p2)
+    )
+  )
+
 (defun sample-annotation (s)
   (format " [%s]" (get-text-property 0 :initials s)))
 
@@ -364,9 +376,8 @@
   (get-text-property 0 :summary s))
 
 (defun get-sample-completions ()
-  (message (concat "thing-at-point is: " (thing-at-point 'whitespace)))
   (let (
-        (prefix-thing (split-string (thing-at-point 'whitespace) "\\." t))
+        (prefix-thing (split-string (get-whitespace-prefix-at-point) "\\." t))
         )
     (if (cdr prefix-thing)
         (split-string
