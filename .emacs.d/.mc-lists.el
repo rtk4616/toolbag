@@ -5,6 +5,7 @@
       '(
         MikeDeIndent
         MikeIndent
+        autopair-insert-opening
         autopair-insert-or-skip-quote
         backward-sexp
         clipboard-kill-region
