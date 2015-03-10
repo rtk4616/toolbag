@@ -37,7 +37,8 @@
 ;;;; ---------------------------------------------------------------------------
 
 ;; company-mode
-(setq company-backends '(company-bbdb
+(setq company-backends '(company-sample-backend
+                         company-bbdb
                          company-nxml
                          company-css
                          company-eclim
@@ -344,3 +345,60 @@
               (setq autopair-handle-action-fns
                     (list #'autopair-default-handle-action
                           #'autopair-python-triple-quote-action))))
+
+
+;;;; ---------------------------------------------------------------------------
+;;;; Experimentation - Move this to its own module when done!
+;;;; ---------------------------------------------------------------------------
+
+;; TODO:
+;; 1) Make completions case-insensitive.
+;; 2) Make this can handle things like "import datetime as LOL".
+
+(require 'cl-lib)
+
+(defun sample-annotation (s)
+  (format " [%s]" (get-text-property 0 :initials s)))
+
+(defun sample-meta (s)
+  (get-text-property 0 :summary s))
+
+(defun get-sample-completions ()
+  (message (concat "thing-at-point is: " (thing-at-point 'whitespace)))
+  (let (
+        (prefix-thing (split-string (thing-at-point 'whitespace) "\\." t))
+        )
+    (if (cdr prefix-thing)
+        (split-string
+         (shell-command-to-string (concat
+                                   "python -c 'import "
+                                   (car prefix-thing)
+                                   "; print dir("
+                                   (car prefix-thing)
+                                   ")'"
+                                   ))
+         "," t "\\(\\['\\|'\\|'\\]\\| '\\| \\)"
+         )
+      nil
+      )
+    )
+  )
+
+(defun sample-fuzzy-match (prefix candidate)
+  (cl-subsetp (string-to-list prefix)
+              (string-to-list candidate)))
+
+(defun company-sample-backend (command &optional arg &rest ignored)
+  (interactive (list 'interactive))
+
+  (cl-case command
+    (interactive (company-begin-backend 'company-sample-backend))
+    (prefix (and (eq major-mode 'python-mode)
+                 (company-grab-symbol)
+                 ))
+    (candidates
+     (cl-remove-if-not (lambda (c) (sample-fuzzy-match arg c)) (get-sample-completions)))
+    (annotation (sample-annotation arg))
+    (meta (sample-meta arg))
+    (no-cache 't)
+    ))
