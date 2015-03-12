@@ -23,6 +23,7 @@ alias em='emacs'
 alias usage='sudo du -h --max-depth=1 | sort -h'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
+alias fssh='ssh -R 52698:127.0.0.1:52698 '
 
 # This is a workaround for the SublimeGit plugin, since it seems to have path
 # issues in Yosemite. Note that this requires Sublime Text to be launched via
