@@ -2,6 +2,7 @@
 ITERM_RED="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;000\a \033]6;1;bg;blue;brightness;000\a"
 ITERM_ORANGE="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;000\a"
 ITERM_BLUE="\033]6;1;bg;red;brightness;155\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;255\a"
+ITERM_GREEN="\033]6;1;bg;red;brightness;155\a \033]6;1;bg;green;brightness;255\a \033]6;1;bg;blue;brightness;000\a"
 
 # Change these variables in order to control how your iTerm 2 tab looks.
 SESSION_NAME="Default tab title"
