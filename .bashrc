@@ -24,7 +24,6 @@ alias em='emacs'
 alias usage='sudo du -h --max-depth=1 | sort -h'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
-alias fssh='ssh -R 52698:127.0.0.1:52698 '
 
 # This is a workaround for the SublimeGit plugin, since it seems to have path
 # issues in Yosemite. Note that this requires Sublime Text to be launched via
@@ -111,6 +110,11 @@ if ! [ -z "$PS1" ]; then
     ### Added by the Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
 fi
+
+function fssh {
+    # Wrapper function to SSH to a server, while ensuring that the rmate script is present in /tmp/.
+    ssh -R 52698:127.0.0.1:52698 "$@" -t '[ ! -e /tmp/rmate ] &&  curl -o /tmp/rmate https://raw.githubusercontent.com/wilkystyle/toolbag/master/scripts/rmate && chmod +x /tmp/rmate; $SHELL'
+}
 
 function pull_commit_from_repo {
     USAGE_MESSAGE="\nAbout:\n
