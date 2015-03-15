@@ -25,11 +25,6 @@ alias usage='sudo du -h --max-depth=1 | sort -h'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
-# This is a workaround for the SublimeGit plugin, since it seems to have path
-# issues in Yosemite. Note that this requires Sublime Text to be launched via
-# the command line, in order for the environment variable to be picked up.
-alias subl='PATH=/usr/local/Cellar/git/1.8.3.1/libexec/git-core/:$PATH subl'
-
 # Paths.
 export PATH=~/toolbag/scripts:/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
