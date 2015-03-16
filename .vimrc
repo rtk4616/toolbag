@@ -134,6 +134,7 @@ nnoremap ZA :qa!<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
@@ -196,6 +197,13 @@ function! CreateMarkdownTOC()
     normal p
     silent exe "%!markdown_toc.py"
     exe "1d"
+endfunc
+
+function! MikeFugitiveGitLog()
+    call inputrestore()
+    exe "silent Glog!"
+    exe "cope"
+    exe "redraw!"
 endfunc
 
 function! MikeGrep()
