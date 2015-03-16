@@ -130,7 +130,7 @@ function fssh {
     # name/location)
     ssh -R 52698:127.0.0.1:52698 "$@" -t \
     '\
-    clear; \
+    echo; \
     echo "-------------------------------------"; \
     echo "SSH with reverse tunnel on port 52698"; \
     echo "-------------------------------------"; \
