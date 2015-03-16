@@ -107,8 +107,40 @@ if ! [ -z "$PS1" ]; then
 fi
 
 function fssh {
-    # Wrapper function to SSH to a server, while ensuring that the rmate script is present in /tmp/.
-    ssh -R 52698:127.0.0.1:52698 "$@" -t '[ ! -e /tmp/rmate ] &&  curl -o /tmp/rmate https://raw.githubusercontent.com/wilkystyle/toolbag/master/scripts/rmate && chmod +x /tmp/rmate; $SHELL'
+    # SSH function for using rmate on remote servers to open files in a local
+    # instance of Sublime Text with the rsub plugin. This function will ensure
+    # that an up-to-date copy of the rmate script from my git repo exists in
+    # /tmp/, unless there already exists a file/directory by the same name in
+    # /tmp/ that is NOT some version of my rmate script.rmate
+    #
+    # This function looks for a simple hash in a comment at the end of the
+    # rmate script to determine whether or not /tmp/rmate is my script.
+    #
+    # This function wraps the ssh command with the following:
+    #
+    # - Flags for creating a reverse tunnel on port 52698.
+    # - All user-supplied arguments.
+    # - The -t flag, to force establishing a tty.
+    # - A series of bash commands to run on the remote host that will curl the
+    #   latest version of my rmate script from my GitHub repo, unless there is
+    #   an existing file or directory that is NOT my rmate script.
+    #
+    # (That last step is so that I don't overwrite someone else's file, on the
+    # off-chance that a file with different contents exists at the same
+    # name/location)
+    ssh -R 52698:127.0.0.1:52698 "$@" -t \
+    '\
+    clear; \
+    echo "-------------------------------------"; \
+    echo "SSH with reverse tunnel on port 52698"; \
+    echo "-------------------------------------"; \
+    ([ ! -e /tmp/rmate ] || [ "# rmate id 8355c6053581459eaee307e2b6e417b2" == "$(tail -1 /tmp/rmate)" ]) \
+    && echo "Obtaining latest version of rmate script..." \
+    && curl -s -o /tmp/rmate https://raw.githubusercontent.com/wilkystyle/toolbag/master/scripts/rmate \
+    && chmod +x /tmp/rmate \
+    && echo "Done."; \
+    $SHELL \
+    '
 }
 
 function pull_commit_from_repo {
