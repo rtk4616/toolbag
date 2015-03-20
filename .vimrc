@@ -17,6 +17,7 @@ Plug 'docunext/closetag.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
 
 call plug#end()
 filetype plugin on
