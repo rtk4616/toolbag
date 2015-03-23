@@ -122,6 +122,7 @@ nnoremap <C-k> 6k
 nnoremap <C-o> :CtrlPTag<cr>
 nnoremap <C-x> :exe "tag ". expand("<cword>")<CR>
 nnoremap <F5> :set nonumber!<CR>
+nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
 nnoremap <S-h> gT
