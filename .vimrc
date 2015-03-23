@@ -27,6 +27,10 @@ filetype plugin on
 " Set up any custom vars.
 " ------------------------------------------------------------------------------
 
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
 let g:SuperTabLongestEnhanced = 1
@@ -37,9 +41,10 @@ let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_fuzzy_completion = 1
-let g:neocomplcache_tags_caching_limit_file_size = 5000000
 let g:neocomplcache_fuzzy_completion_start_length = 1
 let g:neocomplcache_max_list = 10
+" let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_tags_caching_limit_file_size = 5000000
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
 
 
