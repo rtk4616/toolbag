@@ -89,6 +89,7 @@ set foldlevel=99                                          " Set the level we aut
 set foldmethod=indent                                     " Set folding options.
 set formatoptions=ql
 set hlsearch                                              " Highlight matches while searching.
+set completeopt-=preview                                  " Don't show the sassy preview window during autocomplete.
 set ignorecase                                            " Ignore case while searching, by default...
 set is                                                    " Enable incremental search by default.
 set linebreak                                             " Better word wrapping.
