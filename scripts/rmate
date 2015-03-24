@@ -1,355 +1,295 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
 
-# rmate
-# Copyright (C) 2011-2015 by Harald Lapp <harald@octris.org>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import getopt
+import os
+import socket
+import sys
+import shutil
+import tempfile
 
-#
-# This script can be found at:
-# https://github.com/aurora/rmate
-#
+if sys.version_info >= (3,0):
+    import configparser
+    import io as ioio
+else:
+    import ConfigParser as configparser
+    import StringIO as ioio
 
-#
-# This script is a pure bash compatible shell script implementing remote
-# textmate functionality
-#
+DATE           = '2014-08-30'
+VERSION        = '1.0.1'
+VERSION_STRING = 'rmate-python version %s (%s)' % (DATE, VERSION)
 
-#
-# Thanks very much to all users and contributors! All bug-reports,
-# feature-requests, patches, etc. are greatly appreciated! :-)
-#
+def log(msg):
+    if settings.verbose:
+        sys.stderr.write(msg.strip() + '\n')
 
-# init
-#
-version="0.9.3"
-version_date="2015-03-03"
-version_string="rmate-sh $version ($version_date)"
+def enc(string):
+    if sys.version_info >= (3,0):
+        return bytes(string, 'utf-8')
+    else:
+        return string
 
-# determine hostname
-function hostname_command(){
-    if command -v hostname >/dev/null 2>&1; then
-        echo "hostname"
-    else {
-        HOSTNAME_DESCRIPTOR="/proc/sys/kernel/hostname"
-        if test -r "$HOSTNAME_DESCRIPTOR"; then
-            echo "cat $HOSTNAME_DESCRIPTOR"
-        else
-            echo "hostname"
-        fi
-        }
-    fi
-}
+def dec(byte_string):
+    if sys.version_info >= (3,0):
+        return str(byte_string, 'utf-8')
+    else:
+        return byte_string
 
-hostname=$($(hostname_command))
+def handle_save(textmate, variables, data):
+    path = variables['token']
 
-# default configuration
-host=localhost
-port=52698
+    if path == '|':
+        if settings.tmpFile is not None:
+            settings.tmpFile.seek(0)
+            settings.tmpFile.truncate()
+            settings.tmpFile.write(data)
+        else:
+            log("Save failed!")
+        return
 
-function load_config {
-    local rc_file=$1
-    local row
+    try:
+        log('Saving %s' % path)
+        backup_path = '%s~' % path
+        while os.path.isfile(backup_path): backup_path = '%s~' % backup_path
+        if os.path.isfile(path): shutil.copy2(path, backup_path)
+        file = open(path, 'wb')
+        file.write(data)
+        if os.path.isfile(backup_path): os.remove(backup_path)
+    except (IOError, OSError):
+        log("Save failed!")
 
-    local host_pattern="^host(:[[:space:]]+|=)([^ ]+)"
-    local port_pattern="^port(:[[:space:]]+|=)([0-9]+)"
+def handle_close(textmate, variables, data):
+    path = variables['token']
 
-    if [ -f "$rc_file" ]; then
-        while read row; do
-            if [[ "$row" =~ $host_pattern ]]; then
-                host=${BASH_REMATCH[2]}
-            elif [[ "$row" =~ $port_pattern ]]; then
-                port=${BASH_REMATCH[2]}
-            fi
-        done < "$rc_file"
-    fi
-}
+    if path == '|' and settings.tmpFile is not None:
+        settings.tmpFile.seek(0)
+        print(dec(settings.tmpFile.read()))
+        settings.tmpFile.close()
+        settings.tmpFile = None
 
-for i in "/etc/${0##*/}" ~/."${0##*/}/${0##*/}.rc" ~/."${0##*/}.rc"; do
-    load_config $i
-done
+    log("Closed %s" % path)
 
-host="${RMATE_HOST:-$host}"
-port="${RMATE_PORT:-$port}"
+def handle_cmd(textmate, cmd):
+    variables = {}
+    data = enc('')
+    for line in textmate:
+        line = dec(line)
+        if line.strip() == "": break
+        s = line.split(': ', 2)
+        name = s[0].strip()
+        value = s[1].strip()
+        variables[name] = value
+        if name == 'data':
+            data += textmate.read(int(value))
 
-if [[ "$host" = "auto" && "$SSH_CONNECTION" != "" ]]; then
-    host=${SSH_CONNECTION%% *}
-fi
+    if 'data' in variables: del variables['data']
+    if   cmd == 'save':  handle_save(textmate, variables, data)
+    elif cmd == 'close': handle_close(textmate, variables, data)
 
-# misc initialization
-filepath=""
-selection=""
-displayname=""
-filetype=""
-verbose=false
-nowait=true
-force=false
+def connect_to_tm():
+    try:
+        socket.setdefaulttimeout(5)
+        textmate_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        textmate_sock.connect((settings.host, settings.port))
+        textmate_sock.setblocking(True)
+        textmate = textmate_sock.makefile('rwb')
+    except socket.error:
+        sys.stderr.write("Error connecting to TextMate!\n")
+        exit(1)
 
-# process command-line parameters
-#
-function showusage {
-    echo "usage: $(basename $0) [arguments] file-path  edit specified file
-   or: $(basename $0) [arguments] -          read text from stdin
+    server_info = dec(textmate.readline())
 
--H, --host HOST  Connect to HOST. Use 'auto' to detect the host from
-                 SSH. Defaults to $host.
--p, --port PORT  Port number to use for connection. Defaults to $port.
--w, --[no-]wait  Wait for file to be closed by TextMate.
--l, --line LINE  Place caret on line number after loading file.
--m, --name NAME  The display name shown in TextMate.
--t, --type TYPE  Treat file as having specified type.
--f, --force      Open even if file is not writable.
--v, --verbose    Verbose logging messages.
--h, --help       Display this usage information.
-    --version    Show version and exit.
-"
-}
+    if server_info.strip() == "":
+        sys.stderr.write("Couldn't connect to TextMate!\n")
+        exit(1)
 
-function log {
-    if [[ $verbose = true ]]; then
-        echo "$@" 1>&2
-    fi
-}
+    log('Connect: %s' % server_info)
 
-function dirpath {
-    (cd `dirname $1` >/dev/null 2>/dev/null; pwd -P)
-}
+    return textmate
 
-function canonicalize {
-    filepath="$1"
-    dir=`dirpath "$filepath"`
-    if [ -L "$filepath" ]; then
-        relativepath=`cd "$dir"; readlink \`basename "$filepath"\``
-        result=`dirpath "$relativepath"`/`basename "$relativepath"`
-    else
-        result=`basename "$filepath"`
-        if [ "$dir" = '/' ]; then
-            result="$dir$result"
-        else
-            result="$dir/$result"
-        fi
-    fi
-    echo $result
-}
+def handle_cmds(textmate, host, port, cmds):
+    if len(cmds) == 0: return
 
-while test "${1:0:1}" = "-"; do
-    case $1 in
-        -)
-            break
-            ;;
-        -H|--host)
-            host=$2
-            shift
-            ;;
-        -p|--port)
-            port=$2
-            shift
-            ;;
-        -w|--wait)
-            nowait=false
-            ;;
-        --no-wait)
-            nowait=true
-            ;;
-        -l|--line)
-            selection=$2
-            shift
-            ;;
-        -m|--name)
-            displayname=$2
-            shift
-            ;;
-        -t|--type)
-            filetype=$2
-            shift
-            ;;
-        -f|--force)
-            force=true
-            ;;
-        -v|--verbose)
-            verbose=true
-            ;;
-        --version)
-            echo $version_string
-            exit 1
-            ;;
-        -h|-\?|--help)
-            showusage
-            exit 1
-            ;;
-        *)
-            showusage
-            exit 1
-            ;;
-    esac
+    for cmd in cmds: cmd.send(textmate)
+    textmate.write(enc('.\n'))
 
-    shift
-done
+    textmate.flush()
+    for command in textmate:
+        handle_cmd(textmate, dec(command).strip())
+    textmate.close()
+    log('Done')
 
-filepath="$1"
+class Settings:
+    def __init__(self):
+        self.host    = 'localhost'
+        self.port    = 52698
+        self.wait    = False
+        self.force   = False
+        self.verbose = False
+        self.lines   = []
+        self.names   = []
+        self.types   = []
+        self.files   = []
+        self.tmpFile = None
 
-if [ "$filepath" = "" ]; then
-    showusage
-    exit 1
-fi
+        self.read_disk_settings()
 
-shift
-if [ ! "${#@}" -eq 0 ]; then
-    echo "There are more than one files specified. Opening only $filepath and ignoring other."
-fi
+        # Environment settings
+        self.host = os.getenv('RMATE_HOST', self.host)
+        self.port = os.getenv('RMATE_PORT', self.port)
 
-if [ "$filepath" != "-" ]; then
-    realpath=`canonicalize "$filepath"`
-    log $realpath
+        self.parse_cli_options()
 
-    if [ -d "$filepath" ]; then
-        echo "$filepath is a directory and rmate is unable to handle directories."
-        exit 1
-    fi
+        if self.host == 'auto' and os.environ.get('SSH_CONNECTION') != None:
+            self.host = os.getenv('SSH_CONNECTION', 'localhost').split(' ')[0]
 
-    if [ -f "$realpath" ] && [ ! -w "$realpath" ]; then
-        if [[ $force = false ]]; then
-            echo "File $filepath is not writable! Use -f to open anyway."
-            exit 1
-        elif [[ $verbose = true ]]; then
-            log "File $filepath is not writable! Opening anyway."
-        fi
-    fi
+    def usage(self):
+        print("usage: %s [OPTION]... FILE...\n\n"
+              "      --host HOST  Connect to HOST. Use 'auto' to detect the host from\n"
+              "                   SSH. Defaults to %s\n"
+              "  -p, --port PORT  Port number to use for connection. Defaults to %d\n"
+              "  -w, --[no-]wait  Wait for file to be closed by TextMate\n"
+              "  -l, --line LINE  Place carat on line LINE after loading the file.\n"
+              "                   TextMate selection strings can be used\n"
+              "  -m, --name NAME  The display name shown in TextMate\n"
+              "  -t, --type TYPE  Treat file as having TYPE\n"
+              "  -f, --force      Open even if the file is not wratable\n"
+              "  -v, --verbose    Verbose logging messages\n"
+              "  -h, --help       Show this help and exit\n"
+              "      --version    Show version and exit\n\n"
+              "When FILE is -, read standard input.\n"
+              % (sys.argv[0], self.host, self.port))
 
-    if [ "$displayname" = "" ]; then
-        displayname="$hostname:$filepath"
-    fi
-else
-    displayname="$hostname:untitled"
-fi
+    def read_disk_settings(self):
+        config = Parser()
+        try:
+            config.read(['/etc/rmate.rc', os.path.expanduser('~/.rmate.rc')])
+        except:
+            sys.stderr.write('Could not read settings from disk.\n')
+        if config.has_option('NOSECTION', 'host'): self.host = config.get('NOSECTION', 'host')
+        if config.has_option('NOSECTION', 'port'): self.port = config.get('NOSECTION', 'port')
 
-#------------------------------------------------------------
-# main
-#------------------------------------------------------------
-function handle_connection {
-    local cmd
-    local name
-    local value
-    local token
-    local tmp
+    def parse_cli_options(self):
+        try:
+            optlist, args = getopt.gnu_getopt(sys.argv[1:], 'hp:wl:m:t:fv', ['host=', 'port=', 'wait', 'no-wait', 'line=', 'name=', 'type=', 'force', 'verbose', 'help', 'version'])
+        except getopt.GetoptError:
+            self.usage()
+            sys.exit(2)
 
-    while read 0<&3; do
-        REPLY="${REPLY#"${REPLY%%[![:space:]]*}"}"
-        REPLY="${REPLY%"${REPLY##*[![:space:]]}"}"
+        for name, value in optlist:
+            if name == '--version':           print(VERSION_STRING); sys.exit()
+            elif name in ('-h', '--help'):    self.usage(); sys.exit()
+            elif name == '--host':            self.host = value
+            elif name in ('-p', '--port'):    self.port = int(value)
+            elif name in ('-w', '--wait'):    self.wait = True
+            elif name == '--no-wait':         self.wait = False
+            elif name in ('-l', '--line'):    self.lines.append(value)
+            elif name in ('-m', '--name'):    self.names.append(value)
+            elif name in ('-t', '--type'):    self.types.append(value)
+            elif name in ('-f', '--force'):   self.force = True
+            elif name in ('-v', '--verbose'): self.verbose = True
 
-        cmd=$REPLY
+        if '-' in sys.argv[1:] and '-' not in args: args.append('-')
+        self.files = args
+        if not self.files: self.files = ['=']
 
-        token=""
-        tmp=""
+class Parser(configparser.ConfigParser):
+    def read(self, filenames):
+        if isinstance(filenames, str):
+            filenames = [filenames]
+        read_ok = []
+        for filename in filenames:
+            try:
+                file = open(filename)
+                fp = ioio.StringIO("[NOSECTION]\n" + file.read())
+                self._read(fp, filename)
+                file.close()
+            except:
+                continue
+            read_ok.append(filename)
+        return read_ok
 
-        while read 0<&3; do
-            REPLY="${REPLY#"${REPLY%%[![:space:]]*}"}"
-            REPLY="${REPLY%"${REPLY##*[![:space:]]}"}"
+class Command:
+    def __init__(self, command):
+        self.command = command
+        self.variables = {}
+        self.data = None
+        self.size = None
 
-            if [ "$REPLY" = "" ]; then
-                break
-            fi
+    def __setitem__(self, index, value):
+        self.variables[index] = value
 
-            name="${REPLY%%:*}"
-            value="${REPLY##*:}"
-            value="${value#"${value%%[![:space:]]*}"}"      # fix textmate syntax highlighting: "
+    def read_stdin(self):
+        self.data = enc(sys.stdin.read())
+        self.size = len(self.data)
 
-            case $name in
-                "token")
-                    token=$value
-                    ;;
-                "data")
-                    if [ "$tmp" = "" ]; then
-                        tmp="/tmp/rmate.$RANDOM.$$"
-                        touch "$tmp"
-                    fi
+    def read_file(self, path):
+        file = open(path, 'rb')
+        self.data = file.read()
+        self.size = file.tell()
+        file.close()
 
-                    dd bs=1 count=$value <&3 >>"$tmp" 2>/dev/null
-                    ;;
-                *)
-                    ;;
-            esac
-        done
+    def send(self, textmate):
+        textmate.write(enc(self.command + '\n'))
+        for name in self.variables.keys():
+            value = self.variables[name]
+            textmate.write(enc('%s: %s\n' % (name, value)))
+        if self.data != None:
+            textmate.write(enc('data: %d\n' % self.size))
+            textmate.write(self.data)
+        textmate.write(enc('\n'))
 
-        if [[ "$cmd" = "close" ]]; then
-            log "Closing $token"
-        elif [[ "$cmd" = "save" ]]; then
-            log "Saving $token"
-            if [ "$token" != "-" ]; then
-                cat "$tmp" > "$token"
-            fi
-            rm "$tmp"
-        fi
-    done
+## MAIN ##
 
-    log "Done"
-}
+settings = Settings()
 
-# connect to textmate and send command
-#
-exec 3<> /dev/tcp/$host/$port
+cmds = []
+for idx, path in enumerate(settings.files):
+    if path == '=':
+        if sys.stdin.isatty(): continue
+        else: path = '-'
+    elif path == '-' and sys.stdin.isatty():
+        sys.stderr.write('Reading from stdin, press ^D to stop\n')
+    elif os.path.isdir(path):
+        sys.stderr.write("'%s' is a directory!\n" % path)
+        continue
+    elif os.path.isfile(path) and not os.access(path, os.W_OK):
+        if settings.force:
+            log("File %s is not writable. Opening anyway." % path)
+        else:
+            sys.stderr.write("File %s is not writable! Use -f/--force to open anyway.\n" % path)
+            continue
 
-if [ $? -gt 0 ]; then
-    echo "Unable to connect to TextMate on $host:$port"
-    exit 1
-fi
+    cmd = Command("open")
+    if   len(settings.names) > idx: cmd['display-name'] = settings.names[idx]
+    elif path == '-':               cmd['display-name'] = '%s:untitled (stdin)' % socket.gethostname()
+    else:                           cmd['display-name'] = '%s:%s' % (socket.gethostname(), path)
+    if   len(settings.types) > idx: cmd['file-type']    = settings.types[idx]
+    elif path == '-':               cmd['file-type']    = 'txt'
+    if   path != '-':               cmd['real-path']    = os.path.abspath(path)
+    if   len(settings.lines) > idx: cmd['selection']    = settings.lines[idx]
 
-read server_info 0<&3
+    cmd["data-on-save"] = 'yes'
+    cmd["re-activate"] = 'yes'
+    cmd["token"] = path
+    if path == '-':
+        cmd.read_stdin()
+    elif os.path.isfile(path):
+        cmd.read_file(path)
+    else:
+        cmd['data'] = "0"
 
-log $server_info
+    if path == '-' and not sys.stdout.isatty() and settings.tmpFile is None:
+        settings.tmpFile = tempfile.TemporaryFile()
+        settings.tmpFile.write(cmd.data)
+        settings.tmpFile.seek(0)
+        cmd["token"] = '|'
 
-echo "open" 1>&3
-echo "display-name: $displayname" 1>&3
-echo "real-path: $realpath" 1>&3
-echo "data-on-save: yes" 1>&3
-echo "re-activate: yes" 1>&3
-echo "token: $filepath" 1>&3
+    cmds.append(cmd)
 
-if [ "$selection" != "" ]; then
-    echo "selection: $selection" 1>&3
-fi
+s = connect_to_tm()
 
-if [ "$filetype" != "" ]; then
-    echo "file-type: $filetype" 1>&3
-fi
+if not settings.wait and os.fork():
+    sys.exit()
 
-if [ "$filepath" != "-" ] && [ -f "$filepath" ]; then
-    filesize=`ls -lLn "$realpath" | awk '{print $5}'`
-    echo "data: $filesize" 1>&3
-    cat "$realpath" 1>&3
-elif [ "$filepath" = "-" ]; then
-    if [ -t 0 ]; then
-        echo "Reading from stdin, press ^D to stop"
-    else
-        log "Reading from stdin"
-    fi
-
-    data=$(cat)
-    filesize=$(echo -e "$data" | wc -c)
-    echo "data: $filesize" 1>&3
-    echo "$data" 1>&3
-else
-    echo "data: 0" 1>&3
-fi
-
-echo 1>&3
-echo "." 1>&3
-
-if [[ $nowait = true ]]; then
-    exec </dev/null >/dev/null 2>/dev/null
-    ( (handle_connection &) &)
-else
-    handle_connection
-fi
+handle_cmds(s, settings.host, settings.port, cmds)
 # rmate id 8355c6053581459eaee307e2b6e417b2
