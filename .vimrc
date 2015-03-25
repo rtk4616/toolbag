@@ -121,14 +121,14 @@ nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
+nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
-nnoremap <leader>m :call CreateMarkdownTOC()<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
