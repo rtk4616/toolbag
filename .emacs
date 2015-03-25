@@ -23,6 +23,8 @@
   (progn
     ;; Set the necessary variables for OSX
     (add-to-list 'exec-path "/usr/local/bin/")
+    (package-initialize)
+    (exec-path-from-shell-initialize)
     ))
  ;; ((string-equal system-type "gnu/linux") ; linux
  ;;  (progn
