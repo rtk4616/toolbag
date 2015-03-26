@@ -1,7 +1,13 @@
 (defun MikeUpdateDirectory ()
+  "Custom function to be called on each projectile project switch."
   (interactive)
+  ;; First, update the variable used for my custom with the newly-updated
+  ;; working directory (default-directory, which will be set by projectile).
   (setq emacs-startup-directory default-directory)
+  ;; Now kill all open windows...
   (mapc 'kill-buffer (buffer-list))
+  ;; After killing all open windows, the value of default-directory will have
+  ;; changed. Let's re-assign the value that projectile gave it.
   (setq default-directory emacs-startup-directory)
   )
 
