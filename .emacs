@@ -39,6 +39,12 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; projectile-mode
+(require 'helm-projectile)
+(setq projectile-switch-project-action 'MikeUpdateDirectory)
+(projectile-global-mode)
+
+
 ;; company-mode
 (setq company-backends '(company-ycmd
                          ;; company-sample-backend
@@ -149,10 +155,12 @@
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-M-f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-M-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-p") 'mc/unmark-next-like-this)
 (global-set-key (kbd "C-M-s") 'mc/skip-to-next-like-this)
+(global-set-key (kbd "C-M-t") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
 (global-set-key (kbd "C-x C-h") 'helm-command-prefix)
 (global-set-key (kbd "M-*") 'mike-next-tag)

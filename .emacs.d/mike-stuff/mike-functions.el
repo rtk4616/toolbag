@@ -1,6 +1,8 @@
 (defun MikeUpdateDirectory ()
   (interactive)
   (setq emacs-startup-directory default-directory)
+  (mapc 'kill-buffer (buffer-list))
+  (setq default-directory emacs-startup-directory)
   )
 
 (defun MikeTrampFindFile (user-a host user-b)
