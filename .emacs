@@ -24,6 +24,7 @@
     ;; Set the necessary variables for OSX
     (add-to-list 'exec-path "/usr/local/bin/")
     (package-initialize)
+    (set-variable 'ycmd-server-command '("python" "/Users/mikewilkerson/.ycmd_rundir/ycmd"))
     (exec-path-from-shell-initialize)
     ))
  ;; ((string-equal system-type "gnu/linux") ; linux
@@ -39,24 +40,26 @@
 ;;;; ---------------------------------------------------------------------------
 
 ;; company-mode
-(setq company-backends '(company-sample-backend
-                         company-bbdb
-                         company-nxml
-                         company-css
-                         company-eclim
-                         company-semantic
-                         company-clang
-                         company-xcode
-                         company-ropemacs
-                         company-cmake
-                         ;; company-capf
-                         (company-dabbrev-code
-                          company-gtags
-                          company-etags
-                          company-keywords)
-                         company-oddmuse
-                         company-files
-                         company-dabbrev))
+(setq company-backends '(company-ycmd
+                         ;; company-sample-backend
+                         ;; company-bbdb
+                         ;; company-nxml
+                         ;; company-css
+                         ;; company-eclim
+                         ;; company-semantic
+                         ;; company-clang
+                         ;; company-xcode
+                         ;; company-ropemacs
+                         ;; company-cmake
+                         ;; ;; company-capf
+                         ;; (company-dabbrev-code
+                         ;;  company-gtags
+                         ;;  company-etags
+                         ;;  company-keywords)
+                         ;; company-oddmuse
+                         ;; company-files
+                         ;; company-dabbrev
+                         ))
 
 ;; Flycheck mode
 (setq flycheck-check-syntax-automatically '(save
@@ -192,6 +195,7 @@
 (helm-mode 1)
 (ido-mode t)
 (setenv "TMPDIR" "/tmp")
+(ycmd-setup)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (set-default-font "Menlo-12")
@@ -347,71 +351,3 @@
               (setq autopair-handle-action-fns
                     (list #'autopair-default-handle-action
                           #'autopair-python-triple-quote-action))))
-
-
-;;;; ---------------------------------------------------------------------------
-;;;; Experimentation - Move this to its own module when done!
-;;;; ---------------------------------------------------------------------------
-
-;; TODO:
-;; 1) Make completions case-insensitive.
-;; 2) Make this can handle things like "import datetime as LOL".
-
-(require 'cl-lib)
-
-(defun get-whitespace-prefix-at-point ()
-  (interactive)
-  (progn
-    (save-excursion
-      (setq p2 (point))
-      (skip-chars-backward "[:graph:]")
-      (setq p1 (point))
-      )
-    (buffer-substring-no-properties p1 p2)
-    )
-  )
-
-(defun sample-annotation (s)
-  (format " [%s]" (get-text-property 0 :initials s)))
-
-(defun sample-meta (s)
-  (get-text-property 0 :summary s))
-
-(defun get-sample-completions ()
-  (let (
-        (prefix-thing (split-string (get-whitespace-prefix-at-point) "\\." t))
-        )
-    (if (cdr prefix-thing)
-        (split-string
-         (shell-command-to-string (concat
-                                   "python -c 'import "
-                                   (car prefix-thing)
-                                   "; print dir("
-                                   (car prefix-thing)
-                                   ")'"
-                                   ))
-         "," t "\\(\\['\\|'\\|'\\]\\| '\\| \\)"
-         )
-      nil
-      )
-    )
-  )
-
-(defun sample-fuzzy-match (prefix candidate)
-  (cl-subsetp (string-to-list prefix)
-              (string-to-list candidate)))
-
-(defun company-sample-backend (command &optional arg &rest ignored)
-  (interactive (list 'interactive))
-
-  (cl-case command
-    (interactive (company-begin-backend 'company-sample-backend))
-    (prefix (and (eq major-mode 'python-mode)
-                 (company-grab-symbol)
-                 ))
-    (candidates
-     (cl-remove-if-not (lambda (c) (sample-fuzzy-match arg c)) (get-sample-completions)))
-    (annotation (sample-annotation arg))
-    (meta (sample-meta arg))
-    (no-cache 't)
-    ))
