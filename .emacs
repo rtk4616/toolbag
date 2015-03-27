@@ -14,24 +14,27 @@
 ;;;; ---------------------------------------------------------------------------
 
 (cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
+ ((string-equal system-type "windows-nt")
   (progn
     ;; Set the necessary variables for Windows
     (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
     ))
- ((string-equal system-type "darwin")   ; Mac OS X
+ ((string-equal system-type "darwin")
   (progn
     ;; Set the necessary variables for OSX
     (add-to-list 'exec-path "/usr/local/bin/")
     (package-initialize)
-    (set-variable 'ycmd-server-command '("python" "/Users/mikewilkerson/.ycmd_rundir/ycmd"))
+    (set-variable 'ycmd-server-command '("python"))
+    (add-to-list 'ycmd-server-command (expand-file-name "~/.ycmd_rundir/ycmd") t)
     (exec-path-from-shell-initialize)
     ))
- ;; ((string-equal system-type "gnu/linux") ; linux
- ;;  (progn
- ;;    ;; Set the necessary variables for Linux
- ;;    ;; TODO: what are they?
- ;;    ))
+ ((string-equal system-type "gnu/linux")
+  (progn
+    ;; Set the necessary variables for Linux
+    (package-initialize)
+    (set-variable 'ycmd-server-command '("python"))
+    (add-to-list 'ycmd-server-command (expand-file-name "~/.ycmd_rundir/ycmd") t)
+    ))
  )
 
 
