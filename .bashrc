@@ -128,6 +128,10 @@ function fssh {
     # (That last step is so that I don't overwrite someone else's file, on the
     # off-chance that a file with different contents exists at the same
     # name/location)
+    if [ $# -eq 0 ]; then
+        echo "No arguments provided"
+        return
+    fi
     ssh -R 52698:127.0.0.1:52698 "$@" -t \
     '\
     echo; \
