@@ -15,9 +15,12 @@ Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'Shougo/neocomplcache.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
+
+if (v:version > 703) || (v:version == 703 && has('patch584'))
+    Plug 'Valloric/YouCompleteMe'
+endif
 
 call plug#end()
 filetype plugin on
@@ -120,7 +123,7 @@ set wrap                                                  " Wrap text at window 
 " ------------------------------------------------------------------------------
 map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-inoremap <expr><silent> <CR> <SID>SpecialCRFunction()
+" inoremap <expr><silent> <CR> <SID>SpecialCRFunction()
 
 nnoremap <C-a> :pop<CR>
 nnoremap <C-j> 6j
@@ -195,9 +198,9 @@ autocmd FileType * setlocal formatoptions-=cro
 " Custom helper functions
 " ===================================================================================================
 
-function! s:SpecialCRFunction()
-    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endfunction
+" function! s:SpecialCRFunction()
+"     return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+" endfunction
 
 function! CreateMarkdownTOC()
     normal ggyG
