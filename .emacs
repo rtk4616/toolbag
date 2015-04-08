@@ -216,6 +216,7 @@
 (setq case-replace nil)
 (setq company-dabbrev-code-everywhere t)
 (setq company-dabbrev-code-ignore-case t)
+(setq company-minimum-prefix-length 1)
 (setq company-dabbrev-downcase nil)
 (setq company-dabbrev-ignore-case t)
 (setq company-etags-ignore-case t)
@@ -333,7 +334,6 @@
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
-                          (setq company-idle-delay 0)
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
