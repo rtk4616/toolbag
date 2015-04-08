@@ -19,7 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
-    Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 endif
 
 call plug#end()
