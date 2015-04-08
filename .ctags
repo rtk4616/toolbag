@@ -9,10 +9,12 @@
 --exclude=*/.idea/*
 --exclude=*/build/*
 --exclude=*/migrations/*
+--exclude=*/plugged/*
 --exclude=*/static/*
 --exclude=*/target/*
 --exclude=*/ve/*
 --exclude=*/vendor/*
+--exclude=*plugged/*
 --exclude=.DS_Store
 --exclude=.git/*
 --exclude=.idea/*
