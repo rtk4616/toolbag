@@ -7,6 +7,7 @@
         MikeIndent
         autopair-insert-opening
         autopair-insert-or-skip-quote
+        autopair-newline
         backward-sexp
         clipboard-kill-region
         clipboard-kill-ring-save
