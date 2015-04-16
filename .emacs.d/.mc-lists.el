@@ -17,6 +17,7 @@
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
         markdown-exdent-or-delete
+        split-line
         ))
 
 (setq mc/cmds-to-run-once
