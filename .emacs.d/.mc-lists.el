@@ -13,6 +13,7 @@
         clipboard-kill-ring-save
         clipboard-yank
         duplicate-current-line-or-region
+        forward-sentence
         forward-sexp
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
