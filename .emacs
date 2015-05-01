@@ -42,6 +42,9 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; Magit
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; projectile-mode
 (require 'helm-projectile)
 (setq projectile-switch-project-action 'MikeUpdateDirectory)
