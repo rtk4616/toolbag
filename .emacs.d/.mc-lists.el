@@ -19,6 +19,7 @@
         indent-for-tab-command
         markdown-exdent-or-delete
         split-line
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
