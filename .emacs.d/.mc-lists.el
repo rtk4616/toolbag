@@ -6,6 +6,7 @@
         MikeDeIndent
         MikeIndent
         autopair-insert-opening
+        autopair-insert-or-skip-paired-delimiter
         autopair-insert-or-skip-quote
         autopair-newline
         backward-sexp
