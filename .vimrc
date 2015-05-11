@@ -125,11 +125,19 @@ map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tra
 
 " inoremap <expr><silent> <CR> <SID>SpecialCRFunction()
 
-nnoremap <C-a> :pop<CR>
+" -----------------------------------------------------------------------------
+" Not sure the best way to handle these bindings...
+" Ideally, they would only be active for filetypes that have a YCM semantic
+" completer.
+" -----------------------------------------------------------------------------
+" nnoremap <C-a> :pop<CR>
+" nnoremap <C-x> :exe "tag ". expand("<cword>")<CR>
+nnoremap <C-a> <C-O>
+nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 nnoremap <C-j> 6j
 nnoremap <C-k> 6k
 nnoremap <C-o> :CtrlPTag<cr>
-nnoremap <C-x> :exe "tag ". expand("<cword>")<CR>
 nnoremap <F5> :set nonumber!<CR>
 nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
