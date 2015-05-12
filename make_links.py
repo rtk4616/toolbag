@@ -23,18 +23,19 @@ if not os.path.exists(backup_files_dir):
 
 # These are the files that are to be symlinked.
 managed_files = [
-    ".vimrc",
-    ".ctags",
     ".agignore",
-    ".ideavimrc",
-    ".vim",
+    ".ctags",
+    ".elisp",
     ".emacs",
     ".emacs.d",
-    ".elisp",
-    ".tmux.conf",
-    ".pythonrc",
-    ".pylintrc",
+    ".eslintrc",
     ".gitconfig",
+    ".ideavimrc",
+    ".pylintrc",
+    ".pythonrc",
+    ".tmux.conf",
+    ".vim",
+    ".vimrc",
 ]
 
 for the_file in managed_files:
