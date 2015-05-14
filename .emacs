@@ -341,8 +341,11 @@
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
 ;; js-mode hooks
-;; (add-hook 'js-mode-hook
-;;           (lambda () (flycheck-mode t)))
+(add-hook 'js-mode-hook (lambda ()
+                          (message "THIS IS JS MODE")
+                          (local-set-key (kbd "M-,") 'pop-tag-mark)
+                          (local-set-key (kbd "M-.") 'helm-etags-select)
+                          ))
 
 ;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
