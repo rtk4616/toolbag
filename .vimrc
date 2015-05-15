@@ -17,6 +17,7 @@ Plug 'docunext/closetag.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
+Plug 'mxw/vim-jsx'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -36,20 +37,21 @@ endif
 
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
-let g:SuperTabLongestEnhanced = 1
 let g:SuperTabDefaultCompletionType="<c-x><c-o>"
+let g:SuperTabLongestEnhanced = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
+let g:jsx_ext_required = 0
 let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_fuzzy_completion = 1
 let g:neocomplcache_fuzzy_completion_start_length = 1
 let g:neocomplcache_max_list = 10
-" let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 let g:neocomplcache_tags_caching_limit_file_size = 5000000
-let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'    " And when in the netrw browser.
+let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
+let g:syntastic_javascript_checkers = ['eslint']
 
 
 " ------------------------------------------------------------------------------
