@@ -347,13 +347,20 @@
                           (local-set-key (kbd "M-.") 'helm-etags-select)
                           ))
 
+;; html-mode hooks
+(add-hook 'html-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?\" "\"\"")
+            ))
+
 ;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
           (lambda ()
             (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
             (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
             (modify-syntax-entry ?\` "\"`")
-            (modify-syntax-entry ?\" "\"\"")))
+            (modify-syntax-entry ?\" "\"\"")
+            ))
 
 ;; Add highlighting of TODOs
 (add-hook 'prog-mode-hook
