@@ -24,6 +24,7 @@
     ;; Set the necessary variables for OSX
     (add-to-list 'exec-path "/usr/local/bin/")
     (package-initialize)
+    (set-default-font "Menlo-12")
     (set-variable 'ycmd-server-command '("python"))
     (add-to-list 'ycmd-server-command (expand-file-name "~/.ycmd_rundir/ycmd") t)
     (exec-path-from-shell-initialize)
@@ -212,7 +213,6 @@
 (ycmd-setup)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-default-font "Menlo-12")
 (setq auto-save-default nil)
 (setq c-default-style "bsd" c-basic-offset 4)
 (setq case-fold-search t)
