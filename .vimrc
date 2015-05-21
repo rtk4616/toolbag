@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'mxw/vim-jsx'
 Plug 'stephpy/vim-yaml'
+Plug 'scrooloose/nerdtree'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -38,6 +39,7 @@ endif
 
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
+let g:NERDTreeWinSize=40
 let g:SuperTabDefaultCompletionType="<c-x><c-o>"
 let g:SuperTabLongestEnhanced = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules)$'
@@ -148,6 +150,7 @@ nnoremap <F5> :set nonumber!<CR>
 nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
+nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <leader>e :Errors<cr>
