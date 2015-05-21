@@ -29,6 +29,7 @@ managed_files = [
     ".emacs",
     ".emacs.d",
     ".eslintrc",
+    ".fonts.conf",
     ".gitconfig",
     ".ideavimrc",
     ".pylintrc",
