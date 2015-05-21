@@ -77,8 +77,11 @@ syntax on
 set background=dark
 colo hybrid
 
-if has("gui_running")
-    set guifont=menlo:h12
+if has("unix") && has("gui_running")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        set guifont=menlo:h12
+    endif
 endif
 
 autocmd Syntax * syntax sync minlines=1000
