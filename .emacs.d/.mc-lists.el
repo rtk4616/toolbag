@@ -27,4 +27,5 @@
       '(
         MikeDownSomeLines
         MikeUpSomeLines
+        yaml-electric-backspace
         ))
