@@ -18,6 +18,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'mxw/vim-jsx'
+Plug 'stephpy/vim-yaml'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
