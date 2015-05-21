@@ -150,19 +150,21 @@ nnoremap <F5> :set nonumber!<CR>
 nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
-nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
+nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
+nnoremap <leader>gf :Gpull<cr>
+nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
+nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
-nnoremap <leader>m :call CreateMarkdownTOC()<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
