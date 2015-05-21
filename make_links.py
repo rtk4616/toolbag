@@ -23,6 +23,7 @@ if not os.path.exists(backup_files_dir):
 
 # These are the files that are to be symlinked.
 managed_files = [
+    ".Xresources",
     ".agignore",
     ".ctags",
     ".elisp",
