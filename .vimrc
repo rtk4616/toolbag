@@ -163,14 +163,16 @@ nnoremap <S-l> gt
 nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
-nnoremap <leader>gf :Gpull<cr>
-nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gf :Gpull<cr>
 nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
+nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
+nnoremap <leader>p "+p
 nnoremap <leader>r :SyntasticReset<cr>
+nnoremap <leader>y "+y
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
 
