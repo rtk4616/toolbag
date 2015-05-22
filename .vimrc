@@ -20,6 +20,7 @@ Plug 'fatih/vim-go'
 Plug 'mxw/vim-jsx'
 Plug 'stephpy/vim-yaml'
 Plug 'scrooloose/nerdtree'
+Plug 'chase/vim-ansible-yaml'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
