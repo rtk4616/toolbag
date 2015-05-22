@@ -83,7 +83,14 @@ if has("unix") && has("gui_running")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
         set guifont=menlo:h12
+    else
+        colo hybrid
     endif
+    set guioptions-=M
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
 endif
 
 autocmd Syntax * syntax sync minlines=1000
