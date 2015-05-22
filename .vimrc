@@ -178,6 +178,8 @@ nnoremap ZA :qa!<cr>
 
 vnoremap <C-j> 6j
 vnoremap <C-k> 6k
+vnoremap <leader>p "+p
+vnoremap <leader>y "+y
 
 
 " ------------------------------------------------------------------------------
