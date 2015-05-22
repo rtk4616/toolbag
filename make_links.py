@@ -26,7 +26,6 @@ managed_files = [
     ".Xresources",
     ".agignore",
     ".ctags",
-    ".elisp",
     ".emacs",
     ".emacs.d",
     ".eslintrc",
