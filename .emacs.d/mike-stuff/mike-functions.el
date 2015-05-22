@@ -11,12 +11,12 @@
   (setq default-directory emacs-startup-directory)
   )
 
-(defun MikeTrampFindFile (user-a host user-b)
+(defun MikeTrampFindFile (host-string user-b)
   "Tramp wrapper for easy ssh and su to another user."
-  (interactive "sSSH user: \nsHost: \nsUser to su to (leave blank for none): ")
+  (interactive "sConnect to: \nsUser to su to (leave blank for none): ")
   (if (= (length user-b) 0)
-      (find-file (concat "/ssh:" user-a "@" host ":"))
-    (find-file (concat "/ssh:" user-a "@" host "|sudo:|sudo:" user-b "@" host ":"))
+      (find-file (concat "/ssh:" host-string ":"))
+    (find-file (concat "/ssh:" host-string "|sudo:|sudo:" user-b "@" (car (last (split-string host-string "@"))) ":"))
     )
   )
 
