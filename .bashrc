@@ -140,7 +140,7 @@ function fssh {
     echo "-------------------------------------"; \
     ([ ! -e /tmp/rmate ] || [ "# rmate id 8355c6053581459eaee307e2b6e417b2" == "$(tail -1 /tmp/rmate)" ]) \
     && echo "Obtaining latest version of rmate script..." \
-    && curl -s -o /tmp/rmate https://raw.githubusercontent.com/wilkystyle/toolbag/master/scripts/rmate \
+    && wget -q https://raw.githubusercontent.com/wilkystyle/toolbag/master/scripts/rmate -O /tmp/rmate \
     && chmod +x /tmp/rmate \
     && echo "Done."; \
     $SHELL \
