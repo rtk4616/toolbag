@@ -121,7 +121,7 @@ function fssh {
     # - Flags for creating a reverse tunnel on port 52698.
     # - All user-supplied arguments.
     # - The -t flag, to force establishing a tty.
-    # - A series of bash commands to run on the remote host that will curl the
+    # - A series of bash commands to run on the remote host that will wget the
     #   latest version of my rmate script from my GitHub repo, unless there is
     #   an existing file or directory that is NOT my rmate script.
     #
