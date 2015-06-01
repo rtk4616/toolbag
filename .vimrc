@@ -167,6 +167,7 @@ nnoremap <leader>gf :Gpull<cr>
 nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>sd :set ft=dosini<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
