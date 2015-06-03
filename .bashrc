@@ -16,13 +16,13 @@ elif [[ `uname` == 'Darwin' ]]; then
 fi
 
 # Aliases.
-alias ll="ls -plh $COLOR_OPTION_STRING"
-alias la="ls -al -ph $COLOR_OPTION_STRING"
-alias l="ls -ph $COLOR_OPTION_STRING"
-alias tree='tree -C'
 alias emacs='emacs -nw'
-alias usage='sudo du -h --max-depth=1 | sort -h'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
+alias l="ls -ph $COLOR_OPTION_STRING"
+alias la="ls -al -ph $COLOR_OPTION_STRING"
+alias ll="ls -plh $COLOR_OPTION_STRING"
+alias tree='tree -C'
+alias usage='sudo du -h --max-depth=1 | sort -h'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
 # Paths.
