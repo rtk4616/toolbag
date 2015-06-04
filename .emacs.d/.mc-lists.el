@@ -9,6 +9,7 @@
         autopair-insert-or-skip-paired-delimiter
         autopair-insert-or-skip-quote
         autopair-newline
+        autopair-skip-close-maybe
         backward-sexp
         clipboard-kill-region
         clipboard-kill-ring-save
@@ -18,6 +19,8 @@
         forward-sexp
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
+        isearch-backward-regexp
+        isearch-printing-char
         markdown-exdent-or-delete
         split-line
         yaml-electric-dash-and-dot
