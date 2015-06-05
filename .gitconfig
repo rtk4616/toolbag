@@ -1,3 +1,7 @@
+[user]
+    name = Mike Wilkerson
+    email = mike@cloudistics.com
+
 [diff]
 	tool = vimdiff
     # tool = ediff
