@@ -47,6 +47,7 @@ let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|no
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
 let g:jsx_ext_required = 0
+let g:markdown_enable_spell_checking = 0
 let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
