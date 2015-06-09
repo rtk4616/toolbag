@@ -348,6 +348,12 @@
                           (local-set-key (kbd "M-.") 'helm-etags-select)
                           ))
 
+;; yaml-mode hooks
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?' "w")
+            ))
+
 ;; html-mode hooks
 (add-hook 'html-mode-hook
           (lambda ()
