@@ -134,6 +134,7 @@
 (global-set-key "\C-x\C-t" 'MikeTrampFindFile)
 (global-set-key "\C-xf" 'helm-do-ag)
 (global-set-key "\C-xg" 'MikeFuzzyFileFinder)
+(global-set-key "\C-xi" 'mike-show-file-info)
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-xn" 'flycheck-next-error)
 (global-set-key "\C-xp" 'flycheck-previous-error)

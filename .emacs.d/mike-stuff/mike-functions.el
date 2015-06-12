@@ -1,3 +1,8 @@
+(defun mike-show-file-info ()
+  (interactive)
+  (message (concat "\n\nBuffer name: " (buffer-name) "\nFull path: " (buffer-file-name) "\n\n"))
+  )
+
 (defun MikeUpdateDirectory ()
   "Custom function to be called on each projectile project switch."
   (interactive)
