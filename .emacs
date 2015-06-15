@@ -368,6 +368,9 @@
             (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
             (modify-syntax-entry ?\` "\"`")
             (modify-syntax-entry ?\" "\"\"")
+            (setq autopair-handle-action-fns
+                  (list 'autopair-default-handle-action
+                        'autopair-python-triple-quote-action))
             ))
 
 ;; Add highlighting of TODOs
@@ -379,7 +382,8 @@
 
 ;; python-mode hooks
 (add-hook 'python-mode-hook
-          #'(lambda ()
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
+          (lambda ()
+            (setq autopair-handle-action-fns
+                  (list 'autopair-default-handle-action
+                        'autopair-python-triple-quote-action))
+            ))
