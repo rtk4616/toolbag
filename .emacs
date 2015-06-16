@@ -132,7 +132,7 @@
 (global-set-key "\C-x\C-p" 'previous-buffer)
 (global-set-key "\C-x\C-r" 'helm-resume)
 (global-set-key "\C-x\C-t" 'MikeTrampFindFile)
-(global-set-key "\C-xf" 'helm-do-ag)
+(global-set-key "\C-xf" (lambda() (interactive) (helm-do-ag emacs-startup-directory)))
 (global-set-key "\C-xg" 'MikeFuzzyFileFinder)
 (global-set-key "\C-xi" 'mike-show-file-info)
 (global-set-key "\C-xl" 'helm-occur)
