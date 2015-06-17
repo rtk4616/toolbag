@@ -14,6 +14,7 @@
         clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
+        delete-indentation
         duplicate-current-line-or-region
         forward-sentence
         forward-sexp
