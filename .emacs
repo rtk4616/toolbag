@@ -257,6 +257,7 @@
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
 (setq tramp-default-method "ssh")
+(setq tramp-shell-prompt-pattern "\\(?:^\\|\\)[^]#$%>\n]*#?[]#$%>].* *\\(\\[[0-9;]*[a-zA-Z] *\\)*")
 (setq vc-handled-backends nil)
 (setq-default column-number-mode 1)
 (setq-default fill-column 79)
