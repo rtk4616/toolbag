@@ -3,6 +3,11 @@
   (message (concat "\n\nBuffer name: " (buffer-name) "\nFull path: " (buffer-file-name) "\n\n"))
   )
 
+(defun revert ()
+  (interactive)
+  (revert-buffer nil t)
+  )
+
 (defun MikeUpdateDirectory ()
   "Custom function to be called on each projectile project switch."
   (interactive)
