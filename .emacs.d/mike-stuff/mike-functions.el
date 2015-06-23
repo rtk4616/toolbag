@@ -5,7 +5,7 @@
 
 (defun revert ()
   (interactive)
-  (revert-buffer nil t)
+  (revert-buffer nil t t)
   )
 
 (defun MikeUpdateDirectory ()
