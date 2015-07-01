@@ -16,6 +16,7 @@
         clipboard-yank
         delete-indentation
         duplicate-current-line-or-region
+        eval-print-last-sexp
         forward-sentence
         forward-sexp
         helm-confirm-and-exit-minibuffer
