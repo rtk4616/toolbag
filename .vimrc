@@ -168,17 +168,17 @@ nnoremap <leader>gf :Gpull<cr>
 nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>sd :set ft=dosini<cr>
-nnoremap <leader>sa :set ft=ansible<cr>
-nnoremap <leader>sc :set ft=conf<cr>
-nnoremap <leader>sj :set ft=javascript<cr>
-nnoremap <leader>sy :set ft=yaml<cr>
-nnoremap <leader>sp :set ft=python<cr>
-nnoremap <leader>ss :set ft=sh<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>r :SyntasticReset<cr>
+nnoremap <leader>sa :set ft=ansible<cr>
+nnoremap <leader>sc :set ft=conf<cr>
+nnoremap <leader>sd :set ft=dosini<cr>
+nnoremap <leader>sj :set ft=javascript<cr>
+nnoremap <leader>sp :set ft=python<cr>
+nnoremap <leader>ss :set ft=sh<cr>
+nnoremap <leader>sy :set ft=yaml<cr>
 nnoremap <leader>y "+y
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
@@ -192,18 +192,18 @@ vnoremap <leader>y "+y
 " ------------------------------------------------------------------------------
 " " Setting up indentation rules for filetypes.
 " ------------------------------------------------------------------------------
-autocmd FileType make setlocal noexpandtab
-autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype scala setlocal ts=2 sts=2 sw=2
-autocmd Filetype ansible setlocal ts=2 sts=2 sw=2
-autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd FileType python setlocal ts=4 sts=4 sw=4 indentexpr=
 autocmd FileType cpp setlocal ts=4 sts=4 sw=4
-autocmd FileType rst setlocal ts=2 sts=2 sw=2
+autocmd FileType go setlocal noexpandtab ts=4 sts=4 sw=4
+autocmd FileType make setlocal noexpandtab
 autocmd FileType markdown setlocal ts=4 sts=4 sw=4
 autocmd FileType nginx setlocal ts=2 sts=2 sw=2
+autocmd FileType python setlocal ts=4 sts=4 sw=4 indentexpr=
+autocmd FileType rst setlocal ts=2 sts=2 sw=2
+autocmd Filetype ansible setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype scala setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 
 
 " ===================================================================================================
