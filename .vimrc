@@ -170,6 +170,7 @@ nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>sd :set ft=dosini<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
+nnoremap <leader>sc :set ft=conf<cr>
 nnoremap <leader>sj :set ft=javascript<cr>
 nnoremap <leader>sy :set ft=yaml<cr>
 nnoremap <leader>sp :set ft=python<cr>
