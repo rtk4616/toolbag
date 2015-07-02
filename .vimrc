@@ -174,7 +174,7 @@ nnoremap <leader>p "+p
 nnoremap <leader>r :SyntasticReset<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
 nnoremap <leader>sc :set ft=conf<cr>
-nnoremap <leader>sd :set ft=dosini<cr>
+nnoremap <leader>si :set ft=ansible-inventory<cr>
 nnoremap <leader>sj :set ft=javascript<cr>
 nnoremap <leader>sp :set ft=python<cr>
 nnoremap <leader>ss :set ft=sh<cr>
