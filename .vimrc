@@ -179,6 +179,7 @@ nnoremap <leader>sj :set ft=javascript<cr>
 nnoremap <leader>sp :set ft=python<cr>
 nnoremap <leader>ss :set ft=sh<cr>
 nnoremap <leader>sy :set ft=yaml<cr>
+nnoremap <leader>w :tabe \| mks! ~/.session \| :bd<cr> \| :echom "Session written to ~/.session"<cr>
 nnoremap <leader>y "+y
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
