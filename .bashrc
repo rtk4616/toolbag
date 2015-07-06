@@ -15,16 +15,6 @@ elif [[ `uname` == 'Darwin' ]]; then
    COLOR_OPTION_STRING='-G'
 fi
 
-# Aliases.
-alias emacs='emacs -nw'
-alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
-alias l="ls -ph $COLOR_OPTION_STRING"
-alias la="ls -al -ph $COLOR_OPTION_STRING"
-alias ll="ls -plh $COLOR_OPTION_STRING"
-alias tree='tree -C'
-alias usage='sudo du -h --max-depth=1 | sort -h'
-alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
-
 # Paths.
 export PATH=~/toolbag/scripts:/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
@@ -39,6 +29,16 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export EDITOR="vi"
+
+# Aliases.
+alias emacs='emacs -nw'
+alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
+alias l="ls -ph $COLOR_OPTION_STRING"
+alias la="ls -al -ph $COLOR_OPTION_STRING"
+alias ll="ls -plh $COLOR_OPTION_STRING"
+alias tree='tree -C'
+alias usage='sudo du -h --max-depth=1 | sort -h'
+alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
 VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
 
