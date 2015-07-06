@@ -231,6 +231,7 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
+(setq fringe-mode 0)
 (setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-ff-file-name-history-use-recentf t)
