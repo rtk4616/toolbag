@@ -32,6 +32,7 @@ export EDITOR="vi"
 
 # Aliases.
 alias emacs='emacs -nw'
+alias vims='vim -S ~/.session'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
 alias l="ls -ph $COLOR_OPTION_STRING"
 alias la="ls -al -ph $COLOR_OPTION_STRING"
