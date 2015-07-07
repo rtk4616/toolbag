@@ -190,6 +190,7 @@ vnoremap <S-h> gT
 vnoremap <S-l> gt
 vnoremap <leader>p "+p
 vnoremap <leader>y "+y
+vnoremap <space> za
 
 
 " ------------------------------------------------------------------------------
