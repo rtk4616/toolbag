@@ -46,6 +46,16 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; desktop-save-mode stuff
+(setq desktop-path '("~/"))
+(setq desktop-dirname "~/")
+(setq desktop-base-file-name ".emacs-desktop")
+(setq desktop-load-locked-desktop nil)
+(setq desktop-save t)
+(setq desktop-restore-frames t)
+(setq desktop-restore-in-current-display t)
+(setq desktop-restore-forces-onscreen nil)
+
 ;; Magit
 (setq magit-last-seen-setup-instructions "1.4.0")
 
