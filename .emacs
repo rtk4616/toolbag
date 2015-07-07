@@ -5,7 +5,10 @@
 ;; - Mode-specific stuff
 ;; - My helper functions
 ;; - Keybindings
+;; - Filetype associations
 ;; - Emacs options
+;; - Defadvice goes here
+;; - Hippie-expand setup
 ;; - Hooks
 
 
