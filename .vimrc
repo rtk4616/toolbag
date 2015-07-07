@@ -21,6 +21,7 @@ Plug 'mxw/vim-jsx'
 Plug 'stephpy/vim-yaml'
 Plug 'scrooloose/nerdtree'
 Plug 'chase/vim-ansible-yaml'
+Plug 'Olical/vim-enmasse'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -161,6 +162,7 @@ nnoremap <F8> :w !diff % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <leader>\ :NERDTreeToggle<CR>
+nnoremap <leader>c :SyntasticReset<cr>
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
 nnoremap <leader>gb :Gblame<cr>
@@ -171,7 +173,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
-nnoremap <leader>r :SyntasticReset<cr>
+nnoremap <leader>r :EnMasse<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
 nnoremap <leader>sc :set ft=conf<cr>
 nnoremap <leader>si :set ft=ansible-inventory<cr>
