@@ -131,7 +131,7 @@
 ;;;; ---------------------------------------------------------------------------
 
 (global-set-key "\C-\M-h" 'er/contract-region)
-(global-set-key "\C-\\" 'window-configuration-to-register)
+(global-set-key "\C-\\" 'desktop-save-in-desktop-dir)
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
 (global-set-key "\C-w" 'clipboard-kill-region)
@@ -160,7 +160,7 @@
 (global-set-key "\M-(" 'MikeDeIndent)
 (global-set-key "\M-)" 'MikeIndent)
 (global-set-key "\M-U" 'upcase-word)
-(global-set-key "\M-\\" 'jump-to-register)
+(global-set-key "\M-\\" 'mike-desktop-read)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-h" 'er/expand-region)
 (global-set-key "\M-j" 'MikeGetIndentation)
@@ -171,6 +171,8 @@
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
+;; (global-set-key "\C-\\" 'window-configuration-to-register)
+;; (global-set-key "\M-\\" 'jump-to-register)
 
 (global-set-key (kbd "<C-backspace>") 'delete-backward-char)
 (global-set-key (kbd "<C-return>") 'newline)

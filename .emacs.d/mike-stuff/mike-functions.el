@@ -1,3 +1,18 @@
+(defun mike-saved-session-exists ()
+  (file-exists-p (concat (file-name-as-directory desktop-dirname) desktop-base-file-name)))
+
+(defun mike-lock-file-exists ()
+  (file-exists-p (concat (file-name-as-directory desktop-dirname) ".emacs.desktop.lock")))
+
+(defun mike-desktop-read ()
+  "Restore a saved emacs session."
+  (interactive)
+  (if (mike-saved-session-exists)
+      (if (mike-lock-file-exists)
+          (message "Desktop file is currently in use!")
+        (desktop-read))
+    (message "No desktop found.")))
+
 (defun mike-show-file-info ()
   (interactive)
   (message (concat "\n\nBuffer name: " (buffer-name) "\nFull path: " (buffer-file-name) "\n\n"))
