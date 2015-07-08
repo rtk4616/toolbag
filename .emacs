@@ -138,6 +138,7 @@
 (global-set-key "\C-x\C-\\" 'kill-emacs)
 (global-set-key "\C-x\C-e" 'flycheck-list-errors)
 (global-set-key "\C-x\C-g" (lambda() (interactive) (ffap (ffap-file-at-point))))
+(global-set-key "\C-x\C-i" 'mike-show-file-info)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-x\C-l" 'helm-occur)
 (global-set-key "\C-x\C-n" 'next-buffer)
