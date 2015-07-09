@@ -356,6 +356,7 @@
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
+                          (global-set-key (kbd "M-.") 'godef-jump)
                           (set (make-local-variable 'company-backends) '(company-go))
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
