@@ -13,11 +13,6 @@
         (desktop-read))
     (message "No desktop found.")))
 
-(defun mike-show-file-info ()
-  (interactive)
-  (message (concat "\n\nBuffer name: " (buffer-name) "\nFull path: " (buffer-file-name) "\n\n"))
-  )
-
 (defun revert ()
   (interactive)
   (revert-buffer nil t t)
