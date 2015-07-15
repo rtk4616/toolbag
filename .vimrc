@@ -161,6 +161,7 @@ nnoremap <F7> :windo set scb!<CR>
 nnoremap <F8> :w !diff % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
+nnoremap <c-w>f :vertical wincmd f<CR>
 nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <leader>c :SyntasticReset<cr>
 nnoremap <leader>e :Errors<cr>
