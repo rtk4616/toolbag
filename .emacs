@@ -59,6 +59,20 @@
 ;; Magit
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+;; Helm stuff
+(helm-mode 1)
+(setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
+(setq helm-buffers-fuzzy-matching t)
+(setq helm-ff-file-name-history-use-recentf t)
+(setq helm-ff-search-library-in-sexp t)
+(setq helm-move-to-line-cycle-in-source t)
+(setq helm-quick-update t)
+(setq helm-scroll-amount 8)
+(setq helm-split-window-in-side-p t)
+(add-to-list 'helm-completing-read-handlers-alist
+             '(dired-do-rename . nil)
+             )
+
 ;; projectile-mode
 (require 'helm-projectile)
 (setq projectile-switch-project-action 'MikeUpdateDirectory)
@@ -222,7 +236,6 @@
 (autopair-global-mode)
 (delete-selection-mode 1)
 (global-linum-mode t)
-(helm-mode 1)
 (ido-mode t)
 (set-fringe-mode 0)
 (setenv "TMPDIR" "/tmp")
@@ -245,14 +258,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
-(setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-ff-file-name-history-use-recentf t)
-(setq helm-ff-search-library-in-sexp t)
-(setq helm-move-to-line-cycle-in-source t)
-(setq helm-quick-update t)
-(setq helm-scroll-amount 8)
-(setq helm-split-window-in-side-p t)
 (setq ido-enable-last-directory-history nil)
 (setq ido-everywhere t)
 (setq ido-max-work-directory-list 0)
