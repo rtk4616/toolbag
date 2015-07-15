@@ -369,6 +369,7 @@
 (add-hook 'yaml-mode-hook
           (lambda ()
             (modify-syntax-entry ?' "w")
+            (modify-syntax-entry ?- ".")
             ))
 
 ;; html-mode hooks
