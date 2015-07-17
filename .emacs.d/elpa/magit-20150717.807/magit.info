@@ -1938,7 +1938,7 @@ popup is the only way to change certain arguments.
 
      Toggle hunk refinement on or off.
 
-   In addition to the above popup, which allow changing any of the
+   In addition to the above popup, which allows changing any of the
 supported arguments, there also exist some commands which change a
 particular argument.
 
@@ -4164,7 +4164,7 @@ Per-repository configuration.
 
    • ‘magit-diff-highlight-indentation’
 
-   • ‘magit-diff-highlight-whitespace’
+   • ‘magit-diff-highlight-trailing’
 
    • ‘magit-diff-paint-whitespace’
 
@@ -5245,7 +5245,7 @@ A.12 Emacs 24.5 hangs when loading Magit
 ========================================
 
 This is actually triggered by loading Tramp.  See
-<https://debbugs.gnu.org/cgi/bugreport.cgi?bug~20015> for details.  You
+<https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20015> for details.  You
 can work around the problem by setting
 ‘tramp-ssh-controlmaster-options’.  Changing your DNS server (e.g.  to
 Google’s ‘8.8.8.8’) may also be sufficient to work around the issue.
@@ -6197,77 +6197,77 @@ Node: Select from log65692
 Node: Reflog66632
 Node: Diffing67110
 Node: Refreshing diffs68984
-Node: Diff buffer71515
-Node: Diff options73417
-Node: Revision buffer75903
-Node: Ediffing76445
-Node: References buffer77836
-Node: References sections80983
-Node: Bisecting81858
-Node: Visiting blobs83355
-Node: Blaming83864
-Node: Manipulating87136
-Node: Repository setup87428
-Node: Staging and unstaging88067
-Node: Staging from file-visiting buffers90518
-Node: Applying91686
-Node: Committing93265
-Node: Initiating a commit93848
-Node: Editing commit messages96683
-Node: Branching104190
-Node: Merging106544
-Node: Rebasing108629
-Node: Editing rebase sequences110332
-Node: Cherry picking112741
-Node: Reverting114348
-Node: Resetting115712
-Node: Stashing116996
-Node: Transferring120061
-Node: Remotes120299
-Node: Fetching121103
-Node: Pulling121920
-Node: Pushing122421
-Node: Creating and sending patches123740
-Node: Applying patches124436
-Node: Miscellaneous125435
-Node: Tagging125622
-Node: Notes126408
-Node: Submodules128934
-Node: Wip Modes130165
-Node: Customizing136085
-Node: Per-repository configuration137757
-Node: Essential settings139405
-Node: Safety139729
-Node: Performance142910
-Node: Plumbing147065
-Node: Calling Git147693
-Node: Getting a value from Git149216
-Node: Calling Git for effect152320
-Node: Section plumbing158824
-Node: Creating sections159052
-Node: Section selection162855
-Node: Matching sections164535
-Node: Refreshing buffers169737
-Node: Conventions172872
-Node: Confirmation and completion173049
-Node: Theming Faces173947
-Node: FAQ182098
-Node: Magit is slow183107
-Node: I am having problems committing183273
-Node: I am using an Emacs release older than 244183671
-Node: I am using a Git release older than 194185117
-Node: I am using MS Windows and cannot push with Magit185956
-Node: How to install the gitman info manual?186534
-Node: How can I show Git's output?189116
-Node: Expanding a file to show the diff causes it to disappear189926
-Node: Magit claims repository accessed using Tramp does not exist190466
-Node: Can Magit be used as ediff-version-control-package?191612
-Node: How to show diffs for gpg-encrypted files?193652
-Node: Emacs 245 hangs when loading Magit194243
-Node: Keystroke Index194762
-Node: Command Index217781
-Node: Function Index241318
-Node: Variable Index250942
+Node: Diff buffer71516
+Node: Diff options73418
+Node: Revision buffer75904
+Node: Ediffing76446
+Node: References buffer77837
+Node: References sections80984
+Node: Bisecting81859
+Node: Visiting blobs83356
+Node: Blaming83865
+Node: Manipulating87137
+Node: Repository setup87429
+Node: Staging and unstaging88068
+Node: Staging from file-visiting buffers90519
+Node: Applying91687
+Node: Committing93266
+Node: Initiating a commit93849
+Node: Editing commit messages96684
+Node: Branching104191
+Node: Merging106545
+Node: Rebasing108630
+Node: Editing rebase sequences110333
+Node: Cherry picking112742
+Node: Reverting114349
+Node: Resetting115713
+Node: Stashing116997
+Node: Transferring120062
+Node: Remotes120300
+Node: Fetching121104
+Node: Pulling121921
+Node: Pushing122422
+Node: Creating and sending patches123741
+Node: Applying patches124437
+Node: Miscellaneous125436
+Node: Tagging125623
+Node: Notes126409
+Node: Submodules128935
+Node: Wip Modes130166
+Node: Customizing136086
+Node: Per-repository configuration137758
+Node: Essential settings139406
+Node: Safety139730
+Node: Performance142911
+Node: Plumbing147064
+Node: Calling Git147692
+Node: Getting a value from Git149215
+Node: Calling Git for effect152319
+Node: Section plumbing158823
+Node: Creating sections159051
+Node: Section selection162854
+Node: Matching sections164534
+Node: Refreshing buffers169736
+Node: Conventions172871
+Node: Confirmation and completion173048
+Node: Theming Faces173946
+Node: FAQ182097
+Node: Magit is slow183106
+Node: I am having problems committing183272
+Node: I am using an Emacs release older than 244183670
+Node: I am using a Git release older than 194185116
+Node: I am using MS Windows and cannot push with Magit185955
+Node: How to install the gitman info manual?186533
+Node: How can I show Git's output?189115
+Node: Expanding a file to show the diff causes it to disappear189925
+Node: Magit claims repository accessed using Tramp does not exist190465
+Node: Can Magit be used as ediff-version-control-package?191611
+Node: How to show diffs for gpg-encrypted files?193651
+Node: Emacs 245 hangs when loading Magit194242
+Node: Keystroke Index194761
+Node: Command Index217780
+Node: Function Index241317
+Node: Variable Index250941
 
 End Tag Table
 
