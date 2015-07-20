@@ -41,3 +41,5 @@
     dt = difftool
 [core]
 	editor = vim
+[push]
+	default = simple
