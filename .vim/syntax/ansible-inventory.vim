@@ -31,7 +31,7 @@ if exists("b:current_syntax")
 endif
 
 syntax match ansibleinventoryOperator "\v\="
-syntax match ansibleinventoryComment "\v#.*$"
+syntax match ansibleinventoryComment "\v;.*$"
 syntax match ansibleinventoryGroup "\v^\[.*\]\ze(\s*#.*)?$"
 syntax match ansibleinventoryVariable "\v[A-Za-z0-9_.-]+\ze\="
 syntax match ansibleinventoryValue "\v\=\S+( |$)" contains=ansibleinventoryOperator
