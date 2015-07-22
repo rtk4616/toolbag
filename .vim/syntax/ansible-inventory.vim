@@ -34,14 +34,18 @@ syntax match ansibleinventoryOperator "\v\="
 syntax match ansibleinventoryComment "\v;.*$"
 syntax match ansibleinventoryGroup "\v^\[.*\]\ze(\s*#.*)?$"
 syntax match ansibleinventoryVariable "\v[A-Za-z0-9_.-]+\ze\="
-syntax match ansibleinventoryValue "\v\=\S+( |$)" contains=ansibleinventoryOperator
+syntax match ansibleinventoryEvaluatedVariable "\v\{\{.*\}\}"
+syntax match ansibleinventoryQuotedValue "\v'.*'" contains=ansibleinventoryEvaluatedVariable
+syntax match ansibleinventoryDoubleQuotedValue '\v".*"' contains=ansibleinventoryEvaluatedVariable
 syntax match ansibleinventoryHostname "\v^[A-Za-z0-9_.-]+\ze( |$)"
 
 highlight link ansibleinventoryOperator Operator
 highlight link ansibleinventoryComment Comment
 highlight link ansibleinventoryGroup Function
 highlight link ansibleinventoryVariable Character
-highlight link ansibleinventoryValue String
+highlight link ansibleinventoryEvaluatedVariable Define
+highlight link ansibleinventoryQuotedValue String
+highlight link ansibleinventoryDoubleQuotedValue String
 highlight link ansibleinventoryHostname Define
 
 let b:current_syntax = "ansibleinventory"
