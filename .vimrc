@@ -272,7 +272,7 @@ function! MikeGrep()
     call inputsave()
     let l:theQuery = input('Search for: ')
     call inputrestore()
-    exe "silent grep! '" . l:theQuery . "'"
+    exe "silent grep! " . l:theQuery
     exe "cope"
     exe "redraw!"
 endfunc
