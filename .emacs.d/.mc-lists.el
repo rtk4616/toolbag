@@ -25,6 +25,7 @@
         isearch-printing-char
         markdown-exdent-or-delete
         split-line
+        yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
         ))
 
