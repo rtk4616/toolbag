@@ -45,6 +45,9 @@ VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
 
 # Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
+    # Disable xon/xoff, which interferes with forward isearch bash history with C-s.
+    stty -ixon
+
     # Don't change this! Edit the values of the following two variables, listed
     # near the top of this file!
     echo -e -n "\033];$SESSION_NAME\007"
