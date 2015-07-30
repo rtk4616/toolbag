@@ -33,7 +33,13 @@
 
 (defun MikeTrampFindFile (host-string user-b)
   "Tramp wrapper for easy ssh and su to another user."
-  (interactive "sConnect to: \nsUser to su to (leave blank for none): ")
+  (interactive
+   (list
+    (completing-read "Connect to: " (with-temp-buffer (insert-file-contents "~/.ssh/known_hosts") (split-string (buffer-string) "[, ].*[$\n]" t)))
+    (read-string "User to su to (leave blank for none):")
+    )
+   )
+  (insert host-string user-b)
   (if (= (length user-b) 0)
       (find-file (concat "/ssh:" host-string ":"))
     (find-file (concat "/ssh:" host-string "|sudo:|sudo:" user-b "@" (car (last (split-string host-string "@"))) ":"))
