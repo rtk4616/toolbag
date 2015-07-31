@@ -39,7 +39,7 @@
     (read-string "User to su to (leave blank for none):")
     )
    )
-  (insert host-string user-b)
+  ;; (insert host-string user-b)
   (if (= (length user-b) 0)
       (find-file (concat "/ssh:" host-string ":"))
     (find-file (concat "/ssh:" host-string "|sudo:|sudo:" user-b "@" (car (last (split-string host-string "@"))) ":"))
