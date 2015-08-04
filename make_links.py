@@ -25,6 +25,7 @@ if not os.path.exists(backup_files_dir):
 managed_files = [
     ".Xresources",
     ".agignore",
+    ".ansible.cfg",
     ".ctags",
     ".emacs",
     ".emacs.d",
