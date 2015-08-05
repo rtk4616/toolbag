@@ -1,7 +1,10 @@
-.git/
-plugged/
-*.pyc
 *.elc
-*.png
-*.jpg
 *.gif
+*.jpg
+*.png
+*.pyc
+
+.DS_Store
+.git/
+
+plugged/
