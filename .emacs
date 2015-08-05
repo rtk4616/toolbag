@@ -70,10 +70,10 @@
 (setq helm-quick-update t)
 (setq helm-scroll-amount 8)
 (setq helm-split-window-in-side-p t)
-(add-to-list 'helm-completing-read-handlers-alist
-             '(dired-do-copy . nil)
-             '(dired-do-rename . nil)
-             )
+(add-to-list 'helm-completing-read-handlers-alist '(dired-do-copy . nil))
+(add-to-list 'helm-completing-read-handlers-alist '(dired-do-rename . nil))
+(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
+(add-to-list 'helm-completing-read-handlers-alist '(ido-find-file . nil))
 
 ;; projectile-mode
 (require 'helm-projectile)
