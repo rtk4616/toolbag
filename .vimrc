@@ -158,7 +158,7 @@ nnoremap <C-o> :CtrlPTag<cr>
 nnoremap <F5> :set nonumber!<CR>
 nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
-nnoremap <F8> :w !diff % -<CR>
+nnoremap <F8> :w !diff -U0 % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <c-w>f :vertical wincmd f<CR>
