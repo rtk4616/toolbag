@@ -14,6 +14,7 @@
         clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
+        comment-dwim
         delete-indentation
         duplicate-current-line-or-region
         eval-print-last-sexp
@@ -24,6 +25,7 @@
         isearch-backward-regexp
         isearch-printing-char
         markdown-exdent-or-delete
+        sh-assignment
         split-line
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
@@ -33,5 +35,6 @@
       '(
         MikeDownSomeLines
         MikeUpSomeLines
+        isearch-forward-regexp
         yaml-electric-backspace
         ))
