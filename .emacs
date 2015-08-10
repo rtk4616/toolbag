@@ -387,6 +387,12 @@
             ))
 
 ;; markdown-mode hooks
+(add-hook 'multi-web-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?\" "\"\"")
+            ))
+
+;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
           (lambda ()
             (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
