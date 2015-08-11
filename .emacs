@@ -78,7 +78,6 @@
 ;; projectile-mode
 (require 'helm-projectile)
 (setq projectile-switch-project-action 'MikeUpdateDirectory)
-(setq projectile-sort-order 'modification-time)
 (projectile-global-mode)
 
 
