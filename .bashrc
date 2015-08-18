@@ -1,13 +1,3 @@
-# String values that, when echoed, set the iTerm 2 tab color.
-ITERM_RED="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;000\a \033]6;1;bg;blue;brightness;000\a"
-ITERM_ORANGE="\033]6;1;bg;red;brightness;255\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;000\a"
-ITERM_BLUE="\033]6;1;bg;red;brightness;155\a \033]6;1;bg;green;brightness;155\a \033]6;1;bg;blue;brightness;255\a"
-ITERM_GREEN="\033]6;1;bg;red;brightness;155\a \033]6;1;bg;green;brightness;255\a \033]6;1;bg;blue;brightness;000\a"
-
-# Change these variables in order to control how your iTerm 2 tab looks.
-SESSION_NAME="Default tab title"
-SESSION_TAB_COLOR="$ITERM_BLUE"
-
 # OS-specific variables
 if [[ `uname` == 'Linux' ]]; then
    COLOR_OPTION_STRING='--color=auto'
@@ -41,22 +31,10 @@ alias tree='tree -C'
 alias usage='sudo du -h --max-depth=1 | sort -h'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
-VIRTUALENV_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
-
 # Only execute if we have an interactive shell.
 if ! [ -z "$PS1" ]; then
     # Disable xon/xoff, which interferes with forward isearch bash history with C-s.
     stty -ixon
-
-    # Don't change this! Edit the values of the following two variables, listed
-    # near the top of this file!
-    echo -e -n "\033];$SESSION_NAME\007"
-    echo -e -n "$SESSION_TAB_COLOR"
-
-    if [ -e "$VIRTUALENV_SCRIPT" ]
-    then
-        source $VIRTUALENV_SCRIPT
-    fi
 
     # --- colors ---
     BLACK='\e[0;30m'
@@ -73,34 +51,18 @@ if ! [ -z "$PS1" ]; then
     LIGHTCYAN='\e[1;36m'
     LIGHTRED='\e[1;31m'
     LIGHTPURPLE='\e[1;35m'
-    YELLOW='\e[1;33m'
+    ORANGE='\e[1;33m'
     WHITE='\e[1;37m'
-    NC='\e[0m'              # No Color
+    NC='\e[0m'
+    MAINCOLOR="$LIGHTCYAN"
 
     # Meta-colors
     BOLD='\e[1m'
     BLINK='\e[5m'
     REVERSE='\e[7m'
 
-    # --- git branch ---
-    git_branch() {
-        if [ -e "$PWD/.git" ]; then
-           git branch -v 2> /dev/null | grep '*' | awk '{if ($2) printf ("(%s) ", $2) }'
-        fi
-    }
-
-    # --- ve warning ---
-    check_ve() {
-        if [ -f ./bin/activate ] || [ -f ../bin/activate ] || [ -f ./ve/bin/activate ] || [ -f ../ve/bin/activate ]; then
-            if [[ $VIRTUAL_ENV == "" ]] || [[ $PWD != *$VIRTUAL_ENV* ]] ; then
-                #echo "You need to activate this ve"
-                trash="nothing"
-            fi
-        fi
-    }
-
     # --- set the prompt ---
-    PS1="|\[\033[1;34m\]\$(git_branch) \[\033[1;34m\]\u\[\033[0m\] @ \[\033[1;35m\]\h\n\[\033[1;36m\]\$PWD\[\033[0m\] $ "
+    PS1="$MAINCOLOR[ $LIGHTBLUE\u$MAINCOLOR @ $LIGHTPURPLE\h$MAINCOLOR ]\n$MAINCOLOR\$PWD$NC $ "
 
     # Better backwards kill word with ctrl-w.
     stty werase undef
