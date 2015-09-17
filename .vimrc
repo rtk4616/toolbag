@@ -175,6 +175,8 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>j :let @0 = expand("%:t")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
+nnoremap <leader>[ :cp<cr>
+nnoremap <leader>] :cn<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>r :EnMasse<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
