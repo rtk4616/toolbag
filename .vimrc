@@ -277,9 +277,14 @@ function! MikeGrep()
     call inputsave()
     let l:theQuery = input('Search for: ')
     call inputrestore()
-    exe "silent grep! " . l:theQuery
-    exe "cope"
-    exe "redraw!"
+    call inputsave()
+    let l:filePathWildcard = input('File path wildcard: ')
+    call inputrestore()
+    exe "tabe | r !ag -i --hidden '" . theQuery . "' " . filePathWildcard
+    exe "1d"
+    cgetexpr getline(1, "$")
+    exe 'bd!'
+    exe 'cope'
 endfunc
 
 function! MikeFindAllOccurrencesInFile()
