@@ -163,7 +163,9 @@ nnoremap <F8> :w !diff -U0 % -<CR>
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <c-w>f :vertical wincmd f<CR>
+nnoremap <leader>[ :cp<cr>
 nnoremap <leader>\ :NERDTreeToggle<CR>
+nnoremap <leader>] :cn<cr>
 nnoremap <leader>c :SyntasticReset<cr>
 nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
@@ -175,8 +177,6 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>j :let @0 = expand("%:t")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
-nnoremap <leader>[ :cp<cr>
-nnoremap <leader>] :cn<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>r :EnMasse<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
