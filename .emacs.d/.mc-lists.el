@@ -27,6 +27,7 @@
         markdown-exdent-or-delete
         sh-assignment
         split-line
+        xterm-paste
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
         ))
