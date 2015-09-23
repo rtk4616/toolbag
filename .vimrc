@@ -174,7 +174,7 @@ nnoremap <leader>gf :Gpull<cr>
 nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>j :let @0 = expand("%:t")"<CR>
+nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
@@ -197,7 +197,7 @@ vnoremap <C-j> 6j
 vnoremap <C-k> 6k
 vnoremap <S-h> gT
 vnoremap <S-l> gt
-vnoremap <leader>j :let @0 = expand("%:t")"<CR>
+vnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
 vnoremap <leader>p "+p
 vnoremap <leader>v :Ve<cr>
 vnoremap <leader>y "+y
