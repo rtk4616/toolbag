@@ -281,26 +281,33 @@ function! MikeGrep()
     let l:filePathWildcard = input('File path wildcard: ')
     call inputrestore()
     exe "tabe | r !ag -i --hidden '" . theQuery . "' " . filePathWildcard
-    exe "1d"
-    cgetexpr getline(1, "$")
+    if v:shell_error == 1
+        exe "1d"
+        cgetexpr getline(1, "$")
+    end
     exe 'bd!'
-    exe 'cope'
+    if v:shell_error == 1
+        exe 'cope'
+    end
 endfunc
 
 function! MikeFindAllOccurrencesInFile()
     call inputsave()
     let l:thePattern = input('Pattern to find: ')
     call inputrestore()
-    let @x = expand("%:t")"
-    redir @z
-    exec 'g/' . l:thePattern . '/p'
-    redir END
-    tabnew
-    put! z
-    exe "normal Gdd"
-    exe "1d"
-    exe "%s/^\\(\\d\\+\\) /" . @x . ":\\1:/"
-    cgetexpr getline(1, "$")
-    exe 'bd!'
-    exe 'cope'
+    if search(l:thePattern, "nw") != 0
+        let @x = expand("%:p")"
+        redir @z
+        exec 'g/' . l:thePattern . '/p'
+        redir END
+        tabnew
+        put! z
+        exec "normal Gdd"
+        exec "1d"
+        exec "%s/^\\( \\+\\)\\?\\(\\d\\+\\) /:\\2:/"
+        exec '1,$:normal 0"xP'
+        cgetexpr getline(1, "$")
+        exec 'bd!'
+        exec 'cope'
+    end
 endfunc
