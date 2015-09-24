@@ -281,12 +281,12 @@ function! MikeGrep()
     let l:filePathWildcard = input('File path wildcard: ')
     call inputrestore()
     exe "tabe | r !ag -i --hidden '" . theQuery . "' " . filePathWildcard
-    if v:shell_error == 1
+    if v:shell_error != 1
         exe "1d"
         cgetexpr getline(1, "$")
     end
     exe 'bd!'
-    if v:shell_error == 1
+    if v:shell_error != 1
         exe 'cope'
     end
 endfunc
