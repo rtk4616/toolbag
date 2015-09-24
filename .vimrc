@@ -291,7 +291,16 @@ function! MikeFindAllOccurrencesInFile()
     call inputsave()
     let l:thePattern = input('Pattern to find: ')
     call inputrestore()
-    echo "\n\n"
-    exe "g/".l:thePattern."/p"
-    echo "\n\n"
+    let @x = expand("%:t")"
+    redir @z
+    exec 'g/' . l:thePattern . '/p'
+    redir END
+    tabnew
+    put! z
+    exe "normal Gdd"
+    exe "1d"
+    exe "%s/^\\(\\d\\+\\) /" . @x . ":\\1:/"
+    cgetexpr getline(1, "$")
+    exe 'bd!'
+    exe 'cope'
 endfunc
