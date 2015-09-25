@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         MikeDeIndent
+        MikeGetIndentation
         MikeIndent
         autopair-insert-opening
         autopair-insert-or-skip-paired-delimiter
@@ -17,6 +18,7 @@
         comment-dwim
         delete-indentation
         duplicate-current-line-or-region
+        electric-newline-and-maybe-indent
         eval-print-last-sexp
         forward-sentence
         forward-sexp
