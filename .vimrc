@@ -243,7 +243,6 @@ autocmd BufRead,BufNewFile */ansible/*.yml set ft=ansible
 autocmd BufRead,BufNewFile *.conf.j2 set ft=conf
 autocmd BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
 autocmd BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
-autocmd BufRead,BufNewFile Dockerfile set ft=sh                " Close enough.
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 autocmd BufWritePre * :%s/\s\+$//e                             " Delete all trailing whitespace on write.
