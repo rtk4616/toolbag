@@ -24,6 +24,7 @@
         forward-sexp
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
+        indent-new-comment-line
         isearch-backward-regexp
         isearch-printing-char
         markdown-exdent-or-delete
