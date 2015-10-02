@@ -255,6 +255,7 @@
 (setq company-etags-ignore-case t)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
+(setq create-lockfiles nil)
 (setq css-indent-offset 4)
 (setq dabbrev-case-fold-search nil)
 (setq ediff-split-window-function 'split-window-horizontally)
