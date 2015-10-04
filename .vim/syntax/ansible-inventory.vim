@@ -30,6 +30,7 @@ if exists("b:current_syntax")
     finish
 endif
 
+syntax match everythingElse "\w\+"
 syntax match ansibleinventoryOperator "\v\="
 syntax match ansibleinventoryComment "\v;.*$"
 syntax match ansibleinventoryGroup "\v^\[.*\]\ze(\s*#.*)?$"
@@ -39,13 +40,14 @@ syntax match ansibleinventoryQuotedValue "\v'.*'" contains=ansibleinventoryEvalu
 syntax match ansibleinventoryDoubleQuotedValue '\v".*"' contains=ansibleinventoryEvaluatedVariable
 syntax match ansibleinventoryHostname "\v^[A-Za-z0-9_.-]+\ze( |$)"
 
-highlight link ansibleinventoryOperator Operator
+highlight link everythingElse Type
+highlight link ansibleinventoryOperator Character
 highlight link ansibleinventoryComment Comment
-highlight link ansibleinventoryGroup Function
-highlight link ansibleinventoryVariable Character
+highlight link ansibleinventoryGroup Define
+highlight link ansibleinventoryVariable Identifier
 highlight link ansibleinventoryEvaluatedVariable Define
 highlight link ansibleinventoryQuotedValue String
 highlight link ansibleinventoryDoubleQuotedValue String
-highlight link ansibleinventoryHostname Define
+highlight link ansibleinventoryHostname Identifier
 
 let b:current_syntax = "ansibleinventory"
