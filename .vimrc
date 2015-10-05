@@ -81,7 +81,7 @@ endif
 " ------------------------------------------------------------------------------
 syntax on
 set background=dark
-colo Tomorrow-Night
+colo hybrid
 
 if has("unix") && has("gui_running")
     let s:uname = system("uname")
