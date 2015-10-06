@@ -32,7 +32,7 @@ alias usage='sudo du -h --max-depth=1 | sort -h'
 alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 
 # Only execute if we have an interactive shell.
-if ! [ -z "$PS1" ]; then
+if ! [ -z "$PS1" ] && ! [ "$TERM" == "dumb" ]; then
     # Disable xon/xoff, which interferes with forward isearch bash history with C-s.
     stty -ixon
 
