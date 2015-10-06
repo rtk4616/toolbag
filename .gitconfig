@@ -26,19 +26,20 @@
     interactive = auto
 
 [alias]
-    vd = difftool --tool=vimdiff
-    vds = difftool --tool=vimdiff --staged
-    vc = !EDITOR='vim' git commit
-    eds = difftool --tool=ediff --staged
-    ed = difftool --tool=ediff
     d = diff
     ds = diff --staged
+    dt = difftool
     ec = !EDITOR='emacs' git commit
-    st = status
+    ed = difftool --tool=ediff
+    eds = difftool --tool=ediff --staged
+    la = log -p
+    latest-tag = describe --abbrev=0 --tags
     lo = log --oneline
     ls = log --stat
-    la = log -p
-    dt = difftool
+    st = status
+    vc = !EDITOR='vim' git commit
+    vd = difftool --tool=vimdiff
+    vds = difftool --tool=vimdiff --staged
 [core]
 	editor = vim
 [push]
