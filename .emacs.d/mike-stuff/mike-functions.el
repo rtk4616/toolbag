@@ -1,3 +1,19 @@
+(defun toggle-control-lock ()
+  (interactive)
+  (if (= extra-keyboard-modifiers 0)
+      (setq extra-keyboard-modifiers ?\C-a)
+    (setq extra-keyboard-modifiers 0)
+    )
+  )
+
+(defun toggle-meta-lock ()
+  (interactive)
+  (if (= extra-keyboard-modifiers 0)
+      (setq extra-keyboard-modifiers ?\M-a)
+    (setq extra-keyboard-modifiers 0)
+    )
+  )
+
 (defun mike-saved-session-exists ()
   (file-exists-p (concat (file-name-as-directory desktop-dirname) desktop-base-file-name)))
 

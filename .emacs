@@ -178,6 +178,10 @@
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-h" 'er/expand-region)
 (global-set-key "\M-j" 'MikeGetIndentation)
+
+(global-set-key (kbd "C-t") 'toggle-control-lock)
+(global-set-key (kbd "M-t") 'toggle-meta-lock)
+
 (global-set-key "\M-k" 'mark-paragraph)
 (global-set-key "\M-l" 'recenter-top-bottom)
 (global-set-key "\M-n" 'MikeDownSomeLines)
