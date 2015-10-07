@@ -156,6 +156,7 @@ nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <C-j> 6j
 nnoremap <C-k> 6k
 nnoremap <C-o> :CtrlPTag<cr>
+nnoremap <C-b> :CtrlPBuffer<cr>
 nnoremap <F5> :set nonumber!<CR>
 nnoremap <F6> :set paste!<CR>
 nnoremap <F7> :windo set scb!<CR>
