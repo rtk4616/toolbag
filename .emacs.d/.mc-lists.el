@@ -39,6 +39,7 @@
       '(
         MikeDownSomeLines
         MikeUpSomeLines
+        helm-M-x
         isearch-forward-regexp
         yaml-electric-backspace
         ))
