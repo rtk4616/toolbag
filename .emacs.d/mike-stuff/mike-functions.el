@@ -1,3 +1,8 @@
+(defun range (start-number)
+  (interactive "nStarting at: ")
+  (mc/insert-numbers start-number)
+  )
+
 (defun toggle-control-lock ()
   (interactive)
   (if (= extra-keyboard-modifiers 0)
