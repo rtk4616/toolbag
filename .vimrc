@@ -173,6 +173,7 @@ nnoremap <leader>f :call MikeGrep()<CR>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gf :Gpull<cr>
 nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
+nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
@@ -267,6 +268,13 @@ function! CreateMarkdownTOC()
 endfunc
 
 function! MikeFugitiveGitLog()
+    call inputrestore()
+    exe "silent Glog! --"
+    exe "cope"
+    exe "redraw!"
+endfunc
+
+function! MikeGitHistory()
     call inputrestore()
     exe "silent Glog!"
     exe "cope"
