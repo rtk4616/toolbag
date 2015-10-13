@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: CLDTX commit message
-# key: CLDTX
+# key: CL
 # binding: direct-keybinding
 # --
 CLDTX-${1:XXX}: [${2:DevOps}] ${3:Commit message here...}
