@@ -46,6 +46,9 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; Yasnippet stuff
+(yas-global-mode 1)
+
 ;; desktop-save-mode stuff
 (setq desktop-path '("~/"))
 (setq desktop-dirname "~/")
