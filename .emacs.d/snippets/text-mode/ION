@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ION commit message
+# key: ION
+# binding: direct-keybinding
+# --
+ION-${1:XXX}: [${2:DevOps}] ${3:Commit message here...}
