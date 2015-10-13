@@ -404,7 +404,6 @@
           (lambda ()
             (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
             (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
-            (modify-syntax-entry ?\: "\":")
             (modify-syntax-entry ?\` "\"`")
             (modify-syntax-entry ?\" "\"\"")
             (setq autopair-handle-action-fns
