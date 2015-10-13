@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Commit message when no Jira ticket exists
+# key: NO
+# binding: direct-keybinding
+# --
+NO-JIRA: [${1:DevOps}] ${2:Commit message here...}
