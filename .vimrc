@@ -276,7 +276,7 @@ endfunc
 
 function! MikeGitHistory()
     call inputrestore()
-    exe "silent Glog!"
+    exe "silent Glog! -- %"
     exe "cope"
     exe "redraw!"
 endfunc
