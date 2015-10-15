@@ -41,5 +41,6 @@
         MikeUpSomeLines
         helm-M-x
         isearch-forward-regexp
+        shell-command
         yaml-electric-backspace
         ))
