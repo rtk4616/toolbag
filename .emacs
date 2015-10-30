@@ -196,6 +196,7 @@
 ;; (global-set-key "\M-\\" 'jump-to-register)
 
 (global-set-key (kbd "<C-backspace>") 'delete-backward-char)
+(global-set-key (kbd "<C-return>") (kbd "C-m"))
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
