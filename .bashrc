@@ -80,6 +80,9 @@ function fssh {
     ssh -R 52698:127.0.0.1:52698 "$1"
 }
 
+# Add hostname completion for `fssh` function
+complete -F _known_hosts fssh
+
 function pull_commit_from_repo {
     USAGE_MESSAGE="\nAbout:\n
     Execute this command from within the Git repo you wish to pull the patch into.\n
