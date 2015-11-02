@@ -1,3 +1,52 @@
+(defvar rmacs-port 52698)
+(defvar rmacs-clients '())
+
+(defun rmacs-start nil
+  (interactive)
+  (unless (process-status "rmacs")
+    (make-network-process :name "rmacs" :buffer "*rmacs*" :family 'ipv4 :host "localhost" :service rmacs-port :sentinel 'rmacs-sentinel :filter 'rmacs-filter :server 't)
+    (setq rmacs-clients '())
+    )
+  )
+
+(defun rmacs-stop nil
+  (interactive)
+  (while  rmacs-clients
+    (delete-process (car (car rmacs-clients)))
+    (setq rmacs-clients (cdr rmacs-clients)))
+  (delete-process "rmacs")
+  )
+
+(defun rmacs-filter (proc string)
+  (let ((pending (assoc proc rmacs-clients))
+        message
+        index)
+    (unless pending
+      (setq rmacs-clients (cons (cons proc "") rmacs-clients))
+      (setq pending  (assoc proc rmacs-clients)))
+    (setq message (concat (cdr pending) string))
+    (while (setq index (string-match "\n" message))
+      (setq index (1+ index))
+      (process-send-string proc (substring message 0 index))
+      (rmacs-log  (substring message 0 index) proc)
+      (setq message (substring message index)))
+    (setcdr pending message))
+  )
+
+(defun rmacs-sentinel (proc msg)
+  (when (string= msg "connection broken by remote peer\n")
+    (setq rmacss-clients (assq-delete-all proc rmacs-clients))
+    (rmacs-log (format "client %s has quit" proc))))
+
+(defun rmacs-log (string &optional client)
+  (if (get-buffer "*rmacs*")
+      (with-current-buffer "*rmacs*"
+        (goto-char (point-max))
+        (insert (current-time-string)
+                (if client (format " %s:" client) " ")
+                string)
+        (or (bolp) (newline)))))
+
 (defun range (start-number)
   (interactive "nStarting at: ")
   (mc/insert-numbers start-number)
