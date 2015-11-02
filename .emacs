@@ -393,7 +393,7 @@
             (modify-syntax-entry ?\" "\"\"")
             ))
 
-;; markdown-mode hooks
+;; multi-web-mode hooks
 (add-hook 'multi-web-mode-hook
           (lambda ()
             (modify-syntax-entry ?\" "\"\"")
