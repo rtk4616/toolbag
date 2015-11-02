@@ -39,6 +39,7 @@
       '(
         MikeDownSomeLines
         MikeUpSomeLines
+        describe-key
         helm-M-x
         isearch-forward-regexp
         shell-command
