@@ -399,6 +399,12 @@
             (modify-syntax-entry ?\" "\"\"")
             ))
 
+;; multiple-cursors-mode hooks
+(add-hook 'multiple-cursors-mode-hook
+          (lambda ()
+            (define-key mc/keymap (kbd "<return>") (kbd "C-m"))
+            ))
+
 ;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
           (lambda ()
