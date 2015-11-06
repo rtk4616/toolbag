@@ -78,6 +78,9 @@
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
 (add-to-list 'helm-completing-read-handlers-alist '(ido-find-file . nil))
 
+;; textile-mode
+(require 'textile-mode)
+
 ;; projectile-mode
 (require 'helm-projectile)
 (setq projectile-switch-project-action 'MikeUpdateDirectory)
