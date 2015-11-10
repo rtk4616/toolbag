@@ -76,8 +76,9 @@ function fssh {
         echo "Usage: fssh [SSH host]"
         return
     fi
-    chmod 777 ~/toolbag/scripts/rmate
-    cat ~/toolbag/scripts/rmate | ssh -e none "$1" "cat > /tmp/rmate" && \
+    rmate_file="$HOME/toolbag/scripts/rmate"
+    chmod 777 $rmate_file
+    scp -pq $rmate_file $1:/tmp/rmate && \
         ssh -R 52698:127.0.0.1:52698 "$1"
 }
 
