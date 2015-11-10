@@ -76,9 +76,9 @@ function fssh {
         echo "Usage: fssh [SSH host]"
         return
     fi
-    chmod 777 ~/toolbag/scripts/rmate             # Git only supports 755 and 644 file permissions.
-    scp -q ~/toolbag/scripts/rmate $1:/tmp/rmate  # Make sure our script exists on the remote server.
-    ssh -R 52698:127.0.0.1:52698 "$1"             # SSH in and create a reverse tunnel on port 52698.
+
+    cat ~/toolbag/scripts/rmate | ssh -e none "$1" "cat > /tmp/rmate" && \
+        ssh -R 52698:127.0.0.1:52698 "$1"
 }
 
 # Add hostname completion for `fssh` function
