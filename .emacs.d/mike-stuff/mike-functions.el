@@ -1,10 +1,18 @@
-(defvar rmacs-port 52698)
-(defvar rmacs-clients '())
+(defvar rmacs-port 52698)   ; The port on which rmacs will listen.
+(defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
 (defun rmacs-start nil
   (interactive)
   (unless (process-status "rmacs")
-    (make-network-process :name "rmacs" :buffer "*rmacs*" :family 'ipv4 :host "localhost" :service rmacs-port :sentinel 'rmacs-sentinel :filter 'rmacs-filter :server 't)
+    (make-network-process
+     :name "rmacs"
+     :buffer "*rmacs*"
+     :family 'ipv4
+     :host "localhost"
+     :service rmacs-port
+     :sentinel 'rmacs-sentinel
+     :filter 'rmacs-filter
+     :server 't)
     (setq rmacs-clients '())
     )
   )
@@ -18,24 +26,41 @@
   )
 
 (defun rmacs-filter (proc string)
-  (let ((pending (assoc proc rmacs-clients))
+  (message (concat "in rmacs-sentinel with message " string))
+  (let (
+        ;; Get proc from the list of clients, if it is already in there.
+        (pending (assoc proc rmacs-clients))
         message
         index)
+
     (unless pending
+      ;; Proc is not already in the client list; this is a new connection.
+      ;; Add proc to the front of rmacs-clients.
       (setq rmacs-clients (cons (cons proc "") rmacs-clients))
+      ;; Set pending to be the proc element from the alist.
       (setq pending  (assoc proc rmacs-clients)))
+    ;; Get the message from pending.
     (setq message (concat (cdr pending) string))
+
+    ;; Loop through all lines in message
     (while (setq index (string-match "\n" message))
       (setq index (1+ index))
+      ;; Send the first line back to proc.
       (process-send-string proc (substring message 0 index))
+      ;; Output the line to the rmacs buffer.
       (rmacs-log  (substring message 0 index) proc)
+      ;; Trim the line we just echoed from message.
       (setq message (substring message index)))
+    ;;
     (setcdr pending message))
   )
 
 (defun rmacs-sentinel (proc msg)
+  (message (concat "in rmacs-sentinel with message" msg))
+  (message "sending connection success")
+  (process-send-string proc "connection success\n")
   (when (string= msg "connection broken by remote peer\n")
-    (setq rmacss-clients (assq-delete-all proc rmacs-clients))
+    (setq rmacs-clients (assq-delete-all proc rmacs-clients))
     (rmacs-log (format "client %s has quit" proc))))
 
 (defun rmacs-log (string &optional client)
