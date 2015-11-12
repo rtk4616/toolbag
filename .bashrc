@@ -76,10 +76,27 @@ function fssh {
         echo "Usage: fssh [SSH host]"
         return
     fi
-    rmate_file="$HOME/toolbag/scripts/rmate"
-    chmod 777 $rmate_file
-    scp -pq $rmate_file $1:/tmp/rmate && \
-        ssh -R 52698:127.0.0.1:52698 "$1"
+
+    SOCKET_DIR="$HOME/.ssh/socket_dir"
+    SSHSOCKET="$SOCKET_DIR/$1"
+    mkdir -p $SOCKET_DIR
+
+    RMATE_FILE="$HOME/toolbag/scripts/rmate"
+    chmod 777 $RMATE_FILE
+
+    # Open a master SSH connection if need be.
+    if ! [ -e "$SSHSOCKET" ]; then
+        ssh -M -f -N -R 52698:127.0.0.1:52698 -o ControlPath=$SSHSOCKET $1
+    fi
+
+    # The main functionality.
+    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate
+    ssh -o ControlPath=$SSHSOCKET "$1"
+
+    # Close the master SSH connection if need be.
+    if ! ps aux | grep -v '\-M' | grep "[s]sh.*ControlPath.*$1.*$1" > /dev/null 2>&1; then
+        ssh -S $SSHSOCKET -O exit "$1"
+    fi
 }
 
 # Add hostname completion for `fssh` function
