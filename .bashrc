@@ -86,12 +86,12 @@ function fssh {
 
     # Open a master SSH connection if need be.
     if ! [ -e "$SSHSOCKET" ]; then
-        ssh -M -f -N -R 52698:127.0.0.1:52698 -o ControlPath=$SSHSOCKET $1
+        ssh -M -f -N -R 52698:127.0.0.1:52698 -o ControlPath=$SSHSOCKET $1 || return
     fi
 
     # The main functionality.
-    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate
-    ssh -o ControlPath=$SSHSOCKET "$1"
+    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate || return
+    ssh -o ControlPath=$SSHSOCKET "$1" || return
 
     # Close the master SSH connection if need be.
     if ! ps aux | grep -v '\-M' | grep "[s]sh.*ControlPath.*$1.*$1" > /dev/null 2>&1; then
