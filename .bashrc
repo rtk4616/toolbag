@@ -90,8 +90,8 @@ function fssh {
     fi
 
     # The main functionality.
-    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate || return
-    ssh -o ControlPath=$SSHSOCKET "$1" || return
+    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate
+    ssh -o ControlPath=$SSHSOCKET "$1"
 
     # Close the master SSH connection if need be.
     if ! ps aux | grep -v '\-M' | grep "[s]sh.*ControlPath.*$1.*$1" > /dev/null 2>&1; then
