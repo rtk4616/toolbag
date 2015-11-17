@@ -90,7 +90,7 @@ function fssh {
     fi
 
     # The main functionality.
-    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate
+    scp -o ControlPath=$SSHSOCKET -pq $RMATE_FILE $1:/tmp/rmate > /dev/null 2>&1
     ssh -o ControlPath=$SSHSOCKET "$1"
 
     # Close the master SSH connection if need be.
