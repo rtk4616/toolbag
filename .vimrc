@@ -19,7 +19,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'mxw/vim-jsx'
 Plug 'stephpy/vim-yaml'
-Plug 'scrooloose/nerdtree'
 Plug 'chase/vim-ansible-yaml'
 Plug 'Olical/vim-enmasse'
 Plug 'airblade/vim-gitgutter'
@@ -42,7 +41,6 @@ endif
 
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
-let g:NERDTreeWinSize=40
 let g:SuperTabDefaultCompletionType="<c-x><c-o>"
 let g:SuperTabLongestEnhanced = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules|\.DS_Store)$'
@@ -166,7 +164,6 @@ nnoremap <S-h> gT
 nnoremap <S-l> gt
 nnoremap <c-w>f :vertical wincmd f<CR>
 nnoremap <leader>[ :cp<cr>
-nnoremap <leader>\ :NERDTreeToggle<CR>
 nnoremap <leader>] :cn<cr>
 nnoremap <leader>c :SyntasticReset<cr>
 nnoremap <leader>e :Errors<cr>
