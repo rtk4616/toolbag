@@ -408,6 +408,13 @@
             (define-key mc/keymap (kbd "<return>") (kbd "C-m"))
             ))
 
+;; makefile-mode hooks
+(add-hook 'makefile-mode-hook
+          (lambda ()
+            (define-key makefile-mode-map (kbd "M-n") 'MikeDownSomeLines)
+            (define-key makefile-mode-map (kbd "M-p") 'MikeUpSomeLines)
+            ))
+
 ;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
           (lambda ()
