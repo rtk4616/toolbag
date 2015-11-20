@@ -178,6 +178,7 @@ nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap <leader>r :EnMasse<cr>
 nnoremap <leader>sa :set ft=ansible<cr>
 nnoremap <leader>sc :set ft=conf<cr>
@@ -189,7 +190,7 @@ nnoremap <leader>sx :set ft=xml<cr>
 nnoremap <leader>sy :set ft=yaml<cr>
 nnoremap <leader>v :Ve<cr>
 nnoremap <leader>w :tabe \| mks! ~/.session \| :bd<cr> \| :echom "Session written to ~/.session"<cr>
-nnoremap <leader>y "+y
+nnoremap <leader>y "+Y
 nnoremap <space> za
 nnoremap ZA :qa!<cr>
 
@@ -199,6 +200,7 @@ vnoremap <S-h> gT
 vnoremap <S-l> gt
 vnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
 vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 vnoremap <leader>v :Ve<cr>
 vnoremap <leader>y "+y
 vnoremap <space> za
