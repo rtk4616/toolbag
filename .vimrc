@@ -170,7 +170,7 @@ nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gf :Gpull<cr>
-nnoremap <leader>gl :call MikeFugitiveGitLog()<cr>
+nnoremap <leader>gl :CtrlPGitLog<cr>
 nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
