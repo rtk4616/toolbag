@@ -32,7 +32,6 @@
         (pending (assoc proc rmacs-clients))
         message
         index)
-
     (unless pending
       ;; Proc is not already in the client list; this is a new connection.
       ;; Add proc to the front of rmacs-clients.
