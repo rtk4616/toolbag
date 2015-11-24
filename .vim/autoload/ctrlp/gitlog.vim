@@ -38,6 +38,7 @@ func! ctrlp#gitlog#accept(mode, str)
     tabnew
     exe "set ft=git"
     put! =selected_git_commit
+    call feedkeys("gg")
 endfunc
 
 
