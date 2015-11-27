@@ -146,10 +146,12 @@
                 string)
         (or (bolp) (newline)))))
 
+
 (defun range (start-number)
   (interactive "nStarting at: ")
   (mc/insert-numbers start-number)
   )
+
 
 (defun toggle-control-lock ()
   (interactive)
@@ -159,6 +161,7 @@
     )
   )
 
+
 (defun toggle-meta-lock ()
   (interactive)
   (if (= extra-keyboard-modifiers 0)
@@ -167,11 +170,15 @@
     )
   )
 
+
 (defun mike-saved-session-exists ()
   (file-exists-p (concat (file-name-as-directory desktop-dirname) desktop-base-file-name)))
 
+
+
 (defun mike-lock-file-exists ()
   (file-exists-p (concat (file-name-as-directory desktop-dirname) ".emacs.desktop.lock")))
+
 
 (defun mike-desktop-read ()
   "Restore a saved emacs session."
@@ -182,10 +189,12 @@
         (desktop-read))
     (message "No desktop found.")))
 
+
 (defun revert ()
   (interactive)
   (revert-buffer nil t t)
   )
+
 
 (defun MikeUpdateDirectory ()
   "Custom function to be called on each projectile project switch."
@@ -199,6 +208,7 @@
   ;; changed. Let's re-assign the value that projectile gave it.
   (setq default-directory emacs-startup-directory)
   )
+
 
 (defun MikeTrampFindFile (host-string user-b)
   "Tramp wrapper for easy ssh and su to another user."
