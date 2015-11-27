@@ -1,7 +1,8 @@
 (defvar rmacs-port 52698)   ; The port on which rmacs will listen.
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
-(defun rmacs-start nil
+
+(defun rmacs/start-server nil
   (interactive)
   (unless (process-status "rmacs")
     (make-network-process
@@ -10,59 +11,133 @@
      :family 'ipv4
      :host "localhost"
      :service rmacs-port
-     :sentinel 'rmacs-sentinel
-     :filter 'rmacs-filter
+     :sentinel 'rmacs/sentinel
+     :filter 'rmacs/process-message
      :server 't)
-    (setq rmacs-clients '())
-    )
-  )
+    (setq rmacs-clients '())))
 
-(defun rmacs-stop nil
+
+(defun rmacs/stop-server nil
   (interactive)
   (while  rmacs-clients
     (delete-process (car (car rmacs-clients)))
     (setq rmacs-clients (cdr rmacs-clients)))
-  (delete-process "rmacs")
+  (delete-process "rmacs"))
+
+
+(defun rmacs/get-value (string)
+  "Return the value in a string of format key: value"
+  (s-trim (nth 1 (split-string string ":" \t))))
+
+
+(defun rmacs/get-lines (string)
+  "Return a list of a string's lines"
+  (split-string string "\n"))
+
+
+(defun rmacs/nth-line (index string)
+  "Return the index-th line of a string, starting with 0"
+   (nth index (rmacs/get-lines string)))
+
+
+(defun rmacs/strip-rmate-headers (string)
+  "Strip the rmate headers from a string"
+  (mapconcat 'identity
+             ;; The rmate string contains the file content after the 8th line
+             ;; of the string it sends across the network, but we don't want
+             ;; the final line which only contains a period.
+             (butlast (nthcdr 7 (rmacs/get-lines string)) 2)
+             "\n"))
+
+
+(defun rmacs/get-remote-address (string)
+  "Return the remote connection's address from the headers of an rmate string"
+  ;; The remote address is the value on the 3rd line.
+  (rmacs/get-value (rmacs/nth-line 2 string)))
+
+
+(defun rmacs/get-remote-filepath (string)
+  "Return the remote file's full path from the headers of an rmate string"
+  ;; The remote address is the value on the 5th line.
+  (rmacs/get-value (rmacs/nth-line 4 string)))
+
+
+(defun rmacs/get-buffer-name (string)
+  "Return a buffer name based on the headers of an rmate string"
+  (mapconcat 'identity
+             (list
+              ;; The remote connection's address.
+              (rmacs/get-remote-address string)
+              ;; The full path of the remote file.
+              (rmacs/get-remote-filepath string))
+             ;; Joined by a colon.
+             ":"))
+
+
+(defun rmacs/get-rmate-headers (string)
+  "Returns the first 7 lines of a string"
+  (let ((lines (rmacs/get-lines string)))
+    (mapconcat 'identity
+               (list
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines))
+               "\n")))
+
+
+(defun rmacs/add-new-client (process header-string)
+  "Add a new incoming process to the list of rmacs clients and create file buffer"
+  (setq rmacs-clients (cons (cons process header-string) rmacs-clients))
+  (get-buffer-create (rmacs/get-buffer-name header-string))
+  (setq buffer-read-only nil)
+  (erase-buffer))
+
+
+(defun rmacs/put-content-to-buffer (content name-of-buffer)
+  "Insert the content string into the specified buffer"
+  (switch-to-buffer name-of-buffer)
+  ;; Set the major mode of the buffer based off of filename.
+  (let ((buffer-file-name (buffer-name))) (set-auto-mode))
+  (insert content)
   )
 
-(defun rmacs-filter (proc string)
-  (message (concat "in rmacs-sentinel with message " string))
+
+(defun rmacs/process-message (process string)
   (let (
-        ;; Get proc from the list of clients, if it is already in there.
-        (pending (assoc proc rmacs-clients))
-        message
-        index)
-    (unless pending
-      ;; Proc is not already in the client list; this is a new connection.
-      ;; Add proc to the front of rmacs-clients.
-      (setq rmacs-clients (cons (cons proc "") rmacs-clients))
-      ;; Set pending to be the proc element from the alist.
-      (setq pending  (assoc proc rmacs-clients)))
-    ;; Get the message from pending.
-    (setq message (concat (cdr pending) string))
+        ;; See if the process is in our list of clients.
+        (client (assoc process rmacs-clients))
+        ;; By default, we assume that the entire string is file content.
+        (content string)
+        )
+    (unless client
+      ;; New connection. Add it to our list of clients.
+      ;; A client is an object of the form (process . header-string)
+      (rmacs/add-new-client process
+                            (rmacs/get-rmate-headers string))
+      ;; Try again to get the client from the list.
+      (setq client (assoc process rmacs-clients))
+      ;; New connections include the rmate headers. We need to strip this from
+      ;; the string to get the file content.
+      (setq content (rmacs/strip-rmate-headers string)))
+    ;; Insert the content into the client's file buffer.
+    (rmacs/put-content-to-buffer content
+                                 (rmacs/get-buffer-name (cdr client)))))
 
-    ;; Loop through all lines in message
-    (while (setq index (string-match "\n" message))
-      (setq index (1+ index))
-      ;; Send the first line back to proc.
-      (process-send-string proc (substring message 0 index))
-      ;; Output the line to the rmacs buffer.
-      (rmacs-log  (substring message 0 index) proc)
-      ;; Trim the line we just echoed from message.
-      (setq message (substring message index)))
-    ;;
-    (setcdr pending message))
-  )
 
-(defun rmacs-sentinel (proc msg)
-  (message (concat "in rmacs-sentinel with message" msg))
-  (message "sending connection success")
+(defun rmacs/sentinel (proc msg)
+  (rmacs/log-message (concat "Message from rmacs-sentinel: " msg))
+  (rmacs/log-message "sending connection success")
   (process-send-string proc "connection success\n")
   (when (string= msg "connection broken by remote peer\n")
     (setq rmacs-clients (assq-delete-all proc rmacs-clients))
-    (rmacs-log (format "client %s has quit" proc))))
+    (rmacs/log-message (format "client %s has quit" proc))))
 
-(defun rmacs-log (string &optional client)
+
+(defun rmacs/log-message (string &optional client)
   (if (get-buffer "*rmacs*")
       (with-current-buffer "*rmacs*"
         (goto-char (point-max))
