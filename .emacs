@@ -46,9 +46,6 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
-;; ycmd-mode stuff
-(require 'ycmd)
-
 ;; Yasnippet stuff
 (yas-global-mode 1)
 
@@ -368,7 +365,6 @@
             (define-key company-active-map (kbd "RET") nil)
             (define-key company-active-map (kbd "<tab>") #'company-complete-selection)
             (define-key company-active-map (kbd "TAB") #'company-complete-selection)
-            (ycmd-mode)
             ))
 
 ;; ;; Find file hooks
