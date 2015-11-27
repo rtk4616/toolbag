@@ -5,7 +5,6 @@
 " =============================================================================
 
 let g:loaded_ctrlp_gitlog = 1
-let s:gitlog_commands = ['cmd1', 'cmd2', 'cmd3']
 let s:gitlog_var = {
 	\ 'init': 'ctrlp#gitlog#init()',
 	\ 'accept': 'ctrlp#gitlog#accept',

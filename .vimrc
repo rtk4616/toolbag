@@ -41,12 +41,13 @@ endif
 
 let b:delimitMate_expand_cr = 1
 let g:CSApprox_verbose_level = 0
-let g:SuperTabDefaultCompletionType="<c-x><c-o>"
-let g:SuperTabLongestEnhanced = 1
+let g:ctrlp_abbrev = {'gmode': 'i', 'abbrevs': [{ 'pattern': ' ', 'expanded': '.*', 'mode': 'pfrz' }]}
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules|\.DS_Store)$'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': [], 'AcceptSelection("t")': ['<cr>', '<c-m>']}
 let g:ctrlp_regexp = 1
-let g:ctrlp_abbrev = {'gmode': 't', 'abbrevs': [{ 'pattern': ' ', 'expanded': '.*', 'mode': 'pfrz' }]}
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_tabpage_position = 'l'
 let g:ctrlp_working_path_mode = 0
 let g:jsx_ext_required = 0
 let g:markdown_enable_spell_checking = 0
@@ -58,6 +59,8 @@ let g:neocomplcache_fuzzy_completion_start_length = 1
 let g:neocomplcache_max_list = 10
 let g:neocomplcache_tags_caching_limit_file_size = 5000000
 let g:netrw_list_hide= '.*\.swp$,.*\.sqlite$,.*\.pyc$'
+let g:SuperTabDefaultCompletionType="<c-x><c-o>"
+let g:SuperTabLongestEnhanced = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 
@@ -175,7 +178,8 @@ nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
-nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+" nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+nnoremap <leader>l :CtrlPFileLines<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
