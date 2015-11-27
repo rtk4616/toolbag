@@ -46,6 +46,9 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; ycmd-mode stuff
+(require 'ycmd)
+
 ;; Yasnippet stuff
 (yas-global-mode 1)
 
@@ -251,7 +254,6 @@
 (ido-mode t)
 (set-fringe-mode 0)
 (setenv "TMPDIR" "/tmp")
-(ycmd-setup)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
@@ -362,6 +364,11 @@
             (define-key company-active-map (kbd "M-p") nil)
             (define-key company-active-map (kbd "C-n") #'company-select-next)
             (define-key company-active-map (kbd "C-p") #'company-select-previous)
+            (define-key company-active-map (kbd "<return>") nil)
+            (define-key company-active-map (kbd "RET") nil)
+            (define-key company-active-map (kbd "<tab>") #'company-complete-selection)
+            (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+            (ycmd-mode)
             ))
 
 ;; ;; Find file hooks
