@@ -22,6 +22,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'chase/vim-ansible-yaml'
 Plug 'Olical/vim-enmasse'
 Plug 'airblade/vim-gitgutter'
+Plug 'joshdick/onedark.vim'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -84,14 +85,14 @@ endif
 " ------------------------------------------------------------------------------
 syntax on
 set background=dark
-colo hybrid
+colo onedark
 
 if has("unix") && has("gui_running")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
         set guifont=menlo:h12
     endif
-    colo hybrid
+    colo onedark
     set guioptions-=M
     set guioptions-=m
     set guioptions-=T
