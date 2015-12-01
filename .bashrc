@@ -15,6 +15,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # Misc.
+export TERM=screen-256color
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
