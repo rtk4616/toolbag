@@ -22,7 +22,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'chase/vim-ansible-yaml'
 Plug 'Olical/vim-enmasse'
 Plug 'airblade/vim-gitgutter'
-Plug 'joshdick/onedark.vim'
+Plug 'wilkystyle/onedark.vim'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
