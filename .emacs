@@ -352,8 +352,12 @@
 (add-hook 'window-setup-hook
           (lambda ()
             (if (display-graphic-p (selected-frame))
-                (set-face-background 'default "#282C34" (selected-frame))
+                (progn
+                  (set-face-background 'default "#282C34" (selected-frame))
+                  (set-face-background 'linum "#282C34" (selected-frame))
+                  )
               (set-face-background 'default "unspecified-bg" (selected-frame))
+              (set-face-background 'linum "unspecified-bg" (selected-frame))
               )))
 
 ;; Delete trailing whitespace on save
