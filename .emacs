@@ -333,17 +333,24 @@
 ;;;; ---------------------------------------------------------------------------
 
 ;; Emacs init hooks
-(add-hook 'after-init-hook (lambda ()
-                             (global-flycheck-mode)
-                             (global-company-mode)
-                             (let (
-                                   (the-tags-file (concat emacs-startup-directory "TAGS"))
-                                   )
-                               (if (file-exists-p the-tags-file)
-                                   (visit-tags-table the-tags-file)
-                                 )
-                               )
-                             ))
+(add-hook 'after-init-hook
+          (lambda ()
+            (global-flycheck-mode)
+            (global-company-mode)
+            (let (
+                  (the-tags-file (concat emacs-startup-directory "TAGS"))
+                  )
+              (if (file-exists-p the-tags-file)
+                  (visit-tags-table the-tags-file)
+                )
+              )
+            ))
+(add-hook 'window-setup-hook
+          (lambda ()
+            (if (display-graphic-p (selected-frame))
+                (set-face-background 'default "#282C34" (selected-frame))
+              (set-face-background 'default "unspecified-bg" (selected-frame))
+              )))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
