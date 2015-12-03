@@ -78,6 +78,10 @@
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
 (add-to-list 'helm-completing-read-handlers-alist '(ido-find-file . nil))
 
+;; ycmd-mode
+(require 'ycmd)
+(add-hook 'after-init-hook #'global-ycmd-mode)
+
 ;; textile-mode
 (require 'textile-mode)
 
@@ -449,4 +453,10 @@
             (setq autopair-handle-action-fns
                   (list 'autopair-default-handle-action
                         'autopair-python-triple-quote-action))
+            ))
+
+;; ycmd-mode hooks
+(add-hook 'ycmd-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-.") 'ycmd-goto)
             ))
