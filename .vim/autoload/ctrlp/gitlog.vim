@@ -25,8 +25,8 @@ endif
 
 " This will be called by ctrlp to get the full list of elements
 function! ctrlp#gitlog#init()
-    let to_return = system("git log --oneline --no-color")
-    return split(to_return, '\n')
+    let log_results = system("git log --pretty='%h | %ar by %an - %s'")
+    return split(log_results, '\n')
 endfunction
 
 
