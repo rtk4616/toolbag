@@ -34,7 +34,7 @@
     eds = difftool --tool=ediff --staged
     la = log -p
     latest-tag = describe --abbrev=0 --tags
-    lo = log --oneline
+    lo = log --pretty='%Cred%h%Creset | %Cgreen(%an, %ar)%Creset - %Cblue%s'
     ls = log --stat
     st = status
     vc = !EDITOR='vim' git commit
