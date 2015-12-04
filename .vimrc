@@ -193,6 +193,8 @@ nnoremap <leader>sp :set ft=python<cr>
 nnoremap <leader>ss :set ft=sh<cr>
 nnoremap <leader>sx :set ft=xml<cr>
 nnoremap <leader>sy :set ft=yaml<cr>
+nnoremap <leader>s/ :set ft?<cr>
+nnoremap <leader>s? :set ft?<cr>
 nnoremap <leader>v :Ve<cr>
 nnoremap <leader>w :tabe \| mks! ~/.session \| :bd<cr> \| :echom "Session written to ~/.session"<cr>
 nnoremap <leader>y "+Y
@@ -260,9 +262,17 @@ autocmd FileType * setlocal formatoptions-=cro
 " Custom helper functions
 " ===================================================================================================
 
-" function! s:SpecialCRFunction()
-"     return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+" TODO: Leaving this here for reference for later.
+"
+" let g:idle_counter = 0
+"
+" function! Idle()
+"    echo "I am idle!!!! (" .  g:idle_counter . ")"
+"    let g:idle_counter = g:idle_counter + 1
+"    call feedkeys("f\e")
 " endfunction
+"
+" autocmd CursorHold * call Idle()
 
 function! CreateMarkdownTOC()
     normal ggyG
