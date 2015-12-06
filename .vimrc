@@ -300,17 +300,15 @@ function! MikeGrep()
     call inputsave()
     let l:theQuery = input('Search for: ')
     call inputrestore()
-    call inputsave()
-    let l:filePathWildcard = input('File path wildcard: ')
-    call inputrestore()
-    exe "tabe | r !ag -i --hidden '" . theQuery . "' " . filePathWildcard
+    exe "tabe | r !ag -i --hidden --nogroup --nocolor -U " . theQuery
     if v:shell_error != 1
         exe "1d"
         cgetexpr getline(1, "$")
     end
     exe 'bd!'
     if v:shell_error != 1
-        exe 'cope'
+        " exe 'cope'
+        exe "CtrlPQuickfix"
     end
 endfunc
 
