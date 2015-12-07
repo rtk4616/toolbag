@@ -35,9 +35,9 @@ func! ctrlp#gitlog#accept(mode, str)
     redraw
     let selected_git_commit = system("git show " . split(a:str)[0])
     tabnew
-    exe "set ft=git"
+    exe "setlocal ft=git"
     put! =selected_git_commit
-    exe "set nomodifiable"
+    exe "setlocal nomodifiable"
     call feedkeys("gg")
 endfunc
 
