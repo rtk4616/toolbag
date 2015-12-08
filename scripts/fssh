@@ -1,0 +1,64 @@
+#!/bin/bash
+
+################################################################################
+#
+# SSH function for using rmacs on remote servers to open files in a local
+# instance of Sublime Text with the rsub plugin.
+#
+# This function will ensure that an up-to-date copy of the rmacs script from
+# the local machine exists in /tmp/, and establish a reverse SSH tunnel on port
+# 52698.
+#
+################################################################################
+
+# Constants
+REMOTE_COMMAND_SCRIPT="rmate"
+SCRIPT_DIR="$(dirname "$0")"
+SOCKET_DIR="$HOME/.ssh/socket_dir"
+
+
+# Print out the usage message.
+print_usage_and_exit() {
+    echo
+    echo "fssh - ssh into a remote host, establishing a reverse SSH tunnel on port 52698 and copying $REMOTE_COMMAND_SCRIPT script to remote host's /tmp/ dir"
+    echo
+    echo "    Usage:"
+    echo "        fssh [SSH host]"
+    echo
+    echo "    Then, on remote host:"
+    echo "        /tmp/$REMOTE_COMMAND_SCRIPT [FILE TO EDIT]"
+    echo
+    exit 1
+}
+
+
+# The main fssh function
+# $1 - Remote host to ssh to.
+main() {
+    if ! [ $# -eq 1 ]; then
+        print_usage_and_exit
+    fi
+
+    local remote_host=$1; shift
+    local ssh_socket_file="$SOCKET_DIR/$remote_host"
+    local file_to_copy="$SCRIPT_DIR/$REMOTE_COMMAND_SCRIPT"
+
+    chmod 777 $file_to_copy
+    mkdir -p $SOCKET_DIR
+
+    # Open a master SSH connection if need be.
+    if ! [ -e "$ssh_socket_file" ]; then
+        ssh -M -f -N -R 52698:127.0.0.1:52698 -o ControlPath=$ssh_socket_file $remote_host || return
+    fi
+
+    # The main functionality.
+    scp -o ControlPath=$ssh_socket_file -q $file_to_copy $remote_host:/tmp/$REMOTE_COMMAND_SCRIPT
+    ssh -o ControlPath=$ssh_socket_file "$remote_host"
+
+    # Close the master SSH connection if need be.
+    if ! ps aux | grep -v '\-M' | grep "[s]sh.*ControlPath.*$remote_host.*$remote_host" > /dev/null 2>&1; then
+        ssh -S $ssh_socket_file -O exit "$remote_host"
+    fi
+}
+
+main "$@"

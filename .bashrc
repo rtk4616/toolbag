@@ -6,13 +6,17 @@ elif [[ `uname` == 'Darwin' ]]; then
 fi
 
 # Paths.
-export PATH=~/toolbag/scripts:/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
 # Golang bin path.
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Stuff needed for fssh function.
+complete -F _known_hosts fssh
+export PATH=~/toolbag/scripts:$PATH
 
 # Misc.
 export TERM=screen-256color
@@ -67,41 +71,6 @@ if ! [ -z "$PS1" ] && ! [ "$TERM" == "dumb" ]; then
     ### Added by the Heroku Toolbelt
     export PATH="/usr/local/heroku/bin:$PATH"
 fi
-
-function fssh {
-    # SSH function for using rmate on remote servers to open files in a local
-    # instance of Sublime Text with the rsub plugin. This function will ensure
-    # that an up-to-date copy of the rmate script from the local machine
-    # exists in /tmp/, and establish a reverse SSH tunnel on port 52698.
-    if ! [ $# -eq 1 ]; then
-        echo "Usage: fssh [SSH host]"
-        return
-    fi
-
-    SOCKET_DIR="$HOME/.ssh/socket_dir"
-    SSHSOCKET="$SOCKET_DIR/$1"
-    mkdir -p $SOCKET_DIR
-
-    RMATE_FILE="$HOME/toolbag/scripts/rmate"
-    chmod 777 $RMATE_FILE
-
-    # Open a master SSH connection if need be.
-    if ! [ -e "$SSHSOCKET" ]; then
-        ssh -M -f -N -R 52698:127.0.0.1:52698 -o ControlPath=$SSHSOCKET $1 || return
-    fi
-
-    # The main functionality.
-    scp -o ControlPath=$SSHSOCKET -q $RMATE_FILE $1:/tmp/rmate
-    ssh -o ControlPath=$SSHSOCKET "$1"
-
-    # Close the master SSH connection if need be.
-    if ! ps aux | grep -v '\-M' | grep "[s]sh.*ControlPath.*$1.*$1" > /dev/null 2>&1; then
-        ssh -S $SSHSOCKET -O exit "$1"
-    fi
-}
-
-# Add hostname completion for `fssh` function
-complete -F _known_hosts fssh
 
 function pull_commit_from_repo {
     USAGE_MESSAGE="\nAbout:\n
