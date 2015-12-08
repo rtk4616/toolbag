@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+# $1 - File to copy back to the host running rmacs server.
+main() {
+    local ssh_user="$(logname)"
+    local su_user="$(id -un)"
+    local current_host="$(hostname -f)"
+
+    for arg in "$@"; do
+        local the_file="$(readlink -f "$arg")"
+        exec 3<> /dev/tcp/localhost/52698
+        echo "hello from rmacs" 1>&3
+        exec 3<&-
+    done
+}
+
+main "$@"
