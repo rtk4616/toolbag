@@ -46,6 +46,12 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; rsync stuff
+(defvar rsync-flags "-rlpvtD --delete")
+(defvar rsync-project-mapping '(
+                                ("/Users/mike/work/cloudistics/" "anvil:/home/mike/dev/cloudistics/")
+                                ))
+
 ;; Yasnippet stuff
 (yas-global-mode 1)
 
@@ -206,6 +212,8 @@
 (global-set-key (kbd "<C-return>") (kbd "C-m"))
 (global-set-key (kbd "<f5>") 'linum-mode)
 (global-set-key (kbd "<f6>") 'autopair-mode)
+(global-set-key (kbd "<f12>") (lambda() (interactive) (mike/rsync-project t)))
+(global-set-key (kbd "C-x <f12>") 'mike/rsync-project)
 (global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-M-f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-M-k") 'kill-whole-line)

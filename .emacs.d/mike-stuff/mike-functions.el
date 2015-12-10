@@ -1,5 +1,32 @@
+;; rmacs variables
 (defvar rmacs-port 52698)   ; The port on which rmacs will listen.
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
+
+
+(defun mike/get-pwd-as-string ()
+  (nth 1 (split-string (pwd)))
+  )
+
+
+(defun mike/get-rsync-config (directory-string)
+  (assoc directory-string rsync-project-mapping))
+
+
+(defun mike/rsync-project (&optional dry-run)
+  (interactive)
+  (if (projectile-project-root)
+      (let ((config (mike/get-rsync-config (projectile-project-root))))
+        (if config
+            (let* ((rsync-from-location (nth 0 config))
+                   (rsync-to-location (nth 1 config))
+                   (rsync-command (mapconcat 'identity (list "rsync" rsync-flags (when dry-run '"-n") rsync-from-location rsync-to-location) " ")))
+              ;; (if (y-or-n-p (concat "Do you want to rsync " rsync-from-location " to " rsync-to-location " ?")) (async-shell-command rsync-command))
+              (async-shell-command rsync-command)
+              (when dry-run (message "\n(Dry run only - no files changed)\n\n"))
+              )
+          (message (concat "No rsync mapping found for " (projectile-project-root)))))
+    (message "You are not currently in a project!"))
+  )
 
 
 (defun rmacs/start-server nil
