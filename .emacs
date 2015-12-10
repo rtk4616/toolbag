@@ -163,7 +163,6 @@
 ;;;; Keybindings
 ;;;; ---------------------------------------------------------------------------
 
-(global-set-key "\C-\M-h" 'er/contract-region)
 (global-set-key "\C-\\" 'desktop-save-in-desktop-dir)
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
@@ -469,6 +468,7 @@
 (define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
 (define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key global-keys-minor-mode-map "\M-o" 'other-window)
+(define-key global-keys-minor-mode-map "\C-\M-h" 'er/contract-region)
 
 ;; Next we create a minor mode with our keymap.
 (define-minor-mode global-keys-minor-mode
