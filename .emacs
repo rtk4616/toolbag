@@ -196,7 +196,6 @@
 (global-set-key "\M-k" 'mark-paragraph)
 (global-set-key "\M-l" 'recenter-top-bottom)
 (global-set-key "\M-n" 'MikeDownSomeLines)
-(global-set-key "\M-o" 'other-window)
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
@@ -217,7 +216,6 @@
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
 (global-set-key (kbd "C-x C-h") 'helm-command-prefix)
 (global-set-key (kbd "M-*") 'mike-next-tag)
-(global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-.") 'helm-etags-select)
 (global-set-key (kbd "M-RET") 'sgml-close-tag)
 (global-set-key (kbd "M-SPC") 'hippie-expand)
@@ -364,12 +362,6 @@
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Overriding dired-mode binding
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map (kbd "M-o") 'other-window)
-            ))
-
 ;; Overriding company-mode binding
 (add-hook 'company-mode-hook
           (lambda ()
@@ -383,11 +375,6 @@
             (define-key company-active-map (kbd "TAB") #'company-complete-selection)
             ))
 
-;; ;; Find file hooks
-;; (add-hook 'find-file-hook
-;;           (lambda ()
-;;             (setq default-directory emacs-startup-directory)))
-
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (global-set-key (kbd "M-.") 'godef-jump)
@@ -397,7 +384,6 @@
 
 ;; js-mode hooks
 (add-hook 'js-mode-hook (lambda ()
-                          (local-set-key (kbd "M-,") 'pop-tag-mark)
                           (local-set-key (kbd "M-.") 'helm-etags-select)
                           ))
 
@@ -420,24 +406,18 @@
             (modify-syntax-entry ?\" "\"\"")
             ))
 
-;; multiple-cursors-mode hooks
-(add-hook 'multiple-cursors-mode-hook
-          (lambda ()
-            (define-key mc/keymap (kbd "<return>") (kbd "C-m"))
-            ))
-
 ;; makefile-mode hooks
 (add-hook 'makefile-mode-hook
           (lambda ()
-            (define-key makefile-mode-map (kbd "M-n") 'MikeDownSomeLines)
-            (define-key makefile-mode-map (kbd "M-p") 'MikeUpSomeLines)
+            (local-set-key (kbd "M-n") 'MikeDownSomeLines)
+            (local-set-key (kbd "M-p") 'MikeUpSomeLines)
             ))
 
 ;; markdown-mode hooks
 (add-hook 'markdown-mode-hook
           (lambda ()
-            (define-key markdown-mode-map (kbd "M-n") 'MikeDownSomeLines)
-            (define-key markdown-mode-map (kbd "M-p") 'MikeUpSomeLines)
+            (local-set-key (kbd "M-n") 'MikeDownSomeLines)
+            (local-set-key (kbd "M-p") 'MikeUpSomeLines)
             (modify-syntax-entry ?\` "\"`")
             (modify-syntax-entry ?\" "\"\"")
             (setq autopair-handle-action-fns
@@ -465,3 +445,37 @@
           (lambda ()
             (local-set-key (kbd "M-.") 'ycmd-goto)
             ))
+
+
+;;;; ---------------------------------------------------------------------------
+;;;; Permanent keybindings
+;;;; (These cannot be overritten by another mode)
+;;;; ---------------------------------------------------------------------------
+
+;; First we set up our own minor mode map.
+(defvar global-keys-minor-mode-map (make-sparse-keymap)
+  "global-keys-minor-mode keymap.")
+
+;; Then we specify all the keybindings that we always want, across all modes.
+;; NOTE: You won't be able to override any bindings specified here with a mode hook!
+(define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
+(define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
+(define-key global-keys-minor-mode-map "\M-o" 'other-window)
+
+;; Next we create a minor mode with our keymap.
+(define-minor-mode global-keys-minor-mode
+  "A minor mode so that global key settings override annoying major modes."
+  t "global-keys" 'global-keys-minor-mode-map)
+
+;; We enable the minor mode.
+(global-keys-minor-mode 1)
+
+;; And make sure it is consulted before the first minor-mode-map-alist.
+(defconst global-minor-mode-alist (list (cons 'global-keys-minor-mode
+                                              global-keys-minor-mode-map)))
+(setf emulation-mode-map-alists '(global-minor-mode-alist))
+
+;; ;; Here we can make an exception for the minibuffer.
+;; (defun my-minibuffer-setup-hook ()
+;;   (global-keys-minor-mode 0))
+;; (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
