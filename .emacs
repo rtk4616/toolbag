@@ -181,7 +181,7 @@
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-xn" 'flycheck-next-error)
 (global-set-key "\C-xp" 'flycheck-previous-error)
-(global-set-key "\C-xt" 'MikeTrampFindFile)
+(global-set-key "\C-xt" (lambda() (interactive) (MikeTrampFindFile t)))
 (global-set-key "\C-xvb" 'magit-blame)
 (global-set-key "\C-xvh" 'magit-log-buffer-file)
 (global-set-key "\C-xvl" 'magit-log-current)
