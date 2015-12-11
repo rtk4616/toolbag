@@ -469,6 +469,7 @@
 (define-key global-keys-minor-mode-map "\C-xvh" 'magit-log-buffer-file)
 (define-key global-keys-minor-mode-map "\C-xvl" 'magit-log-current)
 (define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
+(define-key global-keys-minor-mode-map "\C-xvf" (lambda() (interactive) (magit-fetch-all "-p")))
 
 ;; Next we create a minor mode with our keymap.
 (define-minor-mode global-keys-minor-mode
