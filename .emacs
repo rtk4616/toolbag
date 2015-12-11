@@ -182,10 +182,6 @@
 (global-set-key "\C-xn" 'flycheck-next-error)
 (global-set-key "\C-xp" 'flycheck-previous-error)
 (global-set-key "\C-xt" (lambda() (interactive) (MikeTrampFindFile t)))
-(global-set-key "\C-xvb" 'magit-blame)
-(global-set-key "\C-xvh" 'magit-log-buffer-file)
-(global-set-key "\C-xvl" 'magit-log-current)
-(global-set-key "\C-xvs" 'magit-status)
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-(" 'MikeDeIndent)
 (global-set-key "\M-)" 'MikeIndent)
@@ -469,6 +465,10 @@
 (define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key global-keys-minor-mode-map "\M-o" 'other-window)
 (define-key global-keys-minor-mode-map "\C-\M-h" 'er/contract-region)
+(define-key global-keys-minor-mode-map "\C-xvb" 'magit-blame)
+(define-key global-keys-minor-mode-map "\C-xvh" 'magit-log-buffer-file)
+(define-key global-keys-minor-mode-map "\C-xvl" 'magit-log-current)
+(define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
 
 ;; Next we create a minor mode with our keymap.
 (define-minor-mode global-keys-minor-mode
