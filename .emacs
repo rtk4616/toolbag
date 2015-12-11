@@ -355,11 +355,33 @@
           (lambda ()
             (if (display-graphic-p (selected-frame))
                 (progn
+                  ;; Colors for when this is a GUI
                   (set-face-background 'default "#282C34" (selected-frame))
                   (set-face-background 'linum "#282C34" (selected-frame))
+                  (set-face-attribute 'mode-line
+                                      nil
+                                      :foreground "gray15"
+                                      :background "SkyBlue2"
+                                      :box '(:line-width 1 :style released-button))
+                  (set-face-attribute 'mode-line-inactive
+                                      nil
+                                      :foreground "gray30"
+                                      :background "gray13"
+                                      :box '(:line-width 1 :style released-button))
                   )
+              ;; Colors for when this is a terminal
               (set-face-background 'default "unspecified-bg" (selected-frame))
               (set-face-background 'linum "unspecified-bg" (selected-frame))
+              (set-face-attribute 'mode-line
+                                  nil
+                                  :foreground "color-234"
+                                  :background "color-75"
+                                  :box '(:line-width 1 :style released-button))
+              (set-face-attribute 'mode-line-inactive
+                                  nil
+                                  :foreground "gray30"
+                                  :background "gray15"
+                                  :box '(:line-width 1 :style released-button))
               )))
 
 ;; Delete trailing whitespace on save
