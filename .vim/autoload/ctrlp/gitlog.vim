@@ -26,6 +26,7 @@ endif
 " This will be called by ctrlp to get the full list of elements
 function! ctrlp#gitlog#init()
     let log_results = system("git log --pretty='%h | %ar by %an - %s'")
+    set ft=ctrlp-gitlog
     return split(log_results, '\n')
 endfunction
 
