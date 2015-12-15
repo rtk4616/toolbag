@@ -12,6 +12,8 @@
         autopair-newline
         autopair-skip-close-maybe
         backward-sexp
+        c-electric-colon
+        c-electric-delete-forward
         c-electric-semi&comma
         clipboard-kill-region
         clipboard-kill-ring-save
