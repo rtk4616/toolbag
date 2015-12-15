@@ -46,6 +46,25 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; ido stuff
+(ido-mode t)
+(setq ido-enable-last-directory-history nil)
+(setq ido-everywhere t)
+(setq ido-max-work-directory-list 0)
+(setq ido-max-work-file-list 0)
+(setq ido-record-commands nil)
+(setq ido-use-faces nil)
+(setq ido-ignore-buffers '("^ "
+                           "*Completions*"
+                           "*Shell Command Output*"
+                           "*Messages*"
+                           "*scratch*"
+                           "Async Shell Command"
+                           "*helm occur*"
+                           "*Helm Completions*"
+                           "*helm-ag*"
+                           "*helm projectile*"))
+
 ;; rsync stuff
 (defvar rsync-flags "-rlpvtD --delete")
 (defvar rsync-project-mapping '(
@@ -277,12 +296,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq emacs-startup-directory default-directory)
 (setq frame-title-format "%b")
-(setq ido-enable-last-directory-history nil)
-(setq ido-everywhere t)
-(setq ido-max-work-directory-list 0)
-(setq ido-max-work-file-list 0)
-(setq ido-record-commands nil)
-(setq ido-use-faces nil)
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
