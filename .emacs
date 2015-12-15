@@ -273,8 +273,7 @@
 
 (autopair-global-mode)
 (delete-selection-mode 1)
-(global-linum-mode t)
-(ido-mode t)
+(global-linum-mode nil)
 (set-fringe-mode 0)
 (setenv "TMPDIR" "/tmp")
 
@@ -466,10 +465,9 @@
 
 ;; Add highlighting of TODOs
 (add-hook 'prog-mode-hook
-          (lambda ()
-            (font-lock-add-keywords
-             nil
-             '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
+          (lambda () (font-lock-add-keywords nil '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t))))
+          (linum-mode)
+          )
 
 ;; python-mode hooks
 (add-hook 'python-mode-hook
