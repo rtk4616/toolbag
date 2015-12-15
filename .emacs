@@ -112,7 +112,7 @@
 
 ;; projectile-mode
 (require 'helm-projectile)
-;; (setq projectile-switch-project-action 'MikeUpdateDirectory)
+(setq projectile-switch-project-action 'magit-status)
 (setq projectile-mode-line "")
 (projectile-global-mode)
 
