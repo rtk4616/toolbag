@@ -279,6 +279,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq auto-save-default nil)
+(blink-cursor-mode 0)
 (setq c-default-style "bsd" c-basic-offset 4)
 (setq case-fold-search t)
 (setq case-replace nil)
