@@ -421,6 +421,12 @@
                           (company-mode)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
+;; groovy-mode hooks
+(add-hook 'groovy-mode-hook
+          (lambda () (setq autopair-handle-action-fns
+                           (list 'autopair-default-handle-action
+                                 'autopair-python-triple-quote-action))))
+
 ;; js-mode hooks
 (add-hook 'js-mode-hook (lambda ()
                           (local-set-key (kbd "M-.") 'helm-etags-select)
@@ -472,11 +478,9 @@
 
 ;; python-mode hooks
 (add-hook 'python-mode-hook
-          (lambda ()
-            (setq autopair-handle-action-fns
-                  (list 'autopair-default-handle-action
-                        'autopair-python-triple-quote-action))
-            ))
+          (lambda () (setq autopair-handle-action-fns
+                           (list 'autopair-default-handle-action
+                                 'autopair-python-triple-quote-action))))
 
 ;; ycmd-mode hooks
 (add-hook 'ycmd-mode-hook
