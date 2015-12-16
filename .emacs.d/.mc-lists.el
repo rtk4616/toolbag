@@ -36,6 +36,7 @@
         xterm-paste
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
