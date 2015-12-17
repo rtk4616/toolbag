@@ -40,7 +40,13 @@
     vc = !EDITOR='vim' git commit
     vd = difftool --tool=vimdiff
     vds = difftool --tool=vimdiff --staged
+
 [core]
 	editor = vim
+
 [push]
 	default = simple
+
+[branch]
+    autosetuprebase = always
+    autosetupmerge = true
