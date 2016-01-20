@@ -510,6 +510,7 @@
 (define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
 (define-key global-keys-minor-mode-map "\C-xvf" (lambda() (interactive)
                                                   (magit-fetch-all "-p")
+                                                  (magit-pull-current (magit-get-remote) (magit-get-current-branch))
                                                   (magit-status)
                                                   ))
 
