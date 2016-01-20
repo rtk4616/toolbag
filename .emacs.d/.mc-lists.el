@@ -15,6 +15,7 @@
         c-electric-colon
         c-electric-delete-forward
         c-electric-semi&comma
+        c-electric-slash
         clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
