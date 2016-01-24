@@ -23,6 +23,7 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'Olical/vim-enmasse'
 Plug 'airblade/vim-gitgutter'
 Plug 'wilkystyle/onedark.vim'
+Plug 'kchmck/vim-coffee-script'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
