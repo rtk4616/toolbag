@@ -179,8 +179,8 @@ nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
-" nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
-nnoremap <leader>l :CtrlPFileLines<cr>
+nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+" nnoremap <leader>l :CtrlPFileLines<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
@@ -317,18 +317,6 @@ function! MikeFindAllOccurrencesInFile()
     let l:thePattern = input('Pattern to find: ')
     call inputrestore()
     if search(l:thePattern, "nw") != 0
-        let @x = expand("%:p")"
-        redir @z
         exec 'g/' . l:thePattern . '/p'
-        redir END
-        tabnew
-        put! z
-        exec "normal Gdd"
-        exec "1d"
-        exec "%s/^\\( \\+\\)\\?\\(\\d\\+\\) /:\\2:/"
-        exec '1,$:normal 0"xP'
-        cgetexpr getline(1, "$")
-        exec 'bd!'
-        exec 'cope'
     end
 endfunc
