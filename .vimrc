@@ -109,13 +109,13 @@ autocmd Syntax * syntax sync minlines=1000
 " ------------------------------------------------------------------------------
 set autoindent                                            " Indentation same as previous line when inserting a new line.
 set bs=2                                                  " Set backspacing mode 2. This allows backspacing with no restrictions.
+set completeopt-=preview                                  " Don't show the sassy preview window during autocomplete.
 set cursorline                                            " Enable highlighting of the current line.
 set expandtab                                             " Use only spaces for tabs.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set foldmethod=indent                                     " Set folding options.
 set formatoptions=ql
 set hlsearch                                              " Highlight matches while searching.
-set completeopt-=preview                                  " Don't show the sassy preview window during autocomplete.
 set ignorecase                                            " Ignore case while searching, by default...
 set is                                                    " Enable incremental search by default.
 set linebreak                                             " Better word wrapping.
@@ -132,6 +132,8 @@ set showmode                                              " Show which mode we'r
 set showtabline=2                                         " Show the tab bar by default, even if we only have one tab open.
 set smartcase                                             " Don't ignore case if the search string contains any capital letters.
 set softtabstop=4                                         " Default soft tab stop to 4 chars.
+set ssop-=folds                                           " Don't store folds in a session.
+set ssop-=options                                         " Don't store global and local values in a session.
 set tabpagemax=50                                         " 50 tabs at any given time max. The rest get opened as buffers.
 set tabstop=4                                             " Default tab stop to 4 chars.
 set tags=tags                                             " Explicitly set the tags file so we don't get the same tags file twice.
