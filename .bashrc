@@ -3,6 +3,7 @@ if [[ `uname` == 'Linux' ]]; then
    COLOR_OPTION_STRING='--color=auto'
 elif [[ `uname` == 'Darwin' ]]; then
    COLOR_OPTION_STRING='-G'
+   alias flush_dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 fi
 
 # Paths.
