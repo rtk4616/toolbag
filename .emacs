@@ -235,7 +235,7 @@
 (global-set-key (kbd "C-M-p") 'mc/unmark-next-like-this)
 (global-set-key (kbd "C-M-s") 'mc/skip-to-next-like-this)
 (global-set-key (kbd "C-M-t") 'helm-projectile-switch-project)
-(global-set-key (kbd "C-x C-b") (lambda() (interactive) (electric-buffer-list nil)))
+(global-set-key (kbd "C-x C-b") (lambda() (interactive) (electric-buffer-list t)))
 (global-set-key (kbd "C-x C-h") 'helm-command-prefix)
 (global-set-key (kbd "M-*") 'mike-next-tag)
 (global-set-key (kbd "M-.") 'helm-etags-select)
