@@ -160,6 +160,10 @@ map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tra
 nnoremap <C-a> <C-O>
 nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+nnoremap <up> :resize -1<CR>
+nnoremap <down> :resize +1<CR>
+nnoremap <left> :vertical resize -1<CR>
+nnoremap <right> :vertical resize +1<CR>
 nnoremap <C-j> 6j
 nnoremap <C-k> 6k
 nnoremap <C-o> :CtrlPTag<cr>
