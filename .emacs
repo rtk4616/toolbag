@@ -501,6 +501,10 @@
 
 ;; Then we specify all the keybindings that we always want, across all modes.
 ;; NOTE: You won't be able to override any bindings specified here with a mode hook!
+(define-key global-keys-minor-mode-map (kbd "<M-up>") 'shrink-window)
+(define-key global-keys-minor-mode-map (kbd "<M-down>") 'enlarge-window)
+(define-key global-keys-minor-mode-map (kbd "<M-left>") 'shrink-window-horizontally)
+(define-key global-keys-minor-mode-map (kbd "<M-right>") 'enlarge-window-horizontally)
 (define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
 (define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key global-keys-minor-mode-map "\M-o" 'other-window)
