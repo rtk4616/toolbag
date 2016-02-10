@@ -66,7 +66,6 @@
                            "*helm projectile*"))
 
 ;; rsync stuff
-(defvar rsync-flags "-crlpvtD --delete")
 (defvar rsync-project-mapping '(
                                 ("/Users/mike/work/cloudistics/" "anvil:/home/mike/dev/cloudistics/")
                                 ))
