@@ -26,8 +26,7 @@
                   (insert (concat "Rsyncing " rsync-from-location " to " rsync-to-location "...\n"))
                   (when dry-run (insert "(Dry run only - no files changed)\n"))
                   (insert "\n")
-                  (call-process "rsync" nil (current-buffer) t "-crlpvtD" rsync-dry-run-flag "--delete" rsync-from-location rsync-to-location)
-                  (read-key "Done! Press any key to continue..."))))
+                  (call-process "rsync" nil (current-buffer) t "-crlpvtD" rsync-dry-run-flag "--delete" rsync-from-location rsync-to-location))))
           (message (concat "No rsync mapping found for " (projectile-project-root)))))
     (message "You are not currently in a project!")))
 
