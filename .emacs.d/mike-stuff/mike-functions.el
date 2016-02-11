@@ -19,14 +19,16 @@
         (if config
             (let* ((rsync-from-location (nth 0 config))
                    (rsync-to-location (nth 1 config))
-                   (rsync-dry-run-flag (if dry-run "-n" "")))
+                   (rsync-flags (if dry-run "-crlpvtDn" "-crlpvtD")))
               (save-window-excursion
                 (with-temp-buffer
                   (pop-to-buffer (current-buffer))
                   (insert (concat "Rsyncing " rsync-from-location " to " rsync-to-location "...\n"))
                   (when dry-run (insert "(Dry run only - no files changed)\n"))
                   (insert "\n")
-                  (call-process "rsync" nil (current-buffer) t "-crlpvtD" rsync-dry-run-flag "--delete" rsync-from-location rsync-to-location))))
+                  (call-process "rsync" nil (current-buffer) t rsync-flags "--delete" rsync-from-location rsync-to-location)
+                  (read-key "Press any key to continue...")
+                  )))
           (message (concat "No rsync mapping found for " (projectile-project-root)))))
     (message "You are not currently in a project!")))
 
