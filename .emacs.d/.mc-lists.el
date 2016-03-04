@@ -35,6 +35,7 @@
         sh-assignment
         split-line
         xterm-paste
+        yaml-electric-backspace
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
         yas-expand
@@ -48,5 +49,4 @@
         helm-M-x
         isearch-forward-regexp
         shell-command
-        yaml-electric-backspace
         ))
