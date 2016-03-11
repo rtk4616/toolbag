@@ -194,6 +194,7 @@
 (global-set-key "\C-x\C-p" 'previous-buffer)
 (global-set-key "\C-x\C-r" 'helm-resume)
 (global-set-key "\C-x\C-t" 'MikeTrampFindFile)
+(global-set-key "\C-x\M-l" 'helm-do-ag-this-file)
 (global-set-key "\C-xf" (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-xn" 'flycheck-next-error)
