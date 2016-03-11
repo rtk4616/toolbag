@@ -189,7 +189,6 @@
 (global-set-key "\C-x\C-e" 'flycheck-list-errors)
 (global-set-key "\C-x\C-k" 'kill-buffer)
 (global-set-key "\C-x\C-l" 'helm-occur)
-;; (global-set-key "\C-x\C-n" 'next-buffer)
 (global-set-key "\C-x\C-n" (lambda() (interactive) (ffap (ffap-file-at-point))))
 (global-set-key "\C-x\C-o" 'find-tag)
 (global-set-key "\C-x\C-p" 'previous-buffer)
@@ -208,16 +207,14 @@
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\M-h" 'er/expand-region)
 (global-set-key "\M-j" 'MikeGetIndentation)
-
-(global-set-key (kbd "C-t") 'toggle-control-lock)
-(global-set-key (kbd "M-t") 'toggle-meta-lock)
-
 (global-set-key "\M-k" 'mark-paragraph)
 (global-set-key "\M-l" 'recenter-top-bottom)
 (global-set-key "\M-n" 'MikeDownSomeLines)
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
+(global-set-key (kbd "C-t") 'toggle-control-lock)
+(global-set-key (kbd "M-t") 'toggle-meta-lock)
 ;; (global-set-key "\C-\\" 'window-configuration-to-register)
 ;; (global-set-key "\M-\\" 'jump-to-register)
 
