@@ -30,6 +30,8 @@
         indent-for-tab-command
         indent-new-comment-line
         indent-rigidly
+        indent-rigidly-left-to-tab-stop
+        indent-rigidly-right-to-tab-stop
         isearch-backward-regexp
         isearch-printing-char
         markdown-exdent-or-delete
