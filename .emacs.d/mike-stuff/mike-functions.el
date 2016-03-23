@@ -478,30 +478,15 @@
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
                  (list (line-beginning-position) (line-end-position))))
-  (save-excursion
-    (if (and (= beg (line-beginning-position))
-             (= end (line-end-position)))
-        (indent-rigidly beg end -4)
-      (progn
-        (indent-rigidly beg end -4)
-        (goto-char end-pos)
-        (push-mark nil t t)
-        (goto-char start-pos)))))
-
+  (let ((deactivate-mark))
+    (indent-rigidly-left-to-tab-stop beg end)))
 
 (defun MikeIndent (beg end)
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
                  (list (line-beginning-position) (line-end-position))))
-  (save-excursion
-    (if (and (= beg (line-beginning-position))
-             (= end (line-end-position)))
-        (indent-rigidly beg end 4)
-      (progn
-        (indent-rigidly beg end 4)
-        (goto-char end-pos)
-        (push-mark nil t t)
-        (goto-char start-pos)))))
+  (let ((deactivate-mark))
+    (indent-rigidly-right-to-tab-stop beg end)))
 
 
 (defun MikeGetIndentationEnd (&optional REVERSE)
