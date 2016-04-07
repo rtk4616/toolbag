@@ -166,6 +166,8 @@ map <C-h> <Plug>(expand_region_shrink)
 call expand_region#custom_text_objects({'a]' :1})
 call expand_region#custom_text_objects({'ab' :1})
 call expand_region#custom_text_objects({'aB' :1})
+call expand_region#custom_text_objects({'a"' :0})
+call expand_region#custom_text_objects({'a''' :0})
 
 nnoremap <up> :resize -1<CR>
 nnoremap <down> :resize +1<CR>
