@@ -32,7 +32,7 @@ endif
 
 syntax match everythingElse "\w\+"
 syntax match ansibleinventoryOperator "\v\="
-syntax match ansibleinventoryComment "\v;.*$"
+syntax match ansibleinventoryComment "\v#.*$"
 syntax match ansibleinventoryGroup "\v^\[.*\]\ze(\s*#.*)?$"
 syntax match ansibleinventoryVariable "\v[A-Za-z0-9_.-]+\ze\="
 syntax match ansibleinventoryEvaluatedVariable "\v\{\{.*\}\}"
