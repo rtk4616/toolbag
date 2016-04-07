@@ -24,6 +24,7 @@ Plug 'Olical/vim-enmasse'
 Plug 'airblade/vim-gitgutter'
 Plug 'wilkystyle/onedark.vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'terryma/vim-expand-region'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -159,6 +160,12 @@ map <C-S-P> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tra
 " nnoremap <C-x> :exe "tag ". expand("<cword>")<CR>
 nnoremap <C-a> <C-O>
 nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+map <C-l> <Plug>(expand_region_expand)
+map <C-h> <Plug>(expand_region_shrink)
+call expand_region#custom_text_objects({'a]' :1})
+call expand_region#custom_text_objects({'ab' :1})
+call expand_region#custom_text_objects({'aB' :1})
 
 nnoremap <up> :resize -1<CR>
 nnoremap <down> :resize +1<CR>
