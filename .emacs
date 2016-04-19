@@ -224,7 +224,6 @@
 (global-set-key (kbd "<f6>") 'autopair-mode)
 (global-set-key (kbd "<f12>") (lambda() (interactive) (mike/rsync-project t)))
 (global-set-key (kbd "C-x <f12>") 'mike/rsync-project)
-(global-set-key (kbd "C-M-d") 'duplicate-current-line-or-region)
 (global-set-key (kbd "C-M-f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-M-k") 'kill-whole-line)
 (global-set-key (kbd "C-M-n") 'mc/mark-next-like-this)
@@ -501,23 +500,21 @@
 
 ;; Then we specify all the keybindings that we always want, across all modes.
 ;; NOTE: You won't be able to override any bindings specified here with a mode hook!
-(define-key global-keys-minor-mode-map (kbd "<M-up>") 'shrink-window)
-(define-key global-keys-minor-mode-map (kbd "<M-down>") 'enlarge-window)
-(define-key global-keys-minor-mode-map (kbd "<M-left>") 'shrink-window-horizontally)
-(define-key global-keys-minor-mode-map (kbd "<M-right>") 'enlarge-window-horizontally)
-(define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
-(define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
-(define-key global-keys-minor-mode-map "\M-h" 'er/expand-region)
-(define-key global-keys-minor-mode-map "\M-o" 'other-window)
 (define-key global-keys-minor-mode-map "\C-\M-h" 'er/contract-region)
 (define-key global-keys-minor-mode-map "\C-xvb" 'magit-blame)
+(define-key global-keys-minor-mode-map "\C-xvf" (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
 (define-key global-keys-minor-mode-map "\C-xvh" 'magit-log-buffer-file)
 (define-key global-keys-minor-mode-map "\C-xvl" 'magit-log-current)
 (define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
-(define-key global-keys-minor-mode-map "\C-xvf" (lambda() (interactive)
-                                                  (magit-fetch-all "-p")
-                                                  (magit-status)
-                                                  ))
+(define-key global-keys-minor-mode-map "\M-h" 'er/expand-region)
+(define-key global-keys-minor-mode-map "\M-o" 'other-window)
+(define-key global-keys-minor-mode-map (kbd "<M-down>") 'enlarge-window)
+(define-key global-keys-minor-mode-map (kbd "<M-left>") 'shrink-window-horizontally)
+(define-key global-keys-minor-mode-map (kbd "<M-right>") 'enlarge-window-horizontally)
+(define-key global-keys-minor-mode-map (kbd "<M-up>") 'shrink-window)
+(define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
+(define-key global-keys-minor-mode-map (kbd "C-M-d") 'duplicate-current-line-or-region)
+(define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 
 ;; Next we create a minor mode with our keymap.
 (define-minor-mode global-keys-minor-mode
