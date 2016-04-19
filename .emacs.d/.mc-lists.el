@@ -52,4 +52,5 @@
         helm-M-x
         isearch-forward-regexp
         shell-command
+        toggle-meta-lock
         ))
