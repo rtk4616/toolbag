@@ -52,6 +52,7 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_tabpage_position = 'l'
 let g:ctrlp_working_path_mode = 0
+let g:expand_region_text_objects = {'ie': 0, 'ip': 0, 'iw': 0, 'iB': 1, 'il': 0, 'a]': 1, 'iW': 0, 'i''': 1, 'ib': 1, 'aB': 1, 'i]': 1, 'ab': 1, 'i"': 1, 'i`': 1}
 let g:jsx_ext_required = 0
 let g:markdown_enable_spell_checking = 0
 let g:neocomplcache_auto_completion_start_length = 3
@@ -163,11 +164,6 @@ nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 map <C-l> <Plug>(expand_region_expand)
 map <C-h> <Plug>(expand_region_shrink)
-call expand_region#custom_text_objects({'a]' :1})
-call expand_region#custom_text_objects({'ab' :1})
-call expand_region#custom_text_objects({'aB' :1})
-call expand_region#custom_text_objects({'a"' :1})
-call expand_region#custom_text_objects({'a''' :1})
 
 nnoremap <up> :resize -1<CR>
 nnoremap <down> :resize +1<CR>
@@ -195,6 +191,7 @@ nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
+nnoremap <silent> <leader>J :let @0 = expand("%:p")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 " nnoremap <leader>l :CtrlPFileLines<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
@@ -222,6 +219,7 @@ vnoremap <C-k> 6k
 vnoremap <S-h> gT
 vnoremap <S-l> gt
 vnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
+vnoremap <silent> <leader>J :let @0 = expand("%:p")"<CR>
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 vnoremap <leader>v :Ve<cr>
