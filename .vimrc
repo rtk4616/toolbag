@@ -190,8 +190,8 @@ nnoremap <leader>gl :CtrlPGitLog<cr>
 nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR>
-nnoremap <silent> <leader>J :let @0 = expand("%:p")"<CR>
+nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR> \| :let @+ = expand("%:t")"<CR>
+nnoremap <silent> <leader>J :let @0 = expand("%:p")"<CR> \| :let @+ = expand("%:p")"<CR>
 nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
 " nnoremap <leader>l :CtrlPFileLines<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
@@ -264,6 +264,7 @@ autocmd BufRead,BufNewFile .tm_properties set ft=sh
 autocmd BufRead,BufNewFile .vimrc set ft=vim
 autocmd BufRead,BufNewFile */ansible/*.yml set ft=ansible
 autocmd BufRead,BufNewFile *.conf.j2 set ft=conf
+autocmd BufRead,BufNewFile mod_cluster.conf* set ft=apache
 autocmd BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
 autocmd BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
