@@ -16,6 +16,7 @@
         c-electric-delete-forward
         c-electric-semi&comma
         c-electric-slash
+        calc-dispatch
         clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
