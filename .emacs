@@ -71,6 +71,9 @@
                                 ("/Users/mike/work/cloudistics/" "anvil:/home/mike/dev/cloudistics/")
                                 ))
 
+;; Robe-mode stuff
+(add-hook 'ruby-mode-hook 'robe-mode)
+
 ;; Yasnippet stuff
 (yas-global-mode 1)
 
@@ -119,6 +122,7 @@
 
 ;; company-mode
 (setq company-backends '(company-ycmd
+                         company-robe
                          ;; company-sample-backend
                          ;; company-bbdb
                          ;; company-nxml
