@@ -413,6 +413,7 @@
 ;; yaml-mode hooks
 (add-hook 'yaml-mode-hook
           (lambda ()
+            (setq tab-width 2)
             (modify-syntax-entry ?' "w")
             (modify-syntax-entry ?- ".")
             ))
@@ -465,6 +466,24 @@
 
 ;; ruby-mode hooks
 (add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq tab-width 2)
+            ))
+
+;; lisp-mode hooks
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (setq tab-width 2)
+            ))
+
+;; emacs-lisp-mode hooks
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq tab-width 2)
+            ))
+
+;; lisp-interaction-mode hooks
+(add-hook 'lisp-interaction-mode-hook
           (lambda ()
             (setq tab-width 2)
             ))
