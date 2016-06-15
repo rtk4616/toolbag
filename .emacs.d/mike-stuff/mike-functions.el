@@ -479,14 +479,14 @@
                    (list (region-beginning) (region-end))
                  (list (line-beginning-position) (line-end-position))))
   (let ((deactivate-mark))
-    (indent-rigidly-left-to-tab-stop beg end)))
+    (indent-code-rigidly beg end (* -1 tab-width))))
 
 (defun MikeIndent (beg end)
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
                  (list (line-beginning-position) (line-end-position))))
   (let ((deactivate-mark))
-    (indent-rigidly-right-to-tab-stop beg end)))
+    (indent-code-rigidly beg end tab-width)))
 
 
 (defun MikeGetIndentationEnd (&optional REVERSE)

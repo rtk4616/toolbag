@@ -463,6 +463,12 @@
                   (list 'autopair-default-handle-action
                         'autopair-python-triple-quote-action))))
 
+;; ruby-mode hooks
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq tab-width 2)
+            ))
+
 ;; ycmd-mode hooks
 (add-hook 'ycmd-mode-hook
           (lambda ()
