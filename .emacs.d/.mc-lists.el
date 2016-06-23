@@ -27,6 +27,7 @@
         eval-print-last-sexp
         forward-sentence
         forward-sexp
+        helm-ag--mark-line-deleted
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
         indent-new-comment-line
