@@ -14,6 +14,7 @@ export PYTHONSTARTUP=~/.pythonrc
 # Golang bin path.
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+eval "$(rbenv init -)"
 
 # Stuff needed for fssh function.
 complete -F _known_hosts fssh
@@ -27,6 +28,7 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR="vi"
 
 # Aliases.
+alias pt='ptpython'
 alias emacs='emacs -nw'
 alias vims='vim -S ~/.session'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
@@ -41,6 +43,9 @@ alias vmux='tmux set -gw mode-keys vi && tmux set -gw status-keys vi'
 if ! [ -z "$PS1" ] && ! [ "$TERM" == "dumb" ]; then
     # Disable xon/xoff, which interferes with forward isearch bash history with C-s.
     stty -ixon
+
+    # Source the virtualenvwrapper script.
+    source /usr/local/bin/virtualenvwrapper.sh
 
     # --- colors ---
     BLACK='\[\e[0;30m\]'
