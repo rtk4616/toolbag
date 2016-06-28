@@ -28,7 +28,7 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR="vi"
 
 # Aliases.
-alias pt='ptpython'
+alias ptp='ptpython'
 alias emacs='emacs -nw'
 alias vims='vim -S ~/.session'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
