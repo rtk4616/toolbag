@@ -488,9 +488,10 @@
             (setq tab-width 2)
             ))
 
-;; terraform--mode hooks
+;; terraform-mode hooks
 (add-hook 'terraform-mode-hook
           (lambda ()
+            (setq hcl-indent-level 4)
             (setq terraform-indent-level 4)
             (modify-syntax-entry ?_ "." terraform-mode-syntax-table)
             ))
