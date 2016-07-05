@@ -25,6 +25,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'wilkystyle/onedark.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'terryma/vim-expand-region'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'hashivim/vim-terraform'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -47,8 +49,8 @@ let g:CSApprox_verbose_level = 0
 let g:ctrlp_abbrev = {'gmode': 'i', 'abbrevs': [{ 'pattern': ' ', 'expanded': '.*', 'mode': 'pfrz' }]}
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|/migrations/|/ve/|\.idea|node_modules|\.DS_Store)$'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': [], 'AcceptSelection("t")': ['<cr>', '<c-m>']}
-let g:ctrlp_regexp = 1
+" let g:ctrlp_prompt_mappings = {'AcceptSelection("e")': [], 'AcceptSelection("t")': ['<cr>', '<c-m>']}
+" let g:ctrlp_regexp = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_tabpage_position = 'l'
 let g:ctrlp_working_path_mode = 0
@@ -186,14 +188,15 @@ nnoremap <leader>e :Errors<cr>
 nnoremap <leader>f :call MikeGrep()<CR>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gf :!git remote update -p && git pull && git prune<cr>
+nnoremap <leader>o :CtrlPBufTag<cr>
 nnoremap <leader>gl :CtrlPGitLog<cr>
 nnoremap <leader>gh :call MikeGitHistory()<cr>
 nnoremap <leader>gp :Gpush<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <silent> <leader>j :let @0 = expand("%:t")"<CR> \| :let @+ = expand("%:t")"<CR>
 nnoremap <silent> <leader>J :let @0 = expand("%:p")"<CR> \| :let @+ = expand("%:p")"<CR>
-nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
-" nnoremap <leader>l :CtrlPFileLines<cr>
+" nnoremap <leader>l :call MikeFindAllOccurrencesInFile()<CR>
+nnoremap <leader>l :CtrlPFileLines<cr>
 nnoremap <leader>m :call CreateMarkdownTOC()<cr>
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
@@ -211,7 +214,8 @@ nnoremap <leader>s? :set ft?<cr>
 nnoremap <leader>v :Ve<cr>
 nnoremap <leader>w :tabe \| mks! ~/.session \| :bd<cr> \| :echom "Session written to ~/.session"<cr>
 nnoremap <leader>y "+Y
-nnoremap <space> za
+nnoremap <space> zO
+nnoremap <enter> zM
 nnoremap ZA :qa!<cr>
 
 vnoremap <C-j> 6j
@@ -224,7 +228,8 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 vnoremap <leader>v :Ve<cr>
 vnoremap <leader>y "+y
-vnoremap <space> za
+vnoremap <space> zO
+vnoremap <enter> zM
 
 
 " ------------------------------------------------------------------------------
@@ -319,12 +324,12 @@ function! MikeGrep()
     if v:shell_error != 1
         exe "1d"
         cgetexpr getline(1, "$")
-    end
+    endif
     exe 'bd!'
     if v:shell_error != 1
         " exe 'cope'
         exe "CtrlPQuickfix"
-    end
+    endif
 endfunc
 
 function! MikeFindAllOccurrencesInFile()
@@ -333,5 +338,5 @@ function! MikeFindAllOccurrencesInFile()
     call inputrestore()
     if search(l:thePattern, "nw") != 0
         exec 'g/' . l:thePattern . '/p'
-    end
+    endif
 endfunc
