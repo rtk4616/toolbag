@@ -488,6 +488,12 @@
             (setq tab-width 2)
             ))
 
+;; terraform--mode hooks
+(add-hook 'terraform-mode-hook
+          (lambda ()
+            (setq terraform-indent-level 4)
+            ))
+
 ;; ycmd-mode hooks
 (add-hook 'ycmd-mode-hook
           (lambda ()
