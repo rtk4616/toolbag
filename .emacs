@@ -492,6 +492,7 @@
 (add-hook 'terraform-mode-hook
           (lambda ()
             (setq terraform-indent-level 4)
+            (modify-syntax-entry ?_ "." terraform-mode-syntax-table)
             ))
 
 ;; ycmd-mode hooks
