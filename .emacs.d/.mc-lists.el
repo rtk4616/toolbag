@@ -37,6 +37,7 @@
         isearch-backward-regexp
         isearch-printing-char
         markdown-exdent-or-delete
+        sgml-close-tag
         sh-assignment
         split-line
         xterm-paste
@@ -55,4 +56,5 @@
         isearch-forward-regexp
         shell-command
         toggle-meta-lock
+        yank-rectangle
         ))
