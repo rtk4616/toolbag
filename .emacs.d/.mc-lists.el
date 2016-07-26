@@ -36,6 +36,7 @@
         indent-rigidly-right-to-tab-stop
         isearch-backward-regexp
         isearch-printing-char
+        mark-paragraph
         markdown-exdent-or-delete
         sgml-close-tag
         sh-assignment
