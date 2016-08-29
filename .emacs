@@ -92,6 +92,22 @@
 (setq magit-push-always-verify nil)
 
 ;; Helm stuff
+;;
+;; NOTE: Due to an issue in Emacs 24 with Helm/Tramp and DNS resolution, Emacs
+;; will sometimes take a very long time to start up. According to...
+;;
+;; https://github.com/emacs-helm/helm/issues/1000
+;;
+;; ...if we set the tramp-ssh-controlmaster-options variable to its correct
+;; value *before* starting Helm, we can eliminate the long pause for failed DNS
+;; resolution (which otherwise makes us wait for the request to time out).
+;;
+;; You can find the correct value for tramp-ssh-controlmaster-options by
+;; letting emacs start up, and then doing:
+;;
+;; C-h v tramp-ssh-controlmaster-options RET
+;;
+(setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 (helm-mode 1)
 (setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
 (setq helm-buffers-fuzzy-matching t)
