@@ -25,6 +25,7 @@
         duplicate-current-line-or-region
         electric-newline-and-maybe-indent
         eval-print-last-sexp
+        expand-abbrev
         forward-sentence
         forward-sexp
         helm-ag--mark-line-deleted
