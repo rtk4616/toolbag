@@ -557,6 +557,7 @@
 (define-key global-keys-minor-mode-map (kbd "<M-up>") 'shrink-window)
 (define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
 (define-key global-keys-minor-mode-map (kbd "C-M-d") 'duplicate-current-line-or-region)
+(define-key global-keys-minor-mode-map (kbd "C-x C-M-n") (lambda() (interactive) (mc/mark-all-in-region-regexp (point-min) (point-max))))
 (define-key global-keys-minor-mode-map (kbd "C-M-f") 'helm-projectile-find-file)
 (define-key global-keys-minor-mode-map (kbd "C-M-k") 'kill-whole-line)
 (define-key global-keys-minor-mode-map (kbd "C-M-n") 'mc/mark-next-like-this)
