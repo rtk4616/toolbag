@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PROJECTDIR="$HOME/sublime_projects"
+
+echo "About to open all .sublime-project files in $PROJECTDIR"
+read -p "Press enter to continue..."
+
+for i in $PROJECTDIR/*.sublime-project; do
+    subl "$i"
+    sleep 3
+done
