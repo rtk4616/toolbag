@@ -4,11 +4,7 @@
   (completing-read "Connection string: "
                    (with-temp-buffer
                      (if (file-exists-p "~/.lady") (insert-file-contents "~/.lady"))
-                     (split-string (buffer-string) "[$\n]" t))
-                   nil
-                   nil
-                   (when (file-exists-p "~/.lady_last") (with-temp-buffer (insert-file-contents "~/.lady_last") (buffer-string)))
-                   ))
+                     (split-string (buffer-string) "[$\n]" t))))
 
 (defun lady/connection-already-saved (connection-string)
   (if (member connection-string
@@ -57,7 +53,5 @@
          (lady/connection-already-saved connection-string)
          )
         (ignore)
-      (append-to-file (concat (string-trim connection-string) "\n") nil "~/.lady"))
-    ;; Save as the last-used connection string
-    (write-region connection-string nil "~/.lady_last")
+      (append-to-file (concat "\n" (string-trim connection-string)) nil "~/.lady"))
     (find-file full-tramp-string)))
