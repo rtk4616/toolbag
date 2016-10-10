@@ -195,6 +195,7 @@
 ;;;; My helper functions
 ;;;; ---------------------------------------------------------------------------
 
+(load "~/.emacs.d/mike-stuff/lady.el")
 (load "~/.emacs.d/mike-stuff/mike-functions.el")
 
 
@@ -207,7 +208,6 @@
 (global-set-key "\C-xl" 'helm-occur)
 (global-set-key "\C-xn" 'flycheck-next-error)
 (global-set-key "\C-xp" 'flycheck-previous-error)
-(global-set-key "\C-xt" (lambda() (interactive) (MikeTrampFindFile t)))
 (global-set-key "\C-y" 'clipboard-yank)
 (global-set-key "\M-(" 'MikeDeIndent)
 (global-set-key "\M-)" 'MikeIndent)
@@ -542,8 +542,9 @@
 (define-key global-keys-minor-mode-map "\C-x\C-n" (lambda() (interactive) (ffap (ffap-file-at-point))))
 (define-key global-keys-minor-mode-map "\C-x\C-p" 'previous-buffer)
 (define-key global-keys-minor-mode-map "\C-x\C-r" 'helm-resume)
-(define-key global-keys-minor-mode-map "\C-x\C-t" 'MikeTrampFindFile)
+(define-key global-keys-minor-mode-map "\C-x\C-t" 'lady/tramp-connect)
 (define-key global-keys-minor-mode-map "\C-x\M-l" 'helm-do-ag-this-file)
+(define-key global-keys-minor-mode-map "\C-xt" 'lady/tramp-connect)
 (define-key global-keys-minor-mode-map "\C-xvb" 'magit-blame)
 (define-key global-keys-minor-mode-map "\C-xvf" (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
 (define-key global-keys-minor-mode-map "\C-xvh" 'magit-log-buffer-file)
@@ -557,22 +558,22 @@
 (define-key global-keys-minor-mode-map (kbd "<M-up>") 'shrink-window)
 (define-key global-keys-minor-mode-map (kbd "<return>") (kbd "C-m"))
 (define-key global-keys-minor-mode-map (kbd "C-M-d") 'duplicate-current-line-or-region)
-(define-key global-keys-minor-mode-map (kbd "C-x C-M-n") (lambda() (interactive) (mc/mark-all-in-region-regexp (point-min) (point-max))))
 (define-key global-keys-minor-mode-map (kbd "C-M-f") 'helm-projectile-find-file)
 (define-key global-keys-minor-mode-map (kbd "C-M-k") 'kill-whole-line)
 (define-key global-keys-minor-mode-map (kbd "C-M-n") 'mc/mark-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-p") 'mc/unmark-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-s") 'mc/skip-to-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-t") 'helm-projectile-switch-project)
+(define-key global-keys-minor-mode-map (kbd "C-x C-M-n") (lambda() (interactive) (mc/mark-all-in-region-regexp (point-min) (point-max))))
 (define-key global-keys-minor-mode-map (kbd "C-x C-b") (lambda() (interactive) (electric-buffer-list t)))
 (define-key global-keys-minor-mode-map (kbd "C-x C-h") 'helm-command-prefix)
 (define-key global-keys-minor-mode-map (kbd "C-x M-b") (lambda() (interactive) (electric-buffer-list nil)))
 (define-key global-keys-minor-mode-map (kbd "C-x M-f") 'helm-do-ag)
-(define-key global-keys-minor-mode-map (kbd "M-{") 'backward-paragraph)
-(define-key global-keys-minor-mode-map (kbd "M-}") 'forward-paragraph)
 (define-key global-keys-minor-mode-map (kbd "M-*") 'mike-next-tag)
 (define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key global-keys-minor-mode-map (kbd "M-.") 'helm-etags-select)
+(define-key global-keys-minor-mode-map (kbd "M-{") 'backward-paragraph)
+(define-key global-keys-minor-mode-map (kbd "M-}") 'forward-paragraph)
 
 ;; Next we create a minor mode with our keymap.
 (define-minor-mode global-keys-minor-mode
