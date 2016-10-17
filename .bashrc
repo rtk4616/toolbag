@@ -17,7 +17,15 @@ export PATH=$PATH:$GOPATH/bin
 eval "$(rbenv init -)"
 
 # Stuff needed for fssh function.
-complete -F _known_hosts fssh
+#
+# On OSX you will need to do the following:
+#
+# brew install bash-completion
+# brew tap homebrew/completions
+complete -F _ssh fssh
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 export PATH=~/toolbag/scripts:$PATH
 
 # Misc.
