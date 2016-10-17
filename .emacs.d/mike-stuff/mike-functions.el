@@ -3,6 +3,15 @@
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
 
+(defun mike/mark-all-in-region (beg end)
+  (interactive "r")
+  (if (use-region-p)
+      (mc/mark-all-in-region-regexp beg end)
+    (mc/mark-all-in-region-regexp (point-min) (point-max))
+    )
+  )
+
+
 (defun mike/get-pwd-as-string ()
   (nth 1 (split-string (pwd)))
   )

@@ -564,7 +564,7 @@
 (define-key global-keys-minor-mode-map (kbd "C-M-p") 'mc/unmark-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-s") 'mc/skip-to-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-t") 'helm-projectile-switch-project)
-(define-key global-keys-minor-mode-map (kbd "C-x C-M-n") (lambda() (interactive) (mc/mark-all-in-region-regexp (point-min) (point-max))))
+(define-key global-keys-minor-mode-map (kbd "C-M-x C-M-n") 'mike/mark-all-in-region)
 (define-key global-keys-minor-mode-map (kbd "C-x C-b") (lambda() (interactive) (electric-buffer-list t)))
 (define-key global-keys-minor-mode-map (kbd "C-x C-h") 'helm-command-prefix)
 (define-key global-keys-minor-mode-map (kbd "C-x M-b") (lambda() (interactive) (electric-buffer-list nil)))
