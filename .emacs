@@ -586,22 +586,3 @@
 (defconst global-minor-mode-alist (list (cons 'global-keys-minor-mode
                                               global-keys-minor-mode-map)))
 (setf emulation-mode-map-alists '(global-minor-mode-alist))
-
-;; ;; Here we can make an exception for the minibuffer.
-;; (defun my-minibuffer-setup-hook ()
-;;   (global-keys-minor-mode 0))
-;; (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (yasnippet yaml-mode textile-mode syslog-mode stekene-theme php-mode noctilux-theme nginx-mode multiple-cursors multi-web-mode monokai-theme markdown-mode+ magit-gitflow js2-mode helm-projectile helm-ag groovy-mode grizzl flycheck expand-region exec-path-from-shell dockerfile-mode crontab-mode company-ycmd company-go coffee-mode autopair))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
