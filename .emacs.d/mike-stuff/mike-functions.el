@@ -48,7 +48,7 @@
      :name "rmacs"
      :buffer "*rmacs*"
      :family 'ipv4
-     :host "localhost"
+     :host "127.0.0.1"
      :service rmacs-port
      :sentinel 'rmacs/sentinel
      :filter 'rmacs/process-message
