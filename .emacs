@@ -291,7 +291,6 @@
 (setq frame-title-format "%b")
 (setq indent-line-function 'insert-tab)
 (setq inhibit-startup-message t)
-(setq initial-buffer-choice "~/.scratch.md")
 (setq initial-scratch-message nil)
 (setq ispell-list-command "list")
 (setq ispell-program-name "aspell")
