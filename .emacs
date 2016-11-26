@@ -88,6 +88,7 @@
 (setq desktop-restore-forces-onscreen nil)
 
 ;; Magit
+(setq magit-cherry-pick-arguments (quote ("-x")))
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setq magit-push-always-verify nil)
 
