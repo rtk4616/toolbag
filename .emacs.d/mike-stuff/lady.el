@@ -16,8 +16,7 @@
     nil))
 
 (defun lady/string-between (searchString startRegex endRegex)
-  (car (split-string (car (last (split-string searchString startRegex))) endRegex))
-  )
+  (car (split-string (car (last (split-string searchString startRegex))) endRegex)))
 
 (defun lady/get-rest-of-string (arg)
   (if (string-match " " arg)
@@ -77,9 +76,7 @@
 
 (defun lady/tramp-connect ()
   (interactive)
-  (let (
-        (connectionString (lady/read-connection-string))
-        )
+  (let ((connectionString (lady/read-connection-string)))
     ;; Save the connection string if we haven't done so previously.
     (if (and
          (file-exists-p "~/.lady")
@@ -87,5 +84,4 @@
         (ignore)
       (append-to-file (concat "\n" (string-trim connectionString)) nil "~/.lady"))
     (setq tramp-default-proxies-alist nil)
-    (lady/do-tramp-call connectionString)
-    ))
+    (lady/do-tramp-call connectionString)))
