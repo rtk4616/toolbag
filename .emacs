@@ -550,6 +550,7 @@
 (define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
 (define-key global-keys-minor-mode-map "\M-;" 'toggle-comment-region-or-line)
 (define-key global-keys-minor-mode-map "\M-h" 'er/expand-region)
+(define-key global-keys-minor-mode-map "\M-_" (lambda() (interactive) (insert "—")))
 (define-key global-keys-minor-mode-map "\M-o" 'other-window)
 (define-key global-keys-minor-mode-map (kbd "<M-down>") 'enlarge-window)
 (define-key global-keys-minor-mode-map (kbd "<M-left>") 'shrink-window-horizontally)
