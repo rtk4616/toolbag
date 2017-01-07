@@ -194,6 +194,17 @@
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
 
+(defun preview-markdown ()
+  "Send current buffer text to Grip (Python package) for rendering"
+  (interactive)
+  (shell-command-on-region (point-min)
+                           (point-max)
+                           "grip - 127.0.0.1:3000 -b --user-content --wide"
+                           nil
+                           nil
+                           nil))
+
+
 (defun range (start-number)
   (interactive "nStarting at: ")
   (mc/insert-numbers start-number)
