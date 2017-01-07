@@ -548,6 +548,7 @@
 (define-key global-keys-minor-mode-map "\C-xvh" 'magit-log-buffer-file)
 (define-key global-keys-minor-mode-map "\C-xvl" 'magit-log-current)
 (define-key global-keys-minor-mode-map "\C-xvs" 'magit-status)
+(define-key global-keys-minor-mode-map "\M-;" 'toggle-comment-region-or-line)
 (define-key global-keys-minor-mode-map "\M-h" 'er/expand-region)
 (define-key global-keys-minor-mode-map "\M-o" 'other-window)
 (define-key global-keys-minor-mode-map (kbd "<M-down>") 'enlarge-window)

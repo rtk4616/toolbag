@@ -186,6 +186,14 @@
         (or (bolp) (newline)))))
 
 
+(defun toggle-comment-region-or-line ()
+  "Toggle commenting for the current line or region"
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+    (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+
+
 (defun range (start-number)
   (interactive "nStarting at: ")
   (mc/insert-numbers start-number)
