@@ -42,6 +42,7 @@
         sgml-close-tag
         sh-assignment
         split-line
+        toggle-comment-region-or-line
         xterm-paste
         yaml-electric-backspace
         yaml-electric-bar-and-angle
