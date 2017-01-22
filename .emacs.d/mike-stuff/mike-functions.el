@@ -58,7 +58,7 @@
 
 (defun rmacs/stop-server nil
   (interactive)
-  (while  rmacs-clients
+  (while rmacs-clients
     (delete-process (car (car rmacs-clients)))
     (setq rmacs-clients (cdr rmacs-clients)))
   (delete-process "rmacs"))
@@ -130,6 +130,7 @@
 
 (defun rmacs/add-new-client (process header-string)
   "Add a new incoming process to the list of rmacs clients and create file buffer"
+  ;; (rmacs/log-message (concat "rmacs/add-new-client with header-string: " header-string))
   (setq rmacs-clients (cons (cons process header-string) rmacs-clients))
   ;; (get-buffer-create (rmacs/get-buffer-name header-string))
   ;; (setq buffer-read-only nil)
@@ -146,31 +147,29 @@
   )
 
 
-(defun rmacs/process-message (process string)
+(defun rmacs/process-message (process message-string)
   (let (
         ;; See if the process is in our list of clients.
         (client (assoc process rmacs-clients))
-        ;; By default, we assume that the entire string is file content.
-        (content string)
         )
-    (unless client
+    (if client
+        (rmacs/log-message (concat "Content:\n" message-string "\n"))
       ;; New connection. Add it to our list of clients.
       ;; A client is an object of the form (process . header-string)
-      (rmacs/add-new-client process string)
+      (rmacs/add-new-client process message-string)
       ;; Try again to get the client from the list.
       (setq client (assoc process rmacs-clients))
       ;; New connections include the rmate headers. We need to strip this from
       ;; the string to get the file content.
-      (setq content (rmacs/get-rmate-headers string)))
-    ;; Display a message with the content.
-    (rmacs/log-message content)
+      (rmacs/log-message (concat "Headers:\n" (rmacs/get-rmate-headers message-string) "\n"))
+      (rmacs/log-message (concat "Content:\n" (rmacs/strip-rmate-headers message-string) "\n")))
     ))
 
 
 (defun rmacs/sentinel (proc msg)
   (rmacs/log-message (concat "Message from rmacs-sentinel: " msg))
-  ;; (rmacs/log-message "sending connection success")
-  ;; (process-send-string proc "connection success\n")
+  (rmacs/log-message "sending connection success")
+  (process-send-string proc "connection success\n")
   (when (string= msg "connection broken by remote peer\n")
     (setq rmacs-clients (assq-delete-all proc rmacs-clients))
     (rmacs/log-message (format "client %s has quit" proc))))

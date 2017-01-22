@@ -92,14 +92,15 @@ def connect_to_tm():
         textmate_sock.connect((settings.host, settings.port))
         textmate_sock.setblocking(True)
         textmate = textmate_sock.makefile('rwb')
-    except socket.error:
-        sys.stderr.write("Error connecting to TextMate!\n")
+    except socket.error as e:
+        sys.stderr.write("Error connecting to editor!\n")
+        sys.stderr.write("Error creating socket: {}\n".format(e))
         exit(1)
 
     server_info = dec(textmate.readline())
 
     if server_info.strip() == "":
-        sys.stderr.write("Couldn't connect to TextMate!\n")
+        sys.stderr.write("Couldn't connect to editor!\n")
         exit(1)
 
     log('Connect: %s' % server_info)
@@ -120,7 +121,7 @@ def handle_cmds(textmate, host, port, cmds):
 
 class Settings:
     def __init__(self):
-        self.host    = 'localhost'
+        self.host    = '127.0.0.1'
         self.port    = 52698
         self.wait    = False
         self.force   = False
@@ -140,17 +141,17 @@ class Settings:
         self.parse_cli_options()
 
         if self.host == 'auto' and os.environ.get('SSH_CONNECTION') != None:
-            self.host = os.getenv('SSH_CONNECTION', 'localhost').split(' ')[0]
+            self.host = os.getenv('SSH_CONNECTION', '127.0.0.1').split(' ')[0]
 
     def usage(self):
         print("usage: %s [OPTION]... FILE...\n\n"
               "      --host HOST  Connect to HOST. Use 'auto' to detect the host from\n"
               "                   SSH. Defaults to %s\n"
               "  -p, --port PORT  Port number to use for connection. Defaults to %d\n"
-              "  -w, --[no-]wait  Wait for file to be closed by TextMate\n"
+              "  -w, --[no-]wait  Wait for file to be closed by editor\n"
               "  -l, --line LINE  Place carat on line LINE after loading the file.\n"
-              "                   TextMate selection strings can be used\n"
-              "  -m, --name NAME  The display name shown in TextMate\n"
+              "                   editor selection strings can be used\n"
+              "  -m, --name NAME  The display name shown in editor\n"
               "  -t, --type TYPE  Treat file as having TYPE\n"
               "  -f, --force      Open even if the file is not wratable\n"
               "  -v, --verbose    Verbose logging messages\n"
