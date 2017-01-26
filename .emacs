@@ -571,7 +571,7 @@
 (define-key global-keys-minor-mode-map (kbd "C-x C-h") 'helm-command-prefix)
 (define-key global-keys-minor-mode-map (kbd "C-x M-b") (lambda() (interactive) (electric-buffer-list nil)))
 (define-key global-keys-minor-mode-map (kbd "C-x M-f") 'helm-do-ag)
-(define-key global-keys-minor-mode-map (kbd "C-x M-p") 'preview-markdown)
+(define-key global-keys-minor-mode-map (kbd "C-c C-p") 'preview-markdown)
 (define-key global-keys-minor-mode-map (kbd "M-*") 'mike-next-tag)
 (define-key global-keys-minor-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key global-keys-minor-mode-map (kbd "M-.") 'helm-etags-select)
