@@ -410,6 +410,7 @@
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
+                          (setq gofmt-command "goimports")
                           (global-set-key (kbd "M-.") 'godef-jump)
                           (add-hook 'before-save-hook 'gofmt-before-save)))
 
