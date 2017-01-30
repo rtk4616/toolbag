@@ -567,6 +567,7 @@
 (define-key global-keys-minor-mode-map (kbd "C-M-s") 'mc/skip-to-next-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-M-t") 'helm-projectile-switch-project)
 (define-key global-keys-minor-mode-map (kbd "C-M-x C-M-n") 'mike/mark-all-in-region)
+(define-key global-keys-minor-mode-map (kbd "C-M-x C-M-w") (lambda() (interactive) (kill-new (buffer-file-name))))
 (define-key global-keys-minor-mode-map (kbd "C-x C-b") (lambda() (interactive) (electric-buffer-list t)))
 (define-key global-keys-minor-mode-map (kbd "C-x C-g") 'mc/mark-all-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-x C-h") 'helm-command-prefix)
