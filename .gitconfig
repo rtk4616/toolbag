@@ -29,15 +29,11 @@
     d = diff
     ds = diff --staged
     dt = difftool
-    ec = !EDITOR='emacs' git commit
     ed = difftool --tool=ediff
     eds = difftool --tool=ediff --staged
-    la = log -p
     latest-tag = describe --abbrev=0 --tags
     lo = log --pretty='%Cred%h%Creset | %Cgreen%ar by %an%Creset - %Cblue%s'
-    ls = log --stat
     st = status
-    vc = !EDITOR='vim' git commit
     vd = difftool --tool=vimdiff
     vds = difftool --tool=vimdiff --staged
 
