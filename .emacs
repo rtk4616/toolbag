@@ -68,7 +68,7 @@
 
 ;; rsync stuff
 (defvar rsync-project-mapping '(
-                                ("/Users/mike/work/cloudistics/" "anvil:/home/mike/dev/cloudistics/")
+                                ("local" "remote")
                                 ))
 
 ;; Robe-mode stuff
@@ -110,6 +110,7 @@
 ;;
 (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 (helm-mode 1)
+
 (setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-ff-file-name-history-use-recentf t)
@@ -118,6 +119,8 @@
 (setq helm-quick-update t)
 (setq helm-scroll-amount 8)
 (setq helm-split-window-in-side-p t)
+(setq helm-truncate-lines t)
+
 (add-to-list 'helm-completing-read-handlers-alist '(dired-do-copy . nil))
 (add-to-list 'helm-completing-read-handlers-alist '(dired-do-rename . nil))
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
