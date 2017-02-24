@@ -321,6 +321,11 @@
 ;;;; Defadvice goes here
 ;;;; ---------------------------------------------------------------------------
 
+(defadvice text-scale-increase (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
+
 ;; Add a little padding around the line numbers. Dynamically determine
 ;; character width for the line numbers column, and add a space for padding as
 ;; well.
