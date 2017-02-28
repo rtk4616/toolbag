@@ -83,5 +83,5 @@
          (lady/connection-already-saved connectionString))
         (ignore)
       (append-to-file (concat "\n" (string-trim connectionString)) nil "~/.lady"))
-    (setq tramp-default-proxies-alist nil)
+    ;; (setq tramp-default-proxies-alist nil)
     (lady/do-tramp-call connectionString)))
