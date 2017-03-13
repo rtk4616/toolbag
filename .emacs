@@ -264,7 +264,7 @@
 ;;;; Emacs options
 ;;;; ---------------------------------------------------------------------------
 
-(load-theme 'noctilux t)
+(load-theme 'dracula t)
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -361,46 +361,9 @@
           (lambda ()
             (global-flycheck-mode)
             (global-company-mode)
-            (let (
-                  (the-tags-file (concat emacs-startup-directory "TAGS"))
-                  )
+            (let ((the-tags-file (concat emacs-startup-directory "TAGS")))
               (if (file-exists-p the-tags-file)
-                  (visit-tags-table the-tags-file)
-                )
-              )
-            ))
-(add-hook 'window-setup-hook
-          (lambda ()
-            (if (display-graphic-p (selected-frame))
-                (progn
-                  ;; Colors for when this is a GUI
-                  (set-face-background 'default "#282C34" (selected-frame))
-                  (set-face-background 'linum "#282C34" (selected-frame))
-                  (set-face-attribute 'mode-line
-                                      nil
-                                      :foreground "gray15"
-                                      :background "SkyBlue2"
-                                      :box '(:line-width 1 :style released-button))
-                  (set-face-attribute 'mode-line-inactive
-                                      nil
-                                      :foreground "gray30"
-                                      :background "gray13"
-                                      :box '(:line-width 1 :style released-button))
-                  )
-              ;; Colors for when this is a terminal
-              (set-face-background 'default "unspecified-bg" (selected-frame))
-              (set-face-background 'linum "unspecified-bg" (selected-frame))
-              (set-face-attribute 'mode-line
-                                  nil
-                                  :foreground "color-234"
-                                  :background "color-75"
-                                  :box '(:line-width 1 :style released-button))
-              (set-face-attribute 'mode-line-inactive
-                                  nil
-                                  :foreground "gray30"
-                                  :background "gray15"
-                                  :box '(:line-width 1 :style released-button))
-              )))
+                  (visit-tags-table the-tags-file)))))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
