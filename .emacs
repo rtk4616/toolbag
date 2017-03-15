@@ -306,6 +306,7 @@
 (setq ruby-indent-level 2)
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
+(setq shift-select-mode nil)
 (setq tramp-default-method "ssh")
 (setq tramp-shell-prompt-pattern "\\(?:^\\|\\)[^]#$%>\n]*#?[]#$%>].* *\\(\\[[0-9;]*[a-zA-Z] *\\)*")
 (setq vc-handled-backends nil)
