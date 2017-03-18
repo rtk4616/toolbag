@@ -215,7 +215,8 @@ nnoremap <leader>v :Ve<cr>
 nnoremap <leader>w :tabe \| mks! ~/.session \| :bd<cr> \| :echom "Session written to ~/.session"<cr>
 nnoremap <leader>y "+Y
 nnoremap <space> zO
-nnoremap <enter> zM
+nnoremap - zM
+nnoremap + zR
 nnoremap ZA :qa!<cr>
 
 vnoremap <C-j> 6j
