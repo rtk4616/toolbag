@@ -139,8 +139,8 @@
 (setq projectile-mode-line "")
 (projectile-global-mode)
 
-
 ;; company-mode
+(setq company-template-nav-map nil)
 (setq company-backends '(company-ycmd
                          company-robe
                          ;; company-sample-backend
