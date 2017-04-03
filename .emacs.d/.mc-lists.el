@@ -28,6 +28,7 @@
         expand-abbrev
         forward-sentence
         forward-sexp
+        git-rebase-squash
         helm-ag--mark-line-deleted
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
