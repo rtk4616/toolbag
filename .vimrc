@@ -274,6 +274,7 @@ autocmd BufRead,BufNewFile mod_cluster.conf* set ft=apache
 autocmd BufRead,BufNewFile /etc/nginx/*.conf set ft=nginx
 autocmd BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+autocmd BufRead,BufNewFile Jenkinsfile set ft=groovy
 autocmd BufRead,BufNewFile supervisord.conf set ft=dosini
 autocmd BufWritePre * :%s/\s\+$//e                             " Delete all trailing whitespace on write.
 autocmd FileType * setlocal formatoptions-=cro
