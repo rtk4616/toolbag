@@ -114,7 +114,7 @@ autocmd Syntax * syntax sync minlines=1000
 set autoindent                                            " Indentation same as previous line when inserting a new line.
 set bs=2                                                  " Set backspacing mode 2. This allows backspacing with no restrictions.
 set completeopt-=preview                                  " Don't show the sassy preview window during autocomplete.
-set cursorline                                            " Enable highlighting of the current line.
+set nocursorline                                            " Enable highlighting of the current line.
 set expandtab                                             " Use only spaces for tabs.
 set foldlevel=99                                          " Set the level we automatically fold at to 99 (essentially disabling it).
 set foldmethod=indent                                     " Set folding options.
