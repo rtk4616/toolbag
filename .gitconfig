@@ -2,22 +2,13 @@
     name = Mike Wilkerson
     email = wilkystyle@gmail.com
 
-[diff]
-    tool = vimdiff
-    # tool = ediff
+[merge]
+    conflictstyle = diff3
 
-[difftool "ediff"]
-    cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-
-[mergetool]
-    # Setting "prompt" to true because I like to do merges manually. If I
-    # accidentally try to merge with a tool, seeing this prompt will alert me,
-    # and I'll be able to ^C out, and do it manually.
-    prompt = true
-
-[difftool]
-    # Difftool, on the other hand is a nice thing to have. Don't prompt.
-    prompt = false
+[mergetool "sublimerge"]
+    cmd = subl -n --wait "$REMOTE" "$BASE" "$LOCAL" "$MERGED" --command "sublimerge_diff_views"
+    keepBackup = false
+    trustExitCode = false
 
 [color]
     diff = auto
