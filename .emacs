@@ -307,8 +307,6 @@
 (setq scroll-conservatively 10000)
 (setq scroll-step 1)
 (setq shift-select-mode nil)
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
 (setq tramp-default-method "ssh")
 (setq tramp-shell-prompt-pattern "\\(?:^\\|\\)[^]#$%>\n]*#?[]#$%>].* *\\(\\[[0-9;]*[a-zA-Z] *\\)*")
 (setq vc-handled-backends nil)
