@@ -90,6 +90,7 @@
 ;; Magit
 (setq magit-cherry-pick-arguments (quote ("-x")))
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setq magit-diff-refine-hunk t)
 (setq magit-push-always-verify nil)
 
 ;; Helm stuff
