@@ -362,7 +362,7 @@
 ;; Hook to set split width threshold automatically
 (add-hook 'window-size-change-functions
           (lambda (the-frame)
-            (let ((new-width-threshold (+ 1 (/ (frame-width) 2))))
+            (let ((new-width-threshold (+ 2 (/ (frame-width) 2))))
               (setq split-width-threshold (if (> new-width-threshold 90) new-width-threshold nil)))))
 
 ;; Emacs init hooks
