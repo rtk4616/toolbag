@@ -377,6 +377,16 @@
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; conf-mode hooks
+(add-hook 'conf-mode-hook
+          (lambda ()
+            (require 'html-mode-expansions)
+            (make-local-variable 'er/try-expand-list)
+            (add-to-list 'er/try-expand-list 'er/mark-html-attribute)
+            (add-to-list 'er/try-expand-list 'er/mark-inner-tag)
+            (add-to-list 'er/try-expand-list 'er/mark-outer-tag)
+            ))
+
 ;; Overriding company-mode binding
 (add-hook 'company-mode-hook
           (lambda ()
