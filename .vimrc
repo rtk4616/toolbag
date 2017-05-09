@@ -95,7 +95,7 @@ colo onedark
 if has("unix") && has("gui_running")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
-        set guifont=menlo:h12
+        set guifont=Roboto Mono:h12
     endif
     colo onedark
     set guioptions-=M
