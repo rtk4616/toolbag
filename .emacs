@@ -47,6 +47,26 @@
 ;;;; Mode-specific stuff
 ;;;; ---------------------------------------------------------------------------
 
+;; expand-region stuff
+(require 'expand-region)
+(require 'html-mode-expansions)
+(setq er/try-expand-list '(er/mark-comment
+                           er/mark-defun
+                           er/mark-email
+                           er/mark-html-attribute
+                           er/mark-inner-tag
+                           er/mark-inside-pairs
+                           er/mark-inside-quotes
+                           er/mark-method-call
+                           er/mark-next-accessor
+                           er/mark-outer-tag
+                           er/mark-outside-pairs
+                           er/mark-outside-quotes
+                           er/mark-symbol
+                           er/mark-symbol-with-prefix
+                           er/mark-url
+                           er/mark-word))
+
 ;; ido stuff
 (ido-mode t)
 (setq ido-enable-last-directory-history nil)
@@ -376,16 +396,6 @@
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; conf-mode hooks
-(add-hook 'conf-mode-hook
-          (lambda ()
-            (require 'html-mode-expansions)
-            (make-local-variable 'er/try-expand-list)
-            (add-to-list 'er/try-expand-list 'er/mark-html-attribute)
-            (add-to-list 'er/try-expand-list 'er/mark-inner-tag)
-            (add-to-list 'er/try-expand-list 'er/mark-outer-tag)
-            ))
 
 ;; Overriding company-mode binding
 (add-hook 'company-mode-hook
