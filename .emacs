@@ -322,6 +322,7 @@
 (setq ispell-list-command "list")
 (setq ispell-program-name "aspell")
 (setq make-backup-files nil)
+(setq markdown-gfm-use-electric-backquote nil)
 (setq python-indent 4)
 (setq ring-bell-function 'ignore)
 (setq ruby-indent-level 2)
