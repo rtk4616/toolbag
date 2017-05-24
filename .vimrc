@@ -168,10 +168,12 @@ nnoremap <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <C-l> <Plug>(expand_region_expand)
 map <C-h> <Plug>(expand_region_shrink)
 
-nnoremap <up> :resize -1<CR>
-nnoremap <down> :resize +1<CR>
-nnoremap <left> :vertical resize -1<CR>
-nnoremap <right> :vertical resize +1<CR>
+" nnoremap <up> :resize -1<CR>
+" nnoremap <down> :resize +1<CR>
+" nnoremap <left> :vertical resize -1<CR>
+" nnoremap <right> :vertical resize +1<CR>
+nnoremap ]l :lne<cr>
+nnoremap [l :lp<cr>
 nnoremap <C-j> 6j
 nnoremap <C-k> 6k
 nnoremap <C-o> :CtrlPTag<cr>
