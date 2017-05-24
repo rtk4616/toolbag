@@ -30,6 +30,7 @@ Plug 'hashivim/vim-terraform'
 
 if (v:version > 703) || (v:version == 703 && has('patch584'))
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+    let g:ycm_python_binary_path = 'python'
 endif
 
 call plug#end()
