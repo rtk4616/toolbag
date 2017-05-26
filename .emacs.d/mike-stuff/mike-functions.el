@@ -3,6 +3,11 @@
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
 
+(defun mike/isearch-set-region ()
+  (when transient-mark-mode
+    (push-mark isearch-other-end t 'activate)))
+
+
 (defun mike/mark-all-in-region (beg end)
   (interactive "r")
   (if (use-region-p)

@@ -411,6 +411,9 @@
             (define-key company-active-map (kbd "TAB") #'company-complete-selection)
             ))
 
+;; isearch-mode-end-hook - set the region from last search highlight
+(add-hook 'isearch-mode-end-hook 'mike/isearch-set-region)
+
 ;; go-mode hooks
 (add-hook 'go-mode-hook (lambda ()
                           (setq gofmt-command "goimports")
