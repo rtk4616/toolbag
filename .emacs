@@ -580,7 +580,7 @@
 (define-key global-keys-minor-mode-map (kbd "C-x C-b") (lambda() (interactive) (helm-buffers-list)))
 (define-key global-keys-minor-mode-map (kbd "C-x C-g") 'mc/mark-all-like-this)
 (define-key global-keys-minor-mode-map (kbd "C-x C-h") 'helm-command-prefix)
-(define-key global-keys-minor-mode-map (kbd "C-x M-b") (lambda() (interactive) (helm-buffers-list)))
+(define-key global-keys-minor-mode-map (kbd "C-x M-b") 'electric-buffer-list)
 (define-key global-keys-minor-mode-map (kbd "C-x M-f") 'helm-do-ag)
 (define-key global-keys-minor-mode-map (kbd "C-x b") (lambda() (interactive) (helm-buffers-list)))
 (define-key global-keys-minor-mode-map (kbd "M-*") 'mike-next-tag)
