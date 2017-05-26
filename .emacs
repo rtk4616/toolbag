@@ -573,6 +573,7 @@
 (define-key global-keys-minor-mode-map (kbd "C-M-t") 'helm-projectile-switch-project)
 (define-key global-keys-minor-mode-map (kbd "C-M-x C-M-n") 'mike/mark-all-in-region)
 (define-key global-keys-minor-mode-map (kbd "C-M-x C-M-w") (lambda() (interactive) (kill-new (buffer-file-name))))
+(define-key global-keys-minor-mode-map (kbd "C-M-x w") (lambda() (interactive) (kill-new (car (last (split-string (buffer-file-name) "/"))))))
 (define-key global-keys-minor-mode-map (kbd "C-c C-b") 'compile)
 (define-key global-keys-minor-mode-map (kbd "C-c C-e") 'helm-ag-edit)
 (define-key global-keys-minor-mode-map (kbd "C-c C-p") 'preview-markdown)
