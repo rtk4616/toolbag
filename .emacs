@@ -415,10 +415,11 @@
 (add-hook 'isearch-mode-end-hook 'mike/isearch-set-region)
 
 ;; go-mode hooks
-(add-hook 'go-mode-hook (lambda ()
-                          (setq gofmt-command "goimports")
-                          (global-set-key (kbd "M-.") 'godef-jump)
-                          (add-hook 'before-save-hook 'gofmt-before-save)))
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq gofmt-command "goimports")
+            (global-set-key (kbd "M-.") 'godef-jump)
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 ;; groovy-mode hooks
 (add-hook 'groovy-mode-hook
@@ -427,9 +428,10 @@
                                  'autopair-python-triple-quote-action))))
 
 ;; js-mode hooks
-(add-hook 'js-mode-hook (lambda ()
-                          (local-set-key (kbd "M-.") 'helm-etags-select)
-                          ))
+(add-hook 'js-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-.") 'helm-etags-select)
+            ))
 
 ;; yaml-mode hooks
 (add-hook 'yaml-mode-hook
