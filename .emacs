@@ -398,6 +398,10 @@
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; cider-mode hooks
+(add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+
 ;; Overriding company-mode binding
 (add-hook 'company-mode-hook
           (lambda ()
