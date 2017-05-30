@@ -5,7 +5,8 @@
 
 (defun mike/isearch-set-region ()
   (when transient-mark-mode
-    (push-mark isearch-other-end t 'activate)))
+    (unless (or isearch-mode-end-hook-quit (region-active-p))
+      (push-mark isearch-other-end t 'activate))))
 
 
 (defun mike/mark-all-in-region (beg end)
