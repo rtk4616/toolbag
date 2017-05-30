@@ -33,6 +33,7 @@
         helm-confirm-and-exit-minibuffer
         indent-for-tab-command
         indent-new-comment-line
+        indent-region
         indent-rigidly
         indent-rigidly-left-to-tab-stop
         indent-rigidly-right-to-tab-stop
