@@ -164,6 +164,7 @@
 (setq company-template-nav-map nil)
 (setq company-backends '(company-ycmd
                          company-robe
+                         company-capf
                          ;; company-sample-backend
                          ;; company-bbdb
                          ;; company-nxml
