@@ -132,7 +132,7 @@
 (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 (helm-mode 1)
 
-(setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case")
+(setq helm-ag-base-command "ag --width 80 --nocolor --nogroup --hidden -U --smart-case")
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-ff-file-name-history-use-recentf t)
 (setq helm-ff-search-library-in-sexp t)
