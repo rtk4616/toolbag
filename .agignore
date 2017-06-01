@@ -1,6 +1,8 @@
 *.elc
 *.gif
 *.jpg
+*.min.css
+*.min.js
 *.png
 *.pyc
 
