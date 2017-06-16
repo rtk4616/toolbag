@@ -161,6 +161,7 @@
 (projectile-global-mode)
 
 ;; company-mode
+(with-eval-after-load 'company (company-flx-mode +1))
 (setq company-template-nav-map nil)
 (setq company-backends '(company-ycmd
                          company-robe
