@@ -85,6 +85,21 @@
    (nth index (rmacs/get-lines string)))
 
 
+(defun rmacs/get-rmate-headers (string)
+  "Returns the first 7 lines of a string"
+  (let ((lines (rmacs/get-lines string)))
+    (mapconcat 'identity
+               (list
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines)
+                (pop lines))
+               "\n")))
+
+
 (defun rmacs/strip-rmate-headers (string)
   "Strip the rmate headers from a string"
   (mapconcat 'identity
@@ -119,31 +134,6 @@
              ":"))
 
 
-(defun rmacs/get-rmate-headers (string)
-  "Returns the first 7 lines of a string"
-  (let ((lines (rmacs/get-lines string)))
-    (mapconcat 'identity
-               (list
-                (pop lines)
-                (pop lines)
-                (pop lines)
-                (pop lines)
-                (pop lines)
-                (pop lines)
-                (pop lines))
-               "\n")))
-
-
-(defun rmacs/add-new-client (process header-string)
-  "Add a new incoming process to the list of rmacs clients and create file buffer"
-  ;; (rmacs/log-message (concat "rmacs/add-new-client with header-string: " header-string))
-  (setq rmacs-clients (cons (cons process header-string) rmacs-clients))
-  ;; (get-buffer-create (rmacs/get-buffer-name header-string))
-  ;; (setq buffer-read-only nil)
-  ;; (erase-buffer)
-  )
-
-
 (defun rmacs/put-content-to-buffer (content name-of-buffer)
   "Insert the content string into the specified buffer"
   (switch-to-buffer name-of-buffer)
@@ -158,17 +148,15 @@
         ;; See if the process is in our list of clients.
         (client (assoc process rmacs-clients))
         )
-    (if client
-        (rmacs/log-message (concat "Content:\n" message-string "\n"))
+    (unless client
       ;; New connection. Add it to our list of clients.
-      ;; A client is an object of the form (process . header-string)
-      (rmacs/add-new-client process message-string)
+      (setq rmacs-clients (cons (cons process (rmacs/get-rmate-headers message-string)) rmacs-clients))
       ;; Try again to get the client from the list.
-      (setq client (assoc process rmacs-clients))
-      ;; New connections include the rmate headers. We need to strip this from
-      ;; the string to get the file content.
-      (rmacs/log-message (concat "Headers:\n" (rmacs/get-rmate-headers message-string) "\n"))
-      (rmacs/log-message (concat "Content:\n" (rmacs/strip-rmate-headers message-string) "\n")))
+      (setq client (assoc process rmacs-clients)))
+    (message "(car client) is %s" (car client))
+    (message "(cdr client) is %s" (cdr client))
+    ;; (rmacs/log-message (concat "Headers:\n" (nth 1 client) "\n"))
+    ;; (rmacs/log-message (concat "Content:\n" (rmacs/strip-rmate-headers message-string) "\n"))
     ))
 
 
