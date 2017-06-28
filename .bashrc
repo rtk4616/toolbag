@@ -86,6 +86,36 @@ if ! [ -z "$PS1" ] && ! [ "$TERM" == "dumb" ]; then
     export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
+function iterm {
+    case $1 in
+    green)
+    echo -e "\033]6;1;bg;red;brightness;120\a"
+    echo -e "\033]6;1;bg;green;brightness;240\a"
+    echo -e "\033]6;1;bg;blue;brightness;80\a"
+    ;;
+    red)
+    echo -e "\033]6;1;bg;red;brightness;240\a"
+    echo -e "\033]6;1;bg;green;brightness;80\a"
+    echo -e "\033]6;1;bg;blue;brightness;80\a"
+    ;;
+    orange)
+    echo -e "\033]6;1;bg;red;brightness;240\a"
+    echo -e "\033]6;1;bg;green;brightness;150\a"
+    echo -e "\033]6;1;bg;blue;brightness;80\a"
+    ;;
+    purple)
+    echo -e "\033]6;1;bg;red;brightness;190\a"
+    echo -e "\033]6;1;bg;green;brightness;80\a"
+    echo -e "\033]6;1;bg;blue;brightness;240\a"
+    ;;
+    blue)
+    echo -e "\033]6;1;bg;red;brightness;100\a"
+    echo -e "\033]6;1;bg;green;brightness;160\a"
+    echo -e "\033]6;1;bg;blue;brightness;300\a"
+    ;;
+    esac
+ }
+
 function pull_commit_from_repo {
     USAGE_MESSAGE="\nAbout:\n
     Execute this command from within the Git repo you wish to pull the patch into.\n
