@@ -57,6 +57,7 @@
         MikeDownSomeLines
         MikeUpSomeLines
         describe-key
+        eval-expression
         helm-M-x
         isearch-forward-regexp
         shell-command
