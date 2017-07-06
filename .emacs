@@ -10,7 +10,13 @@
 ;; - Defadvice goes here
 ;; - Hippie-expand setup
 ;; - Hooks
-
+;;
+;;;; To recompile all .el files in Emacs directory
+;;
+;; C-u 0 M-x byte-recompile-directory
+;;
+;;The C-u 0 part is to make it not ask about every .el file that does not have a .elc counterpart.
+;;
 
 ;;;; ---------------------------------------------------------------------------
 ;;;; Setting variables by platform
