@@ -317,7 +317,7 @@
 (setq company-dabbrev-downcase nil)
 (setq company-dabbrev-ignore-case t)
 (setq company-etags-ignore-case t)
-(setq company-idle-delay 0)
+(setq company-idle-delay 0.2)
 (setq company-minimum-prefix-length 1)
 (setq create-lockfiles nil)
 (setq css-indent-offset 4)
