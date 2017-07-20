@@ -283,6 +283,7 @@
 
 (add-to-list 'auto-mode-alist '(".*crontab\\'" . crontab-mode))
 (add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
+(add-to-list 'auto-mode-alist '(".erb" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.git.*config\\'" . conf-mode))
 (add-to-list 'auto-mode-alist '("\\.gitignore" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
