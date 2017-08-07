@@ -254,8 +254,8 @@
 (global-set-key "\M-p" 'MikeUpSomeLines)
 (global-set-key "\M-u" 'downcase-word)
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key (kbd "C-t") 'toggle-control-lock)
-(global-set-key (kbd "M-t") 'toggle-meta-lock)
+;; (global-set-key (kbd "C-t") 'toggle-control-lock)
+;; (global-set-key (kbd "M-t") 'toggle-meta-lock)
 ;; (global-set-key "\C-\\" 'window-configuration-to-register)
 ;; (global-set-key "\M-\\" 'jump-to-register)
 
