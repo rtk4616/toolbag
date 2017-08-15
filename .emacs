@@ -140,6 +140,7 @@
 
 (setq helm-ag-base-command "ag --width 80 --nocolor --nogroup --hidden -U --smart-case")
 (setq helm-buffers-fuzzy-matching t)
+(setq helm-buffer-skip-remote-checking t)
 (setq helm-ff-file-name-history-use-recentf t)
 (setq helm-ff-search-library-in-sexp t)
 (setq helm-move-to-line-cycle-in-source t)
