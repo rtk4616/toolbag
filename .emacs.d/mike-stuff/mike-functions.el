@@ -2,6 +2,48 @@
 (defvar rmacs-port 52698)   ; The port on which rmacs will listen.
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
+;; expand-character stuff
+;; "saiodj asoidj asoidj asoid[ asiodjasoidj asdioj doiaj sdoiasdj] sdifj sdoifj "
+(defvar mike/expand-char-pairs
+  '(
+    ("\"" . "\"")
+    ("'" . "'")
+    ("`" . "`")
+    ("." . ".")
+    ("/" . "/")
+    ("[" . "]")
+    ("(" . ")")
+    ("{" . "}")
+    (" " . " ")
+    ))
+
+(defun mike/expand-to-char (char-num)
+  (interactive "cExpand to: ")
+  (let* (
+         (char (char-to-string char-num))
+         (pair (or (assoc char mike/expand-char-pairs) (rassoc char mike/expand-char-pairs)))
+         (left-char (car pair))
+         (right-char (cdr pair))
+         )
+    ;; Function logic here
+    (when (and left-char right-char)
+      (when (and (use-region-p) (= (point) (region-end)))
+        (exchange-point-and-mark)
+        (backward-char)
+        )
+      (search-backward left-char)
+      (forward-char)
+      (if (use-region-p)
+          (progn (exchange-point-and-mark)
+                 (forward-char))
+        (push-mark))
+      (search-forward right-char)
+      (backward-char)
+      (unless (use-region-p)
+        (setq mark-active t))
+      )
+    )
+  )
 
 (defun mike/isearch-set-region ()
   (when transient-mark-mode
