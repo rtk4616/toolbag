@@ -427,7 +427,7 @@
             ))
 
 ;; isearch-mode-end-hook - set the region from last search highlight
-(add-hook 'isearch-mode-end-hook 'mike/isearch-set-region)
+;; (add-hook 'isearch-mode-end-hook 'mike/isearch-set-region)
 
 ;; go-mode hooks
 (add-hook 'go-mode-hook
