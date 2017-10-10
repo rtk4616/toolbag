@@ -41,6 +41,7 @@
         isearch-printing-char
         mark-paragraph
         markdown-exdent-or-delete
+        picture-self-insert
         sgml-close-tag
         sh-assignment
         split-line
