@@ -165,7 +165,6 @@
 (require 'helm-projectile)
 (setq projectile-switch-project-action 'magit-status)
 (setq projectile-mode-line "")
-(setq projectile-enable-caching t)
 (projectile-global-mode)
 
 ;; company-mode
