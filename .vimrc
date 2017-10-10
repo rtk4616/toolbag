@@ -235,6 +235,8 @@ vnoremap <leader>y "+y
 vnoremap <space> zO
 vnoremap <enter> zM
 
+map Q <Nop>
+
 
 " ------------------------------------------------------------------------------
 " " Setting up indentation rules for filetypes.
