@@ -6,14 +6,19 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "with-editor" "with-editor.el" (0 0 0 0))
-;;; Generated autoloads from with-editor.el
+;;;### (autoloads "actual autoloads are elsewhere" "with-editor"
+;;;;;;  "../../../../.emacs.d/elpa/with-editor-20171006.352/with-editor.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/with-editor-20171006.352/with-editor.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "with-editor" '("with-editor" "start-file-process--with-editor-process-filter" "server-" "shell-command-")))
 
 ;;;***
 
-;;;### (autoloads nil nil ("with-editor-pkg.el") (0 0 0 0))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/with-editor-20171006.352/with-editor-autoloads.el"
+;;;;;;  "../../../../.emacs.d/elpa/with-editor-20171006.352/with-editor-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/with-editor-20171006.352/with-editor.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

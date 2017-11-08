@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: Commit message for AHA project
-# key: AHA
-# binding: direct-keybinding
-# --
-AHA-${1:XXX}: ${2:Commit message here...}

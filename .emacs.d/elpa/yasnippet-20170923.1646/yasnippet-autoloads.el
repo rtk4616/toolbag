@@ -6,8 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "yasnippet" "yasnippet.el" (0 0 0 0))
-;;; Generated autoloads from yasnippet.el
+;;;### (autoloads nil "yasnippet" "../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet.el"
+;;;;;;  "7953df2f5a3199ae03419d5c622fefd8")
+;;; Generated autoloads from ../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet.el
 
 (autoload 'yas-minor-mode "yasnippet" "\
 Toggle YASnippet mode.
@@ -51,12 +52,21 @@ See `yas-minor-mode' for more information on Yas minor mode.
 A mode for editing yasnippets
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "yasnippet" "../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "yasnippet" '("yas-" "help-snippet-def" "snippet-mode-map" "last-buffer-undo-list")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil nil ("yasnippet-pkg.el") (0 0 0 0))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet-autoloads.el"
+;;;;;;  "../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/yasnippet-20170923.1646/yasnippet.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 
