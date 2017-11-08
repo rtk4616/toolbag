@@ -64,10 +64,19 @@
   (global-linum-mode -1)
   (set-fringe-mode 0)
   (setenv "TMPDIR" "/tmp")
-  (global-set-key (kbd "<C-return>") (kbd "C-m"))
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+  :config
+  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
+  (global-set-key (kbd "<C-return>") (kbd "C-m"))
+  (global-set-key (kbd "C-M-x C-M-w") (lambda() (interactive) (kill-new (buffer-file-name))))
+  (global-set-key (kbd "C-M-x w") (lambda() (interactive) (kill-new (car (last (split-string (buffer-file-name) "/"))))))
+  (global-set-key (kbd "C-x C-.") (lambda() (interactive) (ffap (ffap-file-at-point))))
+  (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
+  (global-set-key (kbd "M-_") (lambda() (interactive) (insert "—")))
+  (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
+  (global-set-key (kbd "C-x C-o") 'find-tag)
   :bind (("<M-down>" . enlarge-window)
    ("<M-left>" . shrink-window-horizontally)
    ("<M-right>" . enlarge-window-horizontally)
@@ -114,20 +123,7 @@
    ("M-p" . MikeUpSomeLines)
    ("M-u" . downcase-word)
    ("M-w" . clipboard-kill-ring-save)
-   )
-
-  ;; ("C-M-x C-M-w") (lambda() (interactive) (kill-new (buffer-file-name))))
-  ;; ("C-M-x w") (lambda() (interactive) (kill-new (car (last (split-string (buffer-file-name) "/"))))))
-  ;; ("C-x b") (lambda() (interactive) (helm-buffers-list)))
-  ;; ("C-x C-.") (lambda() (interactive) (ffap (ffap-file-at-point))))
-  ;; ("C-x C-b") (lambda() (interactive) (helm-buffers-list)))
-  ;; ("C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
-  ;; ("M-_") (lambda() (interactive) (insert "—")))
-  ;; ("C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
-  ;; ("C-x f") (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
-  ;; ("C-x C-o") 'find-tag
-  ;; ("C-x f" (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
-)
+   ))
 
 (use-package dracula-theme
   :ensure t
@@ -226,7 +222,10 @@
          ("C-x l" . helm-occur)
          ("M-." . helm-etags-select)
          ("M-x" . helm-M-x))
-  :init
+  :config
+  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
+  (global-set-key (kbd "C-x b") (lambda() (interactive) (helm-buffers-list)))
+  (global-set-key (kbd "C-x C-b") (lambda() (interactive) (helm-buffers-list)))
   (setq helm-buffer-skip-remote-checking t
         helm-buffers-fuzzy-matching t
         helm-display-header-line nil
@@ -265,6 +264,10 @@
 
 (use-package helm-projectile
   :ensure t
+  :config
+  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
+  (global-set-key (kbd "C-x f") (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
+  (global-set-key (kbd "C-x f") (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
   :bind (("C-M-f" . helm-projectile-find-file)
          ("C-M-t" . helm-projectile-switch-project)))
 
