@@ -1,6 +1,7 @@
 *.elc
 .emacs.d/auto-save-list/
 .emacs.d/elpa/
+.emacs.d/network-security.data
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/projectile.cache
 .emacs.d/tramp
