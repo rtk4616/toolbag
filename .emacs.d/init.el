@@ -22,6 +22,16 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; desktop-save-mode stuff
+(setq desktop-path '("~/"))
+(setq desktop-dirname "~/")
+(setq desktop-base-file-name ".emacs-desktop")
+(setq desktop-load-locked-desktop nil)
+(setq desktop-save t)
+(setq desktop-restore-frames t)
+(setq desktop-restore-in-current-display t)
+(setq desktop-restore-forces-onscreen nil)
+
 ;; Hide minor modes from the mode bar.
 (use-package diminish :ensure t)
 
