@@ -17,15 +17,14 @@
     (" " . " ")
     ))
 
-(defun mike/expand-to-char (char-num)
-  (interactive "cExpand to: ")
+(defun mike/expand-to-matching-pair (char-num)
+  (interactive "cExpand to matching pair: ")
   (let* (
          (char (char-to-string char-num))
          (pair (or (assoc char mike/expand-char-pairs) (rassoc char mike/expand-char-pairs)))
          (left-char (car pair))
          (right-char (cdr pair))
          )
-    ;; Function logic here
     (when (and left-char right-char)
       (when (and (use-region-p) (= (point) (region-end)))
         (exchange-point-and-mark)
@@ -44,6 +43,20 @@
       )
     )
   )
+
+
+(defun mike/extend-to-char (char-num)
+  (interactive "cExtend to: ")
+  (let* ((char (char-to-string char-num)))
+    (unless (use-region-p)
+      (push-mark))
+    (search-forward char)
+    (backward-char)
+    (unless (use-region-p)
+      (setq mark-active t))
+    )
+  )
+
 
 (defun mike/isearch-set-region ()
   (when transient-mark-mode
