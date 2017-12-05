@@ -35,8 +35,9 @@
 ;; Hide minor modes from the mode bar.
 (use-package diminish :ensure t)
 
-;; My packages (in the lisp/ directory)
-(use-package lady)
+(use-package lady
+  :demand)
+
 (use-package mike-functions
   :init
   (setq inhibit-startup-message t
