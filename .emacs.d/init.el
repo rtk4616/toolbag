@@ -41,6 +41,19 @@
 (use-package dired-x
   :demand)
 
+(use-package neotree
+  :ensure t
+  :init
+  (setq neo-show-hidden-files t)
+  (setq neo-smart-open t)
+  (setq neo-theme 'arrow)
+  :config
+  (define-key neotree-mode-map (kbd "o") 'neotree-enter)
+  (define-key neotree-mode-map (kbd "C-o") 'neotree-quick-look)
+  (define-key neotree-mode-map (kbd "b") 'neotree-select-up-node)
+  (define-key neotree-mode-map (kbd "f") 'neotree-select-down-node)
+  (bind-key* "C-\\ C-\\" 'neotree-toggle))
+
 (use-package mike-functions
   :after helm
   :demand
@@ -115,7 +128,7 @@
          ("C-M-SPC" . mike/extend-to-char)
          ("C-M-k" . kill-whole-line)
          ("C-M-x C-M-n" . mike/mark-all-in-region)
-         ("C-\\" . desktop-save-in-desktop-dir)
+         ;; ("C-\\" . desktop-save-in-desktop-dir)
          ("C-c C-b" . compile)
          ("C-c C-p" . preview-markdown)
          ("C-r" . isearch-backward-regexp)
@@ -140,7 +153,7 @@
          ("M-," . pop-tag-mark)
          ("M-;" . toggle-comment-region-or-line)
          ("M-U" . upcase-word)
-         ("M-\\" . mike-desktop-read)
+         ;; ("M-\\" . mike-desktop-read)
          ("M-e" . mike/expand-to-matching-pair)
          ("M-g" . goto-line)
          ("M-j" . MikeGetIndentation)
