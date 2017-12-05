@@ -42,7 +42,15 @@
   :demand)
 
 (use-package mike-functions
+  :after helm
+  :demand
   :init
+  (setq-default indent-tabs-mode nil
+                column-number-mode 1
+                fill-column 79
+                standard-indent 4
+                tab-width 4
+                word-wrap t)
   (setq inhibit-startup-message t
         initial-scratch-message nil
         auto-save-default nil
@@ -69,78 +77,78 @@
         split-height-threshold nil
         tramp-default-method "ssh"
         tramp-shell-prompt-pattern "\\(?:^\\|\\)[^]#$%>\n]*#?[]#$%>].* *\\(\\[[0-9;]*[a-zA-Z] *\\)*"
-        vc-handled-backends nil
-        fill-column 79
-        indent-tabs-mode nil
-        standard-indent 4
-        tab-width 4
-        word-wrap t)
+        vc-handled-backends nil)
+  (set-default-font "Roboto Mono-12")
   (blink-cursor-mode 0)
   (fset 'yes-or-no-p 'y-or-n-p)
   (delete-selection-mode 1)
   (global-linum-mode -1)
-  (set-fringe-mode 0)
   (setenv "TMPDIR" "/tmp")
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-  :config
+
   ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
-  (global-set-key (kbd "<C-return>") (kbd "C-m"))
+  (bind-key* "<C-return>" (kbd "C-m"))
+  (bind-key* "C-M-d" 'duplicate-current-line-or-region)
+  (bind-key* "M-SPC" 'hippie-expand)
+  (bind-key* "M-k" 'mark-paragraph)
+  (bind-key* "M-n" 'MikeDownSomeLines)
+  (bind-key* "M-p" 'MikeUpSomeLines)
+  (bind-key* "M-{" 'backward-paragraph)
+  (bind-key* "M-}" 'forward-paragraph)
+
   (global-set-key (kbd "C-M-x C-M-w") (lambda() (interactive) (kill-new (buffer-file-name))))
   (global-set-key (kbd "C-M-x w") (lambda() (interactive) (kill-new (car (last (split-string (buffer-file-name) "/"))))))
   (global-set-key (kbd "C-x C-.") (lambda() (interactive) (ffap (ffap-file-at-point))))
+  (global-set-key (kbd "C-x C-o") 'find-tag)
+  (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
   (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
   (global-set-key (kbd "M-_") (lambda() (interactive) (insert "—")))
-  (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
-  (global-set-key (kbd "C-x C-o") 'find-tag)
+  :config
+  (add-hook 'prog-mode-hook
+            (lambda () (font-lock-add-keywords nil '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
   :bind (("<M-down>" . enlarge-window)
-   ("<M-left>" . shrink-window-horizontally)
-   ("<M-right>" . enlarge-window-horizontally)
-   ("<M-up>" . shrink-window)
-   ("C-\\" . desktop-save-in-desktop-dir)
-   ("C-c C-b" . compile)
-   ("C-c C-p" . preview-markdown)
-   ("C-M-d" . duplicate-current-line-or-region)
-   ("C-M-k" . kill-whole-line)
-   ("C-M-x C-M-n" . mike/mark-all-in-region)
-   ("C-r" . isearch-backward-regexp)
-   ("C-s" . isearch-forward-regexp)
-   ("C-w" . clipboard-kill-region)
-   ("C-x C-\\" . kill-emacs)
-   ("C-x C-e" . flycheck-list-errors)
-   ("C-x C-k" . kill-buffer)
-   ("C-x C-n" . next-buffer)
-   ("C-x C-p" . previous-buffer)
-   ("C-x C-t" . lady/tramp-connect)
-   ("C-x M-b" . electric-buffer-list)
-   ("C-x t" . lady/tramp-connect)
-   ("C-x vb" . magit-blame)
-   ("C-x vh" . magit-log-buffer-file)
-   ("C-x vl" . magit-log-current)
-   ("C-x vs" . magit-status)
-   ("M-*" . mike-next-tag)
-   ("M-," . pop-tag-mark)
-   ("M-;" . toggle-comment-region-or-line)
-   ("M-o" . other-window)
-   ("M-{" . backward-paragraph)
-   ("M-}" . forward-paragraph)
-   ("C-x n" . flycheck-next-error)
-   ("C-x p" . flycheck-previous-error)
-   ("C-y" . clipboard-yank)
-   ("M-(" . MikeDeIndent)
-   ("M-)" . MikeIndent)
-   ("M-U" . upcase-word)
-   ("M-\\" . mike-desktop-read)
-   ("M-g" . goto-line)
-   ("M-j" . MikeGetIndentation)
-   ("M-k" . mark-paragraph)
-   ("M-l" . recenter-top-bottom)
-   ("M-n" . MikeDownSomeLines)
-   ("M-p" . MikeUpSomeLines)
-   ("M-u" . downcase-word)
-   ("M-w" . clipboard-kill-ring-save)
-   ))
+         ("<M-left>" . shrink-window-horizontally)
+         ("<M-right>" . enlarge-window-horizontally)
+         ("<M-up>" . shrink-window)
+         ("C-M-SPC" . mike/extend-to-char)
+         ("C-M-k" . kill-whole-line)
+         ("C-M-x C-M-n" . mike/mark-all-in-region)
+         ("C-\\" . desktop-save-in-desktop-dir)
+         ("C-c C-b" . compile)
+         ("C-c C-p" . preview-markdown)
+         ("C-r" . isearch-backward-regexp)
+         ("C-s" . isearch-forward-regexp)
+         ("C-w" . clipboard-kill-region)
+         ("C-x C-\\" . kill-emacs)
+         ("C-x C-e" . flycheck-list-errors)
+         ("C-x C-k" . kill-buffer)
+         ("C-x C-n" . next-buffer)
+         ("C-x C-p" . previous-buffer)
+         ("C-x M-b" . electric-buffer-list)
+         ("C-x n" . flycheck-next-error)
+         ("C-x p" . flycheck-previous-error)
+         ("C-x vb" . magit-blame)
+         ("C-x vh" . magit-log-buffer-file)
+         ("C-x vl" . magit-log-current)
+         ("C-x vs" . magit-status)
+         ("C-y" . clipboard-yank)
+         ("M-(" . MikeDeIndent)
+         ("M-)" . MikeIndent)
+         ("M-*" . mike-next-tag)
+         ("M-," . pop-tag-mark)
+         ("M-;" . toggle-comment-region-or-line)
+         ("M-U" . upcase-word)
+         ("M-\\" . mike-desktop-read)
+         ("M-e" . mike/expand-to-matching-pair)
+         ("M-g" . goto-line)
+         ("M-j" . MikeGetIndentation)
+         ("M-l" . recenter-top-bottom)
+         ("M-o" . other-window)
+         ("M-u" . downcase-word)
+         ("M-w" . clipboard-kill-ring-save)
+         ))
 
 (use-package dracula-theme
   :ensure t
@@ -148,6 +156,7 @@
   :init
   (load-theme 'dracula t))
 
+(use-package lsp-mode :defer t)
 
 (use-package expand-region
   :ensure t
@@ -176,7 +185,7 @@
   :commands (magit-status magit-checkout)
   :bind (("C-x v s" . magit-status)
          ("C-x v b" . magit-blame)
-   ;; TODO:
+         ;; TODO:
          ;; ("C-x v f" . (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
          ("C-x v l" . magit-log-current)
          ("C-x v h" . magit-log-buffer-file))
@@ -184,65 +193,76 @@
   (setq magit-cherry-pick-arguments (quote ("-x"))
         magit-last-seen-setup-instructions "1.4.0"
         magit-push-always-verify nil
-        magit-diff-refine-hunk t))
+        magit-diff-refine-hunk t)
+  :config
+  ;; Don't show recent commits in magit status.
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-unpushed-to-upstream
+                          'magit-insert-unpushed-to-upstream-or-recent
+                          'replace))
 
-; ;; Shows git additions/deletions/edits on the fringe.
-; (use-package git-gutter-fringe
-;   :ensure t
-;   :diminish git-gutter-mode
-;   :demand t
-;   :bind (("C-c h n" . git-gutter:next-hunk)
-;          ("C-c h p" . git-gutter:previous-hunk))
-;   :config
-;   (progn
-;     (global-git-gutter-mode t)
-;     (define-fringe-bitmap 'git-gutter-fr:added
-;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-;       nil nil 'center)
-;     (define-fringe-bitmap 'git-gutter-fr:modified
-;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-;       nil nil 'center)
-;     (define-fringe-bitmap 'git-gutter-fr:deleted
-;       [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
-;       nil nil 'center)))
+                                        ; ;; Shows git additions/deletions/edits on the fringe.
+                                        ; (use-package git-gutter-fringe
+                                        ;   :ensure t
+                                        ;   :diminish git-gutter-mode
+                                        ;   :demand t
+                                        ;   :bind (("C-c h n" . git-gutter:next-hunk)
+                                        ;          ("C-c h p" . git-gutter:previous-hunk))
+                                        ;   :config
+                                        ;   (progn
+                                        ;     (global-git-gutter-mode t)
+                                        ;     (define-fringe-bitmap 'git-gutter-fr:added
+                                        ;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+                                        ;       nil nil 'center)
+                                        ;     (define-fringe-bitmap 'git-gutter-fr:modified
+                                        ;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+                                        ;       nil nil 'center)
+                                        ;     (define-fringe-bitmap 'git-gutter-fr:deleted
+                                        ;       [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
+                                        ;       nil nil 'center)))
 
-; ;; Show a small popup with the blame for the current line only.
-; (use-package git-messenger
-;   :ensure t
-;   :bind ("C-c g p" . git-messenger:popup-message)
-;   :init
-;   (setq git-messenger:show-detail t)
-;   :config
-;   (progn
-;     (define-key git-messenger-map (kbd "RET") 'git-messenger:popup-close)))
+                                        ; ;; Show a small popup with the blame for the current line only.
+                                        ; (use-package git-messenger
+                                        ;   :ensure t
+                                        ;   :bind ("C-c g p" . git-messenger:popup-message)
+                                        ;   :init
+                                        ;   (setq git-messenger:show-detail t)
+                                        ;   :config
+                                        ;   (progn
+                                        ;     (define-key git-messenger-map (kbd "RET") 'git-messenger:popup-close)))
 
-; ;; Navigate throught the history of the current file.
-; (use-package git-timemachine
-;   :ensure t
-;   :bind ("C-c g t" . git-timemachine-toggle))
+                                        ; ;; Navigate throught the history of the current file.
+                                        ; (use-package git-timemachine
+                                        ;   :ensure t
+                                        ;   :bind ("C-c g t" . git-timemachine-toggle))
 
-;; Mode for .gitignore files.
+(use-package autopair
+  :config
+  (autopair-global-mode)
+  :ensure t)
+
 (use-package gitignore-mode :ensure t)
 
 ;; Helm-related things.
 (use-package helm
   :ensure t
+  :demand
   :diminish helm-mode
   :bind (("C-c C-e" . helm-ag-edit)
-         ("C-x C-f" . helm-find-files)
+         ;; ("C-x C-f" . helm-find-files)
          ("C-x C-h" . helm-command-prefix)
          ("C-x C-l" . helm-occur)
          ("C-x C-r" . helm-resume)
          ("C-x M-f" . helm-do-ag)
+         ("C-x t" . lady/tramp-connect)
+         ("C-x C-t" . lady/tramp-connect)
          ("C-x M-l" . helm-do-ag-this-file)
          ("C-x b" . helm-buffers-list)
          ("C-x l" . helm-occur)
          ("M-." . helm-etags-select)
          ("M-x" . helm-M-x))
   :config
-  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
-  (global-set-key (kbd "C-x b") (lambda() (interactive) (helm-buffers-list)))
-  (global-set-key (kbd "C-x C-b") (lambda() (interactive) (helm-buffers-list)))
+  (helm-mode 1)
   (setq helm-buffer-skip-remote-checking t
         helm-buffers-fuzzy-matching t
         helm-display-header-line nil
@@ -268,16 +288,30 @@
         ;; C-h v tramp-ssh-controlmaster-options RET
         ;;
         tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-  :config
+  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
+  ;; (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (global-set-key (kbd "C-x b") (lambda() (interactive) (helm-buffers-list)))
+  (global-set-key (kbd "C-x C-b") (lambda() (interactive) (helm-buffers-list)))
   ;; No idea why here find-file is set to nil (so it uses the native find-file
   ;; for Emacs. This makes stuff like (find-file (read-file-name ...)) work with
   ;; Helm again.
-  (helm-mode 1)
-  (add-to-list 'helm-completing-read-handlers-alist '(find-file . helm-completing-read-symbols))
-  (add-to-list 'helm-completing-read-handlers-alist '(dired-do-copy . nil))
-  (add-to-list 'helm-completing-read-handlers-alist '(dired-do-rename . nil))
-  (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
-  (add-to-list 'helm-completing-read-handlers-alist '(ido-find-file . nil)))
+  (setq helm-completing-read-handlers-alist '((debug-on-entry . helm-completing-read-symbols)
+                                              (describe-function . helm-completing-read-symbols)
+                                              (describe-symbol . helm-completing-read-symbols)
+                                              (describe-variable . helm-completing-read-symbols)
+                                              (disassemble . helm-completing-read-symbols)
+                                              (execute-extended-command)
+                                              (find-file . nil)
+                                              (find-file-at-point . nil)
+                                              (find-function . helm-completing-read-symbols)
+                                              (find-tag . helm-completing-read-default-find-tag)
+                                              (kill-buffer . nil)
+                                              (org-capture . helm-org-completing-read-tags)
+                                              (org-set-tags . helm-org-completing-read-tags)
+                                              (tmm-menubar)
+                                              (trace-function . helm-completing-read-symbols)
+                                              (trace-function-background . helm-completing-read-symbols)
+                                              (trace-function-foreground . helm-completing-read-symbols))))
 
 (use-package helm-projectile
   :ensure t
@@ -292,32 +326,32 @@
   :ensure t
   :bind (("C-x M-f" . helm-do-ag)
          ("C-c C-e" . helm-ag-edit)
-   ;; TODO:
+         ;; TODO:
          ;; ("C-x f" . (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
          ("C-x M-l" . helm-do-ag-this-file))
   :init
   (setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case"))
 
-(use-package ido
-  :ensure t
-  :config
-  (setq ido-enable-last-directory-history nil
-        ido-everywhere t
-        ido-max-work-directory-list 0
-        ido-max-work-file-list 0
-        ido-record-commands nil
-        ido-use-faces nil
-        ido-ignore-buffers '("^ "
-                             "*Completions*"
-                             "*Shell Command Output*"
-                             "*Messages*"
-                             "*scratch*"
-                             "Async Shell Command"
-                             "*helm occur*"
-                             "*Helm Completions*"
-                             "*helm-ag*"
-                             "*helm projectile*"))
-  (ido-mode +1))
+;; (use-package ido
+;;   :ensure t
+;;   :config
+;;   (setq ido-enable-last-directory-history nil
+;;         ido-everywhere t
+;;         ido-max-work-directory-list 0
+;;         ido-max-work-file-list 0
+;;         ido-record-commands nil
+;;         ido-use-faces nil
+;;         ido-ignore-buffers '("^ "
+;;                              "*Completions*"
+;;                              "*Shell Command Output*"
+;;                              "*Messages*"
+;;                              "*scratch*"
+;;                              "Async Shell Command"
+;;                              "*helm occur*"
+;;                              "*Helm Completions*"
+;;                              "*helm-ag*"
+;;                              "*helm projectile*"))
+;;   (ido-mode +1))
 
 (use-package projectile
   :ensure t
@@ -345,8 +379,11 @@
         company-dabbrev-ignore-case t
         company-etags-ignore-case t
         company-minimum-prefix-length 1)
+  (global-company-mode)
   :config
   (add-hook 'prog-mode-hook 'company-mode)
+  (setq company-backends '(company-robe
+                           company-capf))
   (add-hook 'company-mode-hook
             (lambda ()
               (define-key company-active-map (kbd "M-n") nil)
@@ -363,14 +400,14 @@
   :ensure t
   :defer 4
   :diminish yas-minor-mode
-  ; :config
-  ; (progn
-  ;   (global-unset-key (kbd "s-e"))
-  ;   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
-  ;   (define-key yas-minor-mode-map (kbd "<tab>") nil)
-  ;   (define-key yas-minor-mode-map (kbd "TAB") nil)
-  ;   (define-key yas-minor-mode-map (kbd "s-e") 'yas-expand)
-  ;   (yas-global-mode t))
+                                        ; :config
+                                        ; (progn
+                                        ;   (global-unset-key (kbd "s-e"))
+                                        ;   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+                                        ;   (define-key yas-minor-mode-map (kbd "<tab>") nil)
+                                        ;   (define-key yas-minor-mode-map (kbd "TAB") nil)
+                                        ;   (define-key yas-minor-mode-map (kbd "s-e") 'yas-expand)
+                                        ;   (yas-global-mode t))
   )
 
 ;; Correctly load $PATH and $MANPATH on OSX (GUI).
@@ -387,7 +424,14 @@
   :bind (("C-M-n" . mc/mark-next-like-this)
          ("C-M-p" . mc/unmark-next-like-this)
          ("C-M-s" . mc/skip-to-next-like-this)
-         ("C-x C-g" . mc/mark-all-like-this)))
+         ("C-x C-g" . mc/mark-all-like-this))
+  :init
+  (setq mc/keymap (make-sparse-keymap))
+  (define-key mc/keymap (kbd "C-g") 'mc/keyboard-quit)
+  (when (fboundp 'phi-search)
+    (define-key mc/keymap (kbd "C-s") 'phi-search))
+  (when (fboundp 'phi-search-backward)
+    (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
 
 ;; Scale the text of all the windows/frames at the same time.
 (use-package default-text-scale
@@ -418,12 +462,14 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" "\\.mkd\\'" "\\.markdown\\'")
+  :mode ("\\.md\\'"
+         "\\.mkd\\'"
+         "\\.markdown\\'")
+  :bind (("M-{" . markdown-backward-block)
+         ("M-}" . markdown-forward-block))
   :config
   (add-hook 'markdown-mode-hook
             (lambda ()
-              (local-set-key (kbd "M-n") 'MikeDownSomeLines)
-              (local-set-key (kbd "M-p") 'MikeUpSomeLines)
               (modify-syntax-entry ?\` "\"`")
               (modify-syntax-entry ?\" "\"\"")
               (setq autopair-handle-action-fns
@@ -450,7 +496,63 @@
               (setq gofmt-command "goimports")
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
+(use-package clojure-mode
+  :ensure t
+  :mode (("\\.clj\\'" . clojure-mode)
+         ("\\.edn\\'" . clojure-mode)))
+
+(use-package cider
+  :ensure t
+  :defer t
+  :commands (cider cider-connect cider-jack-in)
+  :diminish subword-mode
+  :config
+  (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+  (setq nrepl-log-messages t
+        cider-repl-use-clojure-font-lock t
+        cider-prompt-save-file-on-load 'always-save
+        cider-font-lock-dynamically '(macro core function var)
+        nrepl-hide-special-buffers t
+        cider-overlays-use-font-lock t)
+  (cider-repl-toggle-pretty-printing))
+
+
+(use-package json-mode
+  :ensure t
+  :defer t
+  :mode "\\.reandeploy\\'"
+  :mode "\\.json\\'"
+  :bind (("C-c C-g" . jsons-print-path))
+  :config
+  (require 'json-snatcher))
+
+(use-package json-reformat :ensure t :defer t)
+
+(use-package json-snatcher :ensure t :defer t)
+
 ;; Only maximize the window now because doing so earlier causes weird
 ;; behaviours.
 (when (display-graphic-p)
   (toggle-frame-maximized))
+
+
+
+
+;; TODO: Move this to another file.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (autopair yasnippet yaml-mode web-mode use-package scss-mode multiple-cursors markdown-mode magit helm-projectile helm-ag go-mode gitignore-mode expand-region exec-path-from-shell dracula-theme default-text-scale company))))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(markdown-code-face ((t (:inherit nil :background "#2eb131063f08")))))
