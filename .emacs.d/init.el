@@ -38,6 +38,9 @@
 (use-package lady
   :demand)
 
+(use-package dired-x
+  :demand)
+
 (use-package mike-functions
   :init
   (setq inhibit-startup-message t
