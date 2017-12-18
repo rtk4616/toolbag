@@ -137,7 +137,6 @@
          ("<M-left>" . shrink-window-horizontally)
          ("<M-right>" . enlarge-window-horizontally)
          ("<M-up>" . shrink-window)
-         ("C-M-SPC" . mike/extend-to-char)
          ("C-M-k" . kill-whole-line)
          ("C-M-x C-M-n" . mike/mark-all-in-region)
          ;; ("C-\\" . desktop-save-in-desktop-dir)
@@ -147,13 +146,10 @@
          ("C-s" . isearch-forward-regexp)
          ("C-w" . clipboard-kill-region)
          ("C-x C-\\" . kill-emacs)
-         ("C-x C-e" . flycheck-list-errors)
          ("C-x C-k" . kill-buffer)
          ("C-x C-n" . next-buffer)
          ("C-x C-p" . previous-buffer)
          ("C-x M-b" . electric-buffer-list)
-         ("C-x n" . flycheck-next-error)
-         ("C-x p" . flycheck-previous-error)
          ("C-x vb" . magit-blame)
          ("C-x vh" . magit-log-buffer-file)
          ("C-x vl" . magit-log-current)
@@ -166,7 +162,7 @@
          ("M-;" . toggle-comment-region-or-line)
          ("M-U" . upcase-word)
          ;; ("M-\\" . mike-desktop-read)
-         ("M-e" . mike/expand-to-matching-pair)
+         ("C-M-SPC" . mike/expand-to-matching-pair)
          ("M-g" . goto-line)
          ("M-j" . MikeGetIndentation)
          ("M-l" . recenter-top-bottom)
@@ -446,17 +442,18 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C-M-n" . mc/mark-next-like-this)
-         ("C-M-p" . mc/unmark-next-like-this)
-         ("C-M-s" . mc/skip-to-next-like-this)
-         ("C-x C-g" . mc/mark-all-like-this))
   :init
   (setq mc/keymap (make-sparse-keymap))
   (define-key mc/keymap (kbd "C-g") 'mc/keyboard-quit)
   (when (fboundp 'phi-search)
     (define-key mc/keymap (kbd "C-s") 'phi-search))
   (when (fboundp 'phi-search-backward)
-    (define-key mc/keymap (kbd "C-r") 'phi-search-backward)))
+    (define-key mc/keymap (kbd "C-r") 'phi-search-backward))
+  :config
+  (bind-key* "C-M-n" 'mc/mark-next-like-this)
+  (bind-key* "C-M-p" 'mc/unmark-next-like-this)
+  (bind-key* "C-M-s" 'mc/skip-to-next-like-this)
+  (bind-key* "C-x C-g" 'mc/mark-all-like-this))
 
 ;; Scale the text of all the windows/frames at the same time.
 (use-package default-text-scale
