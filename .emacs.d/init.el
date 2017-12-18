@@ -38,6 +38,18 @@
 (use-package lady
   :demand)
 
+(use-package flycheck
+  :ensure t
+  :demand
+  :bind (("C-x C-e" . flycheck-list-errors)
+         ("C-x n" . flycheck-next-error)
+         ("C-x p" . flycheck-previous-error))
+  :init
+  (setq flycheck-check-syntax-automatically '(save))
+  (setq flycheck-disabled-checkers '(chef-foodcritic))
+  :config
+  (global-flycheck-mode))
+
 (use-package dired-x
   :demand)
 
