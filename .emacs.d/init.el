@@ -493,6 +493,11 @@
          "\\.markdown\\'")
   :bind (("M-{" . markdown-backward-block)
          ("M-}" . markdown-forward-block))
+  :init
+  (setq markdown-mode-map (make-sparse-keymap))
+  (define-key markdown-mode-map (kbd "C-m") 'markdown-enter-key)
+  (define-key markdown-mode-map (kbd "TAB") 'markdown-cycle)
+  (define-key markdown-mode-map (kbd "M-<return>") 'markdown-insert-list-item)
   :config
   (add-hook 'markdown-mode-hook
             (lambda ()
