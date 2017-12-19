@@ -133,6 +133,8 @@
   (global-set-key (kbd "C-x v f") (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
   (global-set-key (kbd "M-_") (lambda() (interactive) (insert "—")))
   :config
+  (define-key isearch-mode-map "\r" 'mike/isearch-set-region)
+  (define-key isearch-mode-map (kbd "<return>") 'mike/isearch-set-region)
   (add-hook 'prog-mode-hook
             (lambda () (font-lock-add-keywords nil '(("\\<\\(FIXME:\\|TODO:\\|BUG:\\|NOTE:\\)" 1 font-lock-warning-face t)))))
   :bind (("<M-down>" . enlarge-window)

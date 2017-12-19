@@ -44,7 +44,6 @@
     )
   )
 
-
 (defun mike/extend-to-char (char-num)
   (interactive "cExtend to: ")
   (let* ((char (char-to-string char-num)))
@@ -57,12 +56,12 @@
     )
   )
 
-
 (defun mike/isearch-set-region ()
+  (interactive)
   (when transient-mark-mode
-    (unless (or isearch-mode-end-hook-quit (region-active-p))
+    (unless (region-active-p)
+      (isearch-exit)
       (push-mark isearch-other-end t 'activate))))
-
 
 (defun mike/mark-all-in-region (beg end)
   (interactive "r")
@@ -72,15 +71,12 @@
     )
   )
 
-
 (defun mike/get-pwd-as-string ()
   (nth 1 (split-string (pwd)))
   )
 
-
 (defun mike/get-rsync-config (directory-string)
   (assoc directory-string rsync-project-mapping))
-
 
 (defun mike/rsync-project (&optional dry-run)
   (interactive)
@@ -101,7 +97,6 @@
           (message (concat "No rsync mapping found for " (projectile-project-root)))))
     (message "You are not currently in a project!")))
 
-
 (defun rmacs/start-server nil
   (interactive)
   (unless (process-status "rmacs")
@@ -116,7 +111,6 @@
      :server 't)
     (setq rmacs-clients '())))
 
-
 (defun rmacs/stop-server nil
   (interactive)
   (while rmacs-clients
@@ -124,21 +118,17 @@
     (setq rmacs-clients (cdr rmacs-clients)))
   (delete-process "rmacs"))
 
-
 (defun rmacs/get-value (string)
   "Return the value in a string of format key: value"
   (s-trim (nth 1 (split-string string ":" \t))))
-
 
 (defun rmacs/get-lines (string)
   "Return a list of a string's lines"
   (split-string string "\n"))
 
-
 (defun rmacs/nth-line (index string)
   "Return the index-th line of a string, starting with 0"
    (nth index (rmacs/get-lines string)))
-
 
 (defun rmacs/get-rmate-headers (string)
   "Returns the first 7 lines of a string"
@@ -154,7 +144,6 @@
                 (pop lines))
                "\n")))
 
-
 (defun rmacs/strip-rmate-headers (string)
   "Strip the rmate headers from a string"
   (mapconcat 'identity
@@ -164,18 +153,15 @@
              (butlast (nthcdr 7 (rmacs/get-lines string)) 2)
              "\n"))
 
-
 (defun rmacs/get-remote-address (string)
   "Return the remote connection's address from the headers of an rmate string"
   ;; The remote address is the value on the 3rd line.
   (rmacs/get-value (rmacs/nth-line 2 string)))
 
-
 (defun rmacs/get-remote-filepath (string)
   "Return the remote file's full path from the headers of an rmate string"
   ;; The remote address is the value on the 5th line.
   (rmacs/get-value (rmacs/nth-line 4 string)))
-
 
 (defun rmacs/get-buffer-name (string)
   "Return a buffer name based on the headers of an rmate string"
@@ -188,7 +174,6 @@
              ;; Joined by a colon.
              ":"))
 
-
 (defun rmacs/put-content-to-buffer (content name-of-buffer)
   "Insert the content string into the specified buffer"
   (switch-to-buffer name-of-buffer)
@@ -196,7 +181,6 @@
   (let ((buffer-file-name (buffer-name))) (set-auto-mode))
   (insert content)
   )
-
 
 (defun rmacs/process-message (process message-string)
   (let (
@@ -214,7 +198,6 @@
     ;; (rmacs/log-message (concat "Content:\n" (rmacs/strip-rmate-headers message-string) "\n"))
     ))
 
-
 (defun rmacs/sentinel (proc msg)
   (rmacs/log-message (concat "Message from rmacs-sentinel: " msg))
   (rmacs/log-message "sending connection success")
@@ -222,7 +205,6 @@
   (when (string= msg "connection broken by remote peer\n")
     (setq rmacs-clients (assq-delete-all proc rmacs-clients))
     (rmacs/log-message (format "client %s has quit" proc))))
-
 
 (defun rmacs/log-message (string &optional client)
   (if (get-buffer "*rmacs*")
@@ -233,14 +215,12 @@
                 string)
         (or (bolp) (newline)))))
 
-
 (defun toggle-comment-region-or-line ()
   "Toggle commenting for the current line or region"
   (interactive)
   (if (region-active-p)
       (comment-or-uncomment-region (region-beginning) (region-end))
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
-
 
 (defun preview-markdown ()
   "Send current buffer text to Grip (Python package) for rendering"
@@ -252,12 +232,10 @@
                            nil
                            nil))
 
-
 (defun range (start-number)
   (interactive "nStarting at: ")
   (mc/insert-numbers start-number)
   )
-
 
 (defun toggle-control-lock ()
   (interactive)
@@ -267,7 +245,6 @@
     )
   )
 
-
 (defun toggle-meta-lock ()
   (interactive)
   (if (= extra-keyboard-modifiers 0)
@@ -276,15 +253,12 @@
     )
   )
 
-
 (defun mike-saved-session-exists ()
   (file-exists-p (concat (file-name-as-directory desktop-dirname) desktop-base-file-name)))
 
 
-
 (defun mike-lock-file-exists ()
   (file-exists-p (concat (file-name-as-directory desktop-dirname) ".emacs.desktop.lock")))
-
 
 (defun mike-desktop-read ()
   "Restore a saved emacs session."
@@ -295,12 +269,10 @@
         (desktop-read))
     (message "No desktop found.")))
 
-
 (defun revert ()
   (interactive)
   (revert-buffer nil t t)
   )
-
 
 (defun MikeUpdateDirectory ()
   "Custom function to be called on each projectile project switch."
@@ -315,7 +287,6 @@
   (setq default-directory emacs-startup-directory)
   )
 
-
 (defun MikeTrampFindFile (&optional prompt-sudo)
   "Tramp wrapper for easy ssh and su to another user."
   (interactive)
@@ -326,7 +297,6 @@
       (find-file (concat "/ssh:" host-string "|sudo:|sudo:" user-b "@" (car (last (split-string host-string "@"))) ":"))
     (find-file (concat "/ssh:" host-string ":")))
   )
-
 
 (defun duplicate-current-line-or-region (arg)
   (interactive "p")
@@ -345,18 +315,15 @@
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
-
 (defun MikeUpSomeLines ()
   (interactive)
   (previous-line 6)
   )
 
-
 (defun MikeDownSomeLines ()
   (interactive)
   (next-line 6)
   )
-
 
 (defun MikeScrollUpOneLine ()
   (interactive)
@@ -364,13 +331,11 @@
   (scroll-down 1)
   )
 
-
 (defun MikeScrollDownOneLine ()
   (interactive)
   ;; Emacs "up" means something different than I mean ;)
   (scroll-up 1)
   )
-
 
 (defun mike-next-tag ()
   (interactive)
@@ -379,11 +344,9 @@
     )
   )
 
-
 (defun convert-something-to-string (input-symbol)
   "Converts the supplied symbol to a string."
   (cond
-
    ((stringp input-symbol)
     input-symbol)
 
@@ -420,7 +383,6 @@
       nil
       )))
 
-
 (defun get-regex-alternation-from-list (list-of-strings &optional prepend-string)
   (if prepend-string
       (setq list-of-strings (mapcar (function (lambda (x) (concat prepend-string x))) mike-ignore-directories)))
@@ -430,7 +392,6 @@
 
   ;; Join the ignore directories into a regex string.
   (setq the-regex-search-string (format "\\(%s\\)" (mapconcat 'identity list-of-strings "\\|"))))
-
 
 (defun insert-directory-files-recursive (directory match maxdepth)
   "Need some documentation about this function here..."
@@ -499,7 +460,6 @@
     files-list)
   )
 
-
 (defun MikeFuzzyFileFinder (match-string)
   "Searches recursively for all files that match the file wildcard in the current directory"
   (interactive "sSearch for files matching: \n")
@@ -526,7 +486,6 @@
          (list (cons emacs-startup-directory (point-min-marker)))))
   (goto-line 2))
 
-
 ;; A list of ignored file names.
 (setq mike-ignore-files '(".pyc$"))
 
@@ -549,7 +508,6 @@
 ;; Get the alternation for a list of directories by prepending a slash to the directory names.
 (setq ignore-dirs-regex-string (get-regex-alternation-from-list mike-ignore-directories "/"))
 
-
 (defun MikeDeIndent (beg end)
   (interactive (if (use-region-p)
                    (list (region-beginning) (region-end))
@@ -563,7 +521,6 @@
                  (list (line-beginning-position) (line-end-position))))
   (let ((deactivate-mark))
     (indent-code-rigidly beg end tab-width)))
-
 
 (defun MikeGetIndentationEnd (&optional REVERSE)
   "Return the furthest location in the file, going forward, before we reach a
@@ -638,7 +595,6 @@ Specifying REVERSE as t will result in traversing the file backward."
       ;; Return the point.
       to-return))))
 
-
 (defun MikeGetIndentation ()
   (interactive)
   (let ((start-pos (MikeGetIndentationEnd t))
@@ -648,7 +604,6 @@ Specifying REVERSE as t will result in traversing the file backward."
       (goto-char end-pos)
       (push-mark nil t t)
       (goto-char start-pos))))
-
 
 ;; Need to compute grep defaults, or MikeGrepInFiles will fail with the
 ;; following error:
