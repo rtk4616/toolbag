@@ -122,8 +122,6 @@
   (bind-key* "C-M-d" 'duplicate-current-line-or-region)
   (bind-key* "M-SPC" 'hippie-expand)
   (bind-key* "M-k" 'mark-paragraph)
-  (bind-key* "M-n" 'MikeDownSomeLines)
-  (bind-key* "M-p" 'MikeUpSomeLines)
   (bind-key* "M-{" 'backward-paragraph)
   (bind-key* "M-}" 'forward-paragraph)
 
@@ -170,7 +168,9 @@
          ("M-g" . goto-line)
          ("M-j" . MikeGetIndentation)
          ("M-l" . recenter-top-bottom)
+         ("M-n" . MikeDownSomeLines)
          ("M-o" . other-window)
+         ("M-p" . MikeUpSomeLines)
          ("M-u" . downcase-word)
          ("M-w" . clipboard-kill-ring-save)
          ))
