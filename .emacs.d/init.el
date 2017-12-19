@@ -74,6 +74,9 @@
   :after helm
   :demand
   :init
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+  (setq mouse-wheel-progressive-speed nil)
+  (setq mouse-wheel-follow-mouse 't)
   (setq-default indent-tabs-mode nil
                 column-number-mode 1
                 fill-column 79
