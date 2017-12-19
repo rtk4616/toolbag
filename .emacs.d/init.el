@@ -32,8 +32,12 @@
 (setq desktop-restore-in-current-display t)
 (setq desktop-restore-forces-onscreen nil)
 
-;; Hide minor modes from the mode bar.
-(use-package diminish :ensure t)
+(use-package powershell
+  :ensure t
+  :pin melpa)
+
+(use-package diminish
+  :ensure t)
 
 (use-package lady
   :demand)
