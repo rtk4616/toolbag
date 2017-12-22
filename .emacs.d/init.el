@@ -103,6 +103,7 @@
         ispell-program-name "aspell"
         make-backup-files nil
         markdown-gfm-use-electric-backquote nil
+        ns-pop-up-frames nil
         python-indent 4
         ring-bell-function 'ignore
         ruby-indent-level 2
