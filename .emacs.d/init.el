@@ -32,6 +32,9 @@
 (setq desktop-restore-in-current-display t)
 (setq desktop-restore-forces-onscreen nil)
 
+(use-package textile-mode
+  :ensure t)
+
 (use-package powershell
   :ensure t
   :pin melpa)
