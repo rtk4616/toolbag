@@ -19,6 +19,11 @@
 ;; Make use-package available.
 (eval-when-compile
   (require 'use-package))
+
+(use-package diminish
+  :ensure t
+  :pin melpa)
+
 (require 'diminish)
 (require 'bind-key)
 
