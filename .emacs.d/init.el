@@ -195,7 +195,21 @@
   :init
   (load-theme 'dracula t))
 
-(use-package lsp-mode :defer t)
+(use-package lsp-mode
+  :demand t
+  :ensure t)
+
+(use-package lsp-go
+  :demand t
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook #'lsp-go-enable))
+
+(use-package lsp-python
+  :demand t
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook #'lsp-python-enable))
 
 (use-package expand-region
   :ensure t
@@ -456,7 +470,8 @@
   :config
   (progn
     (setq exec-path-from-shell-arguments '("-l"))
-    (exec-path-from-shell-initialize)))
+    (exec-path-from-shell-initialize)
+    (exec-path-from-shell-copy-env "GOPATH")))
 
 (use-package multiple-cursors
   :ensure t
