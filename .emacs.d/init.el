@@ -436,7 +436,8 @@
   :config
   (add-hook 'prog-mode-hook 'company-mode)
   (setq company-backends '(company-robe
-                           company-capf))
+                           company-capf
+                           company-dabbrev))
   (add-hook 'company-mode-hook
             (lambda ()
               (define-key company-active-map (kbd "M-n") nil)
