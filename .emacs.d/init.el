@@ -132,7 +132,8 @@
   ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
   (bind-key* "<C-return>" (kbd "C-m"))
   (bind-key* "C-M-d" 'duplicate-current-line-or-region)
-  (bind-key* "M-SPC" 'hippie-expand)
+  (bind-key* "M-SPC" 'company-complete)
+  ;; (bind-key* "M-SPC" 'hippie-expand)
   (bind-key* "M-k" 'mark-paragraph)
   (bind-key* "M-{" 'backward-paragraph)
   (bind-key* "M-}" 'forward-paragraph)
