@@ -204,7 +204,7 @@
   :demand t
   :ensure t
   :init
-  (add-hook 'python-mode-hook #'lsp-go-enable))
+  (add-hook 'go-mode-hook #'lsp-go-enable))
 
 (use-package lsp-python
   :demand t
