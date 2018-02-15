@@ -313,7 +313,6 @@
          ("C-x M-l" . helm-do-ag-this-file)
          ("C-x b" . helm-buffers-list)
          ("C-x l" . helm-occur)
-         ("M-." . helm-etags-select)
          ("M-x" . helm-M-x))
   :config
   (helm-mode 1)
@@ -425,6 +424,8 @@
   :ensure t
   :defer t
   :diminish company-mode
+  :bind (("M-." . xref-find-definitions)
+         ("C-x M-." . xref-find-references))
   :init
   (setq company-idle-delay 0.2
         company-dabbrev-code-everywhere t
