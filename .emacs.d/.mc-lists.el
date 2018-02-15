@@ -41,6 +41,7 @@
         isearch-printing-char
         mark-paragraph
         markdown-exdent-or-delete
+        markdown-insert-gfm-checkbox
         markdown-toggle-gfm-checkbox
         move-past-close-and-reindent
         picture-self-insert
