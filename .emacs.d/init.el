@@ -523,7 +523,9 @@
          "\\.mkd\\'"
          "\\.markdown\\'")
   :bind (("M-{" . markdown-backward-block)
-         ("M-}" . markdown-forward-block))
+         ("M-}" . markdown-forward-block)
+         ("C-c C-t" . markdown-insert-gfm-checkbox)
+         ("C-c C-c" . markdown-toggle-gfm-checkbox))
   :init
   (setq markdown-mode-map (make-sparse-keymap))
   (define-key markdown-mode-map (kbd "C-m") 'markdown-enter-key)
