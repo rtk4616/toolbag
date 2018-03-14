@@ -37,8 +37,10 @@
         indent-rigidly
         indent-rigidly-left-to-tab-stop
         indent-rigidly-right-to-tab-stop
+        isearch-abort
         isearch-backward-regexp
         isearch-printing-char
+        magit-stage
         mark-paragraph
         markdown-exdent-or-delete
         markdown-insert-gfm-checkbox
