@@ -156,6 +156,7 @@
          ("<M-left>" . shrink-window-horizontally)
          ("<M-right>" . enlarge-window-horizontally)
          ("<M-up>" . shrink-window)
+         ("C-M-SPC" . mike/expand-to-matching-pair)
          ("C-M-k" . kill-whole-line)
          ("C-M-x C-M-n" . mike/mark-all-in-region)
          ("C-c C-b" . compile)
@@ -168,6 +169,7 @@
          ("C-x C-n" . next-buffer)
          ("C-x C-p" . previous-buffer)
          ("C-x M-b" . electric-buffer-list)
+         ("C-x M-g" . goto-char)
          ("C-x vb" . magit-blame)
          ("C-x vh" . magit-log-buffer-file)
          ("C-x vl" . magit-log-current)
@@ -179,7 +181,6 @@
          ("M-," . pop-tag-mark)
          ("M-;" . toggle-comment-region-or-line)
          ("M-U" . upcase-word)
-         ("C-M-SPC" . mike/expand-to-matching-pair)
          ("M-g" . goto-line)
          ("M-j" . MikeGetIndentation)
          ("M-l" . recenter-top-bottom)
@@ -187,8 +188,7 @@
          ("M-o" . other-window)
          ("M-p" . MikeUpSomeLines)
          ("M-u" . downcase-word)
-         ("M-w" . clipboard-kill-ring-save)
-         ))
+         ("M-w" . clipboard-kill-ring-save)))
 
 (use-package dracula-theme
   :ensure t
