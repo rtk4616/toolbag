@@ -549,6 +549,8 @@
 
 (use-package ruby-mode
   ;; built-in
+  :config
+  (add-hook 'ruby-mode-hook (lambda () (setq tab-width 2)))
   :init
   ;; Don't insert the "coding utf8" comment when saving Ruby files.
   (setq ruby-insert-encoding-magic-comment nil))
