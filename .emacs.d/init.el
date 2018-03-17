@@ -618,6 +618,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-babel-load-languages (quote ((ruby . t) (python . t) (shell . t))))
  '(package-selected-packages
    (quote
     (autopair yasnippet yaml-mode web-mode use-package scss-mode multiple-cursors markdown-mode magit helm-projectile helm-ag go-mode gitignore-mode expand-region exec-path-from-shell dracula-theme default-text-scale company))))
