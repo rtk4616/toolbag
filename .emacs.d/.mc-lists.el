@@ -25,6 +25,7 @@
         delete-indentation
         duplicate-current-line-or-region
         electric-newline-and-maybe-indent
+        eval-defun
         eval-print-last-sexp
         expand-abbrev
         forward-sentence
