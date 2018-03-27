@@ -20,6 +20,7 @@
         clipboard-kill-region
         clipboard-kill-ring-save
         clipboard-yank
+        comint-delchar-or-maybe-eof
         comment-dwim
         delete-indentation
         duplicate-current-line-or-region
