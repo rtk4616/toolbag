@@ -11,9 +11,13 @@ export PATH=/usr/local/bin:/opt/local/lib/postgresql91/bin:/usr/local/share/npm/
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export PYTHONSTARTUP=~/.pythonrc
+
+# Rust bin path.
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Golang bin path.
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 eval "$(rbenv init -)"
 
 # Stuff needed for fssh function.
@@ -36,9 +40,11 @@ export LANGUAGE=en_US.UTF-8
 export EDITOR="vi"
 
 # Aliases.
-alias ptp='ptpython'
-alias emacs='emacs -nw'
-alias vims='vim -S ~/.session'
+alias p='ptpython'
+alias emacs='open -a Emacs'
+alias vi="nvim"
+alias vim="nvim"
+alias vims='nvim -S ~/.session'
 alias emux='tmux set -gw mode-keys emacs && tmux set -gw status-keys emacs'
 alias l="ls -ph $COLOR_OPTION_STRING"
 alias la="ls -al -ph $COLOR_OPTION_STRING"
