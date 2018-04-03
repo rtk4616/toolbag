@@ -82,6 +82,11 @@
   :after helm
   :demand
   :init
+  (add-hook 'lisp-mode-hook (lambda () (setq tab-width 2)))
+  (add-hook 'lisp-interaction-mode-hook (lambda () (setq tab-width 2)))
+  (add-hook 'emacs-lisp-mode-hook (lambda () (setq tab-width 2)))
+  (add-hook 'html-mode-hook (lambda ()
+                                    (local-set-key (kbd "M-<return>") 'sgml-close-tag)))
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
   (setq mouse-wheel-progressive-speed nil)
   (setq mouse-wheel-follow-mouse 't)
