@@ -494,6 +494,7 @@
   (bind-key* "C-M-n" 'mc/mark-next-like-this)
   (bind-key* "C-M-p" 'mc/unmark-next-like-this)
   (bind-key* "C-M-s" 'mc/skip-to-next-like-this)
+  (bind-key* "C-M-l" 'mc/edit-ends-of-lines)
   (bind-key* "C-x C-g" 'mc/mark-all-like-this))
 
 ;; Scale the text of all the windows/frames at the same time.
