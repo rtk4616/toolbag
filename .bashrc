@@ -87,9 +87,6 @@ if ! [ -z "$PS1" ] && ! [ "$TERM" == "dumb" ]; then
     # Better backwards kill word with ctrl-w.
     stty werase undef
     bind '"\C-w": backward-kill-word'
-
-    ### Added by the Heroku Toolbelt
-    export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
 function iterm {
