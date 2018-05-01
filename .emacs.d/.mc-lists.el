@@ -42,6 +42,7 @@
         isearch-abort
         isearch-backward-regexp
         isearch-printing-char
+        magit-copy-buffer-revision
         magit-stage
         mark-paragraph
         markdown-exdent-or-delete
