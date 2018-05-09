@@ -591,6 +591,14 @@ Specifying REVERSE as t will result in traversing the file backward."
       ;; Return the point.
       to-return))))
 
+(defun mike/copy-only-file-name ()
+  (interactive)
+  (kill-new (car (last (split-string (buffer-file-name) "/")))))
+
+(defun mike/copy-full-file-name ()
+  (interactive)
+  (kill-new (buffer-file-name)))
+
 (defun MikeGetIndentation ()
   (interactive)
   (let ((start-pos (MikeGetIndentationEnd t))
