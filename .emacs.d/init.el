@@ -458,16 +458,17 @@
 ;; Snippets.
 (use-package yasnippet
   :ensure t
-  :defer 4
+  :demand t
   :diminish yas-minor-mode
-                                        ; :config
-                                        ; (progn
-                                        ;   (global-unset-key (kbd "s-e"))
-                                        ;   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
-                                        ;   (define-key yas-minor-mode-map (kbd "<tab>") nil)
-                                        ;   (define-key yas-minor-mode-map (kbd "TAB") nil)
-                                        ;   (define-key yas-minor-mode-map (kbd "s-e") 'yas-expand)
-                                        ;   (yas-global-mode t))
+  :config
+  (progn
+    (global-unset-key (kbd "s-e"))
+    (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (define-key yas-keymap (kbd "C-d") nil)
+    (define-key yas-minor-mode-map (kbd "<tab>") nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)
+    ;; (define-key yas-minor-mode-map (kbd "s-e") 'yas-expand)
+    (yas-global-mode t))
   )
 
 ;; Correctly load $PATH and $MANPATH on OSX (GUI).
