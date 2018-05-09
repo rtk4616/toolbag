@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: HTML img tag
+# key: img
+# binding: direct-keybinding
+# --
+<img src="$0">
