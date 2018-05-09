@@ -163,7 +163,6 @@
          ("<M-up>" . shrink-window)
          ("C-M-SPC" . mike/expand-to-matching-pair)
          ("C-M-k" . kill-whole-line)
-         ("C-M-x C-M-n" . mike/mark-all-in-region)
          ("C-c C-b" . compile)
          ("C-c C-p" . preview-markdown)
          ("C-r" . isearch-backward-regexp)
