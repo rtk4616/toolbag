@@ -541,9 +541,10 @@
   :init
   (setq markdown-mode-map (make-sparse-keymap))
   (setq markdown-italic-underscore t)
+  (setq markdown-indent-on-enter 'indent-and-new-item)
   (define-key markdown-mode-map (kbd "C-m") 'markdown-enter-key)
   (define-key markdown-mode-map (kbd "TAB") 'markdown-cycle)
-  (define-key markdown-mode-map (kbd "M-<return>") 'markdown-insert-list-item)
+  (define-key markdown-mode-map (kbd "M-<return>") 'mike/markdown-newline-indent-no-list-item)
   :config
   (add-hook 'markdown-mode-hook
             (lambda ()

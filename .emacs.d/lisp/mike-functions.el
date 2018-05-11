@@ -599,6 +599,11 @@ Specifying REVERSE as t will result in traversing the file backward."
   (interactive)
   (kill-new (buffer-file-name)))
 
+(defun mike/markdown-newline-indent-no-list-item ()
+  (interactive)
+  (let ((markdown-indent-on-enter t))
+    (markdown-enter-key)))
+
 (defun MikeGetIndentation ()
   (interactive)
   (let ((start-pos (MikeGetIndentationEnd t))
