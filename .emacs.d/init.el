@@ -506,7 +506,8 @@
 ;; Modes for programming languages and such.
 (use-package web-mode
   :ensure t
-  :mode (("\\.html\\.erb\\'" . web-mode)
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.erb\\'" . web-mode)
          ("\\.eex\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2
