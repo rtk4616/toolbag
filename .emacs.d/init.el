@@ -164,7 +164,6 @@
          ("C-M-SPC" . mike/expand-to-matching-pair)
          ("C-M-k" . kill-whole-line)
          ("C-c C-b" . compile)
-         ("C-c C-p" . preview-markdown)
          ("C-r" . isearch-backward-regexp)
          ("C-s" . isearch-forward-regexp)
          ("C-w" . clipboard-kill-region)
@@ -532,6 +531,7 @@
          "\\.markdown\\'")
   :bind (("M-{" . markdown-backward-block)
          ("M-}" . markdown-forward-block)
+         ("C-c C-p" . markdown-preview)
          ("C-c TAB" . markdown-insert-italic)
          ("C-c i" . markdown-insert-image)
          ("C-c C-k" . markdown-insert-link)
@@ -541,6 +541,7 @@
          )
   :init
   (setq markdown-mode-map (make-sparse-keymap))
+  (setq markdown-css-paths (list (expand-file-name "~/toolbag/markdown.css")))
   (setq markdown-italic-underscore t)
   (setq markdown-indent-on-enter 'indent-and-new-item)
   (define-key markdown-mode-map (kbd "C-m") 'markdown-enter-key)
