@@ -46,6 +46,7 @@
         magit-stage
         mark-paragraph
         markdown-exdent-or-delete
+        markdown-insert-bold
         markdown-insert-gfm-checkbox
         markdown-toggle-gfm-checkbox
         move-past-close-and-reindent
