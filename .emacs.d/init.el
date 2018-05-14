@@ -526,9 +526,9 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'"
-         "\\.mkd\\'"
-         "\\.markdown\\'")
+  :mode (("\\.md\\'" . gfm-mode)
+         ("\\.mkd\\'" . gfm-mode)
+         ("\\.markdown\\'" . gfm-mode))
   :bind (("M-{" . markdown-backward-block)
          ("M-}" . markdown-forward-block)
          ("C-c C-p" . markdown-preview)
