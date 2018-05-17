@@ -28,14 +28,20 @@
 (require 'bind-key)
 
 ;; desktop-save-mode stuff
-(setq desktop-path '("~/"))
-(setq desktop-dirname "~/")
-(setq desktop-base-file-name ".emacs-desktop")
-(setq desktop-load-locked-desktop nil)
-(setq desktop-save t)
-(setq desktop-restore-frames t)
-(setq desktop-restore-in-current-display t)
-(setq desktop-restore-forces-onscreen nil)
+(use-package desktop
+  :init
+  (setq desktop-path '("~/"))
+  (setq desktop-dirname "~/")
+  (setq desktop-base-file-name ".emacs-desktop")
+  (setq desktop-load-locked-desktop nil)
+  (setq desktop-save t)
+  (setq desktop-restore-reuses-frames t)
+  (setq desktop-restore-frames t)
+  (setq desktop-restore-in-current-display t)
+  (setq desktop-restore-forces-onscreen nil)
+  (desktop-save-mode t)
+  ;; (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
 (use-package conf-mode
   :ensure t
@@ -620,14 +626,6 @@
 (use-package json-reformat :ensure t :defer t)
 
 (use-package json-snatcher :ensure t :defer t)
-
-;; Only maximize the window now because doing so earlier causes weird
-;; behaviours.
-(when (display-graphic-p)
-  (toggle-frame-maximized))
-
-
-
 
 ;; TODO: Move this to another file.
 (custom-set-variables
