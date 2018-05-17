@@ -37,6 +37,13 @@
 (setq desktop-restore-in-current-display t)
 (setq desktop-restore-forces-onscreen nil)
 
+(use-package conf-mode
+  :ensure t
+  :mode (("\\.ini\\'" . conf-mode)
+         ("\\.conf\\'" . conf-mode)
+         ("\\.conf\\.erb\\'" . conf-mode)
+         ("\\.properties\\.erb\\'" . conf-javaprop-mode)))
+
 (use-package textile-mode
   :ensure t)
 
@@ -506,7 +513,8 @@
 (use-package web-mode
   :ensure t
   :mode (("\\.html\\'" . web-mode)
-         ("\\.erb\\'" . web-mode)
+         ("\\.html\\.erb\\'" . web-mode)
+         ("\\.xml\\.erb\\'" . web-mode)
          ("\\.eex\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2
