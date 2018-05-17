@@ -22,6 +22,7 @@
         clipboard-yank
         comint-delchar-or-maybe-eof
         comment-dwim
+        company-complete
         delete-indentation
         duplicate-current-line-or-region
         electric-newline-and-maybe-indent
@@ -49,6 +50,7 @@
         markdown-insert-bold
         markdown-insert-gfm-checkbox
         markdown-toggle-gfm-checkbox
+        mike/expand-to-matching-pair
         move-past-close-and-reindent
         picture-self-insert
         sgml-close-tag
