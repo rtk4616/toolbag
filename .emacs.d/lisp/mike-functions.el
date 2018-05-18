@@ -2,11 +2,8 @@
 (defvar rmacs-port 52698)   ; The port on which rmacs will listen.
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
-;; expand-character stuff
-;; "saiodj asoidj asoidj asoid[ asiodjasoidj asdioj doiaj sdoiasdj] sdifj sdoifj "
 (defvar mike/expand-char-pairs
-  '(
-    ("\"" . "\"")
+  '(("\"" . "\"")
     ("'" . "'")
     ("`" . "`")
     ("." . ".")
@@ -15,13 +12,25 @@
     ("(" . ")")
     ("{" . "}")
     ("<" . ">")
-    (" " . " ")
+    (" " . " ")))
+
+(defvar mike/expand-special-pairs
+  '(
+    ("t" (">" . "<"))
     ))
+
+(defun mike/get-left-right-chars (input-char)
+  (or
+   (or  ;; Attempt to look up left/right characters from input char
+    (assoc input-char mike/expand-char-pairs)
+    (rassoc input-char mike/expand-char-pairs))
+   (car  ;; If that fails, attempt to find a matching special pair
+    (cdr (assoc input-char mike/expand-special-pairs)))))
 
 (defun mike/expand-to-matching-pair ()
   (interactive)
   (let* ((char (char-to-string (read-char "Expand to char:")))
-         (pair (or (assoc char mike/expand-char-pairs) (rassoc char mike/expand-char-pairs)))
+         (pair (mike/get-left-right-chars char))
          (left-char (car pair))
          (right-char (cdr pair)))
     (when (and left-char right-char)
@@ -38,7 +47,8 @@
       (backward-char)
       (unless (use-region-p)
         (setq mark-active t))
-      (exchange-point-and-mark))))
+      (exchange-point-and-mark))
+    ))
 
 (defun mike/extend-to-char (char-num)
   (interactive "cExtend to: ")
