@@ -332,16 +332,17 @@
          ("M-x" . helm-M-x))
   :config
   (helm-mode 1)
-  (setq helm-buffer-skip-remote-checking t
+  (setq helm-M-x-fuzzy-match t
+        helm-buffer-skip-remote-checking t
         helm-buffers-fuzzy-matching t
         helm-display-header-line nil
         helm-ff-file-name-history-use-recentf t
         helm-ff-search-library-in-sexp t
-        helm-M-x-fuzzy-match t
         helm-move-to-line-cycle-in-source t
         helm-quick-update t
         helm-scroll-amount 8
         helm-split-window-in-side-p t
+        helm-window-prefer-horizontal-split t
         ;; NOTE: Due to an issue in Emacs 24 with Helm/Tramp and DNS resolution, Emacs
         ;; will sometimes take a very long time to start up. According to...
         ;;
