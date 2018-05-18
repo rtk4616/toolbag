@@ -18,9 +18,9 @@
     (" " . " ")
     ))
 
-(defun mike/expand-to-matching-pair (char-num)
-  (interactive "cExpand to matching pair: ")
-  (let* ((char (char-to-string char-num))
+(defun mike/expand-to-matching-pair ()
+  (interactive)
+  (let* ((char (char-to-string (read-char "Expand to char:")))
          (pair (or (assoc char mike/expand-char-pairs) (rassoc char mike/expand-char-pairs)))
          (left-char (car pair))
          (right-char (cdr pair)))
