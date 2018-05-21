@@ -474,6 +474,7 @@
   (progn
     (global-unset-key (kbd "s-e"))
     (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (setq yas-triggers-in-field t)
     (define-key yas-keymap (kbd "C-d") nil)
     (define-key yas-minor-mode-map (kbd "<tab>") nil)
     (define-key yas-minor-mode-map (kbd "TAB") nil)
