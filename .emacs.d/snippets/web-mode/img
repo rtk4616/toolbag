@@ -3,4 +3,4 @@
 # key: img
 # binding: direct-keybinding
 # --
-<img src="$0">
+<img src="$1">$0
