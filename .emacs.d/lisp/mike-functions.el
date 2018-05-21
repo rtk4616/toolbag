@@ -614,6 +614,12 @@ Specifying REVERSE as t will result in traversing the file backward."
   (let ((markdown-indent-on-enter t))
     (markdown-enter-key)))
 
+(defun mike/ag-in-project ()
+  (interactive)
+  (helm-do-ag (if (projectile-project-root)
+                  (projectile-project-root)
+                (pwd))))
+
 (defun MikeGetIndentation ()
   (interactive)
   (let ((start-pos (MikeGetIndentationEnd t))

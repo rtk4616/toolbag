@@ -387,8 +387,6 @@
   :ensure t
   :config
   ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
-  (global-set-key (kbd "C-x f") (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
-  (global-set-key (kbd "C-x f") (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
   :bind (("C-M-f" . helm-projectile-find-file)
          ("C-M-t" . helm-projectile-switch-project)))
 
@@ -396,8 +394,6 @@
   :ensure t
   :bind (("C-x M-f" . helm-do-ag)
          ("C-c C-e" . helm-ag-edit)
-         ;; TODO:
-         ;; ("C-x f" . (lambda() (interactive) (helm-do-ag (if (projectile-project-root) (projectile-project-root) (pwd)))))
          ("C-x M-l" . helm-do-ag-this-file))
   :init
   (setq helm-ag-base-command "ag --nocolor --nogroup --hidden -U --smart-case"))
@@ -435,6 +431,7 @@
     :bind (("s-p" . helm-projectile-find-file)
            ("s-P" . helm-projectile-switch-project)))
   :config
+  (bind-key* "C-x f" 'mike/ag-in-project)
   (projectile-global-mode))
 
 (use-package company
