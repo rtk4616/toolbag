@@ -154,7 +154,7 @@
   (bind-key* "C-M-x C-M-w" 'mike/copy-full-file-name)
   (bind-key* "C-M-x w" 'mike/copy-only-file-name)
   (bind-key* "C-\\ M-\\" 'desktop-save-in-desktop-dir)
-  (bind-key* "C-x C-o" 'find-tag)
+  ;; (bind-key* "C-x C-o" 'find-tag)
   (bind-key* "M-SPC" 'company-complete)
   (bind-key* "M-\\" 'mike-desktop-read)
   (bind-key* "M-k" 'mark-paragraph)
@@ -438,8 +438,6 @@
   :ensure t
   :defer t
   :diminish company-mode
-  :bind (("M-." . xref-find-definitions)
-         ("C-x M-." . xref-find-references))
   :init
   (setq company-idle-delay 0.2
         company-dabbrev-code-everywhere t
@@ -450,6 +448,8 @@
         company-minimum-prefix-length 1)
   (global-company-mode)
   :config
+  (bind-key* "M-." 'xref-find-definitions)
+  (bind-key* "C-x C-o" 'xref-find-references)
   (add-hook 'prog-mode-hook 'company-mode)
   (setq company-backends '(company-robe
                            company-capf
