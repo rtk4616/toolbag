@@ -3,64 +3,45 @@
 (defvar rmacs-clients '())  ; A list of clients, where each element is (process "message string").
 
 (defvar mike/expand-char-pairs
-  '(("\"" . "\"")
-    ("'" . "'")
-    ("`" . "`")
-    ("." . ".")
-    ("/" . "/")
-    ("[" . "]")
-    ("(" . ")")
-    ("{" . "}")
-    ("<" . ">")
-    (" " . " ")))
-
-(defvar mike/expand-special-pairs
   '(
-    ("t" (">" . "<"))
+    ("\"" "\"" "\"")
+    ("'" "'" "'")
+    ("`" "`" "`")
+    ("." "\\." "\\.")
+    ("/" "/" "/")
+    ("[]" "\\[" "\\]")
+    ("()" "(" ")")
+    ("{}" "{" "}")
+    ("<>" "<" ">")
+    (" " "\\s-" "\\s-")
+    ("t" ">" "<")
+    ("w" ">" "<")
     ))
 
+(defun mike/does-key-match-triggers (triggers key)
+  ;; Need to see if the str contains key.
+  (string-match-p (regexp-quote key) triggers))
+
 (defun mike/get-left-right-chars (input-char)
-  (or
-   (or  ;; Attempt to look up left/right characters from input char
-    (assoc input-char mike/expand-char-pairs)
-    (rassoc input-char mike/expand-char-pairs))
-   (car  ;; If that fails, attempt to find a matching special pair
-    (cdr (assoc input-char mike/expand-special-pairs)))))
+  (cdr (assoc input-char mike/expand-char-pairs 'mike/does-key-match-triggers)))
 
 (defun mike/expand-to-matching-pair ()
   (interactive)
   (let* ((char (char-to-string (read-char "Expand to char:")))
          (pair (mike/get-left-right-chars char))
-         (left-char (car pair))
-         (right-char (cdr pair)))
-    (when (and left-char right-char)
-      (when (and (use-region-p) (= (point) (region-end)))
-        (exchange-point-and-mark)
-        (backward-char))
-      (save-excursion
-        (search-backward left-char)
-        (forward-char)
-        (if (use-region-p)
-            (progn (exchange-point-and-mark)
-                   (forward-char))
-          (push-mark)))
-      (search-forward right-char)
-      (backward-char)
-      (unless (use-region-p)
-        (setq mark-active t))
-      (exchange-point-and-mark))))
-
-(defun mike/extend-to-char (char-num)
-  (interactive "cExtend to: ")
-  (let* ((char (char-to-string char-num)))
-    (unless (use-region-p)
-      (push-mark))
-    (search-forward char)
-    (backward-char)
+         (left-regex (nth 0 pair))
+         (right-regex (nth 1 pair)))
     (unless (use-region-p)
       (setq mark-active t))
-    )
-  )
+    (push-mark)
+    ;; Find the match to the right
+    (while (and (not (eolp)) (not (looking-at-p right-regex)))
+      (forward-char))
+    (exchange-point-and-mark)
+    (while (and (not (bolp)) (not (looking-at-p left-regex)))
+      (backward-char))
+    (when (looking-at-p left-regex)
+      (forward-char))))
 
 (defun mike/isearch-set-region ()
   (interactive)
