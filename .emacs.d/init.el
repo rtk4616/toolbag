@@ -27,6 +27,10 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package org
+  :config
+  (define-key org-mode-map (kbd "<M-return>") 'org-insert-heading-after-current))
+
 ;; desktop-save-mode stuff
 (use-package desktop
   :init
