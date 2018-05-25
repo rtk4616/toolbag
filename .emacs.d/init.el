@@ -61,11 +61,11 @@
   :ensure t)
 
 (use-package lady
-  :demand)
+  :demand t)
 
 (use-package flycheck
   :ensure t
-  :demand
+  :demand t
   :bind (("C-x C-e" . flycheck-list-errors)
          ("C-x n" . flycheck-next-error)
          ("C-x p" . flycheck-previous-error))
@@ -76,7 +76,7 @@
   (global-flycheck-mode))
 
 (use-package dired-x
-  :demand)
+  :demand t)
 
 (use-package neotree
   :ensure t
@@ -92,8 +92,8 @@
   (bind-key* "C-\\ C-\\" 'neotree-toggle))
 
 (use-package mike-functions
-  :after helm
-  :demand
+  :after helm-projectile
+  :demand t
   :init
   (add-hook 'lisp-mode-hook (lambda () (setq tab-width 2)))
   (add-hook 'lisp-interaction-mode-hook (lambda () (setq tab-width 2)))
@@ -252,11 +252,10 @@
 
 (use-package magit
   :ensure t
+  :demand t
   :commands (magit-status magit-checkout)
   :bind (("C-x v s" . magit-status)
          ("C-x v b" . magit-blame)
-         ;; TODO:
-         ;; ("C-x v f" . (lambda() (interactive) (magit-fetch-all "-p") (magit-status)))
          ("C-x v l" . magit-log-current)
          ("C-x v h" . magit-log-buffer-file))
   :init
@@ -271,41 +270,6 @@
                           'magit-insert-unpushed-to-upstream-or-recent
                           'replace))
 
-                                        ; ;; Shows git additions/deletions/edits on the fringe.
-                                        ; (use-package git-gutter-fringe
-                                        ;   :ensure t
-                                        ;   :diminish git-gutter-mode
-                                        ;   :demand t
-                                        ;   :bind (("C-c h n" . git-gutter:next-hunk)
-                                        ;          ("C-c h p" . git-gutter:previous-hunk))
-                                        ;   :config
-                                        ;   (progn
-                                        ;     (global-git-gutter-mode t)
-                                        ;     (define-fringe-bitmap 'git-gutter-fr:added
-                                        ;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-                                        ;       nil nil 'center)
-                                        ;     (define-fringe-bitmap 'git-gutter-fr:modified
-                                        ;       [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-                                        ;       nil nil 'center)
-                                        ;     (define-fringe-bitmap 'git-gutter-fr:deleted
-                                        ;       [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
-                                        ;       nil nil 'center)))
-
-                                        ; ;; Show a small popup with the blame for the current line only.
-                                        ; (use-package git-messenger
-                                        ;   :ensure t
-                                        ;   :bind ("C-c g p" . git-messenger:popup-message)
-                                        ;   :init
-                                        ;   (setq git-messenger:show-detail t)
-                                        ;   :config
-                                        ;   (progn
-                                        ;     (define-key git-messenger-map (kbd "RET") 'git-messenger:popup-close)))
-
-                                        ; ;; Navigate throught the history of the current file.
-                                        ; (use-package git-timemachine
-                                        ;   :ensure t
-                                        ;   :bind ("C-c g t" . git-timemachine-toggle))
-
 (use-package autopair
   :config
   (autopair-global-mode)
@@ -316,7 +280,8 @@
 ;; Helm-related things.
 (use-package helm
   :ensure t
-  :demand
+  :demand t
+  :after projectile
   :diminish helm-mode
   :bind (("C-c C-e" . helm-ag-edit)
          ;; ("C-x C-f" . helm-find-files)
@@ -385,6 +350,8 @@
 
 (use-package helm-projectile
   :ensure t
+  :demand t
+  :after helm
   :config
   ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
   :bind (("C-M-f" . helm-projectile-find-file)
@@ -421,6 +388,7 @@
 
 (use-package projectile
   :ensure t
+  :demand t
   :commands (projectile-find-file projectile-switch-project)
   :diminish projectile-mode
   :init
