@@ -230,8 +230,9 @@
 
 (use-package expand-region
   :ensure t
-  :bind (("C-M-h" . er/contract-region)
-         ("M-h" . er/expand-region))
+  :config
+  (bind-key* "C-M-h" 'er/contract-region)
+  (bind-key* "M-h" 'er/expand-region)
   :init
   (setq er/try-expand-list '(er/mark-comment
                              er/mark-defun
