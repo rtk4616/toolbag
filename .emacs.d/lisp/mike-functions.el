@@ -601,6 +601,14 @@ Specifying REVERSE as t will result in traversing the file backward."
                   (projectile-project-root)
                 (pwd))))
 
+(defun mike/switch-project-action ()
+  (interactive)
+  (if (magit-git-dir)
+      (magit-status)
+    ;; (helm-projectile-find-file)
+    (dired (projectile-project-root)))
+  )
+
 (defun MikeGetIndentation ()
   (interactive)
   (let ((start-pos (MikeGetIndentationEnd t))

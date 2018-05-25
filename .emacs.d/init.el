@@ -392,7 +392,7 @@
   :commands (projectile-find-file projectile-switch-project)
   :diminish projectile-mode
   :init
-  (setq projectile-switch-project-action 'magit-status
+  (setq projectile-switch-project-action 'mike/switch-project-action
         projectile-mode-line "")
   (use-package helm-projectile
     :ensure t
