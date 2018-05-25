@@ -15,7 +15,7 @@
     ("<>" "<" ">")
     (" " "\\s-" "\\s-")
     ("t" ">" "<")
-    ("w" ">" "<")
+    ("w" "[^0-9A-Za-z_-]" "[^0-9A-Za-z_-]")
     ))
 
 (defun mike/does-key-match-triggers (triggers key)
