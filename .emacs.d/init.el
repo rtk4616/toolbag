@@ -354,9 +354,8 @@
   :demand t
   :after helm
   :config
-  ;; Some global keybindings, because use-package doesn't let you bind lambdas with :bind
-  :bind (("C-M-f" . helm-projectile-find-file)
-         ("C-M-t" . helm-projectile-switch-project)))
+  (bind-key* "C-M-f" 'helm-projectile-find-file)
+  (bind-key* "C-M-t" 'helm-projectile-switch-project))
 
 (use-package helm-ag
   :ensure t
