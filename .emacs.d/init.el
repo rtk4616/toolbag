@@ -27,6 +27,9 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package rmacs
+  :demand t)
+
 (use-package org
   :config
   (setq org-startup-folded nil)
