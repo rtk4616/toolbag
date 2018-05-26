@@ -29,6 +29,7 @@
 
 (use-package org
   :config
+  (setq org-startup-folded nil)
   (define-key org-mode-map (kbd "<M-return>") 'org-insert-heading-after-current))
 
 ;; desktop-save-mode stuff
