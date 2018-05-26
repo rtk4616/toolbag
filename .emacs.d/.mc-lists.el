@@ -52,6 +52,9 @@
         markdown-toggle-gfm-checkbox
         mike/expand-to-matching-pair
         move-past-close-and-reindent
+        org-beginning-of-line
+        org-open-line
+        org-self-insert-command
         picture-self-insert
         sgml-close-tag
         sh-assignment
