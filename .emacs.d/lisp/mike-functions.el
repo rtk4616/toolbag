@@ -16,13 +16,52 @@
     ))
 
 (defun mike/does-key-match-triggers (triggers key)
-  ;; Need to see if the str contains key.
+  "Search in TRIGGERS for KEY.
+
+TRIGGERS is a string containing characters that will trigger a
+particular expansion
+
+KEY is a single-character string from a user keypress."
   (string-match-p (regexp-quote key) triggers))
 
 (defun mike/get-left-right-chars (input-char)
+  "Return a list containing the left-hand and right-hand characters
+
+Arguments:
+  INPUT-CHAR is a string containing a character to look up.
+
+Example:
+
+  Given an expansion pair entry that looks like this:
+    (\"t\" \">\" \"<\")
+
+  Supplying \"t\" to this function would return:
+    (\">\" \"<\")
+"
   (cdr (assoc input-char mike/expand-char-pairs 'mike/does-key-match-triggers)))
 
 (defun mike/expand-to-matching-pair ()
+  "Prompt the user for a character or character class to expand the selection to.
+
+Defining pairs:
+
+  You can specify expansions by adding to the
+  mike/expand-char-pairs list. Each list item must itself be a
+  list containing three items:
+
+    (EXPANSION-TRIGGERS LEFT-REGEX RIGHT-REGEX)
+
+  EXPANSION-TRIGGERS: A string containing any characters that
+  should trigger the expansion. When the user is prompted for a
+  key to press, the resulting character will be checked against
+  this string.
+
+  LEFT-REGEX: A regex for the new region boundary, when searching
+  to the left of the point.
+
+  RIGHT-REGEX: A regex for the new region boundary, when
+  searching to the right of the point.
+"
   (interactive)
   (let* ((char (char-to-string (read-char "Expand to char:")))
          (pair (mike/get-left-right-chars char))
